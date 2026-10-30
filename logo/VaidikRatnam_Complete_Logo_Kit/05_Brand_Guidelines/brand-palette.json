@@ -1,0 +1,36 @@
+{
+  "brand_name": "VaidikRatnam",
+  "domain": "vaidikratnam.com",
+  "colors": [
+    {
+      "name": "Royal Emerald",
+      "hex": "#0F3D2E",
+      "role": "Primary brand background; trust, prosperity and growth"
+    },
+    {
+      "name": "Divine Gold",
+      "hex": "#D4AF37",
+      "role": "Primary accent; heritage, craft and value"
+    },
+    {
+      "name": "Royal Maroon",
+      "hex": "#6B1F23",
+      "role": "Secondary accent; depth and prestige"
+    },
+    {
+      "name": "Sacred Cream",
+      "hex": "#F9F5EB",
+      "role": "Primary light background; clarity and calm"
+    },
+    {
+      "name": "Earth Brown",
+      "hex": "#4B3F36",
+      "role": "Body text and neutral supporting tone"
+    }
+  ],
+  "typography_direction": {
+    "display": "Elegant high-contrast serif similar to Playfair Display or Cormorant Garamond",
+    "body": "Readable modern sans serif such as Inter or Manrope"
+  },
+  "tagline_concept": "Jewellery \u2022 Gemstones \u2022 Astrology"
+}

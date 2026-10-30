@@ -1,0 +1,10 @@
+/* VaidikRatnam brand tokens — starting point, validate against final approved artwork */
+:root {
+  --vr-emerald: #0F3D2E;
+  --vr-gold: #D4AF37;
+  --vr-maroon: #6B1F23;
+  --vr-cream: #F9F5EB;
+  --vr-earth: #4B3F36;
+  --vr-display-font: "Cormorant Garamond", Georgia, serif;
+  --vr-body-font: Inter, Arial, sans-serif;
+}
