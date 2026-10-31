@@ -1,7 +1,9 @@
 "use server";
 
 import { customDesignSchema } from "@/lib/validations/custom-design";
+import { headers } from "next/headers";
 import { repo } from "@/lib/db/repo";
+import { rateLimiter, getClientIp } from "@/lib/security/rate-limiter";
 
 export async function submitCustomDesignBrief(formData: unknown): Promise<{
   success: boolean;
@@ -10,6 +12,16 @@ export async function submitCustomDesignBrief(formData: unknown): Promise<{
   message?: string;
 }> {
   try {
+    const reqHeaders = await headers();
+    const clientIp = getClientIp(reqHeaders);
+    const rateCheck = rateLimiter.check(`custom-design:${clientIp}`, 10, 60 * 60 * 1000);
+    if (!rateCheck.allowed) {
+      return {
+        success: false,
+        message: "Submission limit reached. Please wait a while before submitting another design brief.",
+      };
+    }
+
     const parsed = customDesignSchema.safeParse(formData);
 
     if (!parsed.success) {

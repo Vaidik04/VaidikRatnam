@@ -67,9 +67,21 @@ export default function PrivacyPolicyPage() {
           </section>
 
           <section className="space-y-2">
-            <h2 className="font-serif text-lg text-[#182522] font-medium">3. Data Retention and Deletion Requests</h2>
+            <h2 className="font-serif text-lg text-[#182522] font-medium">3. Compliance with India&apos;s Digital Personal Data Protection Act (DPDPA), 2023</h2>
             <p className="text-[#626A65]">
-              You have the right to request access to, correction of, or deletion of your personal records from our enquiry and appointment systems at any time. Simply write to us at <strong className="text-[#182522]">privacy@vaidikratnam.com</strong> or inform our family during your shop visit.
+              Under the Digital Personal Data Protection Act (DPDPA), 2023, you have the following rights as a Data Principal:
+            </p>
+            <ul className="list-disc pl-5 text-[#626A65] space-y-1">
+              <li><strong>Right to Access:</strong> You may request a summary of the personal data you provided for quotes, consultations, and orders.</li>
+              <li><strong>Right to Correction &amp; Erasure:</strong> You may request immediate correction of inaccurate contact details or complete erasure of your design briefs and birth details from our database.</li>
+              <li><strong>Right of Grievance Redressal:</strong> You may contact our designated Grievance Officer regarding any data processing inquiries.</li>
+            </ul>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="font-serif text-lg text-[#182522] font-medium">4. Data Erasure Requests &amp; Grievance Redressal</h2>
+            <p className="text-[#626A65]">
+              To exercise your right to erasure, simply write to our Data Grievance Officer at <strong className="text-[#182522]">privacy@vaidikratnam.com</strong> or WhatsApp our shop desk. Erasure requests are processed within 7 business days across all database records and audit trails.
             </p>
           </section>
         </Card>

@@ -15,6 +15,10 @@ export async function toggleArticlePublishAction(articleId: string, publish: boo
       return { success: false, message: "Unauthorized staff role" };
     }
 
+    if (!articleId || typeof articleId !== "string" || articleId.length > 100) {
+      return { success: false, message: "Invalid article identifier." };
+    }
+
     await initDb();
     const db = getDb();
     const newStatus = publish ? "published" : "draft";

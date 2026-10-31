@@ -1,7 +1,9 @@
 "use server";
 
 import { z } from "zod";
+import { headers } from "next/headers";
 import { repo } from "@/lib/db/repo";
+import { rateLimiter, getClientIp } from "@/lib/security/rate-limiter";
 
 const productEnquirySchema = z.object({
   productId: z.string().optional(),
@@ -20,6 +22,16 @@ export async function submitProductEnquiry(formData: unknown): Promise<{
   message?: string;
 }> {
   try {
+    const reqHeaders = await headers();
+    const clientIp = getClientIp(reqHeaders);
+    const rateCheck = rateLimiter.check(`enquiry:${clientIp}`, 10, 60 * 60 * 1000);
+    if (!rateCheck.allowed) {
+      return {
+        success: false,
+        message: "Too many enquiries submitted from this network. Please wait a while before submitting again.",
+      };
+    }
+
     const parsed = productEnquirySchema.safeParse(formData);
 
     if (!parsed.success) {

@@ -110,15 +110,25 @@ export default async function CustomDesignReceivedPage({
           </div>
 
           <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
-            <Link href="/jewellery">
-              <Button variant="primary" size="md" className="text-xs uppercase tracking-wider w-full sm:w-auto">
+            <a
+              href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_PHONE || "919876543210"}?text=${encodeURIComponent(
+                `Namaste Vaidik Ratnam, I have submitted a custom design request on your website (Reference: ${reference}). I would like to discuss the next steps and visit your shop.`
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-gold-pure py-2.5 px-5 rounded-xs text-xs uppercase tracking-wider font-bold inline-flex items-center justify-center gap-2 text-[#0F3D2E] w-full sm:w-auto shadow-xs"
+            >
+              <span>Share Reference on Shop WhatsApp</span>
+            </a>
+            <Link href="/jewellery" className="w-full sm:w-auto">
+              <Button variant="primary" size="md" className="text-xs uppercase tracking-wider w-full">
                 Explore Available Stock
                 <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
               </Button>
             </Link>
-            <Link href="/">
-              <Button variant="outline" size="md" className="text-xs uppercase tracking-wider w-full sm:w-auto">
-                Return to Shop Home
+            <Link href="/" className="w-full sm:w-auto">
+              <Button variant="outline" size="md" className="text-xs uppercase tracking-wider w-full">
+                Return to Home
               </Button>
             </Link>
           </div>

@@ -1,7 +1,9 @@
 "use server";
 
 import { z } from "zod";
+import { headers } from "next/headers";
 import { repo } from "@/lib/db/repo";
+import { rateLimiter, getClientIp } from "@/lib/security/rate-limiter";
 
 const gemstoneSourcingSchema = z.object({
   gemstoneType: z.string().min(1, "Please select or enter the gemstone type"),
@@ -22,6 +24,16 @@ export async function submitGemstoneSourcingRequest(formData: unknown): Promise<
   message?: string;
 }> {
   try {
+    const reqHeaders = await headers();
+    const clientIp = getClientIp(reqHeaders);
+    const rateCheck = rateLimiter.check(`gemstone-req:${clientIp}`, 10, 60 * 60 * 1000);
+    if (!rateCheck.allowed) {
+      return {
+        success: false,
+        message: "Request limit reached for this session. Please try again later.",
+      };
+    }
+
     const parsed = gemstoneSourcingSchema.safeParse(formData);
 
     if (!parsed.success) {

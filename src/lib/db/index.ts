@@ -8,33 +8,60 @@ let dbInstance: Client | null = null;
 export function getDb(): Client {
   if (!dbInstance) {
     const url = process.env.DATABASE_URL || "file:vaidikratnam.db";
+    const authToken = process.env.DATABASE_AUTH_TOKEN || undefined;
     dbInstance = createClient({
       url,
+      authToken,
     });
   }
   return dbInstance;
 }
 
-// Password hashing using native crypto pbkdf2
+// Password hashing using native crypto pbkdf2 with OWASP-compliant iterations
+const CURRENT_ITERATIONS = 210000;
+
 export function hashPassword(password: string): string {
   const salt = crypto.randomBytes(16).toString("hex");
   const hash = crypto
-    .pbkdf2Sync(password, salt, 100000, 64, "sha512")
+    .pbkdf2Sync(password, salt, CURRENT_ITERATIONS, 64, "sha512")
     .toString("hex");
-  return `${salt}:${hash}`;
+  return `${salt}:${CURRENT_ITERATIONS}:${hash}`;
 }
 
 export function verifyPassword(password: string, storedHash: string): boolean {
   try {
-    const [salt, originalHash] = storedHash.split(":");
-    if (!salt || !originalHash) return false;
+    const parts = storedHash.split(":");
+    let salt: string;
+    let iterations: number;
+    let originalHash: string;
+
+    if (parts.length === 3) {
+      salt = parts[0];
+      iterations = parseInt(parts[1], 10);
+      originalHash = parts[2];
+    } else if (parts.length === 2) {
+      // Legacy hash support (100,000 iterations)
+      salt = parts[0];
+      iterations = 100000;
+      originalHash = parts[1];
+    } else {
+      return false;
+    }
+
+    if (!salt || !originalHash || isNaN(iterations)) return false;
+
     const testHash = crypto
-      .pbkdf2Sync(password, salt, 100000, 64, "sha512")
+      .pbkdf2Sync(password, salt, iterations, 64, "sha512")
       .toString("hex");
-    return crypto.timingSafeEqual(
-      Buffer.from(testHash, "hex"),
-      Buffer.from(originalHash, "hex")
-    );
+
+    const testBuf = Buffer.from(testHash, "hex");
+    const origBuf = Buffer.from(originalHash, "hex");
+
+    if (testBuf.length !== origBuf.length) {
+      return false;
+    }
+
+    return crypto.timingSafeEqual(testBuf, origBuf);
   } catch {
     return false;
   }
@@ -61,6 +88,16 @@ export async function initDb(): Promise<void> {
       .filter((s) => s.length > 0);
 
     for (const stmt of statements) {
+      // Skip PostgreSQL-specific Row Level Security statements on local SQLite
+      const upper = stmt.toUpperCase();
+      if (
+        (upper.startsWith("ALTER TABLE") && upper.includes("ROW LEVEL SECURITY")) ||
+        upper.startsWith("CREATE POLICY") ||
+        upper.startsWith("DROP POLICY")
+      ) {
+        continue;
+      }
+
       try {
         await db.execute(stmt);
       } catch (err: unknown) {
@@ -134,19 +171,34 @@ export async function initDb(): Promise<void> {
 
   if (staffCount === 0) {
     const now = new Date().toISOString();
-    const defaultPasswordHash = hashPassword("AdminVaidik2026!");
-    await db.execute({
-      sql: `INSERT OR IGNORE INTO staff_users (id, email, full_name, role, password_hash, created_at, updated_at)
-            VALUES (?, ?, ?, ?, ?, ?, ?)`,
-      args: [
-        "staff-owner-1",
-        "admin@vaidikratnam.com",
-        "Vaidik Ratnam Owner",
-        "owner",
-        defaultPasswordHash,
-        now,
-        now,
-      ],
-    });
+    const initialPassword =
+      process.env.INITIAL_ADMIN_PASSWORD ||
+      (process.env.NODE_ENV !== "production" ? "AdminVaidik2026!" : null);
+
+    if (initialPassword) {
+      const defaultPasswordHash = hashPassword(initialPassword);
+      await db.execute({
+        sql: `INSERT OR IGNORE INTO staff_users (id, email, full_name, role, password_hash, created_at, updated_at)
+              VALUES (?, ?, ?, ?, ?, ?, ?)`,
+        args: [
+          "staff-owner-1",
+          "admin@vaidikratnam.com",
+          "Vaidik Ratnam Owner",
+          "owner",
+          defaultPasswordHash,
+          now,
+          now,
+        ],
+      });
+      if (process.env.NODE_ENV !== "production" && !process.env.INITIAL_ADMIN_PASSWORD) {
+        console.warn(
+          "[SECURITY WARNING] Initial admin seeded with development default password. Set INITIAL_ADMIN_PASSWORD before deploying to production."
+        );
+      }
+    } else {
+      console.error(
+        "[CRITICAL SECURITY ALERT] Production database initialized with 0 staff accounts. Please set INITIAL_ADMIN_PASSWORD to seed initial owner credentials."
+      );
+    }
   }
 }

@@ -254,3 +254,74 @@ CREATE INDEX IF NOT EXISTS idx_custom_design_status ON custom_design_requests(st
 CREATE INDEX IF NOT EXISTS idx_appointments_status ON appointments(status);
 CREATE INDEX IF NOT EXISTS idx_articles_status ON articles(status);
 
+-- ==============================================================================
+-- POSTGRESQL / SUPABASE ROW LEVEL SECURITY (RLS) POLICIES
+-- Default Deny on ALL tables; explicit minimal privilege policies.
+-- ==============================================================================
+
+-- 1. Products (Public read published, authenticated staff write)
+ALTER TABLE products ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Public read published products" ON products FOR SELECT USING (status = 'published');
+CREATE POLICY "Staff manage products" ON products FOR ALL TO authenticated USING (true);
+
+-- 2. Product Categories (Public read active, authenticated staff write)
+ALTER TABLE product_categories ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Public read active categories" ON product_categories FOR SELECT USING (is_active = 1);
+CREATE POLICY "Staff manage categories" ON product_categories FOR ALL TO authenticated USING (true);
+
+-- 3. Media Assets (Public read unarchived, authenticated staff write)
+ALTER TABLE media_assets ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Public read unarchived media" ON media_assets FOR SELECT USING (is_archived = 0);
+CREATE POLICY "Staff manage media" ON media_assets FOR ALL TO authenticated USING (true);
+
+-- 4. Articles / Learn (Public read published, authenticated staff write)
+ALTER TABLE articles ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Public read published articles" ON articles FOR SELECT USING (status = 'published');
+CREATE POLICY "Staff manage articles" ON articles FOR ALL TO authenticated USING (true);
+
+-- 5. FAQs (Public read published, authenticated staff write)
+ALTER TABLE faqs ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Public read published faqs" ON faqs FOR SELECT USING (is_published = 1);
+CREATE POLICY "Staff manage faqs" ON faqs FOR ALL TO authenticated USING (true);
+
+-- 6. Business Settings (Public read non-sensitive, authenticated staff write)
+ALTER TABLE business_settings ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Public read public settings" ON business_settings FOR SELECT USING (key NOT LIKE 'mfa_secret_%');
+CREATE POLICY "Staff manage settings" ON business_settings FOR ALL TO authenticated USING (true);
+
+-- 7. Customer Inquiries (Public insert, staff view/manage)
+ALTER TABLE enquiries ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Public insert enquiries" ON enquiries FOR INSERT WITH CHECK (true);
+CREATE POLICY "Staff manage enquiries" ON enquiries FOR ALL TO authenticated USING (true);
+
+-- 8. Custom Design Requests (Public insert, staff view/manage)
+ALTER TABLE custom_design_requests ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Public insert custom designs" ON custom_design_requests FOR INSERT WITH CHECK (true);
+CREATE POLICY "Staff manage custom designs" ON custom_design_requests FOR ALL TO authenticated USING (true);
+
+-- 9. Appointments (Public insert, staff view/manage)
+ALTER TABLE appointments ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Public insert appointments" ON appointments FOR INSERT WITH CHECK (true);
+CREATE POLICY "Staff manage appointments" ON appointments FOR ALL TO authenticated USING (true);
+
+-- 10. Confidential Notes (Strictly authenticated staff only)
+ALTER TABLE appointment_confidential_notes ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Staff only confidential notes" ON appointment_confidential_notes FOR ALL TO authenticated USING (true);
+
+-- 11. Quotes & Items (Strictly authenticated staff only)
+ALTER TABLE quotes ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Staff only quotes" ON quotes FOR ALL TO authenticated USING (true);
+
+ALTER TABLE quote_items ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Staff only quote items" ON quote_items FOR ALL TO authenticated USING (true);
+
+-- 12. Staff Users (Strictly authenticated staff only)
+ALTER TABLE staff_users ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Staff only users" ON staff_users FOR ALL TO authenticated USING (true);
+
+-- 13. Audit Logs (System insert, authenticated staff select)
+ALTER TABLE audit_logs ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Staff view audit logs" ON audit_logs FOR SELECT TO authenticated USING (true);
+CREATE POLICY "System insert audit logs" ON audit_logs FOR INSERT WITH CHECK (true);
+
+

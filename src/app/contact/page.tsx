@@ -17,10 +17,10 @@ export default async function ContactPage() {
   await seedDemoDataIfEmpty();
   const settings = await repo.getSettings();
 
-  const showroomHours = settings["showroom_hours"] || "Mon - Sat: 11:00 AM - 8:00 PM | Sun: By Appointment";
+  const showroomHours = settings["shop_hours"] || settings["showroom_hours"] || "Mon - Sat: 10:30 AM - 8:30 PM | Sun: 11:00 AM - 6:00 PM";
   const showroomPhone = settings["phone_display"] || "+91 98765 43210";
   const showroomEmail = settings["email_contact"] || "shop@vaidikratnam.com";
-  const showroomAddress = settings["showroom_address"] || "Vaidik Ratnam Jewellery Shop, India";
+  const showroomAddress = settings["shop_address"] || settings["showroom_address"] || "Vaidik Ratnam Traditional Jewellery Shop, Johari Bazar, Jaipur, Rajasthan 302003";
 
   const rawPhone = showroomPhone.replace(/[^0-9]/g, "");
 

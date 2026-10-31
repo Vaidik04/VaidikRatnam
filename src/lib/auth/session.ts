@@ -3,11 +3,37 @@ import crypto from "crypto";
 import { StaffRole } from "./roles";
 
 const COOKIE_NAME = "vr_staff_session";
-const SESSION_SECRET =
-  process.env.ADMIN_SESSION_SECRET ||
-  "vaidikratnam_fallback_secret_must_be_configured_in_production_environments_at_least_32_bytes";
+
+// Server-side token revocation set to ensure true server-side logout invalidation
+const revokedTokens = new Set<string>();
+
+// Get or generate session secret
+let ephemeralSecret: string | null = null;
+
+function getSessionSecret(): string {
+  const envSecret = process.env.ADMIN_SESSION_SECRET;
+  if (envSecret && envSecret.length >= 32) {
+    return envSecret;
+  }
+
+  if (process.env.NODE_ENV === "production") {
+    throw new Error(
+      "FATAL SECURITY CONFIGURATION: ADMIN_SESSION_SECRET environment variable is missing or shorter than 32 characters. Server refusing to sign sessions with insecure fallback in production."
+    );
+  }
+
+  // In non-production, generate an ephemeral cryptographically random secret on server boot
+  if (!ephemeralSecret) {
+    ephemeralSecret = crypto.randomBytes(32).toString("hex");
+    console.warn(
+      "[SECURITY NOTICE] ADMIN_SESSION_SECRET not set in development. Using ephemeral in-memory random secret."
+    );
+  }
+  return ephemeralSecret;
+}
 
 export interface StaffSession {
+  sessionId: string;
   staffId: string;
   email: string;
   role: StaffRole;
@@ -16,9 +42,10 @@ export interface StaffSession {
 }
 
 export function signSessionToken(session: StaffSession): string {
+  const secret = getSessionSecret();
   const payload = Buffer.from(JSON.stringify(session)).toString("base64url");
   const signature = crypto
-    .createHmac("sha256", SESSION_SECRET)
+    .createHmac("sha256", secret)
     .update(payload)
     .digest("base64url");
   return `${payload}.${signature}`;
@@ -26,20 +53,30 @@ export function signSessionToken(session: StaffSession): string {
 
 export function verifySessionToken(token: string): StaffSession | null {
   try {
+    if (!token || typeof token !== "string") return null;
+
+    // Check if token was explicitly revoked on logout
+    if (revokedTokens.has(token)) {
+      return null;
+    }
+
     const [payload, signature] = token.split(".");
     if (!payload || !signature) return null;
 
+    const secret = getSessionSecret();
     const expectedSignature = crypto
-      .createHmac("sha256", SESSION_SECRET)
+      .createHmac("sha256", secret)
       .update(payload)
       .digest("base64url");
 
-    if (
-      !crypto.timingSafeEqual(
-        Buffer.from(signature),
-        Buffer.from(expectedSignature)
-      )
-    ) {
+    const sigBuf = Buffer.from(signature);
+    const expectedSigBuf = Buffer.from(expectedSignature);
+
+    if (sigBuf.length !== expectedSigBuf.length) {
+      return null;
+    }
+
+    if (!crypto.timingSafeEqual(sigBuf, expectedSigBuf)) {
       return null;
     }
 
@@ -48,7 +85,7 @@ export function verifySessionToken(token: string): StaffSession | null {
     ) as StaffSession;
 
     // Check expiration (7 days validity)
-    if (Date.now() > session.exp) {
+    if (!session.exp || Date.now() > session.exp) {
       return null;
     }
 
@@ -66,7 +103,10 @@ export async function createSession(data: {
 }): Promise<void> {
   const cookieStore = await cookies();
   const exp = Date.now() + 7 * 24 * 60 * 60 * 1000; // 7 days
+  const sessionId = crypto.randomBytes(16).toString("hex");
+
   const token = signSessionToken({
+    sessionId,
     ...data,
     exp,
   });
@@ -89,6 +129,10 @@ export async function getSession(): Promise<StaffSession | null> {
 
 export async function destroySession(): Promise<void> {
   const cookieStore = await cookies();
+  const token = cookieStore.get(COOKIE_NAME)?.value;
+  if (token) {
+    // Add token to server-side revocation list
+    revokedTokens.add(token);
+  }
   cookieStore.delete(COOKIE_NAME);
 }
-

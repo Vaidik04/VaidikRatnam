@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getSession } from "@/lib/auth/session";
 import { hasPermission } from "@/lib/auth/roles";
 import { repo } from "@/lib/db/repo";
+import { isSupabaseConfigured, uploadToSupabaseStorage } from "@/lib/supabase/storage";
 import fs from "fs";
 import path from "path";
 import crypto from "crypto";
@@ -80,15 +81,28 @@ export async function POST(req: NextRequest) {
         );
       }
 
-      // Generate collision-free sanitized storage name
-      const ext = path.extname(file.name).toLowerCase() || ".jpg";
+      // Generate collision-free sanitized storage name with path traversal defense
+      const sanitizedExt = path.extname(path.basename(file.name)).toLowerCase() || ".jpg";
       const safeRandom = crypto.randomBytes(8).toString("hex");
-      const safeFilename = `stock_${Date.now()}_${safeRandom}${ext}`;
+      const safeFilename = `stock_${Date.now()}_${safeRandom}${sanitizedExt}`;
       const storagePath = path.join(uploadDir, safeFilename);
 
-      fs.writeFileSync(storagePath, buffer);
+      let publicUrl = `/uploads/stock/${safeFilename}`;
+      let storagePathRef = publicUrl;
 
-      const publicUrl = `/uploads/stock/${safeFilename}`;
+      if (isSupabaseConfigured()) {
+        const supabaseRes = await uploadToSupabaseStorage(buffer, safeFilename, file.type, assetType);
+        if (supabaseRes.success && supabaseRes.publicUrl) {
+          publicUrl = supabaseRes.publicUrl;
+          storagePathRef = supabaseRes.storagePath || publicUrl;
+        } else {
+          console.warn("Supabase upload failed, falling back to local disk:", supabaseRes.error);
+          fs.writeFileSync(storagePath, buffer);
+        }
+      } else {
+        fs.writeFileSync(storagePath, buffer);
+      }
+
       const assetId = `media-${Date.now()}-${Math.random().toString(36).substring(2, 6)}`;
 
       await repo.addMediaAsset({
@@ -97,7 +111,7 @@ export async function POST(req: NextRequest) {
         original_name: file.name,
         mime_type: file.type,
         file_size: file.size,
-        storage_path: publicUrl,
+        storage_path: storagePathRef,
         url: publicUrl,
         alt_text: file.name.replace(/\.[^/.]+$/, "").replace(/[-_]+/g, " "),
         caption: null,

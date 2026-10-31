@@ -1,7 +1,9 @@
 "use server";
 
 import { z } from "zod";
+import { headers } from "next/headers";
 import { repo } from "@/lib/db/repo";
+import { rateLimiter, getClientIp } from "@/lib/security/rate-limiter";
 
 const consultationRequestSchema = z.object({
   serviceTitle: z.string().min(1, "Please select a consultation service"),
@@ -32,6 +34,16 @@ export async function submitConsultationRequest(formData: unknown): Promise<{
   message?: string;
 }> {
   try {
+    const reqHeaders = await headers();
+    const clientIp = getClientIp(reqHeaders);
+    const rateCheck = rateLimiter.check(`consultation:${clientIp}`, 10, 60 * 60 * 1000);
+    if (!rateCheck.allowed) {
+      return {
+        success: false,
+        message: "Appointment request limit reached for this session. Please try again later.",
+      };
+    }
+
     const parsed = consultationRequestSchema.safeParse(formData);
 
     if (!parsed.success) {

@@ -15,9 +15,16 @@ import {
 } from "lucide-react";
 
 const SAMPLE_CSV = `sku,name,category_slug,product_type,metal_purity,gross_weight_grams,net_gold_weight_grams,price_mode,fixed_price_amount,status
-VR-G-NK-101,Antique 22K Gold Temple Necklace,necklaces,single_piece,22K Gold (916),54.20,54.20,quote_first,,published
-VR-G-KD-102,Solid Gold Fluted Kada,bangles-bracelets,single_piece,22K Gold (916),38.50,38.50,indicative_estimate,,draft
-VR-R-SL-103,Diamond Solitaire Band,rings,single_piece,18K Gold (750),4.20,4.00,fixed_price,68000,draft`;
+VR-NK-001,Handcrafted 22K Antique Nakshi Choker,necklaces,single_piece,22K Yellow Gold (916),48.50,45.20,quote_first,,published
+VR-KD-002,Solid 22K Royal Fluted Kada (Single),bangles_kadas,single_piece,22K Yellow Gold (916),38.00,38.00,quote_first,,published
+VR-EM-003,Natural Zambian Emerald Open-Back Chhidra Pendant,loose_gemstones,loose_gemstone,18K Yellow Gold (750),6.40,4.20,quote_first,,published
+VR-SP-004,Untreated Ceylon Royal Blue Sapphire Ring,loose_gemstones,loose_gemstone,18K Gold / Panchdhatu,8.20,5.80,quote_first,,published
+VR-JH-005,Heritage 22K Filigree Jhumkas with Basra Seed Pearls,earrings,single_piece,22K Yellow Gold (916),24.60,22.10,quote_first,,published
+VR-RB-006,Untreated Old-Burma Natural Ruby (Manikya) Ring,loose_gemstones,loose_gemstone,22K Yellow Gold (916),9.10,6.90,quote_first,,published
+VR-MG-007,Traditional 22K Vati Mangalsutra with Black Beads,mangalsutra,single_piece,22K Yellow Gold (916),16.80,14.50,quote_first,,published
+VR-YS-008,Certified Ceylon Yellow Sapphire (Pukhraj) Ring,loose_gemstones,loose_gemstone,22K Yellow Gold (916),11.20,8.40,quote_first,,published
+VR-SL-009,Classic 18K Solitaire Illusion Diamond Pendant,pendants,multi_quantity,18K Yellow Gold (750),4.50,4.10,indicative_estimate,42500,published
+VR-TH-010,925 Sterling Silver Antique Nakshi Pooja Thali,silverware,single_piece,925 Sterling Silver,250.00,250.00,indicative_estimate,28500,published`;
 
 export default function CsvImportPage() {
   const router = useRouter();

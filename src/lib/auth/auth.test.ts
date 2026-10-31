@@ -5,6 +5,7 @@ import { generateReference } from "@/lib/db";
 
 describe("Staff Authentication & Token Verification", () => {
   const validSession: StaffSession = {
+    sessionId: "sess-test-uuid-1",
     staffId: "staff-1",
     email: "owner@vaidikratnam.com",
     role: "owner",
