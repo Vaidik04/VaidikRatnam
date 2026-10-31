@@ -89,14 +89,14 @@ export function Header({ rates }: HeaderProps = {}) {
           <div className="flex items-center justify-between h-20 sm:h-22">
             {/* Official Brand Logo */}
             <Link href="/" className="flex items-center group py-1 shrink-0 mr-4 lg:mr-8">
-              <div className="relative h-12 sm:h-14 lg:h-15 w-auto flex items-center">
+              <div className="relative h-14 sm:h-16 lg:h-18 w-auto flex items-center">
                 <Image
-                  src="/images/brand/logo-horizontal-transparent.png"
+                  src="/images/brand/logo-horizontal-header-cream.png"
                   alt="Vaidik Ratnam — Jewellery • Gemstones • Astrology"
                   width={909}
                   height={319}
                   priority
-                  className="h-11 sm:h-13 lg:h-14 w-auto object-contain group-hover:scale-[1.02] transition-transform duration-300"
+                  className="h-13 sm:h-15 lg:h-17 w-auto object-contain mix-blend-multiply group-hover:scale-[1.02] transition-transform duration-300 drop-shadow-xs"
                 />
               </div>
             </Link>
@@ -180,13 +180,13 @@ export function Header({ rates }: HeaderProps = {}) {
         <div className="lg:hidden border-b border-[#E8DFC8] bg-[#F9F5EB] px-5 pt-4 pb-8 space-y-4 shadow-xl animate-in slide-in-from-top-2 duration-200">
           {/* Mobile Drawer Brand Identification */}
           <div className="flex items-center gap-2.5 pb-3 border-b border-[#E8DFC8]">
-            <div className="w-9 h-9 rounded-full bg-[#0F3D2E]/10 border border-[#D4AF37]/40 flex items-center justify-center p-1.5 shrink-0">
+            <div className="w-9 h-9 rounded-full bg-[#0F3D2E] border border-[#D4AF37]/60 flex items-center justify-center p-1 shrink-0 overflow-hidden shadow-xs">
               <Image
-                src="/images/brand/icon-full-color-transparent.png"
-                alt="VR"
-                width={28}
-                height={28}
-                className="w-full h-full object-contain"
+                src="/images/brand/app-icon-emerald-256.png"
+                alt="VR Crest"
+                width={36}
+                height={36}
+                className="w-full h-full object-cover rounded-full"
               />
             </div>
             <div>

@@ -140,13 +140,13 @@ export function Footer() {
         {/* Brand & Crest Column (2 cols) */}
         <div className="lg:col-span-2 space-y-4">
           <div className="flex items-center gap-3">
-            <div className="relative w-12 h-12 flex items-center justify-center shrink-0">
+            <div className="relative w-12 h-12 rounded-full overflow-hidden border border-[#D4AF37]/60 shadow-lg flex items-center justify-center shrink-0 bg-[#0F3D2E] p-0.5">
               <Image
-                src="/images/brand/icon-full-color-transparent.png"
+                src="/images/brand/app-icon-emerald-256.png"
                 alt="VR Monogram Crest"
                 width={64}
                 height={64}
-                className="w-12 h-12 object-contain drop-shadow-md"
+                className="w-full h-full object-cover rounded-full"
               />
             </div>
             <div>

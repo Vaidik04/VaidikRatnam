@@ -137,13 +137,13 @@ export function StudioAssistantWidget() {
           className="group flex items-center gap-2.5 px-4 py-3 bg-[#0F3D2E] text-white rounded-full shadow-lg hover:bg-[#08241B] hover:shadow-xl transition-all cursor-pointer border border-[#D4AF37]/60 active:scale-[0.98]"
           aria-label="Open Shop AI Advisor"
         >
-          <div className="w-6 h-6 rounded-full bg-[#D4AF37] flex items-center justify-center p-1 shrink-0 shadow-xs">
+          <div className="w-6 h-6 rounded-full bg-[#08241B] border border-[#D4AF37]/60 flex items-center justify-center p-0.5 shrink-0 shadow-xs overflow-hidden">
             <Image
-              src="/images/brand/icon-full-color-transparent.png"
+              src="/images/brand/app-icon-emerald-256.png"
               alt="VR"
-              width={20}
-              height={20}
-              className="w-full h-full object-contain"
+              width={24}
+              height={24}
+              className="w-full h-full object-cover rounded-full"
             />
           </div>
           <span className="text-xs font-semibold uppercase tracking-wider font-serif pr-1">
@@ -162,13 +162,13 @@ export function StudioAssistantWidget() {
           {/* Header */}
           <div className="bg-[#0F3D2E] text-white p-4 flex items-center justify-between border-b border-[#D4AF37]/30">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-full bg-[#08241B] border border-[#D4AF37]/50 flex items-center justify-center p-1 shrink-0 shadow-xs">
+              <div className="w-8 h-8 rounded-full bg-[#08241B] border border-[#D4AF37]/50 flex items-center justify-center p-0.5 shrink-0 shadow-xs overflow-hidden">
                 <Image
-                  src="/images/brand/icon-full-color-transparent.png"
+                  src="/images/brand/app-icon-emerald-256.png"
                   alt="VR Monogram"
-                  width={24}
-                  height={24}
-                  className="w-full h-full object-contain"
+                  width={32}
+                  height={32}
+                  className="w-full h-full object-cover rounded-full"
                 />
               </div>
               <div>

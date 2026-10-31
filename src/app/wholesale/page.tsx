@@ -22,13 +22,13 @@ export default function WholesalePortalPage() {
       <main className="flex-1 py-16 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto w-full">
         {!isEnabled ? (
           <Card className="p-8 sm:p-12 bg-white border border-[#E2D7C5] rounded-xs shadow-md text-center space-y-6">
-            <div className="w-16 h-16 mx-auto rounded-full bg-[#0F3D2E]/5 border border-[#D4AF37]/50 flex items-center justify-center p-3 shadow-2xs">
+            <div className="w-16 h-16 mx-auto rounded-full bg-[#0F3D2E] border border-[#D4AF37]/60 flex items-center justify-center p-1 shadow-md overflow-hidden">
               <Image
-                src="/images/brand/icon-full-color-transparent.png"
+                src="/images/brand/app-icon-emerald-256.png"
                 alt="Vaidik Ratnam"
-                width={48}
-                height={48}
-                className="w-full h-full object-contain"
+                width={64}
+                height={64}
+                className="w-full h-full object-cover rounded-full"
               />
             </div>
 

@@ -175,13 +175,13 @@ export function Hero({ rates }: HeroProps = {}) {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#08241B]/80 via-transparent to-transparent pointer-events-none" />
 
                 {/* Floating Crest Inside Photo */}
-                <div className="absolute top-6 left-1/2 -translate-x-1/2 w-16 h-16 p-2 rounded-full bg-[#08241B]/90 border border-[#D4AF37]/60 shadow-xl backdrop-blur-md flex items-center justify-center">
+                <div className="absolute top-6 left-1/2 -translate-x-1/2 w-16 h-16 p-1 rounded-full bg-[#08241B]/90 border border-[#D4AF37]/80 shadow-xl backdrop-blur-md flex items-center justify-center overflow-hidden">
                   <Image
-                    src="/images/brand/icon-full-color-transparent.png"
+                    src="/images/brand/app-icon-emerald-256.png"
                     alt="VR Monogram"
-                    width={40}
-                    height={40}
-                    className="w-full h-full object-contain"
+                    width={56}
+                    height={56}
+                    className="w-full h-full object-cover rounded-full"
                   />
                 </div>
               </div>

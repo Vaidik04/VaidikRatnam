@@ -58,13 +58,15 @@ export default async function JewelleryCataloguePage({
 
           <div className="relative z-10 p-8 sm:p-12 lg:p-16 max-w-3xl space-y-4">
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0F3D2E]/90 border border-[#D4AF37]/60 text-[#F3E5AB] text-xs uppercase tracking-[0.22em] font-medium shadow-md">
-              <Image
-                src="/images/brand/icon-full-color-transparent.png"
-                alt="VR"
-                width={18}
-                height={18}
-                className="w-4 h-4 object-contain"
-              />
+              <div className="w-5 h-5 rounded-full overflow-hidden border border-[#D4AF37]/80 shrink-0">
+                <Image
+                  src="/images/brand/app-icon-emerald-256.png"
+                  alt="VR"
+                  width={20}
+                  height={20}
+                  className="w-full h-full object-cover"
+                />
+              </div>
               <span>Ready in Our Shop &bull; 100% BIS Hallmarked</span>
             </div>
 

@@ -59,13 +59,13 @@ export function AdminSidebar({ session }: AdminSidebarProps) {
           >
             {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
-          <div className="w-7 h-7 rounded-xs bg-[#0F3D2E] border border-[#D4AF37]/50 flex items-center justify-center p-1 shrink-0">
+          <div className="w-7 h-7 rounded-xs bg-[#0F3D2E] border border-[#D4AF37]/50 flex items-center justify-center p-0.5 shrink-0 overflow-hidden">
             <Image
-              src="/images/brand/icon-full-color-transparent.png"
+              src="/images/brand/app-icon-emerald-256.png"
               alt="VR"
-              width={22}
-              height={22}
-              className="w-full h-full object-contain"
+              width={28}
+              height={28}
+              className="w-full h-full object-cover rounded-xs"
             />
           </div>
           <span className="font-serif text-base font-medium tracking-wide">
@@ -94,13 +94,13 @@ export function AdminSidebar({ session }: AdminSidebarProps) {
         {/* Brand Header */}
         <div className="p-4 border-b border-[#2A3834]">
           <Link href="/admin" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-xs bg-[#0F3D2E] border border-[#D4AF37]/60 flex items-center justify-center p-1.5 shrink-0 shadow-xs group-hover:scale-105 transition-transform">
+            <div className="w-10 h-10 rounded-xs bg-[#0F3D2E] border border-[#D4AF37]/60 flex items-center justify-center p-0.5 shrink-0 shadow-xs group-hover:scale-105 transition-transform overflow-hidden">
               <Image
-                src="/images/brand/icon-full-color-transparent.png"
+                src="/images/brand/app-icon-emerald-256.png"
                 alt="Vaidik Ratnam"
-                width={32}
-                height={32}
-                className="w-full h-full object-contain"
+                width={40}
+                height={40}
+                className="w-full h-full object-cover rounded-xs"
               />
             </div>
             <div>

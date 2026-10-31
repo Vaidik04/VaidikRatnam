@@ -12,13 +12,13 @@ export default function NotFound() {
 
       <main className="flex-1 flex items-center justify-center py-20 px-4 text-center">
         <div className="max-w-md mx-auto space-y-6">
-          <div className="w-20 h-20 rounded-full bg-[#0F3D2E]/5 border border-[#D4AF37]/50 mx-auto flex items-center justify-center p-4 shadow-sm relative">
+          <div className="w-20 h-20 rounded-full bg-[#0F3D2E] border border-[#D4AF37]/60 mx-auto flex items-center justify-center p-1.5 shadow-md relative overflow-hidden">
             <Image
-              src="/images/brand/icon-full-color-transparent.png"
+              src="/images/brand/app-icon-emerald-256.png"
               alt="Vaidik Ratnam"
-              width={64}
-              height={64}
-              className="w-full h-full object-contain"
+              width={80}
+              height={80}
+              className="w-full h-full object-cover rounded-full"
             />
           </div>
 

@@ -43,12 +43,12 @@ export default function AdminLoginPage() {
         <Link href="/" className="inline-block group mb-4">
           <div className="flex justify-center mb-3">
             <Image
-              src="/images/brand/logo-horizontal-transparent.png"
+              src="/images/brand/logo-horizontal-header-cream.png"
               alt="Vaidik Ratnam"
-              width={260}
-              height={85}
+              width={909}
+              height={319}
               priority
-              className="h-12 w-auto object-contain"
+              className="h-16 sm:h-20 w-auto object-contain mix-blend-multiply"
             />
           </div>
           <span className="text-[10px] uppercase tracking-[0.25em] text-[#B08D57] font-semibold block">
