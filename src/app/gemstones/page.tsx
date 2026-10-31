@@ -234,13 +234,13 @@ export default function GemstonesCentrePage() {
         <div className="space-y-8">
           <div className="text-center max-w-2xl mx-auto">
             <span className="text-xs uppercase tracking-[0.25em] text-[#B08D57] font-semibold block mb-1">
-              Sacred Mineralogy
+              Natural Gemstones &bull; Navratna
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl text-[#182522] font-normal">
               The Navratna Spectrum
             </h2>
             <p className="text-xs sm:text-sm text-[#626A65] mt-1.5">
-              The nine sacred planetary gems of Indian tradition with their mineral family, Mohs hardness, and classical astrological affiliations.
+              The nine traditional planetary gemstones of Indian tradition with their mineral family, Mohs hardness, and classical astrological affiliations.
             </p>
           </div>
 
@@ -313,7 +313,7 @@ export default function GemstonesCentrePage() {
           <Card className="p-6 sm:p-8 bg-white border border-[#E2D7C5]">
             <h3 className="font-serif text-xl font-medium text-[#182522] mb-3 flex items-center gap-2">
               <Sparkles className="w-5 h-5 text-[#B08D57]" />
-              Sacred Open-Back Ring Setting (Chhidra)
+              Traditional Open-Back Ring Setting (Chhidra)
             </h3>
             <p className="text-xs text-[#626A65] leading-relaxed mb-4">
               According to traditional Vedic Shastra, astrological gemstones should have an open setting at the back so the stone can touch or direct light toward the skin.

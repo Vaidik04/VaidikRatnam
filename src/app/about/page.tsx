@@ -112,7 +112,7 @@ export default function AboutPage() {
         <div className="p-8 sm:p-12 bg-[#173B32] text-white rounded-xs shadow-xl relative overflow-hidden">
           <div className="max-w-3xl mx-auto text-center space-y-4">
             <span className="text-xs font-mono uppercase tracking-[0.3em] text-[#F3E5AB] block">
-              Our Sacred Principle
+              Our Guiding Principle
             </span>
             <blockquote className="font-serif text-xl sm:text-2xl text-white font-normal italic leading-relaxed">
               &ldquo;रत्नं संधारयेन्विद्वान् शुद्धं दोषविवर्जितम्&rdquo;
@@ -132,7 +132,7 @@ export default function AboutPage() {
         <div className="bg-white border border-[#E8DFC8] rounded-xs p-8 sm:p-12 shadow-md space-y-8">
           <div className="text-center max-w-2xl mx-auto space-y-2">
             <span className="text-xs font-mono uppercase tracking-[0.25em] text-[#D4AF37] font-semibold block">
-              Sacred Heritage &bull; Visual Identity
+              Brand Heritage &bull; Visual Identity
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl text-[#182522] font-normal">
               The Meaning of Our Monogram &amp; Symbols

@@ -60,7 +60,7 @@ export default async function Page() {
       category: "Handcrafted Bangles & Kada",
       purity: "22K Yellow Gold (916)",
       huid: "Govt. Hallmarked with Hallmark Certificate",
-      priceDesc: "Pure gold weight guaranteed on digital scale",
+      priceDesc: "Weighed on digital scale before you",
       image: "/images/products/kada-fluted.jpg",
       href: "/jewellery/fluted-gold-kada",
       tag: "Heirloom Classic",
@@ -70,7 +70,7 @@ export default async function Page() {
       category: "Vedic Astrological Ratna",
       purity: "Open-Back 18K Gold Chhidra Setting",
       huid: "Lab Certified Natural Panna",
-      priceDesc: "Energized for Mercury (Budha Graha)",
+      priceDesc: "Traditional gemstone setting for Mercury (Budha)",
       image: "/images/products/emerald-pendant.jpg",
       href: "/jewellery/emerald-chhidra-pendant",
       tag: "Jyotish Certified",
@@ -92,10 +92,10 @@ export default async function Page() {
       <Header rates={rates} />
 
       <main className="flex-1">
-        {/* 1. Asymmetric Sacred Editorial Hero */}
+        {/* 1. Hero Section */}
         <Hero rates={rates} />
 
-        {/* 2. The Four Sacred Brand Glyphs Bar */}
+        {/* 2. Brand Values & Heritage Bar */}
         <section className="bg-[#FAF8F5] border-b border-[#E8DFC8] py-8">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
@@ -186,10 +186,10 @@ export default async function Page() {
             <div>
               <div className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-[#B59328] mb-1">
                 <Sparkles className="w-3.5 h-3.5" />
-                <span>Shop Masterpieces & Sacred Ratna</span>
+                <span>Handmade Jewellery &amp; Certified Gemstones</span>
               </div>
               <h2 className="font-serif text-3xl sm:text-4xl text-[#0F3D2E] font-normal">
-                Curated High Craftsmanship Pieces
+                Featured Gold Jewellery &amp; Natural Gemstones
               </h2>
               <p className="text-xs sm:text-sm text-[#4B3F36] mt-1 font-light">
                 Every piece is handcrafted by our in-house goldsmiths, weighed before you, and certified by BIS & recognized gem labs.
@@ -302,7 +302,7 @@ export default async function Page() {
                     Our Family Commitment
                   </span>
                   <p className="font-serif italic text-sm text-white">
-                    &ldquo;Gold purity is sacred trust. We weigh every piece before your eyes on certified digital scales.&rdquo;
+                    &ldquo;Gold purity is a matter of trust. We weigh every piece before your eyes on certified digital scales.&rdquo;
                   </p>
                 </div>
               </div>
@@ -476,7 +476,7 @@ export default async function Page() {
                   You Are Always Welcome at Our Family Shop
                 </h2>
                 <p className="text-xs sm:text-sm text-[#4B3F36] leading-relaxed font-light">
-                  Jewellery and sacred gemstones are lifetime investments for family ceremonies and spiritual well-being. Come sit with us, view gemstones under natural sunlight, and discuss your custom designs over warm tea.
+                  Jewellery and genuine gemstones are lifetime family investments. Come sit with us, view gemstones under natural sunlight, and discuss your custom designs over warm tea.
                 </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 text-xs text-[#4B3F36]">

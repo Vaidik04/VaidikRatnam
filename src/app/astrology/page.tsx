@@ -172,7 +172,7 @@ export default async function AstrologyConsultationPage() {
           <div className="max-w-4xl mx-auto">
             <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#B08D57] mb-2">
               <ShieldCheck className="w-4 h-4" />
-              <span>Our Sacred Code of Ethics</span>
+              <span>Our Code of Ethics</span>
             </div>
             <h2 className="font-serif text-xl sm:text-2xl font-normal mb-3 text-white">
               Vedic Guidance Without Commercial Pressure or Superstition

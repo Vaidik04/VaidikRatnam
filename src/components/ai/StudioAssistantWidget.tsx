@@ -40,10 +40,10 @@ export function StudioAssistantWidget() {
     {
       id: "welcome",
       sender: "advisor",
-      text: "Namaste! I am Vaidik Margdarshak, your studio advisor. Ask me anything regarding 22K/18K gold pricing, BIS hallmarking, Navratna gemstones, bespoke custom designs, or classical Vedic astrology principles.",
+      text: "Namaste! Welcome to Vaidik Ratnam. How can we help you? You can ask about our 22K/18K gold jewellery, custom designs, live gold rates, BIS hallmarking, or natural gemstones.",
       links: [
         { label: "Gold Budget Estimator", url: "/tools/gold-budget-estimator" },
-        { label: "Traditional Astrology & Ratna", url: "/astrology" },
+        { label: "Gemstone & Astrology Guide", url: "/astrology" },
       ],
     },
   ]);
@@ -147,7 +147,7 @@ export function StudioAssistantWidget() {
             />
           </div>
           <span className="text-xs font-semibold uppercase tracking-wider font-serif pr-1">
-            Shop AI Advisor
+            Shop Assistant
           </span>
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4AF37] opacity-75"></span>
@@ -173,10 +173,10 @@ export function StudioAssistantWidget() {
               </div>
               <div>
                 <h3 className="font-serif text-sm font-medium leading-tight text-white flex items-center gap-1.5">
-                  Vaidik Margdarshak
+                  Vaidik Ratnam Helpdesk
                 </h3>
                 <span className="text-[10px] text-[#DDE5DC] block">
-                  Shop AI Advisor &amp; Knowledge Guide
+                  Shop Information &amp; Guidance
                 </span>
               </div>
             </div>
@@ -246,7 +246,7 @@ export function StudioAssistantWidget() {
             {isLoading && (
               <div className="flex items-center gap-2 p-3 bg-white border border-[#E5DFD5] rounded-sm max-w-[70%] text-xs text-[#626A65]">
                 <Loader2 className="w-3.5 h-3.5 animate-spin text-[#173B32]" />
-                <span>Consulting studio records...</span>
+                <span>Checking store details...</span>
               </div>
             )}
 
@@ -281,7 +281,7 @@ export function StudioAssistantWidget() {
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Ask about jewellery, gold, or gemstones..."
+              placeholder="Ask a question about gold, jewellery, or gemstones..."
               className="flex-1 text-xs px-3 py-2 bg-[#FAF8F5] border border-[#D4CCC0] rounded-sm focus:outline-none focus:ring-1 focus:ring-[#173B32] text-[#182522]"
               disabled={isLoading}
             />
@@ -295,13 +295,13 @@ export function StudioAssistantWidget() {
             </button>
           </form>
 
-          {/* Ethics Micro-Disclaimer */}
+          {/* Micro Disclaimer */}
           <div className="px-3 py-1.5 bg-[#FAF8F5] border-t border-[#E5DFD5] text-[10px] text-[#626A65] flex items-center justify-between">
             <span className="flex items-center gap-1">
               <ShieldCheck className="w-3 h-3 text-[#173B32]" />
-              Grounded Studio AI
+              Store Information Assistant
             </span>
-            <span>Non-medical / Non-commercial</span>
+            <span>Always verify final rates in-store</span>
           </div>
         </div>
       )}

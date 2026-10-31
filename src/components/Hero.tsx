@@ -67,7 +67,7 @@ export function Hero({ rates }: HeroProps = {}) {
             {/* Main Editorial Headline */}
             <div className="space-y-2">
               <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal tracking-tight leading-[1.12]">
-                Where Sacred Indian Craft Meets{" "}
+                Where Traditional Indian Artistry Meets{" "}
                 <span className="text-gold-gradient font-serif italic block mt-1">
                   Pure Goldsmithing
                 </span>
