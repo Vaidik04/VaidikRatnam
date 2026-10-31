@@ -199,6 +199,26 @@ async function ensureDb() {
   await initPromise;
 }
 
+/**
+ * Strips non-plain LibSQL Row properties (numeric indexes, length, null prototypes)
+ * so objects can be serialized across Next.js Server-to-Client component boundaries.
+ */
+export function toPlainRow<T>(row: unknown): T {
+  if (!row || typeof row !== "object") return row as T;
+  const obj: Record<string, unknown> = {};
+  for (const k of Object.keys(row)) {
+    if (!/^\d+$/.test(k) && k !== "length") {
+      obj[k] = (row as Record<string, unknown>)[k];
+    }
+  }
+  return obj as T;
+}
+
+export function toPlainRows<T>(rows: unknown[]): T[] {
+  if (!Array.isArray(rows)) return [];
+  return rows.map((r) => toPlainRow<T>(r));
+}
+
 // -----------------------------------------------------------------------------
 // REPOSITORY METHODS
 // -----------------------------------------------------------------------------
@@ -209,7 +229,7 @@ export const repo = {
     await ensureDb();
     const db = getDb();
     const res = await db.execute("SELECT * FROM product_categories WHERE is_active = 1 ORDER BY display_order ASC");
-    return res.rows as unknown as ProductCategory[];
+    return toPlainRows<ProductCategory>(res.rows);
   },
 
   // --- Products ---
@@ -271,7 +291,7 @@ export const repo = {
     }
 
     const res = await db.execute({ sql, args: params });
-    const products = res.rows as unknown as Product[];
+    const products = toPlainRows<Product>(res.rows);
     return { products, total };
   },
 
@@ -287,7 +307,7 @@ export const repo = {
       args: [slug],
     });
     if (res.rows.length === 0) return null;
-    return res.rows[0] as unknown as Product;
+    return toPlainRow<Product>(res.rows[0]);
   },
 
   async getAdminProducts(): Promise<Product[]> {
@@ -300,7 +320,7 @@ export const repo = {
       LEFT JOIN media_assets m ON p.primary_media_id = m.id
       ORDER BY p.updated_at DESC
     `);
-    return res.rows as unknown as Product[];
+    return toPlainRows<Product>(res.rows);
   },
 
   async getProductById(id: string): Promise<Product | null> {
@@ -315,7 +335,7 @@ export const repo = {
       args: [id],
     });
     if (res.rows.length === 0) return null;
-    return res.rows[0] as unknown as Product;
+    return toPlainRow<Product>(res.rows[0]);
   },
 
   async saveProduct(product: Partial<Product> & { name: string; sku: string }): Promise<string> {
@@ -439,7 +459,7 @@ export const repo = {
 
     sql += ` ORDER BY created_at DESC`;
     const res = await db.execute({ sql, args: params });
-    return res.rows as unknown as MediaAsset[];
+    return toPlainRows<MediaAsset>(res.rows);
   },
 
   async addMediaAsset(asset: Omit<MediaAsset, "created_at">): Promise<void> {
@@ -543,14 +563,14 @@ export const repo = {
       args: [ref],
     });
     if (res.rows.length === 0) return null;
-    return res.rows[0] as unknown as { reference_code: string; status: string; created_at: string; piece_type: string };
+    return toPlainRow<{ reference_code: string; status: string; created_at: string; piece_type: string }>(res.rows[0]);
   },
 
   async getAdminCustomDesigns(): Promise<CustomDesignRequest[]> {
     await ensureDb();
     const db = getDb();
     const res = await db.execute(`SELECT * FROM custom_design_requests ORDER BY created_at DESC`);
-    return res.rows as unknown as CustomDesignRequest[];
+    return toPlainRows<CustomDesignRequest>(res.rows);
   },
 
   async updateCustomDesignStatus(id: string, status: string, notes?: string): Promise<void> {
@@ -619,7 +639,7 @@ export const repo = {
       LEFT JOIN products p ON e.product_id = p.id
       ORDER BY e.created_at DESC
     `);
-    return res.rows as unknown as Enquiry[];
+    return toPlainRows<Enquiry>(res.rows);
   },
 
   async updateEnquiryStatus(id: string, status: string, notes?: string, followUpDate?: string): Promise<void> {
@@ -709,7 +729,7 @@ export const repo = {
     await ensureDb();
     const db = getDb();
     const res = await db.execute(`SELECT * FROM appointments ORDER BY requested_date DESC, requested_time_slot ASC`);
-    return res.rows as unknown as Appointment[];
+    return toPlainRows<Appointment>(res.rows);
   },
 
   async getAppointmentConfidentialNotes(appointmentId: string): Promise<Record<string, unknown> | null> {
@@ -720,7 +740,7 @@ export const repo = {
       args: [appointmentId],
     });
     if (res.rows.length === 0) return null;
-    return res.rows[0] as Record<string, unknown>;
+    return toPlainRow<Record<string, unknown>>(res.rows[0]);
   },
 
   async updateAppointmentStatus(id: string, status: string): Promise<void> {
@@ -742,7 +762,7 @@ export const repo = {
       WHERE status = 'published'
       ORDER BY is_featured DESC, published_at DESC
     `);
-    return res.rows as unknown as Article[];
+    return toPlainRows<Article>(res.rows);
   },
 
   async getArticleBySlug(slug: string): Promise<Article | null> {
@@ -753,21 +773,21 @@ export const repo = {
       args: [slug],
     });
     if (res.rows.length === 0) return null;
-    return res.rows[0] as unknown as Article;
+    return toPlainRow<Article>(res.rows[0]);
   },
 
   async getAdminArticles(): Promise<Article[]> {
     await ensureDb();
     const db = getDb();
     const res = await db.execute(`SELECT * FROM articles ORDER BY updated_at DESC`);
-    return res.rows as unknown as Article[];
+    return toPlainRows<Article>(res.rows);
   },
 
   async getPublishedFaqs(): Promise<FAQ[]> {
     await ensureDb();
     const db = getDb();
     const res = await db.execute(`SELECT * FROM faqs WHERE is_published = 1 ORDER BY display_order ASC`);
-    return res.rows as unknown as FAQ[];
+    return toPlainRows<FAQ>(res.rows);
   },
 
   // --- Business Settings ---
@@ -828,7 +848,7 @@ export const repo = {
       sql: `SELECT * FROM audit_logs ORDER BY created_at DESC LIMIT ?`,
       args: [limit],
     });
-    return res.rows as Array<Record<string, unknown>>;
+    return toPlainRows<Record<string, unknown>>(res.rows);
   },
 
   // --- Dashboard KPI Metrics ---

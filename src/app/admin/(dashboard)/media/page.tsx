@@ -21,7 +21,7 @@ export default async function AdminMediaPage({
 
   return (
     <MediaLibraryView
-      initialAssets={assets}
+      initialAssets={JSON.parse(JSON.stringify(assets))}
       unlinkedCount={unlinkedAssets.length}
     />
   );
