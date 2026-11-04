@@ -62,3 +62,4 @@ This document serves as the master quality assurance checklist across all 7 phas
 - [x] **Documentation & Guides:**
   - `public/assets-guide.md` (Photography specs, 3D pipeline, aspect ratios).
   - `README.md` (Complete architectural specification and operations manual).
+

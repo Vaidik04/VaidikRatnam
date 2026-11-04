@@ -3,8 +3,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { Button } from "@/components/ui/Button";
-import { Card } from "@/components/ui/Card";
 import { repo } from "@/lib/db/repo";
 import { LagnaRatnaExplorer } from "@/components/astrology/LagnaRatnaExplorer";
 import { KundaliVisual } from "@/components/astrology/KundaliVisual";
@@ -15,6 +13,7 @@ import {
   HelpCircle,
   AlertTriangle,
   UserCheck,
+  Sparkles,
 } from "lucide-react";
 
 export const metadata = {
@@ -79,14 +78,14 @@ const CONSULTATION_STEPS = [
     step: "04",
     title: "Muhurta & Prana Pratishtha Guidance",
     description:
-      "If a gemstone is prescribed, you receive the exact auspicious day, Shukla Paksha muhurta, seed Beej Mantra, and purification vidhi for energization.",
+      "If a gemstone is auspicious, we calculate the favorable Shukla Paksha hora, ritual purification, and recommended open-back metal setting.",
   },
 ];
 
 const ASTROLOGY_FAQS = [
   {
-    q: "Can I wear Blue Sapphire (Neelam) during Sade Sati to reduce Saturn's hardships?",
-    a: "Classical Parashari Jyotish strictly warns AGAINST blindly wearing Blue Sapphire during Sade Sati. Gemstones are cosmic amplifiers, not shields. If Saturn is a functional malefic (ruler of the 6th, 8th, or 12th houses for your Lagna, such as for Aries, Cancer, or Leo), wearing Neelam will intensify conflicts and physical ailments rather than relieve them. Saturn is appeased through humble service, discipline, and Shani Stotra—not expensive stones.",
+    q: "How does traditional Parashari Jyotish differ from commercial astrology?",
+    a: "Commercial astrology often relies on fear-based upayas or promises of rapid material gain. In contrast, authentic Parashari Jyotish is a sacred Vedanga—a spiritual mirror designed for self-realization, understanding karmic momentum, and navigating life cycles with wisdom.",
   },
   {
     q: "Do I have to buy the gemstone from your studio after the consultation?",
@@ -113,12 +112,12 @@ export default async function AstrologyConsultationPage() {
     "Traditional Vedic astrology and gemstone selection guidance based on generational family study. Consultations focus on balanced classical Parashari principles without fear-based marketing.";
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAF8F5]">
+    <div className="min-h-screen flex flex-col bg-[#04170f] text-[#faf7f0] selection:bg-[#d4af37]/30 selection:text-[#f6e7b4]">
       <Header />
 
       <main className="flex-1 py-12 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto w-full space-y-16">
         {/* Editorial Parashari Sanctuary Banner */}
-        <div className="relative rounded-xs overflow-hidden bg-[#061410] text-white border border-[#B08D57]/40 shadow-xl">
+        <div className="relative rounded-2xl overflow-hidden bg-[#0a2a1d] text-white border border-[#d4af37]/40 shadow-2xl">
           <div className="absolute inset-0 z-0">
             <Image
               src="/images/father-sanctuary.jpg"
@@ -126,20 +125,14 @@ export default async function AstrologyConsultationPage() {
               fill
               priority
               sizes="100vw"
-              className="object-cover opacity-40"
+              className="object-cover opacity-35"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#061410] via-[#061410]/85 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#04170f] via-[#04170f]/85 to-transparent" />
           </div>
 
           <div className="relative z-10 p-8 sm:p-12 lg:p-16 max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0F3D2E]/90 border border-[#D4AF37]/60 text-[#F3E5AB] text-xs uppercase tracking-[0.22em] font-medium shadow-md">
-              <Image
-                src="/images/brand/element-sun-transparent.png"
-                alt="Sun &amp; Nakshatra"
-                width={20}
-                height={20}
-                className="w-4 h-4 object-contain"
-              />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0a2a1d]/90 border border-[#d4af37]/60 text-[#f1d98a] text-xs uppercase tracking-[0.22em] font-mono shadow-md">
+              <Sparkles className="w-3.5 h-3.5 text-[#d4af37]" />
               <span>Traditional Vedic Astrology Guidance</span>
             </div>
 
@@ -147,46 +140,52 @@ export default async function AstrologyConsultationPage() {
               Traditional Astrology &amp; <span className="text-gold-gradient italic">Gemstone Advice</span>
             </h1>
 
-            <p className="text-xs sm:text-sm text-[#DDE5DC] leading-relaxed max-w-xl font-light">
+            <p className="text-xs sm:text-sm text-[#a8b6af] leading-relaxed max-w-xl font-light">
               Clear, personal horoscope reading grounded in traditional Kundali analysis. We examine your birth chart to provide honest guidance—strictly separated from jewellery sales, with zero fear tactics.
             </p>
 
             <div className="pt-2 flex flex-wrap gap-3">
               <Link href="/consultation/request">
-                <Button variant="gold" size="lg" className="text-xs uppercase tracking-wider font-semibold btn-gold-shimmer shadow-md">
-                  <Calendar className="w-4 h-4 mr-1.5" />
-                  Book Astrology Consultation
-                </Button>
+                <button
+                  type="button"
+                  className="bg-gold-gradient text-[#04170f] px-6 py-3 text-xs font-mono uppercase tracking-wider font-bold rounded-full shadow-lg hover:brightness-105 cursor-pointer flex items-center gap-2"
+                >
+                  <Calendar className="w-4 h-4" />
+                  <span>Book Astrology Consultation</span>
+                </button>
               </Link>
               <a href="#lagna-explorer">
-                <Button variant="outline" size="lg" className="text-xs uppercase tracking-wider text-[#F3E5AB] border-[#B08D57]/60 hover:bg-white/10 backdrop-blur-xs">
-                  Find Your Rashi Gemstones &rarr;
-                </Button>
+                <button
+                  type="button"
+                  className="px-6 py-3 text-xs font-mono uppercase tracking-wider text-[#f1d98a] bg-white/5 hover:bg-white/10 border border-[#d4af37]/40 rounded-full transition-colors cursor-pointer backdrop-blur-md"
+                >
+                  Find Your Lagna Gemstones &rarr;
+                </button>
               </a>
             </div>
           </div>
         </div>
 
         {/* Ethical Boundaries Banner */}
-        <div className="bg-[#173B32] text-white rounded-sm p-6 sm:p-8 shadow-sm">
-          <div className="max-w-4xl mx-auto">
-            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#B08D57] mb-2">
+        <div className="bg-gradient-to-r from-[#0a2a1d] via-[#0f3a28] to-[#0a2a1d] text-white rounded-2xl p-8 sm:p-10 border border-[#d4af37]/40 shadow-2xl relative overflow-hidden">
+          <div className="max-w-4xl mx-auto space-y-3">
+            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#d4af37]">
               <ShieldCheck className="w-4 h-4" />
               <span>Our Code of Ethics</span>
             </div>
-            <h2 className="font-serif text-xl sm:text-2xl font-normal mb-3 text-white">
+            <h2 className="font-serif text-2xl sm:text-3xl font-normal text-white">
               Vedic Guidance Without Commercial Pressure or Superstition
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs text-[#DDE5DC] mt-4 pt-4 border-t border-[#2A5248]">
-              <div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs text-[#a8b6af] mt-4 pt-4 border-t border-white/10">
+              <div className="p-4 rounded-xl bg-[#04170f]/70 border border-white/10">
                 <strong className="text-white block mb-1">Zero Jewellery Obligation:</strong>
                 A consultation never obligates you to purchase a gemstone from our studio. We provide objective guidance, and you may source your stone wherever you choose.
               </div>
-              <div>
+              <div className="p-4 rounded-xl bg-[#04170f]/70 border border-white/10">
                 <strong className="text-white block mb-1">No Fear-Driven Marketing:</strong>
                 We reject fear tactics, manufactured Kaal Sarp threats, and false promises of overnight wealth, miraculous marriage, or medical cures.
               </div>
-              <div>
+              <div className="p-4 rounded-xl bg-[#04170f]/70 border border-white/10">
                 <strong className="text-white block mb-1">Strict Confidentiality:</strong>
                 Your birth coordinates, private concerns, and consultation recordings are kept strictly confidential between you and the practitioner.
               </div>
@@ -202,32 +201,32 @@ export default async function AstrologyConsultationPage() {
         {/* The 4-Step Consultation Journey */}
         <div className="space-y-6">
           <div className="text-center max-w-xl mx-auto">
-            <span className="text-xs uppercase tracking-widest text-[#B08D57] font-semibold block mb-1">
+            <span className="text-xs uppercase tracking-widest text-[#d4af37] font-mono block mb-1">
               Methodology &amp; Care
             </span>
-            <h2 className="font-serif text-2xl sm:text-3xl text-[#182522] font-normal">
+            <h2 className="font-serif text-2xl sm:text-3xl text-white font-normal">
               The 4-Step Consultation Journey
             </h2>
-            <p className="text-xs text-[#626A65] mt-1">
+            <p className="text-xs text-[#a8b6af] mt-1">
               How our studio elder prepares, examines, and conducts your private astrological session.
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {CONSULTATION_STEPS.map((s) => (
-              <Card key={s.step} className="p-5 bg-white border border-[#E5DFD5] flex flex-col justify-between">
+              <div key={s.step} className="p-5 bg-[#0a2a1d]/70 rounded-2xl border border-[#d4af37]/25 flex flex-col justify-between shadow-xl backdrop-blur-md">
                 <div>
-                  <span className="font-mono text-xl font-bold text-[#B08D57] block mb-2">
+                  <span className="font-mono text-2xl font-bold text-[#d4af37] block mb-2">
                     {s.step}
                   </span>
-                  <h3 className="font-serif text-base font-medium text-[#182522] mb-2 leading-snug">
+                  <h3 className="font-serif text-base font-medium text-white mb-2 leading-snug">
                     {s.title}
                   </h3>
-                  <p className="text-xs text-[#626A65] leading-relaxed">
+                  <p className="text-xs text-[#a8b6af] leading-relaxed">
                     {s.description}
                   </p>
                 </div>
-              </Card>
+              </div>
             ))}
           </div>
         </div>
@@ -243,39 +242,39 @@ export default async function AstrologyConsultationPage() {
         </section>
 
         {/* Practitioner Profile Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white border border-[#E5DFD5] rounded-sm p-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-[#0a2a1d]/70 border border-[#d4af37]/30 rounded-2xl p-8 sm:p-10 shadow-2xl backdrop-blur-md">
           <div className="lg:col-span-4 text-center lg:text-left">
-            <div className="w-32 h-32 mx-auto lg:mx-0 rounded-full bg-[#EAE4D7] border-2 border-[#B08D57] flex items-center justify-center text-[#173B32] mb-4">
+            <div className="w-28 h-28 mx-auto lg:mx-0 rounded-full bg-[#04170f] border-2 border-[#d4af37] flex items-center justify-center text-[#d4af37] mb-4 shadow-xl">
               <UserCheck className="w-12 h-12" />
             </div>
-            <span className="text-xs font-mono uppercase tracking-widest text-[#B08D57] block mb-1">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#d4af37] block mb-1">
               Senior Family Astrologer
             </span>
-            <h3 className="font-serif text-2xl font-medium text-[#182522]">
+            <h3 className="font-serif text-2xl font-medium text-white">
               {settings["father_consultant_name"] || "Family Senior Astrologer"}
             </h3>
-            <p className="text-xs text-[#626A65] mt-1">
+            <p className="text-xs text-[#a8b6af] mt-1">
               Practitioner of Classical Vedic Astrology &amp; Kundali Analysis
             </p>
           </div>
 
-          <div className="lg:col-span-8 space-y-4 text-xs sm:text-sm text-[#626A65] leading-relaxed border-t lg:border-t-0 lg:border-l border-[#E5DFD5] pt-6 lg:pt-0 lg:pl-8">
-            <h4 className="font-serif text-base font-semibold text-[#182522]">
+          <div className="lg:col-span-8 space-y-4 text-xs sm:text-sm text-[#a8b6af] leading-relaxed border-t lg:border-t-0 lg:border-l border-white/10 pt-6 lg:pt-0 lg:pl-8">
+            <h4 className="font-serif text-lg font-semibold text-white">
               About the Practitioner &amp; Tradition
             </h4>
             <p>{practitionerBio}</p>
-            <div className="pt-2 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-[#182522]">
-              <div className="bg-[#FAF8F5] p-2.5 rounded-xs border border-[#E5DFD5]">
-                <span className="text-[#626A65] block text-[10px] uppercase font-mono">Languages:</span>
-                <strong>Hindi, English &amp; Gujarati</strong>
+            <div className="pt-2 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-mono">
+              <div className="bg-[#04170f]/80 p-3 rounded-xl border border-white/10">
+                <span className="text-[#a8b6af] block text-[10px] uppercase">Languages:</span>
+                <strong className="text-white">Hindi, English &amp; Sanskrit</strong>
               </div>
-              <div className="bg-[#FAF8F5] p-2.5 rounded-xs border border-[#E5DFD5]">
-                <span className="text-[#626A65] block text-[10px] uppercase font-mono">Available Modes:</span>
-                <strong>In-Shop, Phone &amp; Video</strong>
+              <div className="bg-[#04170f]/80 p-3 rounded-xl border border-white/10">
+                <span className="text-[#a8b6af] block text-[10px] uppercase">Available Modes:</span>
+                <strong className="text-white">In-Shop, Phone &amp; Video</strong>
               </div>
-              <div className="bg-[#FAF8F5] p-2.5 rounded-xs border border-[#E5DFD5]">
-                <span className="text-[#626A65] block text-[10px] uppercase font-mono">Session Format:</span>
-                <strong>One-on-One Private</strong>
+              <div className="bg-[#04170f]/80 p-3 rounded-xl border border-white/10">
+                <span className="text-[#a8b6af] block text-[10px] uppercase">Session Format:</span>
+                <strong className="text-white">One-on-One Private</strong>
               </div>
             </div>
           </div>
@@ -284,71 +283,74 @@ export default async function AstrologyConsultationPage() {
         {/* Services Grid */}
         <div className="space-y-8">
           <div className="text-center max-w-xl mx-auto">
-            <span className="text-xs uppercase tracking-widest text-[#B08D57] font-semibold block mb-1">
+            <span className="text-xs uppercase tracking-widest text-[#d4af37] font-mono block mb-1">
               Consultation Services
             </span>
-            <h2 className="font-serif text-2xl sm:text-3xl text-[#182522] font-normal">
+            <h2 className="font-serif text-2xl sm:text-3xl text-white font-normal">
               Select Your Consultation Format
             </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {SERVICES_OFFERED.map((svc) => (
-              <Card
+              <div
                 key={svc.id}
-                className="p-6 bg-white flex flex-col justify-between hover:border-[#B08D57] transition-colors"
+                className="p-6 bg-[#0a2a1d]/70 rounded-2xl border border-[#d4af37]/30 flex flex-col justify-between hover:border-[#d4af37] transition-all shadow-xl backdrop-blur-md"
               >
                 <div>
-                  <span className="text-[11px] font-mono text-[#B08D57] uppercase tracking-wider block mb-2">
+                  <span className="text-[11px] font-mono text-[#d4af37] uppercase tracking-wider block mb-2">
                     {svc.duration}
                   </span>
-                  <h3 className="font-serif text-lg text-[#182522] font-medium mb-2.5 leading-snug">
+                  <h3 className="font-serif text-lg text-white font-medium mb-2.5 leading-snug">
                     {svc.title}
                   </h3>
-                  <p className="text-xs text-[#626A65] leading-relaxed mb-4">
+                  <p className="text-xs text-[#a8b6af] leading-relaxed mb-4">
                     {svc.description}
                   </p>
-                  <div className="p-3 bg-[#FAF8F5] rounded-xs text-[11px] text-[#626A65] mb-4 border border-[#E5DFD5]">
-                    <strong className="text-[#182522] block mb-0.5">Best For:</strong>
+                  <div className="p-3 bg-[#04170f]/80 rounded-xl text-[11px] text-[#a8b6af] mb-4 border border-white/10">
+                    <strong className="text-white block mb-0.5">Best For:</strong>
                     {svc.suitableFor}
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-[#E5DFD5]">
+                <div className="pt-4 border-t border-white/10">
                   <Link
                     href={`/consultation/request?service=${encodeURIComponent(
                       svc.title
                     )}`}
                   >
-                    <Button variant="primary" size="sm" className="w-full text-xs uppercase tracking-wider">
+                    <button
+                      type="button"
+                      className="w-full py-2.5 px-4 bg-gold-gradient text-[#04170f] font-bold text-xs uppercase tracking-wider font-mono rounded-full hover:brightness-105 transition-all cursor-pointer shadow-md"
+                    >
                       Request Appointment Slot &rarr;
-                    </Button>
+                    </button>
                   </Link>
                 </div>
-              </Card>
+              </div>
             ))}
           </div>
         </div>
 
         {/* FAQs */}
-        <div className="bg-white border border-[#E5DFD5] rounded-sm p-6 sm:p-8 space-y-6">
+        <div className="bg-[#0a2a1d]/70 border border-[#d4af37]/30 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl backdrop-blur-md">
           <div className="text-center max-w-xl mx-auto">
-            <div className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-[#B08D57] mb-1">
+            <div className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-[#d4af37] mb-1">
               <HelpCircle className="w-4 h-4" />
               <span>Questions &amp; Clarifications</span>
             </div>
-            <h3 className="font-serif text-2xl text-[#182522] font-normal">
+            <h3 className="font-serif text-2xl text-white font-normal">
               Frequently Asked Astrological Questions
             </h3>
           </div>
 
           <div className="space-y-4 max-w-3xl mx-auto">
             {ASTROLOGY_FAQS.map((faq, idx) => (
-              <div key={idx} className="p-4 bg-[#FAF8F5] rounded-xs border border-[#E5DFD5] space-y-1.5">
-                <h4 className="font-serif text-base font-medium text-[#182522]">
+              <div key={idx} className="p-4 bg-[#04170f]/80 rounded-xl border border-white/10 space-y-1.5">
+                <h4 className="font-serif text-base font-medium text-white">
                   {faq.q}
                 </h4>
-                <p className="text-xs text-[#626A65] leading-relaxed">
+                <p className="text-xs text-[#a8b6af] leading-relaxed">
                   {faq.a}
                 </p>
               </div>
@@ -356,9 +358,9 @@ export default async function AstrologyConsultationPage() {
           </div>
         </div>
 
-        {/* Final Disclaimer */}
-        <div className="bg-[#FFF8E7] border border-[#FFE5A3] rounded-sm p-5 text-xs text-[#925700] flex items-start gap-3">
-          <AlertTriangle className="w-5 h-5 mt-0.5 shrink-0" />
+        {/* Final Caution Notice (Deep Ruby Glass with Gold Hairline) */}
+        <div className="caution-ruby-glass rounded-2xl p-6 text-xs text-[#f6e7b4] flex items-start gap-3">
+          <AlertTriangle className="w-5 h-5 text-rose-300 mt-0.5 shrink-0" />
           <p className="leading-relaxed">
             <strong>Legal, Ethical &amp; Medical Notice:</strong> Traditional Jyotish consultations are symbolic, philosophical interpretations of cosmic cycles intended solely for self-reflection and spiritual guidance. Under the <em>Drugs and Magic Remedies (Objectionable Advertisements) Act</em> and ethical standards, astrological readings must never replace qualified medical diagnoses, mental health treatment, legal representation, or certified financial advice.
           </p>

@@ -1,25 +1,20 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/Hero";
+import { TrustStrip } from "@/components/home/TrustStrip";
+import { FourPillars } from "@/components/home/FourPillars";
+import { HorizontalShowcase, ShowcaseProduct } from "@/components/home/HorizontalShowcase";
+import { ProcessTimeline } from "@/components/home/ProcessTimeline";
 import { HomeGoldEstimator } from "@/components/home/HomeGoldEstimator";
-import { FeaturedProductCards } from "@/components/home/FeaturedProductCards";
 import { LagnaRatnaExplorer } from "@/components/astrology/LagnaRatnaExplorer";
+import { BehindTheShop } from "@/components/home/BehindTheShop";
+import { TestimonialsCarousel } from "@/components/home/TestimonialsCarousel";
+import { VisitShowcase } from "@/components/home/VisitShowcase";
 import { fetchLiveBullionRates } from "@/lib/services/gold-rates";
 import { repo } from "@/lib/db/repo";
-import {
-  ShieldCheck,
-  Sparkles,
-  Scale,
-  ArrowRight,
-  MessageCircle,
-  Clock,
-  MapPin,
-  HeartHandshake,
-  Compass,
-} from "lucide-react";
+import { Sparkles, ArrowRight } from "lucide-react";
 
 export const revalidate = 900; // 15 minutes ISR
 
@@ -42,314 +37,131 @@ export default async function Page() {
   // Fetch business settings for contact details
   const settings: Record<string, string> = await repo.getSettings().catch(() => ({}));
   const whatsappPhone = process.env.NEXT_PUBLIC_WHATSAPP_PHONE || settings.whatsapp_phone || "919876543210";
-  const shopAddress = settings.shop_address || settings.showroom_address || "Vaidik Ratnam Jewellery, Traditional Sarafa Bazaar, Jaipur, Rajasthan 302003";
+  const shopAddress = settings.shop_address || settings.showroom_address || "Sarafa Bazaar, Varanasi, Uttar Pradesh 221001";
 
-  // Featured curated collections
-  const featuredItems = [
+  // Featured curated showcase products with authentic 3D viewer metadata
+  const featuredProducts: ShowcaseProduct[] = [
     {
+      id: "nakshi-choker",
       title: "Handcrafted 22K Nakshi Temple Choker",
       category: "Heritage Gold Jewellery",
       purity: "22K BIS Hallmarked (916)",
       huid: "6-Digit HUID Laser Verified",
+      weight: "48.50g Net Gold",
       priceDesc: "Calculated live by daily gram rate + karigari",
       image: "/images/products/necklace-nakshi.jpg",
       href: "/jewellery/heritage-nakshi-choker",
       tag: "Bridal Signature",
-      product3DType: "nakshi-choker" as const,
+      product3DType: "nakshi-choker",
+      badge: "Bridal Signature",
     },
     {
+      id: "fluted-kada",
       title: "Solid 22K Fluted Traditional Kada",
       category: "Handcrafted Bangles & Kada",
       purity: "22K Yellow Gold (916)",
-      huid: "Govt. Hallmarked with Hallmark Certificate",
+      huid: "Govt. Hallmarked Certificate",
+      weight: "32.40g Net Gold",
       priceDesc: "Weighed on digital scale before you",
       image: "/images/products/kada-fluted.jpg",
       href: "/jewellery/fluted-gold-kada",
       tag: "Heirloom Classic",
-      product3DType: "kada" as const,
+      product3DType: "kada",
+      badge: "Heirloom Classic",
     },
     {
+      id: "emerald-pendant",
       title: "Natural Untreated Zambian Emerald Pendant",
       category: "Vedic Astrological Ratna",
       purity: "Open-Back 18K Gold Chhidra Setting",
       huid: "Lab Certified Natural Panna",
+      weight: "5.25 Carats / 6.20g Gold",
       priceDesc: "Traditional gemstone setting for Mercury (Budha)",
       image: "/images/products/emerald-pendant.jpg",
       href: "/jewellery/emerald-chhidra-pendant",
       tag: "Jyotish Certified",
-      product3DType: "emerald-pendant" as const,
+      product3DType: "emerald-pendant",
+      badge: "Jyotish Certified",
     },
     {
+      id: "sapphire-ring",
       title: "Untreated Ceylon Royal Blue Sapphire Ring",
       category: "Rare Astrological Ratna",
       purity: "Custom Panchdhatu / 18K Gold",
-      huid: "Govt. Recognized Gemological Certificate",
+      huid: "Govt. Recognized Lab Certificate",
+      weight: "4.80 Carats / 8.10g Gold",
       priceDesc: "Selected strictly for Saturn (Shani) alignment",
       image: "/images/products/sapphire-ring.jpg",
       href: "/jewellery/ceylon-sapphire-ring",
       tag: "Rare Natural Gem",
-      product3DType: "sapphire-ring" as const,
+      product3DType: "sapphire-ring",
+      badge: "Rare Natural Gem",
     },
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F9F5EB] text-[#4B3F36] selection:bg-[#D4AF37]/25 selection:text-[#0F3D2E]">
+    <div className="min-h-screen flex flex-col bg-[#04170f] text-[#faf7f0] selection:bg-[#d4af37]/30 selection:text-[#f6e7b4]">
+      {/* Global Experience Header */}
       <Header rates={rates} />
 
       <main className="flex-1">
-        {/* 1. Hero Section */}
+        {/* Section 1: Hero (100vh Real-time 3D Scene with Refractive Emerald & Gold Dust) */}
         <Hero rates={rates} />
 
-        {/* 2. Brand Values & Heritage Bar */}
-        <section className="bg-[#FAF8F5] border-b border-[#E8DFC8] py-8">
+        {/* Section 2: Trust Strip (Counters, 3D Gold Coins & Infinite Marquee) */}
+        <TrustStrip />
+
+        {/* Section 3: Four Sacred Pillars (Expanding Accordion with Waking 3D Objects) */}
+        <FourPillars />
+
+        {/* Section 4: Signature Vault Catalogue (Pinned Horizontal Scroll with 3D 360 Viewer) */}
+        <HorizontalShowcase
+          products={featuredProducts}
+          whatsappPhone={whatsappPhone}
+        />
+
+        {/* Section 5: The Karigar's Path: Sketch to Solid Gold (5-Step 3D Transformation) */}
+        <ProcessTimeline />
+
+        {/* Section 6: Interactive 3D Gold & Karigari Estimator */}
+        <section className="py-24 bg-[#0a2a1d]/60 border-t border-[#d4af37]/25 relative">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-              
-              {/* Glyph 1: Lotus */}
-              <div className="flex flex-col items-center p-3 rounded-xs border border-[#E8DFC8]/60 bg-white hover:border-[#D4AF37] transition-all group">
-                <div className="w-12 h-12 relative flex items-center justify-center mb-2">
-                  <Image
-                    src="/images/brand/element-lotus-transparent.png"
-                    alt="Lotus — Spirituality"
-                    width={48}
-                    height={48}
-                    className="w-10 h-10 object-contain group-hover:scale-110 transition-transform duration-300"
-                  />
-                </div>
-                <h4 className="font-serif text-sm font-semibold text-[#0F3D2E] tracking-wide">
-                  Kamala &bull; Lotus
-                </h4>
-                <p className="text-[11px] text-[#4B3F36] font-light mt-0.5">
-                  Spiritual purity &bull; In-house master karigari
-                </p>
-              </div>
-
-              {/* Glyph 2: Sun / Nakshatra */}
-              <div className="flex flex-col items-center p-3 rounded-xs border border-[#E8DFC8]/60 bg-white hover:border-[#D4AF37] transition-all group">
-                <div className="w-12 h-12 relative flex items-center justify-center mb-2">
-                  <Image
-                    src="/images/brand/element-sun-transparent.png"
-                    alt="Sun & Nakshatra — Wisdom"
-                    width={48}
-                    height={48}
-                    className="w-10 h-10 object-contain group-hover:scale-110 transition-transform duration-300"
-                  />
-                </div>
-                <h4 className="font-serif text-sm font-semibold text-[#0F3D2E] tracking-wide">
-                  Surya &bull; Nakshatra
-                </h4>
-                <p className="text-[11px] text-[#4B3F36] font-light mt-0.5">
-                  Vedic illumination &bull; Parashari Jyotish
-                </p>
-              </div>
-
-              {/* Glyph 3: Gemstone */}
-              <div className="flex flex-col items-center p-3 rounded-xs border border-[#E8DFC8]/60 bg-white hover:border-[#D4AF37] transition-all group">
-                <div className="w-12 h-12 relative flex items-center justify-center mb-2">
-                  <Image
-                    src="/images/brand/element-gemstone-transparent.png"
-                    alt="Ratna — Gemstone"
-                    width={48}
-                    height={48}
-                    className="w-10 h-10 object-contain group-hover:scale-110 transition-transform duration-300"
-                  />
-                </div>
-                <h4 className="font-serif text-sm font-semibold text-[#0F3D2E] tracking-wide">
-                  Ratna &bull; Gemstone
-                </h4>
-                <p className="text-[11px] text-[#4B3F36] font-light mt-0.5">
-                  Certified untreated stones &bull; Planetary power
-                </p>
-              </div>
-
-              {/* Glyph 4: Astrology Circle */}
-              <div className="flex flex-col items-center p-3 rounded-xs border border-[#E8DFC8]/60 bg-white hover:border-[#D4AF37] transition-all group">
-                <div className="w-12 h-12 relative flex items-center justify-center mb-2">
-                  <Image
-                    src="/images/brand/element-astrology-circle-transparent.png"
-                    alt="Astrology Circle — Cosmic Harmony"
-                    width={48}
-                    height={48}
-                    className="w-10 h-10 object-contain group-hover:scale-110 transition-transform duration-300"
-                  />
-                </div>
-                <h4 className="font-serif text-sm font-semibold text-[#0F3D2E] tracking-wide">
-                  Jyotish Chakra
-                </h4>
-                <p className="text-[11px] text-[#4B3F36] font-light mt-0.5">
-                  Janma Kundali &bull; Exact planetary alignment
-                </p>
-              </div>
-
-            </div>
-          </div>
-        </section>
-
-        {/* 3. Curated Masterpiece Showcase */}
-        <section className="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 border-b border-[#E8DFC8] pb-6 gap-4">
-            <div>
-              <div className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-[#B59328] mb-1">
+            <div className="text-center max-w-2xl mx-auto mb-16">
+              <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.25em] text-[#d4af37] mb-3">
                 <Sparkles className="w-3.5 h-3.5" />
-                <span>Handmade Jewellery &amp; Certified Gemstones</span>
+                <span>Transparent Metrology</span>
               </div>
-              <h2 className="font-serif text-3xl sm:text-4xl text-[#0F3D2E] font-normal">
-                Featured Gold Jewellery &amp; Natural Gemstones
+              <h2 className="font-serif text-3xl sm:text-5xl text-white font-normal">
+                Live Gold Budget &amp; Karigari Estimator
               </h2>
-              <p className="text-xs sm:text-sm text-[#4B3F36] mt-1 font-light">
-                Every piece is handcrafted by our in-house goldsmiths, weighed before you, and certified by BIS & recognized gem labs.
+              <p className="mt-4 text-xs sm:text-sm text-[#a8b6af]">
+                We calculate bullion valuation live to the exact rupee—itemizing pure gold, karigari craftsmanship, and statutory GST with zero hidden markups.
               </p>
             </div>
-            <Link
-              href="/jewellery"
-              className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[#0F3D2E] hover:text-[#B59328] transition-colors whitespace-nowrap self-start md:self-auto"
-            >
-              <span>View Full Catalogue</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-
-          {/* Interactive 3D Catalogue Grid with Quick 360 Inspection */}
-          <FeaturedProductCards items={featuredItems} whatsappPhone={whatsappPhone} />
-        </section>
-
-        {/* 4. Live Transparent Gold Budget & Karigari Estimator */}
-        <section className="py-12 bg-[#F5EFE0] border-y border-[#E8DFC8]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <HomeGoldEstimator initialRates={rates} />
           </div>
         </section>
 
-        {/* 5. The Family Shop Story & Sanctuary */}
-        <section className="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
-            {/* Visual (5 cols) */}
-            <div className="lg:col-span-5 relative">
-              <div className="relative aspect-4/5 rounded-xs overflow-hidden border-2 border-[#D4AF37]/60 shadow-xl bg-black/30">
-                <Image
-                  src="/images/father-sanctuary.jpg"
-                  alt="Vaidik Ratnam Multi-Generational Family Shop Sanctuary"
-                  fill
-                  className="object-cover object-center"
-                  sizes="(max-width: 768px) 100vw, 500px"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#08241B]/80 via-transparent to-transparent pointer-events-none" />
-                
-                <div className="absolute bottom-4 left-4 right-4 p-4 rounded-xs bg-[#08241B]/90 border border-[#D4AF37]/50 backdrop-blur-md text-[#F9F5EB]">
-                  <span className="text-[10px] uppercase font-mono tracking-widest text-[#F3E5AB] block mb-0.5">
-                    Our Family Commitment
-                  </span>
-                  <p className="font-serif italic text-sm text-white">
-                    &ldquo;Gold purity is a matter of trust. We weigh every piece before your eyes on certified digital scales.&rdquo;
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Narrative (7 cols) */}
-            <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0F3D2E]/10 border border-[#D4AF37]/40 text-[#0F3D2E] text-xs font-semibold uppercase tracking-wider">
-                <HeartHandshake className="w-3.5 h-3.5 text-[#B59328]" />
-                <span>Our Multi-Generational Family Heritage</span>
-              </div>
-
-              <h2 className="font-serif text-3xl sm:text-4xl text-[#0F3D2E] font-normal leading-tight">
-                An Authentic Traditional Shop,{" "}
-                <span className="italic text-gold-gradient block">
-                  Not a Faceless Retail Chain
-                </span>
-              </h2>
-
-              <p className="text-sm sm:text-base text-[#4B3F36] leading-relaxed font-light">
-                When you step into <strong>Vaidik Ratnam</strong>, you sit with our family. We pour you warm chai, take out raw velvet trays, and show you gemstones under natural daylight and 10x magnification loupes.
-              </p>
-
-              {/* The 3 Core Pillars */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
-                <div className="p-4 rounded-xs bg-white border border-[#E8DFC8]">
-                  <Scale className="w-5 h-5 text-[#0F3D2E] mb-2" />
-                  <h4 className="font-serif text-sm font-semibold text-[#0F3D2E]">
-                    Digital Scale Honesty
-                  </h4>
-                  <p className="text-[11px] text-[#4B3F36] mt-1 font-light leading-snug">
-                    Zero hidden deduction. Net gold weight and stone weight are billed separately.
-                  </p>
-                </div>
-
-                <div className="p-4 rounded-xs bg-white border border-[#E8DFC8]">
-                  <ShieldCheck className="w-5 h-5 text-[#0F3D2E] mb-2" />
-                  <h4 className="font-serif text-sm font-semibold text-[#0F3D2E]">
-                    6-Digit HUID Laser
-                  </h4>
-                  <p className="text-[11px] text-[#4B3F36] mt-1 font-light leading-snug">
-                    Every piece is laser-engraved with government BIS HUID verifiable on the BIS Care App.
-                  </p>
-                </div>
-
-                <div className="p-4 rounded-xs bg-white border border-[#E8DFC8]">
-                  <Compass className="w-5 h-5 text-[#0F3D2E] mb-2" />
-                  <h4 className="font-serif text-sm font-semibold text-[#0F3D2E]">
-                    Honest Parashari Advice
-                  </h4>
-                  <p className="text-[11px] text-[#4B3F36] mt-1 font-light leading-snug">
-                    If your Janma Kundali does not need a stone, our Jyotishi will clearly tell you not to buy one.
-                  </p>
-                </div>
-              </div>
-
-              {/* Action */}
-              <div className="pt-2 flex flex-wrap gap-4">
-                <Link href="/about">
-                  <button
-                    type="button"
-                    className="px-6 py-3 rounded-xs bg-[#0F3D2E] text-[#F3E5AB] text-xs uppercase tracking-widest font-semibold hover:bg-[#08241B] transition-colors cursor-pointer"
-                  >
-                    Read Our Shop Story
-                  </button>
-                </Link>
-                <Link href="/contact">
-                  <button
-                    type="button"
-                    className="px-6 py-3 rounded-xs border border-[#0F3D2E] text-[#0F3D2E] text-xs uppercase tracking-widest font-semibold hover:bg-[#0F3D2E]/10 transition-colors cursor-pointer"
-                  >
-                    Plan Your Visit
-                  </button>
-                </Link>
-              </div>
-
-            </div>
-
-          </div>
-        </section>
-
-        {/* 6. Interactive Vedic Lagna & Ratna Explorer */}
-        <section className="py-16 bg-[#F9F5EB] border-t border-[#E8DFC8]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <LagnaRatnaExplorer />
-          </div>
-        </section>
-
-        {/* 6b. Classical Lal Kitab 1952 Gutka Showcase Banner */}
-        <section className="py-12 bg-gradient-to-r from-[#04170F] via-[#59101C] to-[#04170F] text-[#FAF7F0] border-y-2 border-[#D4AF37]/50 relative overflow-hidden">
-          <div className="absolute inset-0 bg-radial from-[#8E1B2E]/25 to-transparent pointer-events-none" />
+        {/* Section 7: Classical Lal Kitab 1952 Gutka Showcase Banner */}
+        <section className="py-14 bg-gradient-to-r from-[#04170f] via-[#59101c] to-[#04170f] text-[#faf7f0] border-y-2 border-[#d4af37]/50 relative overflow-hidden">
+          <div className="absolute inset-0 bg-radial from-[#8e1b2e]/25 to-transparent pointer-events-none" />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="space-y-2 max-w-2xl text-center md:text-left">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#8E1B2E]/40 border border-[#D4AF37]/50 text-[#F6E7B4] text-xs font-mono uppercase tracking-widest">
-                <Sparkles className="w-3.5 h-3.5 text-[#F1D98A]" />
-                <span>New &bull; Classical Lal Kitab 1952 Gutka System</span>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#8e1b2e]/40 border border-[#d4af37]/50 text-[#f6e7b4] text-xs font-mono uppercase tracking-widest">
+                <Sparkles className="w-3.5 h-3.5 text-[#f1d98a]" />
+                <span>Classical Lal Kitab 1952 Gutka System</span>
               </div>
               <h3 className="font-serif text-2xl sm:text-3xl text-white font-normal">
                 Discover Your Fixed Kal Purush Kundali &amp; Ethical Upay
               </h3>
-              <p className="text-xs sm:text-sm text-[#A8B6AF] font-light">
+              <p className="text-xs sm:text-sm text-[#a8b6af] font-light">
                 Calculate your planetary age-cycles, sleeping houses, karmic debt (Rin) analysis, and gentle 43-day non-fear remedies.
               </p>
             </div>
             <Link href="/jyotish/lal-kitab">
               <button
                 type="button"
-                className="bg-gold-gradient text-[#04170F] font-semibold px-8 py-3.5 rounded-xs text-xs uppercase tracking-[0.2em] shadow-lg hover:brightness-105 active:scale-[0.98] transition-all cursor-pointer whitespace-nowrap gold-shimmer-sweep flex items-center gap-2"
+                className="bg-gold-gradient text-[#04170f] font-semibold px-8 py-3.5 rounded-full text-xs uppercase tracking-[0.2em] shadow-lg hover:brightness-105 active:scale-[0.98] transition-all cursor-pointer whitespace-nowrap gold-shimmer-sweep flex items-center gap-2 font-mono"
               >
                 <span>Calculate Lal Kitab</span>
                 <ArrowRight className="w-4 h-4" />
@@ -358,138 +170,24 @@ export default async function Page() {
           </div>
         </section>
 
-        {/* 7. Bespoke Custom Karigari Process */}
-        <section className="py-16 sm:py-24 bg-[#08241B] text-[#F9F5EB] border-t border-[#D4AF37]/30">
+        {/* Section 8: Interactive Vedic Lagna & 3D Armillary Zodiac Sphere */}
+        <section className="py-24 bg-[#04170f] border-t border-[#d4af37]/25">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0F3D2E] border border-[#D4AF37]/40 text-[#F3E5AB] text-xs font-semibold uppercase tracking-wider">
-                <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
-                <span>Jaipur Karigari Studio</span>
-              </div>
-              <h2 className="font-serif text-3xl sm:text-5xl font-normal leading-tight">
-                Bring Your Dream Design to Life in{" "}
-                <span className="text-gold-gradient font-serif italic">
-                  Pure 22K Gold
-                </span>
-              </h2>
-              <p className="text-xs sm:text-sm text-[#DDE5DC] font-light leading-relaxed">
-                Have a family heirloom you want remade, or a design saved on your phone? Our Jaipur master karigars craft custom pieces with 100% purity certification.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* Step 1 */}
-              <div className="p-6 rounded-xs bg-[#0F3D2E]/70 border border-[#D4AF37]/30 backdrop-blur-xs space-y-3">
-                <span className="text-3xl font-serif text-[#D4AF37] font-bold block">
-                  01
-                </span>
-                <h3 className="font-serif text-lg text-white font-medium">
-                  Share Your Inspiration or Old Gold
-                </h3>
-                <p className="text-xs text-[#DDE5DC] font-light leading-relaxed">
-                  Upload photos, sketches, or bring old gold ornaments to our shop. We test purity right in front of you.
-                </p>
-              </div>
-
-              {/* Step 2 */}
-              <div className="p-6 rounded-xs bg-[#0F3D2E]/70 border border-[#D4AF37]/30 backdrop-blur-xs space-y-3">
-                <span className="text-3xl font-serif text-[#D4AF37] font-bold block">
-                  02
-                </span>
-                <h3 className="font-serif text-lg text-white font-medium">
-                  3D CAD & Exact Weight Estimate
-                </h3>
-                <p className="text-xs text-[#DDE5DC] font-light leading-relaxed">
-                  We generate precision 3D CAD blueprints and provide transparent weight and making charges before starting.
-                </p>
-              </div>
-
-              {/* Step 3 */}
-              <div className="p-6 rounded-xs bg-[#0F3D2E]/70 border border-[#D4AF37]/30 backdrop-blur-xs space-y-3">
-                <span className="text-3xl font-serif text-[#D4AF37] font-bold block">
-                  03
-                </span>
-                <h3 className="font-serif text-lg text-white font-medium">
-                  Handcrafted & BIS Hallmarked
-                </h3>
-                <p className="text-xs text-[#DDE5DC] font-light leading-relaxed">
-                  Handcrafted by master karigars, laser-tested with 6-digit HUID, and delivered in our signature velvet box.
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-12 text-center">
-              <Link href="/custom-design">
-                <button
-                  type="button"
-                  className="btn-gold-pure px-8 py-3.5 rounded-xs text-xs uppercase tracking-[0.2em] font-bold shadow-lg cursor-pointer"
-                >
-                  Start Custom Order Online
-                </button>
-              </Link>
-            </div>
+            <LagnaRatnaExplorer />
           </div>
         </section>
 
-        {/* 8. Visit Our Shop & Welcoming Invitation */}
-        <section className="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white border-2 border-[#D4AF37]/50 rounded-xs p-8 sm:p-12 shadow-sm">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-              <div className="lg:col-span-8 space-y-4">
-                <span className="text-xs font-mono uppercase tracking-widest text-[#B59328] font-semibold">
-                  Personal Shop Consultation
-                </span>
-                <h2 className="font-serif text-2xl sm:text-3xl text-[#0F3D2E] font-normal">
-                  You Are Always Welcome at Our Family Shop
-                </h2>
-                <p className="text-xs sm:text-sm text-[#4B3F36] leading-relaxed font-light">
-                  Jewellery and genuine gemstones are lifetime family investments. Come sit with us, view gemstones under natural sunlight, and discuss your custom designs over warm tea.
-                </p>
+        {/* Section 9: Behind the Shop: Three Generations of Sacred Goldsmithing */}
+        <BehindTheShop />
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 text-xs text-[#4B3F36]">
-                  <div className="flex items-start gap-2.5">
-                    <MapPin className="w-4 h-4 text-[#0F3D2E] shrink-0 mt-0.5" />
-                    <div>
-                      <strong className="block text-[#0F3D2E]">Our Shop Location:</strong>
-                      <span>{shopAddress}</span>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-2.5">
-                    <Clock className="w-4 h-4 text-[#0F3D2E] shrink-0 mt-0.5" />
-                    <div>
-                      <strong className="block text-[#0F3D2E]">Shop Timings:</strong>
-                      <span>Mon &ndash; Sat: 10:30 AM &ndash; 8:30 PM<br />Sunday: 11:00 AM &ndash; 6:00 PM</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+        {/* Section 10: Verified Patron Testimonials */}
+        <TestimonialsCarousel />
 
-              <div className="lg:col-span-4 flex flex-col gap-3">
-                <a
-                  href={`https://wa.me/${whatsappPhone}?text=${encodeURIComponent(
-                    "Namaste Vaidik Ratnam, I would like to book a time to visit your shop and view jewellery/gemstones."
-                  )}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-gold-pure py-3.5 px-6 rounded-xs text-xs uppercase tracking-widest font-bold flex items-center justify-center gap-2 text-center text-[#0F3D2E] shadow-sm"
-                >
-                  <MessageCircle className="w-4 h-4 text-[#0F3D2E]" />
-                  <span>Connect on WhatsApp</span>
-                </a>
-
-                <Link
-                  href="/contact"
-                  className="py-3 px-6 rounded-xs border border-[#0F3D2E] text-[#0F3D2E] hover:bg-[#0F3D2E]/10 text-xs uppercase tracking-widest font-semibold text-center transition-colors"
-                >
-                  View Map & Directions
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-
+        {/* Section 11: Visit Sanctuary & Final "Weigh Gold Before You" Invitation */}
+        <VisitShowcase whatsappPhone={whatsappPhone} shopAddress={shopAddress} />
       </main>
 
+      {/* Global Architectural Luxury Footer */}
       <Footer />
     </div>
   );

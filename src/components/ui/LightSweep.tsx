@@ -22,3 +22,4 @@ export function LightSweep({ className = "", repeatSec = 8 }: LightSweepProps) {
     </div>
   );
 }
+
