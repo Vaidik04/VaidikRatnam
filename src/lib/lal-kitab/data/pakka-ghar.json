@@ -1,0 +1,30 @@
+{
+  "referenceEdition": "1952_gutka",
+  "reviewer": "Acharya Vidyadhar Shastri",
+  "reviewedDate": "2026-10-15",
+  "pakkaGhar": {
+    "Jupiter": [2, 5, 9, 12],
+    "Sun": [1, 5],
+    "Moon": [2, 4],
+    "Venus": [7],
+    "Mars": [3, 8],
+    "Mercury": [6, 7],
+    "Saturn": [8, 10, 11],
+    "Rahu": [12],
+    "Ketu": [6]
+  },
+  "naturalHouseLords": {
+    "1": "Mars",
+    "2": "Venus",
+    "3": "Mercury",
+    "4": "Moon",
+    "5": "Sun",
+    "6": "Mercury",
+    "7": "Venus",
+    "8": "Mars",
+    "9": "Jupiter",
+    "10": "Saturn",
+    "11": "Saturn",
+    "12": "Jupiter"
+  }
+}

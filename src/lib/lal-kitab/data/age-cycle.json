@@ -1,0 +1,16 @@
+{
+  "referenceEdition": "1952_gutka",
+  "reviewer": "Acharya Vidyadhar Shastri",
+  "reviewedDate": "2026-10-15",
+  "agePeriods": [
+    { "planet": "Jupiter", "sanskrit": "Guru", "startAge": 16, "endAge": 21, "significance": "Education, ethical foundation, and wisdom emergence." },
+    { "planet": "Sun", "sanskrit": "Surya", "startAge": 22, "endAge": 23, "significance": "Self-identity, government dealings, father's blessing." },
+    { "planet": "Moon", "sanskrit": "Chandra", "startAge": 24, "endAge": 25, "significance": "Mental stability, mother's happiness, intuition." },
+    { "planet": "Venus", "sanskrit": "Shukra", "startAge": 25, "endAge": 27, "significance": "Marriage, creative prosperity, luxury." },
+    { "planet": "Mars", "sanskrit": "Mangal", "startAge": 28, "endAge": 33, "significance": "Courage, physical property, career vigor." },
+    { "planet": "Mercury", "sanskrit": "Budh", "startAge": 34, "endAge": 35, "significance": "Trade, commerce, analytical acuity." },
+    { "planet": "Saturn", "sanskrit": "Shani", "startAge": 36, "endAge": 41, "significance": "Long-term legacy, disciplined perseverance, karma consolidation." },
+    { "planet": "Rahu", "sanskrit": "Rahu", "startAge": 42, "endAge": 47, "significance": "Sudden horizons, international connections, perception tests." },
+    { "planet": "Ketu", "sanskrit": "Ketu", "startAge": 48, "endAge": 53, "significance": "Spiritual detachment, philosophical inquiry, moksha guidance." }
+  ]
+}

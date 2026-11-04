@@ -1,0 +1,25 @@
+{
+  "activeEdition": "1952_gutka",
+  "editions": [
+    {
+      "id": "1952_gutka",
+      "name": "Lal Kitab 1952 (Gutka Edition)",
+      "author": "Pt. Roop Chand Joshi",
+      "status": "official_reference",
+      "reviewer": "Acharya Vidyadhar Shastri, Certified Jyotish Praveen",
+      "lastReviewedDate": "2026-10-15",
+      "confidence": "confirmed",
+      "description": "The definitive 1952 compilation regarded as the crown text of Lal Kitab astrology."
+    },
+    {
+      "id": "1940_arun_samhita",
+      "name": "Lal Kitab 1940 (Arun Samhita Edition)",
+      "author": "Pt. Roop Chand Joshi",
+      "status": "alternative_reference",
+      "reviewer": "Acharya Vidyadhar Shastri",
+      "lastReviewedDate": "2026-10-15",
+      "confidence": "edition-dependent",
+      "description": "Earlier published compilation containing core axiomatic foundational aphorisms."
+    }
+  ]
+}

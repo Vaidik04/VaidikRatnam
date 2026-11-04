@@ -330,6 +330,34 @@ export default async function Page() {
           </div>
         </section>
 
+        {/* 6b. Classical Lal Kitab 1952 Gutka Showcase Banner */}
+        <section className="py-12 bg-gradient-to-r from-[#04170F] via-[#59101C] to-[#04170F] text-[#FAF7F0] border-y-2 border-[#D4AF37]/50 relative overflow-hidden">
+          <div className="absolute inset-0 bg-radial from-[#8E1B2E]/25 to-transparent pointer-events-none" />
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="space-y-2 max-w-2xl text-center md:text-left">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#8E1B2E]/40 border border-[#D4AF37]/50 text-[#F6E7B4] text-xs font-mono uppercase tracking-widest">
+                <Sparkles className="w-3.5 h-3.5 text-[#F1D98A]" />
+                <span>New &bull; Classical Lal Kitab 1952 Gutka System</span>
+              </div>
+              <h3 className="font-serif text-2xl sm:text-3xl text-white font-normal">
+                Discover Your Fixed Kal Purush Kundali &amp; Ethical Upay
+              </h3>
+              <p className="text-xs sm:text-sm text-[#A8B6AF] font-light">
+                Calculate your planetary age-cycles, sleeping houses, karmic debt (Rin) analysis, and gentle 43-day non-fear remedies.
+              </p>
+            </div>
+            <Link href="/jyotish/lal-kitab">
+              <button
+                type="button"
+                className="bg-gold-gradient text-[#04170F] font-semibold px-8 py-3.5 rounded-xs text-xs uppercase tracking-[0.2em] shadow-lg hover:brightness-105 active:scale-[0.98] transition-all cursor-pointer whitespace-nowrap gold-shimmer-sweep flex items-center gap-2"
+              >
+                <span>Calculate Lal Kitab</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </Link>
+          </div>
+        </section>
+
         {/* 7. Bespoke Custom Karigari Process */}
         <section className="py-16 sm:py-24 bg-[#08241B] text-[#F9F5EB] border-t border-[#D4AF37]/30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

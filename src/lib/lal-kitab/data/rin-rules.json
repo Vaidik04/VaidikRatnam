@@ -1,0 +1,47 @@
+{
+  "referenceEdition": "1952_gutka",
+  "reviewer": "Acharya Vidyadhar Shastri",
+  "reviewedDate": "2026-10-15",
+  "rinTypes": [
+    {
+      "id": "pitri_rin",
+      "name": "Pitri Rin (Ancestral Debt)",
+      "cause": "Neglect or disrespect towards ancestral lineage or elders in past generations.",
+      "chartCondition": "Jupiter sits in House 2, 5, 9 or 12 afflicted by Venus, Mercury or Saturn, or Venus/Mercury sitting in Jupiter's pakka ghar.",
+      "safeRemedy": "Feed golden whole wheat and yellow chana dal to cows; plant a peepal or banyan sapling and care for it.",
+      "confidence": "confirmed"
+    },
+    {
+      "id": "matri_rin",
+      "name": "Matri Rin (Mother's Debt)",
+      "cause": "Disrespect towards mother, grandmother, or flowing natural water sources in family lineage.",
+      "chartCondition": "Ketu in 4th house, or Moon afflicted by Rahu/Ketu in House 2 or 4.",
+      "safeRemedy": "Offer unboiled pure milk to a clean flowing river or feed white rice and milk to silver bowls for elders.",
+      "confidence": "confirmed"
+    },
+    {
+      "id": "stri_rin",
+      "name": "Stri Rin (Wife / Feminine Debt)",
+      "cause": "Injustice towards female members or lack of respect for family dignity in the past.",
+      "chartCondition": "Venus afflicted by Sun, Moon or Rahu in 7th or 2nd house.",
+      "safeRemedy": "Honor and offer clean white silk garments or camphor in holy places; respect female family members.",
+      "confidence": "confirmed"
+    },
+    {
+      "id": "swayam_rin",
+      "name": "Swayam Rin (Self Karmic Debt)",
+      "cause": "Self-centered actions or broken sacred vows made by the individual.",
+      "chartCondition": "Sun sitting in 5th or 10th house afflicted by Saturn or Rahu.",
+      "safeRemedy": "Perform Surya Namaskar daily facing sunrise; offer water in copper vessel to rising Sun.",
+      "confidence": "confirmed"
+    },
+    {
+      "id": "kudrati_rin",
+      "name": "Kudrati Rin (Nature's Debt)",
+      "cause": "Harm caused to harmless creatures, pets or chopping fruitful trees.",
+      "chartCondition": "Moon and Mars sitting together in 6th or 12th house.",
+      "safeRemedy": "Provide daily water and grains to stray birds and dogs; never disturb wildlife.",
+      "confidence": "confirmed"
+    }
+  ]
+}

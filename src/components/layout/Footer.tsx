@@ -237,6 +237,11 @@ export function Footer() {
               </Link>
             </li>
             <li>
+              <Link href="/jyotish/lal-kitab" className="hover:text-[#F1D98A] transition-colors font-medium">
+                Lal Kitab Kundali &amp; Upay
+              </Link>
+            </li>
+            <li>
               <Link href="/consultation/request" className="hover:text-white transition-colors">
                 Book Consultation
               </Link>

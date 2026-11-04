@@ -1,0 +1,36 @@
+{
+  "referenceEdition": "1952_gutka",
+  "reviewer": "Acharya Vidyadhar Shastri",
+  "reviewedDate": "2026-10-15",
+  "rules": {
+    "sleepingHouseDefinition": "A house is considered 'Soya Hua Ghar' (sleeping house) if no planet occupies it, or if it is not aspected by any waking planet as defined in the 1952 text.",
+    "sleepingPlanetDefinition": "A planet is 'Soya Hua Graha' (sleeping planet) when it does not aspect any other planet according to Lal Kitab drishti rules, or sits in a house without its natural waking trigger.",
+    "dharmiTeva": {
+      "definition": "A horoscope protected from severe afflictions by auspicious placements of Jupiter, Moon or benefic Saturn.",
+      "conditions": [
+        "Jupiter in House 9, 10 or 11 with no malefic influence",
+        "Moon and Saturn placed together in House 1, 4, 7, 10 without mutual enmity",
+        "Rahu or Ketu in House 4 with Moon"
+      ]
+    },
+    "andhaTeva": {
+      "definition": "A horoscope where 10th house is empty and 4th house is afflicted by opposing forces, or Saturn sits in House 7 while 1st house is unoccupied.",
+      "conditions": [
+        "Saturn in 7th house and Sun in 1st house",
+        "House 10 unoccupied with opposing planets in House 4"
+      ]
+    },
+    "ratondhaTeva": {
+      "definition": "Chart afflicted only during evening or night hours.",
+      "conditions": [
+        "Sun in House 7 with Saturn in House 1"
+      ]
+    },
+    "nabaligTeva": {
+      "definition": "Minor's chart where planetary effects remain nascent until 12 years of age.",
+      "conditions": [
+        "Benefics and malefics evenly placed in kendras without aspectual triggers"
+      ]
+    }
+  }
+}

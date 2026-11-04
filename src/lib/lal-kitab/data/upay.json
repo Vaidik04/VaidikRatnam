@@ -1,0 +1,170 @@
+{
+  "referenceEdition": "1952_gutka",
+  "reviewer": "Acharya Vidyadhar Shastri",
+  "reviewedDate": "2026-10-15",
+  "remedySafetyCharter": "All remedies are strictly ethical, safe, free or low-cost, respectful of living beings, and never substitute professional medical, legal, or psychiatric assistance.",
+  "remedies": {
+    "Sun": [
+      {
+        "id": "surya_arghya",
+        "title": "Surya Arghya with Copper Vessel",
+        "duration": "43 consecutive mornings",
+        "practice": "Offer fresh clean water in a copper pot toward the rising Sun within one hour of sunrise, practicing gratitude.",
+        "planet": "Sun",
+        "confidence": "confirmed"
+      },
+      {
+        "id": "gur_chana_dan",
+        "title": "Jaggery & Wheat Sharing",
+        "duration": "Sundays",
+        "practice": "Share natural jaggery and roasted wheat grains with birds or animals.",
+        "planet": "Sun",
+        "confidence": "confirmed"
+      }
+    ],
+    "Moon": [
+      {
+        "id": "silver_chandi_dharn",
+        "title": "Solid Silver Square Piece",
+        "duration": "Keep in clean pouch",
+        "practice": "Keep a small solid pure silver square token in your wallet or locker to ground emotional volatility.",
+        "planet": "Moon",
+        "confidence": "confirmed"
+      },
+      {
+        "id": "mother_blessings",
+        "title": "Mother's Morning Charan Sparsh",
+        "duration": "Daily habit",
+        "practice": "Touch the feet of mother or maternal elders in the morning and receive their heartfelt blessings.",
+        "planet": "Moon",
+        "confidence": "confirmed"
+      }
+    ],
+    "Mars": [
+      {
+        "id": "honey_silver_box",
+        "title": "Pure Honey in Silver/Earthen Pot",
+        "duration": "Continuous",
+        "practice": "Keep pure wild honey in a clean small earthen pot in the quiet north corner of the home.",
+        "planet": "Mars",
+        "confidence": "confirmed"
+      },
+      {
+        "id": "mangal_saunf",
+        "title": "Sweet Fennel & Batasha Offering",
+        "duration": "Tuesdays for 8 weeks",
+        "practice": "Share sweet fennel seeds (saunf) and sugar batashas with children on Tuesdays.",
+        "planet": "Mars",
+        "confidence": "confirmed"
+      }
+    ],
+    "Mercury": [
+      {
+        "id": "green_moong_dal",
+        "title": "Soaked Whole Green Moong for Birds",
+        "duration": "Wednesdays for 43 days",
+        "practice": "Soak whole green moong dal overnight and feed to pigeons or wild birds at dawn on Wednesday.",
+        "planet": "Mercury",
+        "confidence": "confirmed"
+      },
+      {
+        "id": "copper_coin_hole",
+        "title": "Pure Copper Pierced Coin in Running Water",
+        "duration": "One-time Wednesday practice",
+        "practice": "Gently drop a traditional unpunched copper coin into clean flowing river water.",
+        "planet": "Mercury",
+        "confidence": "confirmed"
+      }
+    ],
+    "Jupiter": [
+      {
+        "id": "haldi_tilak",
+        "title": "Saffron & Turmeric Tilak",
+        "duration": "Daily for 43 days",
+        "practice": "Apply a subtle dot of natural yellow saffron or organic turmeric paste on the forehead and navel.",
+        "planet": "Jupiter",
+        "confidence": "confirmed"
+      },
+      {
+        "id": "chana_dal_gau_seva",
+        "title": "Yellow Chana Dal for Desi Cow",
+        "duration": "Thursdays",
+        "practice": "Offer soaked yellow chana dal and fresh green grass to cows on Thursday mornings.",
+        "planet": "Jupiter",
+        "confidence": "confirmed"
+      }
+    ],
+    "Venus": [
+      {
+        "id": "camphor_kapur_diffuse",
+        "title": "Natural Camphor (Kapur) Aromatherapy",
+        "duration": "Friday evenings",
+        "practice": "Diffuse natural pure camphor in a clay bowl to cleanse household atmosphere and elevate serenity.",
+        "planet": "Venus",
+        "confidence": "confirmed"
+      },
+      {
+        "id": "honor_spouse",
+        "title": "Respect & Harmony with Life Partner",
+        "duration": "Continuous",
+        "practice": "Speak with gentle speech, present flowers or natural scents to spouse, and cultivate marital gratitude.",
+        "planet": "Venus",
+        "confidence": "confirmed"
+      }
+    ],
+    "Saturn": [
+      {
+        "id": "mustard_oil_chhaya_dan",
+        "title": "Chhaya Daan in Mustard Oil",
+        "duration": "Saturdays",
+        "practice": "Look into a bowl of pure mustard oil, see your reflection, and offer the oil for lighting temple lamps or helping laborers.",
+        "planet": "Saturn",
+        "confidence": "confirmed"
+      },
+      {
+        "id": "feed_black_dogs",
+        "title": "Mustard Roti for Stray Dogs",
+        "duration": "Saturday evenings for 43 days",
+        "practice": "Offer fresh homemade rotis lightly coated with mustard oil to friendly stray dogs.",
+        "planet": "Saturn",
+        "confidence": "confirmed"
+      }
+    ],
+    "Rahu": [
+      {
+        "id": "barley_jau_water",
+        "title": "Barley (Jau) Grains in Flowing Stream",
+        "duration": "Saturdays",
+        "practice": "Rinse whole barley grains with raw milk and release into running fresh water.",
+        "planet": "Rahu",
+        "confidence": "confirmed"
+      },
+      {
+        "id": "clean_electronic_cables",
+        "title": "Organize Clutter & Broken Electronics",
+        "duration": "One-time action",
+        "practice": "Clear all broken clocks, frayed wires, and disused electronics from the home to clear negative perceptual distortion.",
+        "planet": "Rahu",
+        "confidence": "confirmed"
+      }
+    ],
+    "Ketu": [
+      {
+        "id": "sesame_til_feeding",
+        "title": "Two-Tone Sesame & Jaggery Grains",
+        "duration": "Daily",
+        "practice": "Feed roasted black and white sesame seeds mixed with jaggery to ants or birds in garden soil.",
+        "planet": "Ketu",
+        "confidence": "confirmed"
+      },
+      {
+        "id": "donate_warm_blanket",
+        "title": "Donate Warm Black-and-White Blanket",
+        "duration": "One-time during winter/Wednesday",
+        "practice": "Gift a clean warm two-color blanket to someone sleeping exposed to cold weather.",
+        "planet": "Ketu",
+        "confidence": "confirmed"
+      }
+    ]
+  }
+}
