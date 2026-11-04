@@ -89,3 +89,4 @@ export function GoldCalculator3D({
     </group>
   );
 }
+

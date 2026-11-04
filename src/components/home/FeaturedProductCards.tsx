@@ -150,3 +150,4 @@ export function FeaturedProductCards({ items, whatsappPhone }: FeaturedProductCa
     </>
   );
 }
+

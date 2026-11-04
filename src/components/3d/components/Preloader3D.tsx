@@ -92,3 +92,4 @@ export function Preloader3D() {
     </group>
   );
 }
+

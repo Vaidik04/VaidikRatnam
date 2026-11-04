@@ -274,3 +274,4 @@ export function ProductViewer3D({
     </group>
   );
 }
+

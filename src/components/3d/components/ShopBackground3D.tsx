@@ -50,3 +50,4 @@ export function ShopBackground3D() {
     </group>
   );
 }
+

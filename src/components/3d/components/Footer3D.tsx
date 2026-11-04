@@ -55,3 +55,4 @@ export function Footer3D() {
     </group>
   );
 }
+

@@ -117,3 +117,4 @@ export function SketchToGold3D({ step = 0 }: SketchToGold3DProps) {
     </group>
   );
 }
+

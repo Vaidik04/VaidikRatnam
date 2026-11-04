@@ -46,3 +46,4 @@ This directory houses production-ready GLB/GLTF assets for real-time jewellery r
 
 4. **Procedural Geometry Fallback:**
    The codebase provides built-in procedural geometry generators in `src/components/3d/geometries/GemGeometries.ts`. If an external `.glb` file is not present, the system renders procedural high-precision models with identical physics materials.
+

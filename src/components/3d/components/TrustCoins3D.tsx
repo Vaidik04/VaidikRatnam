@@ -47,3 +47,4 @@ export function TrustCoins3D({ activeIndex = 0 }: TrustCoins3DProps) {
     </group>
   );
 }
+

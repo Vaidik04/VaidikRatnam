@@ -150,3 +150,4 @@ export function Hero3DScene() {
     </group>
   );
 }
+

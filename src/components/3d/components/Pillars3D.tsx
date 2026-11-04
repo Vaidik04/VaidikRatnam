@@ -95,3 +95,4 @@ export function PillarItem3D({ type, isHovered = false }: PillarItem3DProps) {
     </group>
   );
 }
+

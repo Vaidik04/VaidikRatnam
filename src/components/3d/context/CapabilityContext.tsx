@@ -27,21 +27,25 @@ const CapabilityContext = createContext<CapabilityContextType>({
 });
 
 export function CapabilityProvider({ children }: { children: React.ReactNode }) {
-  const [liteMode, setLiteModeState] = useState<boolean>(() => {
-    if (typeof window === "undefined") return false;
-    try {
-      const stored = localStorage.getItem("vaidik_3d_lite_mode");
-      if (stored !== null) return stored === "true";
-      return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    } catch {
-      return false;
-    }
-  });
+  const [liteMode, setLiteModeState] = useState<boolean>(false);
   const [is3DSupported, setIs3DSupported] = useState<boolean>(true);
   const [tier, setTier] = useState<CapabilityTier>("MEDIUM");
 
   useEffect(() => {
-    // WebGL2 / WebGL Support detection and GPU tiering
+    // 1. Sync persistent user preference from localStorage after hydration
+    try {
+      const stored = localStorage.getItem("vaidik_3d_lite_mode");
+      if (stored !== null) {
+        const val = stored === "true";
+        queueMicrotask(() => setLiteModeState(val));
+      } else if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        queueMicrotask(() => setLiteModeState(true));
+      }
+    } catch {
+      // ignore
+    }
+
+    // 2. WebGL2 / WebGL Support detection and GPU tiering
     try {
       const canvas = document.createElement("canvas");
       const gl = canvas.getContext("webgl2") || canvas.getContext("webgl");

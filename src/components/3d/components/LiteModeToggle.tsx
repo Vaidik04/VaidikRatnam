@@ -1,11 +1,32 @@
 "use client";
 
-import React from "react";
+import React, { useSyncExternalStore } from "react";
 import { use3DCapability } from "../context/CapabilityContext";
 import { Sparkles, EyeOff } from "lucide-react";
 
+const emptySubscribe = () => () => {};
+
 export function LiteModeToggle({ className = "" }: { className?: string }) {
+  const isMounted = useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
   const { liteMode, setLiteMode, tier } = use3DCapability();
+
+  if (!isMounted) {
+    return (
+      <button
+        type="button"
+        className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[11px] font-mono uppercase tracking-wider transition-all border bg-black/30 text-[#a8b6af] border-white/10 ${className}`}
+        title="3D Visuals Controller"
+        aria-label="3D Visuals Controller"
+      >
+        <Sparkles className="w-3.5 h-3.5 text-[#d4af37]" />
+        <span>3D Visuals</span>
+      </button>
+    );
+  }
 
   return (
     <button
@@ -32,3 +53,4 @@ export function LiteModeToggle({ className = "" }: { className?: string }) {
     </button>
   );
 }
+

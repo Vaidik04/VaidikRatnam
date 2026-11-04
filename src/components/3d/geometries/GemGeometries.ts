@@ -111,3 +111,4 @@ export function createGoldCoinGeometry(radius = 1.1, thickness = 0.18): THREE.Bu
   geom.computeVertexNormals();
   return geom;
 }
+

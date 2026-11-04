@@ -135,3 +135,4 @@ export function JyotishZodiac3D({ selectedSignIndex = 0 }: JyotishZodiac3DProps)
     </group>
   );
 }
+
