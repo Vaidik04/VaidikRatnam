@@ -72,23 +72,23 @@ export function BusinessSettingsForm({ initialSettings }: { initialSettings: Rec
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 max-w-4xl">
-      <div className="flex flex-col sm:flex-row items-baseline justify-between gap-4 border-b border-[#E5DFD5] pb-4">
+    <form onSubmit={handleSubmit} className="space-y-6 max-w-4xl text-[#faf7f0]">
+      <div className="flex flex-col sm:flex-row items-baseline justify-between gap-4 border-b border-[#d4af37]/25 pb-4">
         <div>
-          <span className="text-xs uppercase tracking-widest text-[#B08D57] font-semibold block">
+          <span className="text-xs uppercase tracking-widest text-[#d4af37] font-semibold block">
             Studio Profile &amp; Policies
           </span>
-          <h1 className="font-serif text-2xl text-[#182522] font-normal">
+          <h1 className="font-serif text-2xl text-white font-normal">
             Business Settings
           </h1>
-          <p className="text-xs text-[#626A65] mt-0.5">
+          <p className="text-xs text-[#a8b6af] mt-0.5">
             Configure verified family shop facts, telephone numbers, and practitioner profile.
           </p>
         </div>
 
         <Button
           type="submit"
-          variant="primary"
+          variant="gold"
           size="md"
           isLoading={isSaving}
           className="text-xs uppercase tracking-wider font-semibold"
@@ -99,22 +99,22 @@ export function BusinessSettingsForm({ initialSettings }: { initialSettings: Rec
       </div>
 
       {saveSuccess && (
-        <div className="p-3.5 bg-[#EEF3EE] border border-[#C5D5C4] text-xs text-[#173B32] flex items-center gap-2 rounded-xs">
-          <CheckCircle2 className="w-4 h-4 shrink-0" />
+        <div className="p-3.5 bg-[#0f3a28] border border-[#10b981]/50 text-xs text-[#a7f3d0] flex items-center gap-2 rounded-xl shadow-lg">
+          <CheckCircle2 className="w-4 h-4 shrink-0 text-[#34d399]" />
           <span>Business settings updated successfully and reflected across the public website!</span>
         </div>
       )}
 
       {errorMessage && (
-        <div className="p-3.5 bg-[#FFF0F0] border border-[#FFD0D0] text-xs text-[#A61C1C] flex items-center gap-2 rounded-xs">
-          <AlertCircle className="w-4 h-4 shrink-0" />
+        <div className="caution-ruby-glass p-3.5 text-xs text-[#fca5a5] flex items-center gap-2 rounded-xl">
+          <AlertCircle className="w-4 h-4 shrink-0 text-[#f87171]" />
           <span>{errorMessage}</span>
         </div>
       )}
 
       {/* 1. Public Brand Identity */}
-      <Card className="p-6 bg-white space-y-4">
-        <h2 className="font-serif text-base text-[#182522] font-medium border-b border-[#E5DFD5] pb-2">
+      <Card className="p-6 bg-[#0a2a1d] border border-[#d4af37]/30 rounded-2xl space-y-4">
+        <h2 className="font-serif text-base text-[#f1d98a] font-medium border-b border-white/10 pb-2">
           1. Brand Identity
         </h2>
 
@@ -134,8 +134,8 @@ export function BusinessSettingsForm({ initialSettings }: { initialSettings: Rec
       </Card>
 
       {/* 2. Shop Location, Contact & Payments */}
-      <Card className="p-6 bg-white space-y-4">
-        <h2 className="font-serif text-base text-[#182522] font-medium border-b border-[#E5DFD5] pb-2">
+      <Card className="p-6 bg-[#0a2a1d] border border-[#d4af37]/30 rounded-2xl space-y-4">
+        <h2 className="font-serif text-base text-[#f1d98a] font-medium border-b border-white/10 pb-2">
           2. Shop Contact, Hours &amp; Payments
         </h2>
 
@@ -192,8 +192,8 @@ export function BusinessSettingsForm({ initialSettings }: { initialSettings: Rec
       </Card>
 
       {/* 3. Astrologer / Father Profile */}
-      <Card className="p-6 bg-white space-y-4">
-        <h2 className="font-serif text-base text-[#182522] font-medium border-b border-[#E5DFD5] pb-2">
+      <Card className="p-6 bg-[#0a2a1d] border border-[#d4af37]/30 rounded-2xl space-y-4">
+        <h2 className="font-serif text-base text-[#f1d98a] font-medium border-b border-white/10 pb-2">
           3. Astrology Practitioner (Father&apos;s Verified Profile)
         </h2>
 
@@ -214,16 +214,16 @@ export function BusinessSettingsForm({ initialSettings }: { initialSettings: Rec
       </Card>
 
       {/* 4. Live Bullion Rates & Market API Synchronization */}
-      <Card className="p-6 bg-white space-y-6 border border-[#E8DFC8] shadow-xs">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#E5DFD5] pb-3">
+      <Card className="p-6 bg-[#0a2a1d] border border-[#d4af37]/40 rounded-2xl space-y-6 shadow-xl">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/10 pb-3">
           <div>
             <div className="flex items-center gap-2">
-              <Zap className="w-4 h-4 text-[#D4AF37]" />
-              <h2 className="font-serif text-base text-[#182522] font-medium">
+              <Zap className="w-4 h-4 text-[#d4af37]" />
+              <h2 className="font-serif text-base text-[#f1d98a] font-medium">
                 4. Live Bullion Rates &amp; Market API Sync
               </h2>
             </div>
-            <p className="text-xs text-[#626A65] mt-0.5">
+            <p className="text-xs text-[#a8b6af] mt-0.5">
               Live market rates power your website&apos;s top marquee ticker, gold budget calculator, and indicative product quotes.
             </p>
           </div>
@@ -244,78 +244,78 @@ export function BusinessSettingsForm({ initialSettings }: { initialSettings: Rec
         {/* Sync feedback notification */}
         {syncStatus && (
           <div
-            className={`p-3.5 rounded-xs text-xs flex items-center gap-2 ${
+            className={`p-3.5 rounded-xl text-xs flex items-center gap-2 ${
               syncStatus.success
-                ? "bg-[#EEF3EE] border border-[#C5D5C4] text-[#173B32]"
-                : "bg-[#FFF0F0] border border-[#FFD0D0] text-[#A61C1C]"
+                ? "bg-[#0f3a28] border border-[#10b981]/50 text-[#a7f3d0]"
+                : "caution-ruby-glass text-[#fca5a5]"
             }`}
           >
             {syncStatus.success ? (
-              <CheckCircle2 className="w-4 h-4 shrink-0 text-[#1B6442]" />
+              <CheckCircle2 className="w-4 h-4 shrink-0 text-[#34d399]" />
             ) : (
-              <AlertCircle className="w-4 h-4 shrink-0 text-[#A61C1C]" />
+              <AlertCircle className="w-4 h-4 shrink-0 text-[#f87171]" />
             )}
             <span>{syncStatus.message}</span>
           </div>
         )}
 
         {/* Live Active Rates Display Board */}
-        <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 p-4 bg-[#FAF8F5] rounded-xs border border-[#E8DFC8]">
-          <div className="p-3 bg-white rounded-2xs border border-[#E8DFC8]/60 space-y-1">
-            <span className="text-[10px] font-mono uppercase text-[#626A65] block">24K Pure Gold</span>
-            <strong className="font-serif text-lg text-[#182522] block">
+        <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 p-4 bg-[#04170f] rounded-xl border border-[#d4af37]/30">
+          <div className="p-3 bg-[#0a2a1d] rounded-lg border border-white/10 space-y-1">
+            <span className="text-[10px] font-mono uppercase text-[#a8b6af] block">24K Pure Gold</span>
+            <strong className="font-serif text-lg text-white block">
               ₹{Number(settings["gold_rate_24k_per_gram"] || Math.round(Number(settings["gold_indicative_rate_24k"] || 81500) / 10)).toLocaleString("en-IN")}/g
             </strong>
-            <span className="text-[10px] text-[#8F9691] block">
+            <span className="text-[10px] text-[#a8b6af] block">
               ₹{(Number(settings["gold_rate_24k_per_gram"] || Math.round(Number(settings["gold_indicative_rate_24k"] || 81500) / 10)) * 10).toLocaleString("en-IN")} / 10g
             </span>
           </div>
 
-          <div className="p-3 bg-white rounded-2xs border border-[#D4AF37]/50 space-y-1 shadow-2xs">
-            <span className="text-[10px] font-mono uppercase text-[#B59328] font-bold block">22K (916) Gold</span>
-            <strong className="font-serif text-lg text-[#0F3D2E] block">
+          <div className="p-3 bg-[#0a2a1d] rounded-lg border border-[#d4af37]/60 space-y-1 shadow-inner">
+            <span className="text-[10px] font-mono uppercase text-[#d4af37] font-bold block">22K (916) Gold</span>
+            <strong className="font-serif text-lg text-[#f1d98a] block">
               ₹{Number(settings["gold_rate_22k_per_gram"] || Math.round(Number(settings["gold_indicative_rate_22k"] || 74700) / 10)).toLocaleString("en-IN")}/g
             </strong>
-            <span className="text-[10px] text-[#1B6442] font-medium block">
+            <span className="text-[10px] text-[#34d399] font-medium block">
               Standard BIS Hallmark
             </span>
           </div>
 
-          <div className="p-3 bg-white rounded-2xs border border-[#E8DFC8]/60 space-y-1">
-            <span className="text-[10px] font-mono uppercase text-[#626A65] block">18K (750) Gold</span>
-            <strong className="font-serif text-lg text-[#182522] block">
+          <div className="p-3 bg-[#0a2a1d] rounded-lg border border-white/10 space-y-1">
+            <span className="text-[10px] font-mono uppercase text-[#a8b6af] block">18K (750) Gold</span>
+            <strong className="font-serif text-lg text-white block">
               ₹{Number(settings["gold_rate_18k_per_gram"] || 6115).toLocaleString("en-IN")}/g
             </strong>
-            <span className="text-[10px] text-[#8F9691] block">Diamond Settings</span>
+            <span className="text-[10px] text-[#a8b6af] block">Diamond Settings</span>
           </div>
 
-          <div className="p-3 bg-white rounded-2xs border border-[#E8DFC8]/60 space-y-1">
-            <span className="text-[10px] font-mono uppercase text-[#626A65] block">14K (585) Gold</span>
-            <strong className="font-serif text-lg text-[#182522] block">
+          <div className="p-3 bg-[#0a2a1d] rounded-lg border border-white/10 space-y-1">
+            <span className="text-[10px] font-mono uppercase text-[#a8b6af] block">14K (585) Gold</span>
+            <strong className="font-serif text-lg text-white block">
               ₹{Number(settings["gold_rate_14k_per_gram"] || 4770).toLocaleString("en-IN")}/g
             </strong>
-            <span className="text-[10px] text-[#8F9691] block">Daily Wear</span>
+            <span className="text-[10px] text-[#a8b6af] block">Daily Wear</span>
           </div>
 
-          <div className="p-3 bg-white rounded-2xs border border-[#E8DFC8]/60 space-y-1 col-span-2 sm:col-span-1">
-            <span className="text-[10px] font-mono uppercase text-[#626A65] block">925 Sterling Silver</span>
-            <strong className="font-serif text-lg text-[#182522] block">
+          <div className="p-3 bg-[#0a2a1d] rounded-lg border border-white/10 space-y-1 col-span-2 sm:col-span-1">
+            <span className="text-[10px] font-mono uppercase text-[#a8b6af] block">925 Sterling Silver</span>
+            <strong className="font-serif text-lg text-[#e2ece7] block">
               ₹{Number(settings["silver_rate_per_gram"] || 98).toLocaleString("en-IN")}/g
             </strong>
-            <span className="text-[10px] text-[#8F9691] block">
+            <span className="text-[10px] text-[#a8b6af] block">
               ₹{(Number(settings["silver_rate_per_gram"] || 98) * 1000).toLocaleString("en-IN")} / kg
             </span>
           </div>
         </div>
 
         {/* Rate Origin & Timestamp Meta */}
-        <div className="flex flex-wrap items-center justify-between gap-3 text-xs text-[#626A65] bg-[#F7F4ED] p-3 rounded-xs border border-[#E5DFD5]">
+        <div className="flex flex-wrap items-center justify-between gap-3 text-xs text-[#a8b6af] bg-[#04170f] p-3.5 rounded-xl border border-white/10">
           <div className="flex items-center gap-2">
-            <ShieldCheck className="w-4 h-4 text-[#1B6442]" />
-            <span>Active Rate Source: <strong className="text-[#182522]">{settings["rates_source"] || "Indian Retail Bullion Benchmark (Live Feed)"}</strong></span>
+            <ShieldCheck className="w-4 h-4 text-[#34d399]" />
+            <span>Active Rate Source: <strong className="text-white">{settings["rates_source"] || "Indian Retail Bullion Benchmark (Live Feed)"}</strong></span>
           </div>
           <div className="flex items-center gap-1.5 font-mono text-[11px]">
-            <Clock className="w-3.5 h-3.5 text-[#B08D57]" />
+            <Clock className="w-3.5 h-3.5 text-[#d4af37]" />
             <span>Last Synced: {settings["rates_last_synced_at"] ? new Date(settings["rates_last_synced_at"]).toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit", day: "numeric", month: "short" }) : "Today"}</span>
           </div>
         </div>
@@ -347,12 +347,12 @@ export function BusinessSettingsForm({ initialSettings }: { initialSettings: Rec
         </div>
 
         {/* API Key Guide Box */}
-        <div className="p-4 bg-[#F9F5EB] border border-[#D4AF37]/40 rounded-xs text-xs space-y-1.5">
-          <strong className="text-[#0F3D2E] block font-semibold">
+        <div className="p-4 bg-[#04170f] border border-[#d4af37]/40 rounded-xl text-xs space-y-1.5">
+          <strong className="text-[#f1d98a] block font-semibold">
             💡 Using Custom GoldAPI.io Key (Optional):
           </strong>
-          <p className="text-[#4B3F36] leading-relaxed">
-            By default, your shop uses our live calibrated Indian retail bullion benchmark feed. If you wish to connect your own direct institutional key from <a href="https://www.goldapi.io" target="_blank" rel="noopener noreferrer" className="text-[#0F3D2E] underline font-medium">GoldAPI.io</a>, simply add <code className="bg-white px-1.5 py-0.5 rounded-2xs border border-[#E8DFC8] font-mono text-[11px]">GOLD_API_KEY=your_key_here</code> to your <code className="bg-white px-1.5 py-0.5 rounded-2xs border border-[#E8DFC8] font-mono text-[11px]">.env.local</code> file.
+          <p className="text-[#a8b6af] leading-relaxed">
+            By default, your shop uses our live calibrated Indian retail bullion benchmark feed. If you wish to connect your own direct institutional key from <a href="https://www.goldapi.io" target="_blank" rel="noopener noreferrer" className="text-[#d4af37] underline font-medium hover:text-[#f6e7b4]">GoldAPI.io</a>, simply add <code className="bg-[#0a2a1d] px-1.5 py-0.5 rounded-md border border-[#d4af37]/30 font-mono text-[11px] text-[#f1d98a]">GOLD_API_KEY=your_key_here</code> to your <code className="bg-[#0a2a1d] px-1.5 py-0.5 rounded-md border border-[#d4af37]/30 font-mono text-[11px] text-[#f1d98a]">.env.local</code> file.
           </p>
         </div>
       </Card>

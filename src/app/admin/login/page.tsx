@@ -8,7 +8,7 @@ import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { loginStaff } from "./actions";
-import { AlertCircle, ArrowLeft } from "lucide-react";
+import { AlertCircle } from "lucide-react";
 
 export default function AdminLoginPage() {
   const router = useRouter();
@@ -38,36 +38,41 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F7F4ED] flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-      <div className="sm:mx-auto sm:w-full sm:max-w-md text-center">
+    <div className="min-h-screen bg-[#04170f] text-[#faf7f0] flex flex-col justify-center py-12 sm:px-6 lg:px-8 relative overflow-hidden">
+      {/* Background Ambience */}
+      <div className="absolute inset-0 bg-radial from-[#0a2a1d] via-[#04170f] to-[#04170f] pointer-events-none opacity-80" />
+
+      <div className="sm:mx-auto sm:w-full sm:max-w-md text-center relative z-10">
         <Link href="/" className="inline-block group mb-4">
           <div className="flex justify-center mb-3">
-            <Image
-              src="/images/brand/logo-horizontal-header-cream.png"
-              alt="Vaidik Ratnam"
-              width={909}
-              height={319}
-              priority
-              className="h-16 sm:h-20 w-auto object-contain mix-blend-multiply"
-            />
+            <div className="w-16 h-16 rounded-2xl bg-[#0a2a1d] border border-[#d4af37]/60 flex items-center justify-center p-1 shadow-xl">
+              <Image
+                src="/images/brand/app-icon-emerald-256.png"
+                alt="Vaidik Ratnam"
+                width={56}
+                height={56}
+                priority
+                className="w-full h-full object-contain"
+              />
+            </div>
           </div>
-          <span className="text-[10px] uppercase tracking-[0.25em] text-[#B08D57] font-semibold block">
+          <span className="text-[11px] uppercase tracking-[0.25em] text-[#d4af37] font-mono font-semibold block">
             Business Operations Portal
           </span>
         </Link>
-        <h2 className="font-serif text-xl font-normal text-[#182522]">
+        <h2 className="font-serif text-2xl font-normal text-white">
           Staff Authentication
         </h2>
-        <p className="text-xs text-[#626A65] mt-1">
+        <p className="text-xs text-[#a8b6af] mt-1 font-light">
           Authorized family operations &amp; shop management only.
         </p>
       </div>
 
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md px-4">
-        <Card className="p-8 bg-white shadow-sm border border-[#E5DFD5]">
+      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md px-4 relative z-10">
+        <Card className="p-8 bg-[#0a2a1d] shadow-2xl border border-[#d4af37]/40 rounded-3xl">
           {errorMsg && (
-            <div className="p-3.5 mb-5 bg-[#FFF0F0] border border-[#FFD0D0] text-xs text-[#A61C1C] flex items-center gap-2 rounded-xs">
-              <AlertCircle className="w-4 h-4 shrink-0" />
+            <div className="p-3.5 mb-5 caution-ruby-glass text-xs text-[#fca5a5] flex items-center gap-2 rounded-xl">
+              <AlertCircle className="w-4 h-4 shrink-0 text-[#f87171]" />
               <span>{errorMsg}</span>
             </div>
           )}
@@ -94,10 +99,10 @@ export default function AdminLoginPage() {
             <div className="pt-2">
               <Button
                 type="submit"
-                variant="primary"
+                variant="gold"
                 size="lg"
                 isLoading={isLoading}
-                className="w-full text-xs uppercase tracking-wider font-semibold"
+                className="w-full text-xs uppercase tracking-wider font-semibold shadow-lg"
               >
                 Sign In to Dashboard &rarr;
               </Button>
@@ -105,12 +110,12 @@ export default function AdminLoginPage() {
           </form>
 
           {/* Initial Bootstrap Demo Credentials Box */}
-          <div className="mt-6 pt-5 border-t border-[#E5DFD5] text-center">
-            <div className="p-3 bg-[#EEF3EE] rounded-xs border border-[#C5D5C4] text-[11px] text-[#173B32] text-left space-y-1">
-              <strong className="block font-semibold">Initial Owner Bootstrap Account:</strong>
-              <p>Email: <code className="font-mono bg-white px-1 py-0.5 rounded-xs">admin@vaidikratnam.com</code></p>
-              <p>Password: <code className="font-mono bg-white px-1 py-0.5 rounded-xs">AdminVaidik2026!</code></p>
-              <p className="text-[10px] text-[#626A65] mt-1">
+          <div className="mt-6 pt-5 border-t border-white/10 text-center">
+            <div className="p-3 bg-[#04170f] rounded-xl border border-[#d4af37]/30 text-[11px] text-[#a8b6af] text-left space-y-1">
+              <strong className="block font-semibold text-[#f1d98a]">Initial Owner Bootstrap Account:</strong>
+              <p>Email: <code className="font-mono bg-[#0a2a1d] text-[#d4af37] px-1.5 py-0.5 rounded-md border border-[#d4af37]/20">admin@vaidikratnam.com</code></p>
+              <p>Password: <code className="font-mono bg-[#0a2a1d] text-[#d4af37] px-1.5 py-0.5 rounded-md border border-[#d4af37]/20">AdminVaidik2026!</code></p>
+              <p className="text-[10px] text-[#a8b6af]/70 mt-1">
                 (Please change password in settings after first login in production).
               </p>
             </div>
@@ -120,10 +125,9 @@ export default function AdminLoginPage() {
         <div className="text-center mt-6">
           <Link
             href="/"
-            className="inline-flex items-center gap-1.5 text-xs text-[#626A65] hover:text-[#182522] transition-colors"
+            className="text-xs text-[#d4af37] hover:text-[#f6e7b4] font-mono tracking-wider transition-colors"
           >
-            <ArrowLeft className="w-3.5 h-3.5" />
-            <span>Return to Public Studio Website</span>
+            &larr; Return to Public Showroom
           </Link>
         </div>
       </div>

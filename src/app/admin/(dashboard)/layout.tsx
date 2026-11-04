@@ -15,7 +15,7 @@ export default async function AdminDashboardLayout({
   }
 
   return (
-    <div className="min-h-screen bg-[#F7F4ED] flex flex-col lg:flex-row">
+    <div className="min-h-screen bg-[#04170f] text-[#faf7f0] flex flex-col lg:flex-row">
       <AdminSidebar session={session} />
       <div className="flex-1 lg:pl-64 flex flex-col min-h-screen">
         <main className="flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl w-full mx-auto">
