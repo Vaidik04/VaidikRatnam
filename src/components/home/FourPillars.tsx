@@ -1,19 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
-import dynamic from "next/dynamic";
 import { Sparkles, ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { PillarItemType } from "@/components/3d/components/Pillars3D";
-
-const ViewPortal = dynamic(
-  () => import("@/components/3d/canvas/ViewPortal").then((m) => m.ViewPortal),
-  { ssr: false }
-);
-const PillarItem3D = dynamic(
-  () => import("@/components/3d/components/Pillars3D").then((m) => m.PillarItem3D),
-  { ssr: false }
-);
+import { PillarMotionGraphics } from "./PillarMotionGraphics";
 
 interface PillarData {
   id: string;
@@ -24,7 +14,6 @@ interface PillarData {
   description: string;
   linkText: string;
   href: string;
-  type3D: PillarItemType;
   accentColor: string;
 }
 
@@ -39,7 +28,6 @@ const PILLARS: PillarData[] = [
       "Crafted with temple sanctum discipline in Varanasi and Jaipur. We do not source mass-produced commercial gold. Every ornament is molten and chased in front of digital scales.",
     linkText: "Discover Master Karigari",
     href: "/about",
-    type3D: "kalash",
     accentColor: "#d4af37",
   },
   {
@@ -52,7 +40,6 @@ const PILLARS: PillarData[] = [
       "Authentic astrological guidance rooted in Brihat Parashara Hora Shastra. If a Kundali does not genuinely need a gemstone, our family astrologer will plainly advise against buying one.",
     linkText: "Explore Jyotish Guidance",
     href: "/astrology",
-    type3D: "medallion",
     accentColor: "#f1d98a",
   },
   {
@@ -65,7 +52,6 @@ const PILLARS: PillarData[] = [
       "Zero beryllium treatment, zero glass-filling, zero synthetic lab stimulants. We offer only pure, unheated Ceylon Sapphires, Zambian Emeralds, and Burmese Rubies with govt-approved lab reports.",
     linkText: "View Genuine Gemstones",
     href: "/gemstones",
-    type3D: "gemstone",
     accentColor: "#0f7a4a",
   },
   {
@@ -78,7 +64,6 @@ const PILLARS: PillarData[] = [
       "Government 6-digit laser HUID (Hallmark Unique Identification) traceable instantly on the official BIS Care App. Net gold weight strictly separated from gems and lac.",
     linkText: "Verify Hallmarking Standards",
     href: "/tools/jewellery-buying-checklist",
-    type3D: "hallmark",
     accentColor: "#d4af37",
   },
 ];
@@ -168,19 +153,9 @@ export function FourPillars() {
                       </div>
                     </div>
 
-                    {/* Waking 3D Object Viewport */}
-                    <div className="md:col-span-5 h-52 md:h-64 relative">
-                      <ViewPortal
-                        className="w-full h-full"
-                        cameraPosition={[0, 0, 3.2]}
-                        fallback={
-                          <div className="w-full h-full flex items-center justify-center">
-                            <Sparkles className="w-10 h-10 text-[#d4af37] animate-pulse" />
-                          </div>
-                        }
-                      >
-                        <PillarItem3D type={p.type3D} isHovered={true} />
-                      </ViewPortal>
+                    {/* 3D Motion Graphics Stage */}
+                    <div className="md:col-span-5 relative">
+                      <PillarMotionGraphics pillarId={p.id} />
                     </div>
                   </div>
                 )}

@@ -1,18 +1,9 @@
 "use client";
 
 import React from "react";
-import { ShieldCheck, Scale, Award, Gem, Sparkles } from "lucide-react";
+import { ShieldCheck, Scale, Award, Gem } from "lucide-react";
 import { Marquee } from "@/components/ui/Marquee";
-import dynamic from "next/dynamic";
-
-const ViewPortal = dynamic(
-  () => import("@/components/3d/canvas/ViewPortal").then((m) => m.ViewPortal),
-  { ssr: false }
-);
-const TrustCoins3D = dynamic(
-  () => import("@/components/3d/components/TrustCoins3D").then((m) => m.TrustCoins3D),
-  { ssr: false }
-);
+import { MotionCoinsStrip } from "./MotionCoinsStrip";
 
 const TRUST_STATS = [
   {
@@ -58,25 +49,9 @@ export function TrustStrip() {
       <div className="absolute inset-0 bg-radial from-[#0a2a1d] via-[#04170f] to-[#04170f] pointer-events-none opacity-80" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Top 3D Flipping Gold Coins Strip */}
-        <div className="h-20 w-full mb-8 relative hidden sm:block">
-          <ViewPortal
-            className="w-full h-full"
-            cameraPosition={[0, 0, 4]}
-            fallback={
-              <div className="flex items-center justify-center h-full gap-4 text-[#d4af37]">
-                <Sparkles className="w-5 h-5 animate-spin-slow" />
-                <span className="text-xs font-mono uppercase tracking-widest">
-                  Vaidik Ratnam Gold Standard
-                </span>
-                <Sparkles className="w-5 h-5 animate-spin-slow" />
-              </div>
-            }
-          >
-            <ambientLight intensity={0.7} />
-            <directionalLight position={[3, 5, 2]} intensity={1.5} color="#fff2cc" />
-            <TrustCoins3D />
-          </ViewPortal>
+        {/* Top 3D Animated Motion Medallions */}
+        <div className="mb-8">
+          <MotionCoinsStrip />
         </div>
 
         {/* 4 Stately Verified Counters */}

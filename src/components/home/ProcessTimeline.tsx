@@ -2,9 +2,8 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { Sparkles, Hammer, Flame, Gem, FileEdit, ArrowRight } from "lucide-react";
-import { ViewPortal } from "@/components/3d/canvas/ViewPortal";
-import { SketchToGold3D } from "@/components/3d/components/SketchToGold3D";
+import { Hammer, Flame, Gem, FileEdit, ArrowRight, Sparkles } from "lucide-react";
+import { ProcessMotionStage } from "./ProcessMotionStage";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 
 const PROCESS_STEPS = [
@@ -104,57 +103,28 @@ export function ProcessTimeline() {
             })}
           </div>
 
-          {/* Right Column: Real-time 3D Transformation Stage */}
+          {/* Right Column: 3D Motion Graphics Transformation Stage */}
           <div className="lg:col-span-7 relative">
-            <div className="relative aspect-square sm:aspect-[4/3] rounded-2xl overflow-hidden border border-[#d4af37]/30 bg-radial from-[#0a2a1d] via-[#04170f] to-black shadow-2xl">
-              {/* 3D Viewport */}
-              <ViewPortal
-                className="w-full h-full"
-                cameraPosition={[0, 0, 4.5]}
-                fallback={
-                  <div className="w-full h-full flex flex-col items-center justify-center text-center p-8 bg-radial from-[#0a2a1d] to-[#04170f]">
-                    <Flame className="w-16 h-16 text-[#d4af37] animate-pulse mb-4" />
-                    <span className="font-serif text-2xl text-[#f1d98a]">
-                      Step {activeStep}: {PROCESS_STEPS[activeStep - 1].title}
-                    </span>
-                    <p className="text-xs text-[#a8b6af] max-w-sm mt-2">
-                      {PROCESS_STEPS[activeStep - 1].desc}
-                    </p>
-                  </div>
-                }
-              >
-                <ambientLight intensity={0.6} />
-                <directionalLight position={[5, 8, 5]} intensity={1.8} color="#fff8e7" />
-                <pointLight position={[-4, -2, 2]} intensity={0.8} color="#d4af37" />
-                <SketchToGold3D />
-              </ViewPortal>
-
-              {/* Status Indicator Chip */}
-              <div className="absolute top-4 left-4 z-20 pointer-events-none">
-                <span className="text-[11px] font-mono uppercase tracking-wider bg-[#04170f]/90 text-[#f1d98a] border border-[#d4af37]/40 px-3 py-1.5 rounded-full backdrop-blur-md">
-                  Phase 0{activeStep} / 05
-                </span>
-              </div>
-            </div>
-
-            {/* Commission CTA button */}
-            <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 p-6 rounded-xl border border-[#d4af37]/25 bg-[#0a2a1d]/60">
-              <div>
-                <h4 className="font-serif text-lg text-white">
-                  Have an heirloom idea or custom design?
-                </h4>
-                <p className="text-xs text-[#a8b6af]">
-                  Share your sketch or photo with our master karigars for an honest estimate.
-                </p>
-              </div>
-              <Link href="/custom-design">
-                <MagneticButton variant="gold" className="px-6 py-2.5 text-xs font-mono uppercase tracking-wider flex items-center gap-2">
-                  <span>Commission a Piece</span>
-                  <ArrowRight className="w-4 h-4" />
-                </MagneticButton>
-              </Link>
-            </div>
+            <ProcessMotionStage activeStep={activeStep} />
           </div>
+        </div>
+
+        {/* Commission CTA button */}
+        <div className="mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 p-6 rounded-2xl border border-[#d4af37]/25 bg-[#0a2a1d]/60">
+          <div>
+            <h4 className="font-serif text-lg text-white">
+              Have an heirloom idea or custom design?
+            </h4>
+            <p className="text-xs text-[#a8b6af]">
+              Share your sketch or photo with our master karigars for an honest estimate.
+            </p>
+          </div>
+          <Link href="/custom-design">
+            <MagneticButton variant="gold" className="px-6 py-2.5 text-xs font-mono uppercase tracking-wider flex items-center gap-2">
+              <span>Commission a Piece</span>
+              <ArrowRight className="w-4 h-4" />
+            </MagneticButton>
+          </Link>
         </div>
       </div>
     </section>

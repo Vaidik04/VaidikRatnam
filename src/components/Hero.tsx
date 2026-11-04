@@ -3,7 +3,6 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import dynamic from "next/dynamic";
 import {
   ShieldCheck,
   Sparkles,
@@ -11,19 +10,10 @@ import {
   Scale,
   Gem,
   Calculator,
-  Rotate3D,
 } from "lucide-react";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { RollingNumber } from "@/components/ui/RollingNumber";
-
-const ViewPortal = dynamic(
-  () => import("@/components/3d/canvas/ViewPortal").then((m) => m.ViewPortal),
-  { ssr: false }
-);
-const Hero3DScene = dynamic(
-  () => import("@/components/3d/components/Hero3DScene").then((m) => m.Hero3DScene),
-  { ssr: false }
-);
+import { HeroMotionStage } from "@/components/home/HeroMotionStage";
 
 interface HeroProps {
   rates?: {
@@ -175,55 +165,13 @@ export function Hero({ rates }: HeroProps = {}) {
 
           </div>
 
-          {/* Right Column (High-Jewellery Cinematic 3D Stage - 5 cols) */}
+          {/* Right Column (Cinematic 3D Animated Motion Graphics Stage - 5 cols) */}
           <div className="lg:col-span-5 relative flex items-center justify-center">
-            
             {/* Ambient Deep Radial Backlight */}
-            <div className="absolute inset-0 bg-[#D4AF37]/15 rounded-full blur-3xl transform -rotate-6 scale-90" />
+            <div className="absolute inset-0 bg-[#D4AF37]/15 rounded-full blur-3xl transform -rotate-6 scale-95 pointer-events-none" />
 
-            {/* Cinematic Centerpiece Stage */}
-            <div className="relative w-full max-w-lg aspect-[4/5] rounded-3xl overflow-hidden border border-[#D4AF37]/40 bg-radial from-[#0a2a1d] via-[#04170f] to-[#020b07] shadow-2xl">
-              {/* 3D Real-Time Centerpiece Scene */}
-              <ViewPortal
-                cameraPosition={[0, 0, 5]}
-                fov={45}
-                className="w-full h-full"
-                fallback={
-                  <Image
-                    src="/images/hero-jewellery.jpg"
-                    alt="Vaidik Ratnam Handcrafted 22K Temple Jewellery"
-                    fill
-                    priority
-                    className="object-cover object-center"
-                    sizes="(max-width: 768px) 100vw, 500px"
-                  />
-                }
-              >
-                <Hero3DScene />
-              </ViewPortal>
-
-              {/* 3D Interactive Badge Pill */}
-              <div className="absolute top-4 right-4 z-20 bg-black/60 border border-[#D4AF37]/50 px-3 py-1.5 rounded-full backdrop-blur-md flex items-center gap-1.5 text-[10px] text-[#f3e5ab] font-mono">
-                <Rotate3D className="w-3.5 h-3.5 text-[#D4AF37]" />
-                <span>Interactive 3D Jewel</span>
-              </div>
-
-              {/* Bottom Hallmarking Trust Strip */}
-              <div className="absolute bottom-4 left-4 right-4 p-3 rounded-xl bg-[#04170f]/90 border border-[#d4af37]/40 shadow-xl flex items-center gap-3 backdrop-blur-md z-20">
-                <div className="w-9 h-9 rounded-full bg-[#d4af37]/15 border border-[#d4af37]/40 flex items-center justify-center shrink-0">
-                  <ShieldCheck className="w-4 h-4 text-[#d4af37]" />
-                </div>
-                <div className="flex-1 text-left">
-                  <strong className="text-[11px] font-serif text-[#f1d98a] tracking-wide block">
-                    Govt. 6-Digit Laser HUID
-                  </strong>
-                  <span className="text-[10px] text-[#a8b6af] block font-mono">
-                    Instant verification on official BIS Care App
-                  </span>
-                </div>
-              </div>
-            </div>
-
+            {/* 3D Motion Graphics Jewel Stage with 3D Tilt, Parallax Layers & Cursor Glare */}
+            <HeroMotionStage />
           </div>
 
         </div>
