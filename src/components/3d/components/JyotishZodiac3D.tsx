@@ -6,6 +6,7 @@ import { useFrame } from "@react-three/fiber";
 import { Float } from "@react-three/drei";
 import { createAntiqueGoldMaterial } from "../materials/materials";
 import { GemMesh } from "./GemMesh";
+import { StudioEnvironment } from "./StudioEnvironment";
 
 interface JyotishZodiac3DProps {
   selectedSignIndex?: number;
@@ -60,6 +61,7 @@ export function JyotishZodiac3D({ selectedSignIndex = 0 }: JyotishZodiac3DProps)
 
   return (
     <group>
+      <StudioEnvironment />
       <ambientLight intensity={0.6} />
       <directionalLight position={[3, 5, 4]} intensity={1.5} color="#fff6e0" />
       <pointLight position={[0, 0, 3]} intensity={1.8} color="#ffd700" distance={8} />

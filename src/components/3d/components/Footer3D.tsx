@@ -5,6 +5,7 @@ import * as THREE from "three";
 import { useFrame } from "@react-three/fiber";
 import { Sparkles } from "@react-three/drei";
 import { createAntiqueGoldMaterial } from "../materials/materials";
+import { StudioEnvironment } from "./StudioEnvironment";
 
 export function Footer3D() {
   const groupRef = useRef<THREE.Group>(null);
@@ -29,6 +30,7 @@ export function Footer3D() {
 
   return (
     <group position={[0, 0, 0]}>
+      <StudioEnvironment />
       <ambientLight intensity={0.5} />
       <directionalLight position={[0, 4, 3]} intensity={1.5} color="#fff6e0" />
       <pointLight position={[0, 0, 2]} intensity={2.0} color="#ffd700" distance={6} />

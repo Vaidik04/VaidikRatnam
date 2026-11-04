@@ -5,6 +5,7 @@ import * as THREE from "three";
 import { useFrame } from "@react-three/fiber";
 import { Float, Sparkles } from "@react-three/drei";
 import { createAntiqueGoldMaterial } from "../materials/materials";
+import { StudioEnvironment } from "./StudioEnvironment";
 
 /**
  * Procedural 3D VR Monogram geometry (intertwined V & R crest)
@@ -73,6 +74,7 @@ export function Preloader3D() {
 
   return (
     <group>
+      <StudioEnvironment />
       <ambientLight intensity={0.5} />
       <directionalLight position={[3, 5, 4]} intensity={1.8} color="#fff6e0" />
       <directionalLight position={[-3, -2, -2]} intensity={0.6} color="#8ecae6" />

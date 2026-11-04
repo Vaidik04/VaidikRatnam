@@ -117,7 +117,7 @@ export default function RootLayout({
       lang="en"
       className={`${playfair.variable} ${cormorant.variable} ${inter.variable} ${devanagari.variable} ${spaceMono.variable}`}
     >
-      <body className="antialiased bg-[#FAF7F0] text-[#0B0B0B] selection:bg-[#D4AF37]/25 selection:text-[#04170F]">
+      <body className="antialiased bg-[#04170f] text-[#faf7f0] selection:bg-[#d4af37]/30 selection:text-[#f6e7b4]">
         <CapabilityProvider>
           <SmoothScrollProvider>
             <Preloader />

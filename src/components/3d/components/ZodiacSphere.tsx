@@ -4,6 +4,7 @@ import React, { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { OrbitingPlanets } from "./OrbitingPlanets";
+import { StudioEnvironment } from "./StudioEnvironment";
 
 interface ZodiacSphereProps {
   selectedSignIndex?: number;
@@ -25,14 +26,17 @@ export function ZodiacSphere({
 
   return (
     <group ref={armillaryRef}>
+      <StudioEnvironment />
       {/* Outer Ecliptic Celestial Ring */}
       <mesh rotation={[Math.PI / 6, 0, 0]}>
         <torusGeometry args={[radius, 0.02, 16, 100]} />
         <meshPhysicalMaterial
-          color="#d4af37"
-          metalness={1.0}
-          roughness={0.2}
-          clearcoat={0.4}
+          color="#ffd966"
+          emissive="#59430c"
+          emissiveIntensity={0.2}
+          metalness={0.82}
+          roughness={0.18}
+          clearcoat={0.6}
         />
       </mesh>
 
@@ -41,8 +45,10 @@ export function ZodiacSphere({
         <torusGeometry args={[radius * 0.98, 0.015, 16, 100]} />
         <meshPhysicalMaterial
           color="#f1d98a"
-          metalness={1.0}
-          roughness={0.25}
+          emissive="#59430c"
+          emissiveIntensity={0.2}
+          metalness={0.82}
+          roughness={0.2}
         />
       </mesh>
 
@@ -50,9 +56,11 @@ export function ZodiacSphere({
       <mesh rotation={[Math.PI / 2, 0, 0]}>
         <torusGeometry args={[radius * 0.96, 0.015, 16, 100]} />
         <meshPhysicalMaterial
-          color="#d4af37"
-          metalness={1.0}
-          roughness={0.2}
+          color="#ffd966"
+          emissive="#59430c"
+          emissiveIntensity={0.2}
+          metalness={0.82}
+          roughness={0.18}
         />
       </mesh>
 
