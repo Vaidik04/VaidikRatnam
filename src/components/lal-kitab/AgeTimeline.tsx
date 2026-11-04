@@ -59,3 +59,4 @@ export function AgeTimeline({ currentAge }: AgeTimelineProps) {
     </div>
   );
 }
+

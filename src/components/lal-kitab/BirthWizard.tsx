@@ -284,3 +284,4 @@ export function BirthWizard({ onSubmit, isLoading = false }: BirthWizardProps) {
     </div>
   );
 }
+

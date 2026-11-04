@@ -111,11 +111,13 @@ npm run build
   - `src/lib/importers/csv-parser.test.ts` (3 tests): Batch CSV stock parsing, row validation, header mapping, duplicate SKU alerts.
   - `src/lib/astrology/astrology.test.ts` (4 tests): Birth chart data verification, Parashari planetary rule checking, ethical disclaimer enforcement.
   - `src/lib/ai/assistant.test.ts` (4 tests): Grounded retrieval, ethical fallback rules, no supernatural claims, Parashari Jyotish guidance.
-  - **Result: 22 / 22 tests passing cleanly (165ms).**
+  - `src/lib/lal-kitab/lal-kitab.test.ts` (6 tests): Astronomical ephemeris calculation, Lahiri ayanamsa, historical Indian War Time (UTC+06:30) offset, Kal Purush fixed-house chart builder, rule engine (sleeping houses, chart classification, Rin karmic debts, and safe remedies).
+  - `src/lib/3d/materials.test.ts` (5 tests): Antique gold PBR, gemstone refraction IORs, shader uniforms, capability fallback tiering.
+  - **Result: 33 / 33 tests passing cleanly.**
 - **Lint Check (`npm run lint`):**
   - **Result: 0 errors, 0 warnings.**
 - **Production Build (`npm run build`):**
-  - **Result: 39 routes compiled cleanly with Next.js Turbopack in 751ms (39 static and dynamic routes).**
+  - **Result: 48 routes compiled cleanly with Next.js 16.4.3 Turbopack.**
 
 ---
 

@@ -82,3 +82,4 @@ export function RinCards({ rins }: RinCardsProps) {
     </div>
   );
 }
+

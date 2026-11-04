@@ -115,3 +115,4 @@ export function LalKitabHero({ onStartWizard }: { onStartWizard: () => void }) {
     </section>
   );
 }
+

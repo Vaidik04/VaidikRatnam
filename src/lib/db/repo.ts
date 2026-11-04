@@ -201,30 +201,33 @@ async function ensureDb() {
 
 /**
  * Strips non-plain LibSQL Row properties (numeric indexes, length, class prototypes)
- * so objects can be serialized across Next.js Server-to-Client component boundaries.
+ * and deep clones to pure plain objects so they can be serialized across Next.js
+ * Server-to-Client component boundaries without hydration or serialization errors.
  */
 export function toPlainRow<T>(row: unknown): T {
   if (!row || typeof row !== "object") return row as T;
-  try {
-    return JSON.parse(JSON.stringify(row)) as T;
-  } catch {
-    const obj: Record<string, unknown> = {};
-    for (const k of Object.keys(row)) {
-      if (!/^\d+$/.test(k) && k !== "length") {
-        obj[k] = (row as Record<string, unknown>)[k];
+  const r = row as Record<string, unknown>;
+  const plain: Record<string, unknown> = {};
+  for (const [key, value] of Object.entries(r)) {
+    if (/^\d+$/.test(key) || key === "length") continue;
+    if (typeof value === "bigint") {
+      plain[key] = Number(value);
+    } else if (value !== null && typeof value === "object") {
+      if (Array.isArray(value)) {
+        plain[key] = value.map((item) => (typeof item === "object" && item !== null ? toPlainRow(item) : item));
+      } else {
+        plain[key] = toPlainRow(value);
       }
+    } else {
+      plain[key] = value;
     }
-    return obj as T;
   }
+  return plain as T;
 }
 
 export function toPlainRows<T>(rows: unknown[]): T[] {
   if (!Array.isArray(rows)) return [];
-  try {
-    return JSON.parse(JSON.stringify(rows)) as T[];
-  } catch {
-    return rows.map((r) => toPlainRow<T>(r));
-  }
+  return rows.map((r) => toPlainRow<T>(r));
 }
 
 // -----------------------------------------------------------------------------
