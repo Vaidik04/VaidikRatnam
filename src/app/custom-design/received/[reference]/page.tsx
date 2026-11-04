@@ -17,14 +17,14 @@ export default async function CustomDesignReceivedPage({
   const design = await repo.getCustomDesignByReference(reference);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F7F4ED]">
+    <div className="min-h-screen flex flex-col bg-[#04170f] text-[#faf7f0] selection:bg-[#d4af37]/30 selection:text-[#f6e7b4]">
       <Header />
 
       <main className="flex-1 py-16 px-4 sm:px-6 lg:px-8 max-w-2xl mx-auto w-full">
-        <Card className="p-8 sm:p-10 bg-white border border-[#E5DFD5] text-center space-y-6">
+        <Card className="p-8 sm:p-10 bg-[#0a2a1d]/90 border border-[#d4af37]/40 rounded-3xl text-center space-y-6 shadow-2xl backdrop-blur-md">
           {/* Brand Emblem & Success Badge */}
           <div className="flex flex-col items-center justify-center gap-3">
-            <div className="w-16 h-16 rounded-full bg-[#0F3D2E]/5 border border-[#D4AF37]/50 flex items-center justify-center p-3 shadow-xs">
+            <div className="w-16 h-16 rounded-full bg-[#04170f] border-2 border-[#d4af37] flex items-center justify-center p-3 shadow-xl">
               <Image
                 src="/images/brand/icon-full-color-transparent.png"
                 alt="Vaidik Ratnam"
@@ -33,70 +33,70 @@ export default async function CustomDesignReceivedPage({
                 className="w-full h-full object-contain"
               />
             </div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EEF3EE] border border-[#C5D5C4] text-[#1B6442] text-xs font-medium">
+            <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#10b981]/20 border border-[#10b981]/40 text-[#10b981] text-xs font-mono">
               <CheckCircle2 className="w-4 h-4" />
               <span>Brief Successfully Received</span>
             </div>
           </div>
 
           <div>
-            <span className="text-xs uppercase tracking-widest text-[#D4AF37] font-semibold block mb-1">
+            <span className="text-xs uppercase tracking-[0.2em] text-[#d4af37] font-mono block mb-1">
               Custom Karigari Order
             </span>
-            <h1 className="font-serif text-3xl text-[#182522] font-medium">
+            <h1 className="font-serif text-3xl sm:text-4xl text-white font-normal">
               Thank You for Sharing Your Vision
             </h1>
-            <p className="text-sm text-[#626A65] mt-2 leading-relaxed">
+            <p className="text-sm text-[#a8b6af] mt-2 leading-relaxed font-light">
               Your custom jewellery request has been safely received by our family shop master karigars.
             </p>
           </div>
 
           {/* Reference Token Box */}
-          <div className="p-4 bg-[#F7F4ED] border border-[#E5DFD5] rounded-sm max-w-sm mx-auto">
-            <span className="text-[11px] uppercase tracking-wider text-[#626A65] block mb-1 font-mono">
+          <div className="p-4 bg-[#04170f] border border-[#d4af37]/40 rounded-2xl max-w-sm mx-auto shadow-md">
+            <span className="text-[11px] uppercase tracking-wider text-[#a8b6af] block mb-1 font-mono">
               Your Tracking Reference
             </span>
-            <span className="font-mono text-xl font-bold tracking-widest text-[#173B32] select-all">
+            <span className="font-mono text-2xl font-bold tracking-widest text-[#f1d98a] select-all">
               {reference}
             </span>
             {design && (
-              <span className="block text-[11px] text-[#626A65] mt-1">
-                Status: <strong className="text-[#182522] capitalize">{design.status}</strong>
+              <span className="block text-[11px] text-[#a8b6af] mt-1 font-mono">
+                Status: <strong className="text-white capitalize">{design.status}</strong>
               </span>
             )}
           </div>
 
           {/* Next Steps Timeline */}
-          <div className="text-left bg-[#FCFAF6] border border-[#EFECE5] rounded-sm p-5 space-y-4 text-xs">
-            <h3 className="font-serif text-sm font-semibold text-[#182522] border-b border-[#E5DFD5] pb-2">
+          <div className="text-left bg-[#04170f]/80 border border-white/10 rounded-2xl p-5 space-y-4 text-xs font-mono">
+            <h3 className="font-serif text-base font-normal text-white border-b border-white/10 pb-2">
               What Happens Next?
             </h3>
 
             <div className="flex items-start gap-3">
-              <Clock className="w-4 h-4 text-[#B08D57] shrink-0 mt-0.5" />
+              <Clock className="w-4 h-4 text-[#d4af37] shrink-0 mt-0.5" />
               <div>
-                <strong className="text-[#182522] block">1. Artisan Feasibility Review (Within 24–48 Hours)</strong>
-                <p className="text-[#626A65] leading-relaxed">
+                <strong className="text-white block font-sans">1. Artisan Feasibility Review (Within 24–48 Hours)</strong>
+                <p className="text-[#a8b6af] leading-relaxed font-sans text-xs">
                   Our family master jeweler reviews structural feasibility, metal requirements, and setting techniques.
                 </p>
               </div>
             </div>
 
             <div className="flex items-start gap-3">
-              <Phone className="w-4 h-4 text-[#173B32] shrink-0 mt-0.5" />
+              <Phone className="w-4 h-4 text-[#10b981] shrink-0 mt-0.5" />
               <div>
-                <strong className="text-[#182522] block">2. Personal Consultation &amp; Initial Quote</strong>
-                <p className="text-[#626A65] leading-relaxed">
+                <strong className="text-white block font-sans">2. Personal Consultation &amp; Initial Quote</strong>
+                <p className="text-[#a8b6af] leading-relaxed font-sans text-xs">
                   We will contact you via your chosen channel to discuss preliminary sketches, stone options, and budget breakdown.
                 </p>
               </div>
             </div>
 
             <div className="flex items-start gap-3">
-              <MapPin className="w-4 h-4 text-[#B08D57] shrink-0 mt-0.5" />
+              <MapPin className="w-4 h-4 text-[#d4af37] shrink-0 mt-0.5" />
               <div>
-                <strong className="text-[#182522] block">3. Inspect &amp; Collect at Our Shop</strong>
-                <p className="text-[#626A65] leading-relaxed">
+                <strong className="text-white block font-sans">3. Inspect &amp; Collect at Our Shop</strong>
+                <p className="text-[#a8b6af] leading-relaxed font-sans text-xs">
                   Once handcrafted and 100% BIS hallmarked, you inspect the piece and weigh it on digital scales at our shop before taking it home. (Zero courier risk).
                 </p>
               </div>
@@ -104,8 +104,8 @@ export default async function CustomDesignReceivedPage({
           </div>
 
           {/* Safe Privacy Disclaimer */}
-          <div className="flex items-center justify-center gap-2 text-[11px] text-[#626A65] pt-2">
-            <ShieldCheck className="w-4 h-4 text-[#173B32]" />
+          <div className="flex items-center justify-center gap-2 text-[11px] text-[#a8b6af] pt-2 font-mono">
+            <ShieldCheck className="w-4 h-4 text-[#d4af37]" />
             <span>Private &amp; Secure &bull; No personal attachment files are publicly exposed</span>
           </div>
 
@@ -116,7 +116,7 @@ export default async function CustomDesignReceivedPage({
               )}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-gold-pure py-2.5 px-5 rounded-xs text-xs uppercase tracking-wider font-bold inline-flex items-center justify-center gap-2 text-[#0F3D2E] w-full sm:w-auto shadow-xs"
+              className="bg-gold-gradient py-3 px-6 rounded-full text-xs uppercase tracking-wider font-mono font-bold inline-flex items-center justify-center gap-2 text-[#04170f] w-full sm:w-auto shadow-lg hover:brightness-105 transition-all"
             >
               <span>Share Reference on Shop WhatsApp</span>
             </a>

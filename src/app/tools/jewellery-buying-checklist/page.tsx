@@ -141,7 +141,7 @@ export default function JewelleryBuyingChecklistPage() {
   const progressPercent = Math.round((completedCount / CHECKLIST_ITEMS.length) * 100);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAF8F5]">
+    <div className="min-h-screen flex flex-col bg-[#04170f] text-[#faf7f0] selection:bg-[#d4af37]/30 selection:text-[#f6e7b4]">
       <div className="no-print">
         <Header />
       </div>
@@ -173,16 +173,16 @@ export default function JewelleryBuyingChecklistPage() {
       <main className="flex-1 py-12 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto w-full">
         {/* Header */}
         <div className="mb-10 text-center max-w-2xl mx-auto space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#173B32]/10 border border-[#B08D57]/40 text-[#173B32] text-xs uppercase tracking-[0.22em] font-medium animate-float no-print">
-            <ShieldCheck className="w-3.5 h-3.5 text-[#B08D57]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0a2a1d] border border-[#d4af37]/40 text-[#f1d98a] text-xs uppercase tracking-[0.22em] font-mono shadow-md no-print">
+            <ShieldCheck className="w-3.5 h-3.5 text-[#d4af37]" />
             <span>Consumer Protection Standard</span>
           </div>
 
-          <h1 className="font-serif text-3xl sm:text-4xl text-[#182522] font-normal tracking-tight">
+          <h1 className="font-serif text-3xl sm:text-5xl text-white font-normal tracking-tight">
             Jewellery Buying &amp; Inspection Checklist
           </h1>
 
-          <p className="text-sm text-[#626A65] leading-relaxed">
+          <p className="text-sm text-[#a8b6af] leading-relaxed font-light">
             Essential verification steps before buying gold jewellery or natural gemstones in India. Follow this honest checklist at any jewellery shop.
           </p>
 
@@ -192,9 +192,9 @@ export default function JewelleryBuyingChecklistPage() {
               variant="outline"
               size="sm"
               onClick={() => window.print()}
-              className="text-xs uppercase tracking-wider border-[#D4CCC0] hover:border-[#173B32] hover:bg-white"
+              className="text-xs uppercase tracking-wider"
             >
-              <Printer className="w-3.5 h-3.5 mr-1.5 text-[#173B32]" />
+              <Printer className="w-3.5 h-3.5 mr-1.5 text-[#d4af37]" />
               Print / Save as PDF
             </Button>
 
@@ -202,9 +202,9 @@ export default function JewelleryBuyingChecklistPage() {
               variant="outline"
               size="sm"
               onClick={shareChecklist}
-              className="text-xs uppercase tracking-wider border-[#D4CCC0] hover:border-[#173B32] hover:bg-white"
+              className="text-xs uppercase tracking-wider"
             >
-              <Share2 className="w-3.5 h-3.5 mr-1.5 text-[#B08D57]" />
+              <Share2 className="w-3.5 h-3.5 mr-1.5 text-[#d4af37]" />
               {copiedLink ? "Link Copied!" : "Share Checklist"}
             </Button>
 
@@ -217,17 +217,17 @@ export default function JewelleryBuyingChecklistPage() {
         </div>
 
         {/* Progress Tracker (Screen only) */}
-        <div className="bg-white border border-[#E2D7C5] rounded-xs p-5 mb-8 shadow-xs no-print">
+        <div className="bg-[#0a2a1d]/85 border border-[#d4af37]/35 rounded-2xl p-5 mb-8 shadow-2xl backdrop-blur-md no-print">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-[#173B32]/10 flex items-center justify-center text-[#173B32] shrink-0">
-                <CheckSquare className="w-5 h-5 text-[#173B32]" />
+              <div className="w-10 h-10 rounded-full bg-[#04170f] border border-[#d4af37]/40 flex items-center justify-center text-[#d4af37] shrink-0">
+                <CheckSquare className="w-5 h-5" />
               </div>
               <div>
-                <span className="text-xs uppercase tracking-wider font-semibold text-[#182522] block">
+                <span className="text-xs uppercase tracking-wider font-mono font-semibold text-[#f6e7b4] block">
                   Shop Buying Checklist: {completedCount} of {CHECKLIST_ITEMS.length} Confirmed
                 </span>
-                <span className="text-[11px] text-[#626A65]">
+                <span className="text-[11px] text-[#a8b6af] font-mono">
                   {progressPercent === 100
                     ? "✓ Complete Verification Done — All criteria satisfied."
                     : `${100 - progressPercent}% remaining before completing purchase review.`}
@@ -236,13 +236,13 @@ export default function JewelleryBuyingChecklistPage() {
             </div>
 
             <div className="flex items-center gap-3 w-full sm:w-auto">
-              <div className="w-32 bg-[#FAF8F5] h-2.5 rounded-full overflow-hidden border border-[#E5DFD5]">
+              <div className="w-32 bg-[#04170f] h-2.5 rounded-full overflow-hidden border border-[#d4af37]/30">
                 <div
-                  className="bg-[#173B32] h-full transition-all duration-500 rounded-full"
+                  className="bg-gold-gradient h-full transition-all duration-500 rounded-full"
                   style={{ width: `${progressPercent}%` }}
                 />
               </div>
-              <span className="font-mono text-xs font-bold text-[#173B32] min-w-10">
+              <span className="font-mono text-xs font-bold text-[#f1d98a] min-w-10">
                 {progressPercent}%
               </span>
               <div className="flex items-center gap-1.5 ml-2">
@@ -250,7 +250,7 @@ export default function JewelleryBuyingChecklistPage() {
                   type="button"
                   onClick={checkAll}
                   title="Check All"
-                  className="p-1.5 text-xs text-[#626A65] hover:text-[#173B32] rounded-xs hover:bg-[#FAF8F5] cursor-pointer"
+                  className="p-1.5 text-xs text-[#a8b6af] hover:text-[#d4af37] rounded-lg hover:bg-white/5 cursor-pointer"
                 >
                   <CheckCheck className="w-4 h-4" />
                 </button>
@@ -258,7 +258,7 @@ export default function JewelleryBuyingChecklistPage() {
                   type="button"
                   onClick={resetAll}
                   title="Reset All"
-                  className="p-1.5 text-xs text-[#626A65] hover:text-[#A61C1C] rounded-xs hover:bg-[#FAF8F5] cursor-pointer"
+                  className="p-1.5 text-xs text-[#a8b6af] hover:text-[#f87171] rounded-lg hover:bg-white/5 cursor-pointer"
                 >
                   <RotateCcw className="w-3.5 h-3.5" />
                 </button>
@@ -267,7 +267,7 @@ export default function JewelleryBuyingChecklistPage() {
           </div>
 
           {/* Category Tabs */}
-          <div className="mt-5 pt-4 border-t border-[#F0ECE2] flex flex-wrap gap-2">
+          <div className="mt-5 pt-4 border-t border-white/10 flex flex-wrap gap-2">
             {CATEGORIES.map((cat) => {
               const isSelected = selectedCategory === cat;
               return (
@@ -275,10 +275,10 @@ export default function JewelleryBuyingChecklistPage() {
                   key={cat}
                   type="button"
                   onClick={() => setSelectedCategory(cat)}
-                  className={`px-3 py-1 text-xs rounded-full cursor-pointer transition-all ${
+                  className={`px-3 py-1.5 text-xs rounded-full font-mono cursor-pointer transition-all ${
                     isSelected
-                      ? "bg-[#173B32] text-white font-medium shadow-xs"
-                      : "bg-[#FAF8F5] text-[#626A65] hover:text-[#182522] border border-[#E5DFD5]"
+                      ? "bg-gold-gradient text-[#04170f] font-bold shadow-md"
+                      : "bg-[#04170f] text-[#f1d98a] hover:text-white border border-[#d4af37]/30 hover:bg-[#d4af37]/15"
                   }`}
                 >
                   {cat}
@@ -295,10 +295,10 @@ export default function JewelleryBuyingChecklistPage() {
             return (
               <Card
                 key={item.id}
-                className={`p-6 transition-all rounded-xs border print:border-neutral-400 print:shadow-none print:break-inside-avoid print:p-4 print:mb-3 print:bg-white ${
+                className={`p-6 transition-all rounded-2xl border print:border-neutral-400 print:shadow-none print:break-inside-avoid print:p-4 print:mb-3 print:bg-white ${
                   isChecked
-                    ? "bg-[#EEF3EE]/80 border-[#C5D5C4] shadow-xs"
-                    : "bg-white border-[#E2D7C5] hover:border-[#B08D57]"
+                    ? "bg-[#10b981]/15 border-[#10b981]/50 shadow-xl"
+                    : "bg-[#0a2a1d]/75 border-[#d4af37]/25 hover:border-[#d4af37]/60 shadow-xl"
                 }`}
               >
                 <div className="flex items-start gap-4">
@@ -311,27 +311,27 @@ export default function JewelleryBuyingChecklistPage() {
                     id={item.id}
                     checked={isChecked}
                     onChange={() => toggleCheck(item.id)}
-                    className="mt-1 w-5 h-5 rounded-xs text-[#173B32] focus:ring-[#173B32] border-[#D4CCC0] cursor-pointer print:hidden"
+                    className="mt-1 w-5 h-5 rounded-md text-[#d4af37] focus:ring-[#d4af37] border-[#d4af37]/40 cursor-pointer print:hidden"
                   />
                   <div className="flex-1">
                     <div className="flex flex-wrap items-center gap-2 mb-1.5">
-                      <span className="text-[10px] font-mono font-semibold uppercase tracking-wider px-2 py-0.5 rounded-xs bg-[#FAF8F5] text-[#B08D57] border border-[#E5DFD5]">
+                      <span className="text-[10px] font-mono font-semibold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-[#04170f] text-[#f1d98a] border border-[#d4af37]/40">
                         Item {idx + 1} &bull; {item.category}
                       </span>
                     </div>
 
                     <label
                       htmlFor={item.id}
-                      className={`font-serif text-lg font-medium cursor-pointer block mb-2 transition-colors ${
+                      className={`font-serif text-xl font-normal cursor-pointer block mb-2 transition-colors ${
                         isChecked
-                          ? "text-[#173B32] line-through decoration-[#B08D57]"
-                          : "text-[#182522]"
+                          ? "text-[#10b981] line-through decoration-[#d4af37]"
+                          : "text-white hover:text-[#f1d98a]"
                       }`}
                     >
                       {item.title}
                     </label>
 
-                    <p className="text-xs sm:text-sm text-[#626A65] leading-relaxed mb-3">
+                    <p className="text-xs sm:text-sm text-[#a8b6af] leading-relaxed mb-3">
                       {item.explanation}
                     </p>
 
@@ -341,7 +341,7 @@ export default function JewelleryBuyingChecklistPage() {
                           href={item.officialLink}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#173B32] hover:text-[#B08D57] transition-colors"
+                          className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-[#f1d98a] hover:text-white transition-colors"
                         >
                           <span>Official Portal: {item.officialRef}</span>
                           <ExternalLink className="w-3.5 h-3.5" />
@@ -356,16 +356,16 @@ export default function JewelleryBuyingChecklistPage() {
         </div>
 
         {/* Free In-Shop Inspection Callout */}
-        <div className="mt-12 bg-[#173B32] text-white p-8 rounded-xs shadow-md no-print relative overflow-hidden">
+        <div className="mt-12 bg-[#0a2a1d] text-white p-8 rounded-2xl border-2 border-[#d4af37]/50 shadow-2xl no-print relative overflow-hidden">
           <div className="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-6">
             <div className="space-y-1 text-center sm:text-left">
-              <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#F3E5AB]">
+              <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#d4af37]">
                 In-Person Shop Verification
               </span>
-              <h3 className="font-serif text-2xl font-normal text-white">
+              <h3 className="font-serif text-2xl sm:text-3xl font-normal text-white">
                 Inspect Any Piece on Digital Scales &amp; Magnifiers
               </h3>
-              <p className="text-xs text-[#DDE5DC] max-w-lg leading-relaxed">
+              <p className="text-xs text-[#a8b6af] max-w-lg leading-relaxed">
                 We welcome you to inspect every piece on our digital scale, check the 6-digit laser HUID, and review laboratory certificates in person at our shop.
               </p>
             </div>
@@ -373,7 +373,7 @@ export default function JewelleryBuyingChecklistPage() {
               <Button
                 variant="gold"
                 size="md"
-                className="text-xs uppercase tracking-wider font-semibold whitespace-nowrap btn-gold-shimmer"
+                className="text-xs uppercase tracking-wider font-semibold whitespace-nowrap"
               >
                 Visit Our Shop
                 <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
@@ -383,11 +383,11 @@ export default function JewelleryBuyingChecklistPage() {
         </div>
 
         {/* Printable Footer note */}
-        <div className="mt-8 pt-6 border-t border-[#E5DFD5] text-xs text-[#626A65] text-center">
-          <p className="mb-1 font-serif text-sm text-[#182522]">
+        <div className="mt-8 pt-6 border-t border-white/10 text-xs text-[#a8b6af] text-center font-mono">
+          <p className="mb-1 font-serif text-sm text-white">
             Vaidik Ratnam — Traditional Gold Jewellery &amp; Gemstone Shop
           </p>
-          <p className="text-[11px] text-[#8F9691]">
+          <p className="text-[11px] text-[#a8b6af]">
             Official Portal: vaidikratnam.com &bull; BIS HUID Laser Hallmarked &bull; Independent Lab Reports
           </p>
         </div>

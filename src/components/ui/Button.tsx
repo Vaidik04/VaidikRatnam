@@ -13,23 +13,23 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     const variantStyles = {
       primary:
-        "bg-[#0F3D2E] text-white hover:bg-[#08241B] focus-visible:ring-[#0F3D2E] active:bg-[#051A13]",
+        "bg-gold-gradient text-[#04170f] font-semibold hover:brightness-105 shadow-md focus-visible:ring-[#d4af37]",
       secondary:
-        "bg-[#EEF3EE] text-[#0F3D2E] hover:bg-[#DDE5DC] focus-visible:ring-[#0F3D2E]",
+        "bg-[#0a2a1d] text-[#f1d98a] border border-[#d4af37]/40 hover:bg-[#0f3a28] focus-visible:ring-[#d4af37]",
       gold:
-        "bg-[#D4AF37] text-[#0F3D2E] font-semibold hover:bg-[#B59328] hover:text-white focus-visible:ring-[#D4AF37]",
+        "bg-gold-gradient text-[#04170f] font-semibold hover:brightness-110 shadow-lg focus-visible:ring-[#d4af37]",
       maroon:
-        "bg-[#6B1F23] text-white hover:bg-[#4D1216] focus-visible:ring-[#6B1F23]",
+        "bg-[#8e1b2e] text-white hover:bg-[#a52137] border border-[#d4af37]/40 focus-visible:ring-[#8e1b2e]",
       outline:
-        "border border-[#D4AF37]/60 bg-transparent text-[#0F3D2E] hover:bg-[#F9F5EB] hover:border-[#D4AF37] focus-visible:ring-[#0F3D2E]",
+        "border border-[#d4af37]/60 bg-transparent text-[#f1d98a] hover:bg-[#d4af37]/15 hover:border-[#d4af37] focus-visible:ring-[#d4af37]",
       ghost:
-        "bg-transparent text-[#182522] hover:bg-[#F0ECE2] focus-visible:ring-[#0F3D2E]",
+        "bg-transparent text-[#a8b6af] hover:text-[#f1d98a] hover:bg-white/5 focus-visible:ring-[#d4af37]",
     };
 
     const sizeStyles = {
-      sm: "text-xs px-3 py-1.5 rounded-sm gap-1.5",
-      md: "text-sm px-4 py-2.5 rounded-sm gap-2",
-      lg: "text-base px-6 py-3 rounded-sm gap-2.5",
+      sm: "text-xs px-3.5 py-1.5 rounded-full gap-1.5 font-mono",
+      md: "text-xs px-5 py-2.5 rounded-full gap-2 font-mono uppercase tracking-wider",
+      lg: "text-sm px-7 py-3.5 rounded-full gap-2.5 font-mono uppercase tracking-widest",
     };
 
     return (

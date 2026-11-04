@@ -47,7 +47,7 @@ export function Modal({
     <div className="fixed inset-0 z-50 overflow-y-auto">
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-[#182522]/60 backdrop-blur-xs transition-opacity"
+        className="fixed inset-0 bg-black/80 backdrop-blur-md transition-opacity"
         onClick={onClose}
         aria-hidden="true"
       />
@@ -57,28 +57,28 @@ export function Modal({
           role="dialog"
           aria-modal="true"
           aria-labelledby="modal-title"
-          className={`relative w-full ${maxWidthStyles[maxWidth]} bg-white border border-[#E5DFD5] rounded-sm shadow-xl p-6 transition-all`}
+          className={`relative w-full ${maxWidthStyles[maxWidth]} bg-[#0a2a1d] border-2 border-[#d4af37]/60 rounded-3xl shadow-2xl p-6 sm:p-8 transition-all text-[#faf7f0]`}
         >
-          <div className="flex items-center justify-between pb-4 border-b border-[#E5DFD5] mb-5">
+          <div className="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
             <h3
               id="modal-title"
-              className="text-lg font-serif font-medium text-[#182522]"
+              className="text-xl sm:text-2xl font-serif text-white font-normal"
             >
               {title}
             </h3>
             <button
               type="button"
               onClick={onClose}
-              className="text-[#626A65] hover:text-[#182522] focus:outline-none p-1 rounded-xs"
+              className="p-2 rounded-full text-[#a8b6af] hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
               aria-label="Close dialog"
             >
               <X className="w-5 h-5" />
             </button>
           </div>
+
           <div>{children}</div>
         </div>
       </div>
     </div>
   );
 }
-

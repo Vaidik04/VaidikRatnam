@@ -11,11 +11,11 @@ export const metadata = {
 
 export default function TermsOfServicePage() {
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAF8F5]">
+    <div className="min-h-screen flex flex-col bg-[#04170f] text-[#faf7f0] selection:bg-[#d4af37]/30 selection:text-[#f6e7b4]">
       <Header />
       <main className="flex-1 py-14 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto w-full space-y-8">
         <div className="flex items-start gap-4">
-          <div className="w-14 h-14 rounded-full bg-[#0F3D2E]/5 border border-[#D4AF37]/50 flex items-center justify-center p-2.5 shrink-0 shadow-2xs">
+          <div className="w-14 h-14 rounded-full bg-[#0a2a1d] border border-[#d4af37]/50 flex items-center justify-center p-2.5 shrink-0 shadow-xl">
             <Image
               src="/images/brand/element-sun-transparent.png"
               alt="Sun Nakshatra"
@@ -25,19 +25,19 @@ export default function TermsOfServicePage() {
             />
           </div>
           <div>
-            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#D4AF37] font-semibold block mb-1">
+            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#d4af37] font-semibold block mb-1">
               Shop Policies &bull; Operating Terms
             </span>
-            <h1 className="font-serif text-3xl sm:text-4xl text-[#182522] font-normal">
+            <h1 className="font-serif text-3xl sm:text-5xl text-white font-normal">
               Terms of Service
             </h1>
-            <p className="text-xs text-[#626A65] mt-1">Operating Version: v1 (Shop Enquiry &amp; In-Person Collection Model)</p>
+            <p className="text-xs text-[#a8b6af] mt-1 font-mono">Operating Version: v1 (Shop Enquiry &amp; In-Person Collection Model)</p>
           </div>
         </div>
 
-        <Card className="p-8 sm:p-10 bg-white border border-[#E2D7C5] rounded-xs shadow-xs space-y-6 text-xs sm:text-sm text-[#182522] leading-relaxed">
+        <Card className="p-8 sm:p-10 bg-[#0a2a1d]/85 border border-[#d4af37]/35 rounded-2xl shadow-2xl space-y-6 text-xs sm:text-sm text-[#e2ece7] leading-relaxed backdrop-blur-md">
           <section className="space-y-2">
-            <h2 className="font-serif text-lg text-[#182522] font-medium">1. Nature of the Website</h2>
+            <h2 className="font-serif text-xl text-[#f6e7b4] font-normal">1. Nature of the Website</h2>
             <p className="text-[#626A65]">
               VaidikRatnam.com operates as a digital shop catalogue, educational guide, and quotation/enquiry website for an established Indian family jewellery business.
             </p>

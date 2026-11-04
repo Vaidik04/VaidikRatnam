@@ -209,33 +209,33 @@ export default function GemstoneComparisonPage() {
   const gem2 = GEMSTONES.find((g) => g.id === gem2Id) || GEMSTONES[3];
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAF8F5]">
+    <div className="min-h-screen flex flex-col bg-[#04170f] text-[#faf7f0] selection:bg-[#d4af37]/30 selection:text-[#f6e7b4]">
       <Header />
 
       <main className="flex-1 py-14 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto w-full space-y-10">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#173B32]/10 border border-[#B08D57]/40 text-[#173B32] text-xs uppercase tracking-[0.22em] font-medium animate-float">
-            <Gem className="w-3.5 h-3.5 text-[#B08D57]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0a2a1d] border border-[#d4af37]/40 text-[#f1d98a] text-xs uppercase tracking-[0.22em] font-mono shadow-md">
+            <Gem className="w-3.5 h-3.5 text-[#d4af37]" />
             <span>Gemological Education Suite</span>
           </div>
 
-          <h1 className="font-serif text-3xl sm:text-5xl text-[#182522] font-normal tracking-tight">
+          <h1 className="font-serif text-3xl sm:text-5xl text-white font-normal tracking-tight">
             Vedic Gemstone &amp; Ratna Comparison
           </h1>
 
-          <p className="text-sm sm:text-base text-[#626A65] leading-relaxed">
+          <p className="text-sm sm:text-base text-[#a8b6af] leading-relaxed font-light">
             Compare structural mineralogy, Mohs durability scale, laboratory verification mandates, and Parashari planetary traditions across natural Navratnas.
           </p>
         </div>
 
         {/* Warning Banner */}
-        <div className="bg-white border-2 border-[#E2D7C5] rounded-xs p-5 shadow-xs flex items-start gap-4 text-xs text-[#182522]">
-          <div className="w-9 h-9 rounded-full bg-[#925700]/10 flex items-center justify-center shrink-0">
-            <ShieldAlert className="w-5 h-5 text-[#925700]" />
+        <div className="caution-ruby-glass rounded-2xl p-5 shadow-xl flex items-start gap-4 text-xs text-[#faf7f0]">
+          <div className="w-9 h-9 rounded-full bg-rose-950/80 border border-rose-500/40 flex items-center justify-center shrink-0">
+            <ShieldAlert className="w-5 h-5 text-rose-300" />
           </div>
           <div className="leading-relaxed">
-            <strong className="text-[#925700] block text-sm font-serif mb-1">
+            <strong className="text-[#f6e7b4] block text-sm font-serif mb-1">
               Our Shop Principle: Laboratory Proof Over Verbal Promises
             </strong>
             The absence of treatment remarks on a handwritten receipt or generic plastic barcode does <strong>NOT</strong> prove a colored stone is untreated. Always insist on an accredited gemological laboratory certificate explicitly stating: <em>&ldquo;No indications of heating or fracture enhancement detected.&rdquo;</em>
@@ -244,8 +244,8 @@ export default function GemstoneComparisonPage() {
 
         {/* Selectors */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <div className="bg-white p-5 border border-[#E2D7C5] rounded-xs shadow-xs space-y-2">
-            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#B08D57] font-semibold block">
+          <div className="bg-[#0a2a1d]/85 p-5 border border-[#d4af37]/35 rounded-2xl shadow-xl space-y-2">
+            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#d4af37] font-semibold block">
               Gemstone Position A
             </span>
             <Select
@@ -259,8 +259,8 @@ export default function GemstoneComparisonPage() {
             />
           </div>
 
-          <div className="bg-white p-5 border border-[#E2D7C5] rounded-xs shadow-xs space-y-2">
-            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#B08D57] font-semibold block">
+          <div className="bg-[#0a2a1d]/85 p-5 border border-[#d4af37]/35 rounded-2xl shadow-xl space-y-2">
+            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#d4af37] font-semibold block">
               Gemstone Position B
             </span>
             <Select
@@ -278,35 +278,35 @@ export default function GemstoneComparisonPage() {
         {/* Side-by-Side Comparison Matrix */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Gemstone 1 Card */}
-          <Card className="p-8 bg-white border border-[#E2D7C5] rounded-xs shadow-md space-y-6 relative overflow-hidden">
+          <Card className="p-8 bg-[#0a2a1d]/90 border border-[#d4af37]/40 rounded-3xl shadow-2xl space-y-6 relative overflow-hidden backdrop-blur-md text-white">
             <div
               className="absolute top-0 right-0 w-48 h-48 rounded-full blur-3xl pointer-events-none -mr-16 -mt-16"
               style={{ background: gem1.bgGlow }}
             />
 
-            <div className="border-b border-[#F0ECE2] pb-5 relative">
-              <span className="text-[10px] uppercase tracking-[0.22em] text-[#B08D57] font-semibold block mb-1">
+            <div className="border-b border-white/10 pb-5 relative">
+              <span className="text-[10px] uppercase font-mono tracking-[0.22em] text-[#d4af37] font-semibold block mb-1">
                 {gem1.mineralSpecies} Species &bull; Navratna
               </span>
-              <h2 className="font-serif text-3xl text-[#182522] font-normal">
+              <h2 className="font-serif text-3xl sm:text-4xl text-white font-normal">
                 {gem1.nameEnglish}
               </h2>
-              <p className="text-xs text-[#626A65] font-serif italic mt-0.5">{gem1.nameHindi}</p>
+              <p className="text-xs text-[#f1d98a] font-serif italic mt-0.5">{gem1.nameHindi}</p>
             </div>
 
             {/* Mohs Hardness Progress Bar */}
-            <div className="space-y-1.5 p-4 rounded-xs bg-[#FAF8F5] border border-[#E5DFD5]">
+            <div className="space-y-1.5 p-4 rounded-xl bg-[#04170f] border border-[#d4af37]/30">
               <div className="flex justify-between items-baseline text-xs">
-                <span className="font-semibold text-[#182522]">Mohs Hardness:</span>
-                <span className="font-mono font-bold text-[#173B32]">{gem1.mohsHardness}</span>
+                <span className="font-mono text-[#a8b6af]">Mohs Hardness:</span>
+                <span className="font-mono font-bold text-[#f1d98a]">{gem1.mohsHardness}</span>
               </div>
-              <div className="w-full bg-[#E5DFD5] h-2 rounded-full overflow-hidden">
+              <div className="w-full bg-[#0a2a1d] h-2 rounded-full overflow-hidden border border-white/10">
                 <div
-                  className="h-full bg-[#173B32] rounded-full transition-all duration-700"
+                  className="h-full bg-gold-gradient rounded-full transition-all duration-700"
                   style={{ width: `${(gem1.mohsNumeric / 10) * 100}%` }}
                 />
               </div>
-              <div className="flex justify-between text-[10px] text-[#8F9691] font-mono">
+              <div className="flex justify-between text-[10px] text-[#a8b6af] font-mono">
                 <span>1 (Talc)</span>
                 <span>5 (Apatite)</span>
                 <span>10 (Diamond)</span>
@@ -314,53 +314,53 @@ export default function GemstoneComparisonPage() {
             </div>
 
             {/* Scientific Properties */}
-            <div className="space-y-4 text-xs">
-              <div className="grid grid-cols-2 gap-3 p-3 bg-[#FAF8F5] rounded-xs border border-[#E5DFD5]">
+            <div className="space-y-4 text-xs font-mono">
+              <div className="grid grid-cols-2 gap-3 p-3 bg-[#04170f] rounded-xl border border-[#d4af37]/30">
                 <div>
-                  <strong className="text-[#626A65] block text-[10px] uppercase tracking-wider">Refractive Index:</strong>
-                  <span className="font-mono font-medium text-[#182522]">{gem1.refractiveIndex}</span>
+                  <strong className="text-[#a8b6af] block text-[10px] uppercase tracking-wider">Refractive Index:</strong>
+                  <span className="font-mono font-medium text-[#f1d98a]">{gem1.refractiveIndex}</span>
                 </div>
                 <div>
-                  <strong className="text-[#626A65] block text-[10px] uppercase tracking-wider">Specific Gravity:</strong>
-                  <span className="font-mono font-medium text-[#182522]">{gem1.specificGravity}</span>
+                  <strong className="text-[#a8b6af] block text-[10px] uppercase tracking-wider">Specific Gravity:</strong>
+                  <span className="font-mono font-medium text-[#f1d98a]">{gem1.specificGravity}</span>
                 </div>
               </div>
 
               <div>
-                <strong className="text-[#182522] block mb-1">Chemical Formula:</strong>
-                <p className="text-[#626A65] font-mono bg-[#FAF8F5] px-2.5 py-1.5 rounded-xs border border-[#E5DFD5]">
+                <strong className="text-white block mb-1">Chemical Formula:</strong>
+                <p className="text-[#f1d98a] font-mono bg-[#04170f] px-3 py-2 rounded-xl border border-white/10">
                   {gem1.chemicalFormula}
                 </p>
               </div>
 
               <div>
-                <strong className="text-[#182522] block mb-1">Primary Geographic Origins:</strong>
-                <p className="text-[#626A65] leading-relaxed">{gem1.primaryOrigins.join(", ")}</p>
+                <strong className="text-white block mb-1">Primary Geographic Origins:</strong>
+                <p className="text-[#a8b6af] leading-relaxed font-sans">{gem1.primaryOrigins.join(", ")}</p>
               </div>
 
-              <div className="p-4 bg-[#FFF8E7] border border-[#FFE5A3] rounded-xs space-y-1">
-                <strong className="text-[#925700] block text-xs font-semibold uppercase tracking-wider">
+              <div className="p-4 bg-[#04170f] border border-[#d4af37]/40 rounded-xl space-y-1">
+                <strong className="text-[#f1d98a] block text-xs font-mono uppercase tracking-wider">
                   Prevalent Market Treatments:
                 </strong>
-                <p className="text-[#925700] leading-relaxed">{gem1.commonTreatments}</p>
+                <p className="text-[#a8b6af] font-sans leading-relaxed">{gem1.commonTreatments}</p>
               </div>
 
-              <div className="p-4 bg-[#EEF3EE] border border-[#C5D5C4] rounded-xs space-y-1">
-                <strong className="text-[#173B32] block text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5">
+              <div className="p-4 bg-[#10b981]/15 border border-[#10b981]/40 rounded-xl space-y-1">
+                <strong className="text-[#10b981] block text-xs font-mono uppercase tracking-wider flex items-center gap-1.5">
                   <ShieldCheck className="w-3.5 h-3.5" />
                   Required Lab Certificate Wording:
                 </strong>
-                <p className="text-[#173B32] leading-relaxed">{gem1.labReportMustState}</p>
+                <p className="text-[#e2ece7] font-sans leading-relaxed">{gem1.labReportMustState}</p>
               </div>
 
-              <div className="pt-4 border-t border-[#F0ECE2] space-y-2">
-                <span className="text-[10px] font-mono font-semibold uppercase tracking-[0.2em] text-[#B08D57] block">
+              <div className="pt-4 border-t border-white/10 space-y-2">
+                <span className="text-[10px] font-mono font-semibold uppercase tracking-[0.2em] text-[#d4af37] block">
                   Parashari Jyotish Alignment
                 </span>
-                <p className="text-base font-serif font-medium text-[#182522]">
+                <p className="text-base font-serif font-medium text-white">
                   Ruling Graha: {gem1.traditionalPlanet}
                 </p>
-                <p className="text-xs text-[#626A65] leading-relaxed">
+                <p className="text-xs text-[#a8b6af] font-sans leading-relaxed">
                   {gem1.traditionalNotes}
                 </p>
               </div>
@@ -369,7 +369,7 @@ export default function GemstoneComparisonPage() {
             {/* Sourcing CTA for Stone 1 */}
             <div className="pt-2">
               <Link href={`/gemstones?sourcing=${gem1.id}`}>
-                <Button variant="outline" size="sm" className="w-full text-xs uppercase tracking-wider border-[#173B32] text-[#173B32] hover:bg-[#173B32] hover:text-white">
+                <Button variant="gold" size="sm" className="w-full text-xs uppercase tracking-wider">
                   Enquire About Natural {gem1.nameEnglish} &rarr;
                 </Button>
               </Link>
@@ -377,35 +377,35 @@ export default function GemstoneComparisonPage() {
           </Card>
 
           {/* Gemstone 2 Card */}
-          <Card className="p-8 bg-white border border-[#E2D7C5] rounded-xs shadow-md space-y-6 relative overflow-hidden">
+          <Card className="p-8 bg-[#0a2a1d]/90 border border-[#d4af37]/40 rounded-3xl shadow-2xl space-y-6 relative overflow-hidden backdrop-blur-md text-white">
             <div
               className="absolute top-0 right-0 w-48 h-48 rounded-full blur-3xl pointer-events-none -mr-16 -mt-16"
               style={{ background: gem2.bgGlow }}
             />
 
-            <div className="border-b border-[#F0ECE2] pb-5 relative">
-              <span className="text-[10px] uppercase tracking-[0.22em] text-[#B08D57] font-semibold block mb-1">
+            <div className="border-b border-white/10 pb-5 relative">
+              <span className="text-[10px] uppercase font-mono tracking-[0.22em] text-[#d4af37] font-semibold block mb-1">
                 {gem2.mineralSpecies} Species &bull; Navratna
               </span>
-              <h2 className="font-serif text-3xl text-[#182522] font-normal">
+              <h2 className="font-serif text-3xl sm:text-4xl text-white font-normal">
                 {gem2.nameEnglish}
               </h2>
-              <p className="text-xs text-[#626A65] font-serif italic mt-0.5">{gem2.nameHindi}</p>
+              <p className="text-xs text-[#f1d98a] font-serif italic mt-0.5">{gem2.nameHindi}</p>
             </div>
 
             {/* Mohs Hardness Progress Bar */}
-            <div className="space-y-1.5 p-4 rounded-xs bg-[#FAF8F5] border border-[#E5DFD5]">
+            <div className="space-y-1.5 p-4 rounded-xl bg-[#04170f] border border-[#d4af37]/30">
               <div className="flex justify-between items-baseline text-xs">
-                <span className="font-semibold text-[#182522]">Mohs Hardness:</span>
-                <span className="font-mono font-bold text-[#173B32]">{gem2.mohsHardness}</span>
+                <span className="font-mono text-[#a8b6af]">Mohs Hardness:</span>
+                <span className="font-mono font-bold text-[#f1d98a]">{gem2.mohsHardness}</span>
               </div>
-              <div className="w-full bg-[#E5DFD5] h-2 rounded-full overflow-hidden">
+              <div className="w-full bg-[#0a2a1d] h-2 rounded-full overflow-hidden border border-white/10">
                 <div
-                  className="h-full bg-[#173B32] rounded-full transition-all duration-700"
+                  className="h-full bg-gold-gradient rounded-full transition-all duration-700"
                   style={{ width: `${(gem2.mohsNumeric / 10) * 100}%` }}
                 />
               </div>
-              <div className="flex justify-between text-[10px] text-[#8F9691] font-mono">
+              <div className="flex justify-between text-[10px] text-[#a8b6af] font-mono">
                 <span>1 (Talc)</span>
                 <span>5 (Apatite)</span>
                 <span>10 (Diamond)</span>
@@ -413,53 +413,53 @@ export default function GemstoneComparisonPage() {
             </div>
 
             {/* Scientific Properties */}
-            <div className="space-y-4 text-xs">
-              <div className="grid grid-cols-2 gap-3 p-3 bg-[#FAF8F5] rounded-xs border border-[#E5DFD5]">
+            <div className="space-y-4 text-xs font-mono">
+              <div className="grid grid-cols-2 gap-3 p-3 bg-[#04170f] rounded-xl border border-[#d4af37]/30">
                 <div>
-                  <strong className="text-[#626A65] block text-[10px] uppercase tracking-wider">Refractive Index:</strong>
-                  <span className="font-mono font-medium text-[#182522]">{gem2.refractiveIndex}</span>
+                  <strong className="text-[#a8b6af] block text-[10px] uppercase tracking-wider">Refractive Index:</strong>
+                  <span className="font-mono font-medium text-[#f1d98a]">{gem2.refractiveIndex}</span>
                 </div>
                 <div>
-                  <strong className="text-[#626A65] block text-[10px] uppercase tracking-wider">Specific Gravity:</strong>
-                  <span className="font-mono font-medium text-[#182522]">{gem2.specificGravity}</span>
+                  <strong className="text-[#a8b6af] block text-[10px] uppercase tracking-wider">Specific Gravity:</strong>
+                  <span className="font-mono font-medium text-[#f1d98a]">{gem2.specificGravity}</span>
                 </div>
               </div>
 
               <div>
-                <strong className="text-[#182522] block mb-1">Chemical Formula:</strong>
-                <p className="text-[#626A65] font-mono bg-[#FAF8F5] px-2.5 py-1.5 rounded-xs border border-[#E5DFD5]">
+                <strong className="text-white block mb-1">Chemical Formula:</strong>
+                <p className="text-[#f1d98a] font-mono bg-[#04170f] px-3 py-2 rounded-xl border border-white/10">
                   {gem2.chemicalFormula}
                 </p>
               </div>
 
               <div>
-                <strong className="text-[#182522] block mb-1">Primary Geographic Origins:</strong>
-                <p className="text-[#626A65] leading-relaxed">{gem2.primaryOrigins.join(", ")}</p>
+                <strong className="text-white block mb-1">Primary Geographic Origins:</strong>
+                <p className="text-[#a8b6af] leading-relaxed font-sans">{gem2.primaryOrigins.join(", ")}</p>
               </div>
 
-              <div className="p-4 bg-[#FFF8E7] border border-[#FFE5A3] rounded-xs space-y-1">
-                <strong className="text-[#925700] block text-xs font-semibold uppercase tracking-wider">
+              <div className="p-4 bg-[#04170f] border border-[#d4af37]/40 rounded-xl space-y-1">
+                <strong className="text-[#f1d98a] block text-xs font-mono uppercase tracking-wider">
                   Prevalent Market Treatments:
                 </strong>
-                <p className="text-[#925700] leading-relaxed">{gem2.commonTreatments}</p>
+                <p className="text-[#a8b6af] font-sans leading-relaxed">{gem2.commonTreatments}</p>
               </div>
 
-              <div className="p-4 bg-[#EEF3EE] border border-[#C5D5C4] rounded-xs space-y-1">
-                <strong className="text-[#173B32] block text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5">
+              <div className="p-4 bg-[#10b981]/15 border border-[#10b981]/40 rounded-xl space-y-1">
+                <strong className="text-[#10b981] block text-xs font-mono uppercase tracking-wider flex items-center gap-1.5">
                   <ShieldCheck className="w-3.5 h-3.5" />
                   Required Lab Certificate Wording:
                 </strong>
-                <p className="text-[#173B32] leading-relaxed">{gem2.labReportMustState}</p>
+                <p className="text-[#e2ece7] font-sans leading-relaxed">{gem2.labReportMustState}</p>
               </div>
 
-              <div className="pt-4 border-t border-[#F0ECE2] space-y-2">
-                <span className="text-[10px] font-mono font-semibold uppercase tracking-[0.2em] text-[#B08D57] block">
+              <div className="pt-4 border-t border-white/10 space-y-2">
+                <span className="text-[10px] font-mono font-semibold uppercase tracking-[0.2em] text-[#d4af37] block">
                   Parashari Jyotish Alignment
                 </span>
-                <p className="text-base font-serif font-medium text-[#182522]">
+                <p className="text-base font-serif font-medium text-white">
                   Ruling Graha: {gem2.traditionalPlanet}
                 </p>
-                <p className="text-xs text-[#626A65] leading-relaxed">
+                <p className="text-xs text-[#a8b6af] font-sans leading-relaxed">
                   {gem2.traditionalNotes}
                 </p>
               </div>
@@ -468,7 +468,7 @@ export default function GemstoneComparisonPage() {
             {/* Sourcing CTA for Stone 2 */}
             <div className="pt-2">
               <Link href={`/gemstones?sourcing=${gem2.id}`}>
-                <Button variant="outline" size="sm" className="w-full text-xs uppercase tracking-wider border-[#173B32] text-[#173B32] hover:bg-[#173B32] hover:text-white">
+                <Button variant="gold" size="sm" className="w-full text-xs uppercase tracking-wider">
                   Enquire About Natural {gem2.nameEnglish} &rarr;
                 </Button>
               </Link>
@@ -479,45 +479,45 @@ export default function GemstoneComparisonPage() {
         {/* ====================================================================
             MOHS SCALE OF MINERAL HARDNESS & DAILY WEARABILITY EXPLAINER
             ==================================================================== */}
-        <Card className="p-6 sm:p-8 bg-white border border-[#E2D7C5] rounded-xs shadow-md space-y-8">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#F0ECE2] pb-5">
+        <Card className="p-6 sm:p-8 bg-[#0a2a1d]/85 border border-[#d4af37]/35 rounded-3xl shadow-2xl space-y-8 backdrop-blur-md text-white">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/10 pb-5">
             <div>
-              <span className="text-[10px] uppercase font-mono tracking-[0.24em] text-[#B08D57] font-semibold block">
+              <span className="text-[10px] uppercase font-mono tracking-[0.24em] text-[#d4af37] font-semibold block">
                 Gemological Durability Science
               </span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#182522] font-normal">
+              <h2 className="font-serif text-2xl sm:text-3xl text-white font-normal">
                 Mohs Hardness Scale (1 to 10) &amp; Daily Wearability Guide
               </h2>
             </div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#173B32]/10 text-[#173B32] text-xs font-mono font-medium shrink-0">
-              <Sparkles className="w-3.5 h-3.5 text-[#B08D57]" />
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#04170f] border border-[#d4af37]/40 text-[#f1d98a] text-xs font-mono font-medium shrink-0">
+              <Sparkles className="w-3.5 h-3.5 text-[#d4af37]" />
               <span>Comparative Analysis Active</span>
             </div>
           </div>
 
-          <p className="text-xs sm:text-sm text-[#626A65] leading-relaxed max-w-4xl">
-            In gemstone science, <strong>Hardness</strong> (resistance to scratching on the Mohs scale) is not the same as <strong>Toughness</strong> (resistance to chipping and fracturing). For example, Emerald is hard (7.5–8.0 Mohs) but contains microscopic natural fissures called <em>jardin</em>, making it much more delicate than Ruby or Sapphire (9.0 Mohs) or Diamond (10.0 Mohs).
+          <p className="text-xs sm:text-sm text-[#a8b6af] leading-relaxed max-w-4xl font-light">
+            In gemstone science, <strong className="text-white">Hardness</strong> (resistance to scratching on the Mohs scale) is not the same as <strong className="text-white">Toughness</strong> (resistance to chipping and fracturing). For example, Emerald is hard (7.5–8.0 Mohs) but contains microscopic natural fissures called <em>jardin</em>, making it much more delicate than Ruby or Sapphire (9.0 Mohs) or Diamond (10.0 Mohs).
           </p>
 
           {/* Visual 1-10 Mohs Step Spectrum */}
           <div className="space-y-3">
-            <div className="flex items-center justify-between text-xs font-mono text-[#626A65]">
-              <span className="font-bold text-[#A61C1C]">1 &bull; Very Soft (Requires Gentle Care)</span>
-              <span className="font-bold text-[#173B32]">10 &bull; Supreme Hardness (Indestructible to Scratching)</span>
+            <div className="flex items-center justify-between text-xs font-mono">
+              <span className="font-bold text-[#f87171]">1 &bull; Very Soft (Requires Gentle Care)</span>
+              <span className="font-bold text-[#10b981]">10 &bull; Supreme Hardness (Indestructible to Scratching)</span>
             </div>
 
-            <div className="grid grid-cols-5 sm:grid-cols-10 gap-1.5">
+            <div className="grid grid-cols-5 sm:grid-cols-10 gap-2">
               {[
-                { level: 1, mineral: "Talc", gem: "—", tone: "bg-stone-100 text-stone-700" },
-                { level: 2, mineral: "Gypsum", gem: "Amber (2-2.5)", tone: "bg-amber-50 text-amber-800" },
-                { level: 3, mineral: "Calcite", gem: "Coral / Pearl (3-4)", tone: "bg-orange-50 text-orange-800" },
-                { level: 4, mineral: "Fluorite", gem: "Pearl (4)", tone: "bg-yellow-50 text-yellow-800" },
-                { level: 5, mineral: "Apatite", gem: "Turquoise (5-6)", tone: "bg-teal-50 text-teal-800" },
-                { level: 6, mineral: "Orthoclase", gem: "Moonstone (6-6.5)", tone: "bg-cyan-50 text-cyan-800" },
-                { level: 7, mineral: "Quartz", gem: "Hessonite (7-7.5)", tone: "bg-emerald-50 text-emerald-800" },
-                { level: 8, mineral: "Topaz", gem: "Emerald (7.5-8.0)", tone: "bg-emerald-100 text-emerald-900" },
-                { level: 9, mineral: "Corundum", gem: "Ruby & Sapphire (9.0)", tone: "bg-[#173B32]/10 text-[#173B32]" },
-                { level: 10, mineral: "Diamond", gem: "Heera (10.0)", tone: "bg-[#173B32] text-white" },
+                { level: 1, mineral: "Talc", gem: "—" },
+                { level: 2, mineral: "Gypsum", gem: "Amber (2-2.5)" },
+                { level: 3, mineral: "Calcite", gem: "Coral/Pearl (3-4)" },
+                { level: 4, mineral: "Fluorite", gem: "Pearl (4)" },
+                { level: 5, mineral: "Apatite", gem: "Turquoise (5-6)" },
+                { level: 6, mineral: "Orthoclase", gem: "Moonstone (6-6.5)" },
+                { level: 7, mineral: "Quartz", gem: "Hessonite (7-7.5)" },
+                { level: 8, mineral: "Topaz", gem: "Emerald (7.5-8)" },
+                { level: 9, mineral: "Corundum", gem: "Ruby & Sapphire (9)" },
+                { level: 10, mineral: "Diamond", gem: "Heera (10.0)" },
               ].map((item) => {
                 const isGem1Match = Math.round(gem1.mohsNumeric) === item.level;
                 const isGem2Match = Math.round(gem2.mohsNumeric) === item.level;
@@ -526,31 +526,31 @@ export default function GemstoneComparisonPage() {
                 return (
                   <div
                     key={item.level}
-                    className={`p-2.5 rounded-xs border text-center transition-all relative ${
+                    className={`p-2.5 rounded-xl border text-center transition-all relative font-mono ${
                       isAnyMatch
-                        ? "border-2 border-[#B08D57] ring-2 ring-[#B08D57]/20 shadow-md scale-105 z-10 bg-white"
-                        : "border-[#E5DFD5] bg-[#FAF8F5]"
+                        ? "border-2 border-[#d4af37] bg-[#04170f] shadow-lg scale-105 z-10 text-[#f1d98a]"
+                        : "border-white/10 bg-[#04170f]/70 text-[#a8b6af]"
                     }`}
                   >
-                    <div className="font-mono text-xs font-bold text-[#182522]">
+                    <div className="text-xs font-bold text-white">
                       {item.level}
                     </div>
-                    <div className="text-[10px] text-[#626A65] truncate font-medium">
+                    <div className="text-[10px] truncate font-medium mt-0.5">
                       {item.mineral}
                     </div>
-                    <div className="text-[9px] text-[#8F9691] truncate mt-0.5">
+                    <div className="text-[8px] text-[#a8b6af] truncate mt-0.5">
                       {item.gem}
                     </div>
 
                     {isAnyMatch && (
                       <div className="mt-1.5 flex flex-col gap-0.5">
                         {isGem1Match && (
-                          <span className="text-[8px] font-bold px-1 py-0.2 rounded-xs bg-[#173B32] text-white truncate">
+                          <span className="text-[8px] font-bold px-1 py-0.2 rounded-full bg-gold-gradient text-[#04170f] truncate">
                             {gem1.nameEnglish.split(" ")[0]}
                           </span>
                         )}
                         {isGem2Match && (
-                          <span className="text-[8px] font-bold px-1 py-0.2 rounded-xs bg-[#B08D57] text-[#182522] truncate">
+                          <span className="text-[8px] font-bold px-1 py-0.2 rounded-full bg-[#10b981] text-black truncate">
                             {gem2.nameEnglish.split(" ")[0]}
                           </span>
                         )}
@@ -563,19 +563,19 @@ export default function GemstoneComparisonPage() {
           </div>
 
           {/* Practical Care & Durability Comparison between Gem 1 and Gem 2 */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2 font-mono">
             {/* Gem 1 Care Verdict */}
-            <div className="p-5 rounded-xs bg-[#FAF8F5] border border-[#E5DFD5] space-y-2">
+            <div className="p-5 rounded-2xl bg-[#04170f] border border-[#d4af37]/30 space-y-2">
               <div className="flex items-center justify-between">
-                <strong className="font-serif text-base text-[#182522] flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#1B6442]" />
+                <strong className="font-serif text-base text-white flex items-center gap-1.5">
+                  <CheckCircle2 className="w-4 h-4 text-[#10b981]" />
                   {gem1.nameEnglish} ({gem1.mohsHardness})
                 </strong>
-                <span className="text-[10px] font-mono font-semibold uppercase px-2 py-0.5 rounded-xs bg-white border border-[#E5DFD5] text-[#173B32]">
+                <span className="text-[10px] font-mono uppercase px-2.5 py-0.5 rounded-full bg-[#0a2a1d] border border-[#d4af37]/40 text-[#f1d98a]">
                   {gem1.mohsNumeric >= 9 ? "Everyday Ring Safe" : gem1.mohsNumeric >= 7 ? "Occasion / Gentle Daily" : "Protective Care Only"}
                 </span>
               </div>
-              <p className="text-xs text-[#626A65] leading-relaxed">
+              <p className="text-xs text-[#a8b6af] font-sans leading-relaxed">
                 {gem1.mohsNumeric >= 9
                   ? "Extremely hard and durable stone. Resistant to everyday scratches and safe for daily ring wear."
                   : gem1.id === "emerald"
@@ -587,17 +587,17 @@ export default function GemstoneComparisonPage() {
             </div>
 
             {/* Gem 2 Care Verdict */}
-            <div className="p-5 rounded-xs bg-[#FAF8F5] border border-[#E5DFD5] space-y-2">
+            <div className="p-5 rounded-2xl bg-[#04170f] border border-[#d4af37]/30 space-y-2">
               <div className="flex items-center justify-between">
-                <strong className="font-serif text-base text-[#182522] flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#1B6442]" />
+                <strong className="font-serif text-base text-white flex items-center gap-1.5">
+                  <CheckCircle2 className="w-4 h-4 text-[#10b981]" />
                   {gem2.nameEnglish} ({gem2.mohsHardness})
                 </strong>
-                <span className="text-[10px] font-mono font-semibold uppercase px-2 py-0.5 rounded-xs bg-white border border-[#E5DFD5] text-[#173B32]">
+                <span className="text-[10px] font-mono uppercase px-2.5 py-0.5 rounded-full bg-[#0a2a1d] border border-[#d4af37]/40 text-[#f1d98a]">
                   {gem2.mohsNumeric >= 9 ? "Everyday Ring Safe" : gem2.mohsNumeric >= 7 ? "Occasion / Gentle Daily" : "Protective Care Only"}
                 </span>
               </div>
-              <p className="text-xs text-[#626A65] leading-relaxed">
+              <p className="text-xs text-[#a8b6af] font-sans leading-relaxed">
                 {gem2.mohsNumeric >= 9
                   ? "Extremely hard and durable stone. Resistant to everyday scratches and safe for daily ring wear."
                   : gem2.id === "emerald"
@@ -610,39 +610,39 @@ export default function GemstoneComparisonPage() {
           </div>
 
           {/* Educational Callout on Why Mohs Matters for Precious Jewellery */}
-          <div className="bg-[#FFF8E7] border border-[#FFE5A3] p-4 rounded-xs flex items-start gap-3 text-xs text-[#925700]">
-            <Info className="w-4 h-4 mt-0.5 shrink-0 text-[#B08D57]" />
-            <div className="leading-relaxed">
-              <strong className="font-semibold block mb-0.5">The Airborne Dust Benchmark (Mohs 7.0):</strong>
+          <div className="bg-[#04170f] border border-[#d4af37]/40 p-4 rounded-xl flex items-start gap-3 text-xs text-[#f6e7b4]">
+            <Info className="w-4 h-4 mt-0.5 shrink-0 text-[#d4af37]" />
+            <div className="leading-relaxed font-sans">
+              <strong className="font-semibold block mb-0.5 text-[#f1d98a]">The Airborne Dust Benchmark (Mohs 7.0):</strong>
               Ordinary atmospheric dust particles contain microscopic quartz (Mohs 7). Any gemstone softer than 7 (such as Pearl, Coral, or Turquoise) can be scratched over time simply by aggressive rubbing with a dry abrasive cloth. Always wash delicate gems gently in clean lukewarm water and dry with a soft clean cloth.
             </div>
           </div>
         </Card>
 
         {/* Studio sourcing CTA */}
-        <div className="bg-[#173B32] text-white p-8 sm:p-10 rounded-xs shadow-xl relative overflow-hidden">
+        <div className="bg-[#0a2a1d] text-white p-8 sm:p-10 rounded-3xl border-2 border-[#d4af37]/50 shadow-2xl relative overflow-hidden">
           <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="space-y-2 text-center md:text-left">
-              <span className="text-xs font-mono uppercase tracking-[0.22em] text-[#F3E5AB]">
+              <span className="text-xs font-mono uppercase tracking-[0.22em] text-[#d4af37]">
                 Direct Sourcing &bull; Unheated Certification
               </span>
               <h3 className="font-serif text-2xl sm:text-3xl font-normal text-white">
                 Looking for a Natural, Unheated Ratna?
               </h3>
-              <p className="text-xs sm:text-sm text-[#DDE5DC] max-w-xl leading-relaxed">
+              <p className="text-xs sm:text-sm text-[#a8b6af] max-w-xl leading-relaxed">
                 We source natural, unheated colored gemstones tailored to your astrological recommendation or personal collection. Every stone includes recognized laboratory documentation and is available for physical inspection at our shop.
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
               <Link href="/gemstones" className="w-full sm:w-auto">
-                <Button variant="gold" size="md" className="w-full sm:w-auto text-xs uppercase tracking-wider font-semibold whitespace-nowrap btn-gold-shimmer">
+                <Button variant="gold" size="md" className="w-full sm:w-auto text-xs uppercase tracking-wider font-semibold whitespace-nowrap">
                   Explore Real Gemstones
                   <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
                 </Button>
               </Link>
               <Link href="/astrology" className="w-full sm:w-auto">
-                <Button variant="outline" size="md" className="w-full sm:w-auto text-white border-[#3A6B60] hover:bg-[#122e27] text-xs uppercase tracking-wider whitespace-nowrap">
+                <Button variant="outline" size="md" className="w-full sm:w-auto text-xs uppercase tracking-wider whitespace-nowrap">
                   Book Jyotish Consultation
                 </Button>
               </Link>

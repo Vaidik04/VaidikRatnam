@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import { Modal } from "@/components/ui/Modal";
-import { Button } from "@/components/ui/Button";
 import { Input, Textarea, Select } from "@/components/ui/Input";
 import { submitProductEnquiry } from "@/app/jewellery/actions";
 import { CheckCircle2, AlertCircle } from "lucide-react";
@@ -71,52 +70,57 @@ export function ProductEnquiryDialog({
   return (
     <Modal isOpen={isOpen} onClose={handleResetAndClose} title={`Enquire: ${productName}`} maxWidth="md">
       {submittedRef ? (
-        <div className="text-center py-6 space-y-4">
-          <div className="mx-auto w-12 h-12 rounded-full bg-[#EEF3EE] flex items-center justify-center text-[#173B32]">
-            <CheckCircle2 className="w-6 h-6" />
+        <div className="text-center py-6 space-y-5 text-[#faf7f0]">
+          <div className="mx-auto w-16 h-16 rounded-full bg-[#10b981]/15 border border-[#10b981]/50 flex items-center justify-center text-[#10b981] shadow-[0_0_30px_rgba(16,185,129,0.3)]">
+            <CheckCircle2 className="w-9 h-9" />
           </div>
-          <h4 className="font-serif text-lg font-medium text-[#182522]">
-            Enquiry Successfully Submitted
+          <h4 className="font-serif text-2xl font-normal text-white">
+            Enquiry Received by Master Karigar
           </h4>
-          <p className="text-xs text-[#626A65] max-w-sm mx-auto leading-relaxed">
-            Our shop team has received your enquiry. We will check physical stock and reach out via {customerContactMethod}.
+          <p className="text-xs sm:text-sm text-[#a8b6af] max-w-sm mx-auto leading-relaxed font-light">
+            Our Varanasi team has logged your enquiry. We will check physical hallmark inventory and reach out via {customerContactMethod}.
           </p>
-          <div className="p-3 bg-[#F7F4ED] border border-[#E5DFD5] rounded-xs font-mono text-sm font-bold text-[#173B32] inline-block">
-            Reference: {submittedRef}
+          <div className="p-3.5 bg-[#04170f] border border-[#d4af37]/40 rounded-xl font-mono text-sm font-bold text-[#f1d98a] inline-block shadow-inner">
+            Reference Code: {submittedRef}
           </div>
-          <div className="pt-3">
-            <Button variant="primary" size="sm" onClick={handleResetAndClose}>
+          <div className="pt-4">
+            <button
+              type="button"
+              onClick={handleResetAndClose}
+              className="bg-gold-gradient text-[#04170f] px-6 py-2.5 rounded-xl font-mono text-xs uppercase tracking-wider font-bold shadow-md hover:brightness-105 transition-all cursor-pointer"
+            >
               Close Window
-            </Button>
+            </button>
           </div>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4 text-[#faf7f0]">
           {errorMsg && (
-            <div className="p-3 bg-[#FFF0F0] border border-[#FFD0D0] text-xs text-[#A61C1C] flex items-center gap-2 rounded-xs">
-              <AlertCircle className="w-4 h-4 shrink-0" />
+            <div className="p-3 bg-[#8e1b2e]/30 border border-[#8e1b2e]/60 text-xs text-[#f6e7b4] flex items-center gap-2 rounded-xl">
+              <AlertCircle className="w-4 h-4 shrink-0 text-[#ff8888]" />
               <span>{errorMsg}</span>
             </div>
           )}
 
-          <div className="text-xs text-[#626A65] bg-[#F7F4ED] p-3 rounded-xs border border-[#E5DFD5]">
-            Item: <strong className="text-[#182522]">{productName}</strong> | SKU: <strong className="font-mono text-[#182522]">{productSku}</strong>
+          <div className="text-xs text-[#a8b6af] bg-[#04170f] p-3.5 rounded-xl border border-white/10 font-mono flex items-center justify-between">
+            <span>Piece: <strong className="text-white font-serif text-sm">{productName}</strong></span>
+            <span className="text-[#d4af37]">SKU: {productSku}</span>
           </div>
 
           <Select
-            label="Request Type"
+            label="Enquiry Nature"
             value={enquiryType}
             onChange={(e) => setEnquiryType(e.target.value as "quote_request" | "availability_check" | "showroom_viewing")}
             options={[
-              { value: "quote_request", label: "Request Current Price Quote" },
-              { value: "availability_check", label: "Check If In Stock at Shop" },
-              { value: "showroom_viewing", label: "Visit Shop to Try & Inspect" },
-              { value: "general_question", label: "Ask a General Question" },
+              { value: "quote_request", label: "Request Current Bullion Valuation & Quote" },
+              { value: "availability_check", label: "Check In-Store Availability in Varanasi" },
+              { value: "showroom_viewing", label: "Book Personal Viewing Appointment" },
+              { value: "general_question", label: "Ask Karigar / Gemstone Question" },
             ]}
           />
 
           <Input
-            label="Your Name"
+            label="Your Full Name"
             required
             placeholder="e.g. Ananya Patel"
             value={customerName}
@@ -125,7 +129,7 @@ export function ProductEnquiryDialog({
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <Select
-              label="Preferred Contact Method"
+              label="Contact Preference"
               value={customerContactMethod}
               onChange={(e) => setCustomerContactMethod(e.target.value as "whatsapp" | "phone" | "email")}
               options={[
@@ -155,24 +159,31 @@ export function ProductEnquiryDialog({
           )}
 
           <Textarea
-            label="Message / Questions"
+            label="Enquiry Details / Custom Notes"
             required
             rows={3}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
           />
 
-          <div className="pt-2 border-t border-[#E5DFD5] flex items-center justify-end gap-2">
-            <Button type="button" variant="ghost" size="sm" onClick={onClose}>
+          <div className="pt-3 border-t border-white/10 flex items-center justify-end gap-3">
+            <button
+              type="button"
+              onClick={onClose}
+              className="px-4 py-2.5 text-xs font-mono uppercase tracking-wider text-[#a8b6af] hover:text-white transition-colors cursor-pointer"
+            >
               Cancel
-            </Button>
-            <Button type="submit" variant="primary" size="md" isLoading={isSubmitting} className="uppercase tracking-wider text-xs">
-              Send Shop Enquiry
-            </Button>
+            </button>
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="bg-gold-gradient text-[#04170f] px-6 py-2.5 rounded-xl text-xs font-mono uppercase tracking-widest font-bold shadow-lg hover:brightness-105 active:scale-[0.98] transition-all cursor-pointer gold-shimmer-sweep disabled:opacity-50"
+            >
+              {isSubmitting ? "Submitting..." : "Send Studio Enquiry"}
+            </button>
           </div>
         </form>
       )}
     </Modal>
   );
 }
-

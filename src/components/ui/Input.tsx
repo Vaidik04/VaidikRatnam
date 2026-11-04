@@ -15,23 +15,23 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         {label && (
           <label
             htmlFor={inputId}
-            className="block text-xs font-semibold uppercase tracking-wider text-[#182522] mb-1.5"
+            className="block text-xs font-mono uppercase tracking-wider text-[#d4af37] mb-1.5 font-semibold"
           >
-            {label} {required && <span className="text-[#A61C1C]">*</span>}
+            {label} {required && <span className="text-[#f1d98a]">*</span>}
           </label>
         )}
         <input
           ref={ref}
           id={inputId}
           required={required}
-          className={`w-full px-3.5 py-2.5 bg-white border rounded-sm text-sm text-[#182522] placeholder-[#8F9691] transition-colors focus:outline-none focus:ring-1 focus:ring-[#173B32] focus:border-[#173B32] disabled:bg-[#F3EFE8] disabled:text-[#888] ${
-            error ? "border-[#A61C1C] focus:ring-[#A61C1C]" : "border-[#D4CCC0]"
+          className={`w-full px-3.5 py-2.5 bg-[#04170f] border rounded-xl text-sm text-white placeholder-[#7a8a83] transition-colors focus:outline-none focus:border-[#d4af37] focus:ring-1 focus:ring-[#d4af37]/40 disabled:opacity-50 ${
+            error ? "border-[#8e1b2e] focus:border-[#ff6b6b]" : "border-[#d4af37]/30"
           } ${className}`}
           {...props}
         />
-        {error && <p className="mt-1 text-xs text-[#A61C1C]">{error}</p>}
+        {error && <p className="mt-1.5 text-xs text-[#ff8888] font-mono">{error}</p>}
         {!error && helperText && (
-          <p className="mt-1 text-xs text-[#626A65]">{helperText}</p>
+          <p className="mt-1 text-xs text-[#a8b6af] font-mono">{helperText}</p>
         )}
       </div>
     );
@@ -56,9 +56,9 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
         {label && (
           <label
             htmlFor={inputId}
-            className="block text-xs font-semibold uppercase tracking-wider text-[#182522] mb-1.5"
+            className="block text-xs font-mono uppercase tracking-wider text-[#d4af37] mb-1.5 font-semibold"
           >
-            {label} {required && <span className="text-[#A61C1C]">*</span>}
+            {label} {required && <span className="text-[#f1d98a]">*</span>}
           </label>
         )}
         <textarea
@@ -66,14 +66,14 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           id={inputId}
           required={required}
           rows={props.rows || 4}
-          className={`w-full px-3.5 py-2.5 bg-white border rounded-sm text-sm text-[#182522] placeholder-[#8F9691] transition-colors focus:outline-none focus:ring-1 focus:ring-[#173B32] focus:border-[#173B32] disabled:bg-[#F3EFE8] ${
-            error ? "border-[#A61C1C] focus:ring-[#A61C1C]" : "border-[#D4CCC0]"
+          className={`w-full px-3.5 py-2.5 bg-[#04170f] border rounded-xl text-sm text-white placeholder-[#7a8a83] transition-colors focus:outline-none focus:border-[#d4af37] focus:ring-1 focus:ring-[#d4af37]/40 disabled:opacity-50 ${
+            error ? "border-[#8e1b2e] focus:border-[#ff6b6b]" : "border-[#d4af37]/30"
           } ${className}`}
           {...props}
         />
-        {error && <p className="mt-1 text-xs text-[#A61C1C]">{error}</p>}
+        {error && <p className="mt-1.5 text-xs text-[#ff8888] font-mono">{error}</p>}
         {!error && helperText && (
-          <p className="mt-1 text-xs text-[#626A65]">{helperText}</p>
+          <p className="mt-1 text-xs text-[#a8b6af] font-mono">{helperText}</p>
         )}
       </div>
     );
@@ -82,16 +82,16 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
 
 Textarea.displayName = "Textarea";
 
-export interface SelectProps
-  extends React.SelectHTMLAttributes<HTMLSelectElement> {
+export interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   label?: string;
   error?: string;
   helperText?: string;
-  options: Array<{ value: string; label: string }>;
+  options?: Array<{ value: string; label: string }>;
+  children?: React.ReactNode;
 }
 
 export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
-  ({ className = "", label, error, helperText, id, required, options, ...props }, ref) => {
+  ({ className = "", label, error, helperText, id, required, options, children, ...props }, ref) => {
     const inputId = id || (label ? label.toLowerCase().replace(/\s+/g, "-") : undefined);
 
     return (
@@ -99,29 +99,31 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
         {label && (
           <label
             htmlFor={inputId}
-            className="block text-xs font-semibold uppercase tracking-wider text-[#182522] mb-1.5"
+            className="block text-xs font-mono uppercase tracking-wider text-[#d4af37] mb-1.5 font-semibold"
           >
-            {label} {required && <span className="text-[#A61C1C]">*</span>}
+            {label} {required && <span className="text-[#f1d98a]">*</span>}
           </label>
         )}
         <select
           ref={ref}
           id={inputId}
           required={required}
-          className={`w-full px-3.5 py-2.5 bg-white border rounded-sm text-sm text-[#182522] transition-colors focus:outline-none focus:ring-1 focus:ring-[#173B32] focus:border-[#173B32] disabled:bg-[#F3EFE8] ${
-            error ? "border-[#A61C1C] focus:ring-[#A61C1C]" : "border-[#D4CCC0]"
+          className={`w-full px-3.5 py-2.5 bg-[#04170f] border rounded-xl text-sm text-white transition-colors focus:outline-none focus:border-[#d4af37] focus:ring-1 focus:ring-[#d4af37]/40 disabled:opacity-50 ${
+            error ? "border-[#8e1b2e] focus:border-[#ff6b6b]" : "border-[#d4af37]/30"
           } ${className}`}
           {...props}
         >
-          {options.map((opt) => (
-            <option key={opt.value} value={opt.value}>
-              {opt.label}
-            </option>
-          ))}
+          {options
+            ? options.map((opt) => (
+                <option key={opt.value} value={opt.value} className="bg-[#04170f] text-white">
+                  {opt.label}
+                </option>
+              ))
+            : children}
         </select>
-        {error && <p className="mt-1 text-xs text-[#A61C1C]">{error}</p>}
+        {error && <p className="mt-1.5 text-xs text-[#ff8888] font-mono">{error}</p>}
         {!error && helperText && (
-          <p className="mt-1 text-xs text-[#626A65]">{helperText}</p>
+          <p className="mt-1 text-xs text-[#a8b6af] font-mono">{helperText}</p>
         )}
       </div>
     );
@@ -129,4 +131,3 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
 );
 
 Select.displayName = "Select";
-

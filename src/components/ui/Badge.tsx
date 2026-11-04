@@ -11,17 +11,17 @@ export function Badge({
   ...props
 }: BadgeProps) {
   const baseStyles =
-    "inline-flex items-center px-2.5 py-0.5 rounded-xs text-xs font-medium tracking-wide uppercase";
+    "inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-mono tracking-wider uppercase font-semibold";
 
   const variantStyles = {
-    purity: "bg-[#0F3D2E] text-[#F3E5AB] border border-[#D4AF37]/40",
-    available: "bg-[#EEF3EE] text-[#0F3D2E] border border-[#C5D5C4]",
-    maroon: "bg-[#6B1F23] text-white border border-[#D4AF37]/30",
-    quote: "bg-[#F9F5EB] text-[#925700] border border-[#D4AF37]/40",
-    estimate: "bg-[#EAF0F6] text-[#1A4B75] border border-[#D0DFEE]",
-    draft: "bg-[#EDE9E3] text-[#4B3F36]",
-    demo: "bg-[#FFF0F0] text-[#A61C1C] border border-[#FFD0D0]",
-    warning: "bg-[#FFF8E7] text-[#925700] border border-[#FFE5A3]",
+    purity: "bg-[#04170f] text-[#f1d98a] border border-[#d4af37]/50 shadow-xs",
+    available: "bg-[#10b981]/20 text-[#10b981] border border-[#10b981]/40",
+    maroon: "bg-[#8e1b2e]/30 text-[#fca5a5] border border-[#8e1b2e]/50",
+    quote: "bg-[#0a2a1d] text-[#f1d98a] border border-[#d4af37]/40",
+    estimate: "bg-[#1d3b8b]/30 text-[#93c5fd] border border-[#1d3b8b]/50",
+    draft: "bg-[#04170f] text-[#a8b6af] border border-white/10",
+    demo: "bg-[#8e1b2e]/30 text-[#fca5a5] border border-[#8e1b2e]/50",
+    warning: "bg-[#8e1b2e]/25 text-[#f6e7b4] border border-[#d4af37]/40",
   };
 
   return (

@@ -68,16 +68,16 @@ export function GemstoneSourcingDialog({
     <Modal isOpen={isOpen} onClose={handleResetAndClose} title="Request Gemstone Sourcing" maxWidth="md">
       {submittedRef ? (
         <div className="text-center py-6 space-y-4">
-          <div className="mx-auto w-12 h-12 rounded-full bg-[#EEF3EE] flex items-center justify-center text-[#173B32]">
+          <div className="mx-auto w-12 h-12 rounded-full bg-[#10b981]/20 border border-[#10b981]/40 flex items-center justify-center text-[#10b981]">
             <CheckCircle2 className="w-6 h-6" />
           </div>
-          <h4 className="font-serif text-lg font-medium text-[#182522]">
+          <h4 className="font-serif text-xl font-normal text-white">
             Sourcing Request Received
           </h4>
-          <p className="text-xs text-[#626A65] max-w-sm mx-auto leading-relaxed">
+          <p className="text-xs text-[#a8b6af] max-w-sm mx-auto leading-relaxed">
             Thank you, {customerName}. Our family will check our stock and trusted mine sources to find genuine, certified gemstones for you.
           </p>
-          <div className="p-3 bg-[#F7F4ED] border border-[#E5DFD5] rounded-xs font-mono text-sm font-bold text-[#173B32] inline-block">
+          <div className="p-3 bg-[#04170f] border border-[#d4af37]/40 rounded-xl font-mono text-sm font-bold text-[#f1d98a] inline-block shadow-md">
             Reference: {submittedRef}
           </div>
           <div className="pt-2">
@@ -89,8 +89,8 @@ export function GemstoneSourcingDialog({
       ) : (
         <form onSubmit={handleSubmit} className="space-y-4 text-xs">
           {errorMsg && (
-            <div className="p-3 bg-[#FFF0F0] border border-[#FFD0D0] text-[#A61C1C] flex items-center gap-2 rounded-xs">
-              <AlertCircle className="w-4 h-4 shrink-0" />
+            <div className="caution-ruby-glass flex items-center gap-2.5">
+              <AlertCircle className="w-4 h-4 shrink-0 text-[#f6e7b4]" />
               <span>{errorMsg}</span>
             </div>
           )}
@@ -175,11 +175,11 @@ export function GemstoneSourcingDialog({
             />
           </div>
 
-          <div className="p-3 bg-[#EEF3EE] border border-[#C5D5C4] rounded-xs text-[11px] text-[#173B32]">
-            <strong>Notice:</strong> Rare untreated natural gemstones take time to source properly. Every stone we source comes with a genuine laboratory test certificate and can be inspected in person at our shop before purchase.
+          <div className="p-3 bg-[#0a2a1d] border border-[#d4af37]/30 rounded-xl text-[11px] text-[#e2ece7] leading-relaxed">
+            <strong className="text-[#f1d98a]">Authenticity Notice:</strong> Rare untreated natural gemstones take time to source properly. Every stone we source comes with a genuine laboratory test certificate and can be inspected in person at our shop before purchase.
           </div>
 
-          <div className="pt-2 border-t border-[#E5DFD5] flex items-center justify-end gap-2">
+          <div className="pt-2 border-t border-[#d4af37]/20 flex items-center justify-end gap-2">
             <Button type="button" variant="ghost" size="sm" onClick={onClose}>
               Cancel
             </Button>

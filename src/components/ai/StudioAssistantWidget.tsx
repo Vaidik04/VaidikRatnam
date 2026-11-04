@@ -160,25 +160,25 @@ export function StudioAssistantWidget() {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="w-[360px] sm:w-[400px] h-[540px] max-h-[85vh] bg-white border border-[#E8DFC8] rounded-sm shadow-2xl flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-200">
+        <div className="w-[360px] sm:w-[420px] h-[560px] max-h-[85vh] bg-[#04170f]/95 border-2 border-[#d4af37]/60 rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.85)] flex flex-col overflow-hidden backdrop-blur-xl animate-in fade-in slide-in-from-bottom-4 duration-300">
           {/* Header */}
-          <div className="bg-[#0F3D2E] text-white p-4 flex items-center justify-between border-b border-[#D4AF37]/30">
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-full bg-[#08241B] border border-[#D4AF37]/50 flex items-center justify-center p-0.5 shrink-0 shadow-xs overflow-hidden">
+          <div className="bg-[#0a2a1d] text-white p-4 flex items-center justify-between border-b border-[#d4af37]/30">
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 rounded-full bg-[#04170f] border border-[#d4af37]/60 flex items-center justify-center p-0.5 shrink-0 shadow-xs overflow-hidden">
                 <Image
                   src="/images/brand/app-icon-emerald-256.png"
                   alt="VR Monogram"
-                  width={32}
-                  height={32}
+                  width={36}
+                  height={36}
                   className="w-full h-full object-cover rounded-full"
                 />
               </div>
               <div>
-                <h3 className="font-serif text-sm font-medium leading-tight text-white flex items-center gap-1.5">
-                  Vaidik Ratnam Helpdesk
+                <h3 className="font-serif text-sm font-normal text-[#f6e7b4] flex items-center gap-1.5">
+                  Vaidik Ratnam Heritage Advisor
                 </h3>
-                <span className="text-[10px] text-[#DDE5DC] block">
-                  Shop Information &amp; Guidance
+                <span className="text-[10px] text-[#a8b6af] font-mono block">
+                  Authentic Jewellery &amp; Jyotish Guidance
                 </span>
               </div>
             </div>
@@ -187,7 +187,7 @@ export function StudioAssistantWidget() {
               <button
                 type="button"
                 onClick={() => setIsOpen(false)}
-                className="p-1 text-[#DDE5DC] hover:text-white rounded-xs hover:bg-white/10 transition-colors"
+                className="p-1.5 text-[#a8b6af] hover:text-[#d4af37] rounded-lg hover:bg-white/5 transition-colors cursor-pointer"
                 title="Minimize chat"
               >
                 <Minimize2 className="w-4 h-4" />
@@ -195,7 +195,7 @@ export function StudioAssistantWidget() {
               <button
                 type="button"
                 onClick={() => setIsOpen(false)}
-                className="p-1 text-[#DDE5DC] hover:text-white rounded-xs hover:bg-white/10 transition-colors"
+                className="p-1.5 text-[#a8b6af] hover:text-white rounded-lg hover:bg-white/5 transition-colors cursor-pointer"
                 title="Close chat"
               >
                 <X className="w-4 h-4" />
@@ -204,7 +204,7 @@ export function StudioAssistantWidget() {
           </div>
 
           {/* Messages Area */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-3.5 bg-[#F7F4ED]/50 scrollbar-thin">
+          <div className="flex-1 overflow-y-auto p-4 space-y-3.5 bg-[#04170f]/80 scrollbar-thin">
             {messages.map((m) => {
               const isUser = m.sender === "user";
               return (
@@ -213,18 +213,18 @@ export function StudioAssistantWidget() {
                   className={`flex flex-col ${isUser ? "items-end" : "items-start"}`}
                 >
                   <div
-                    className={`max-w-[85%] p-3.5 rounded-sm text-xs leading-relaxed ${
+                    className={`max-w-[85%] p-3.5 rounded-2xl text-xs leading-relaxed ${
                       isUser
-                        ? "bg-[#173B32] text-white rounded-tr-none"
-                        : "bg-white text-[#182522] border border-[#E5DFD5] rounded-tl-none shadow-xs"
+                        ? "bg-[#14502f] text-[#f6e7b4] border border-[#d4af37]/40 rounded-tr-none shadow-md"
+                        : "bg-[#0a2a1d]/90 text-[#faf7f0] border border-[#d4af37]/25 rounded-tl-none shadow-lg"
                     }`}
                   >
                     <p className="whitespace-pre-line">{m.text}</p>
 
                     {/* Grounded Recommended Links */}
                     {m.links && m.links.length > 0 && (
-                      <div className="mt-2.5 pt-2 border-t border-[#F0ECE2] space-y-1">
-                        <span className="text-[10px] font-mono uppercase tracking-wider text-[#B08D57] font-semibold block">
+                      <div className="mt-2.5 pt-2 border-t border-white/10 space-y-1">
+                        <span className="text-[10px] font-mono uppercase tracking-wider text-[#d4af37] font-semibold block">
                           Suggested Resources:
                         </span>
                         {m.links.map((link, idx) => (
@@ -232,7 +232,7 @@ export function StudioAssistantWidget() {
                             key={idx}
                             href={link.url}
                             onClick={() => setIsOpen(false)}
-                            className="inline-flex items-center gap-1 text-[11px] font-medium text-[#173B32] hover:text-[#B08D57] hover:underline mr-2"
+                            className="inline-flex items-center gap-1 text-[11px] font-mono text-[#f1d98a] hover:text-white hover:underline mr-2 transition-colors"
                           >
                             <span>&bull; {link.label}</span>
                             <ExternalLink className="w-2.5 h-2.5" />
@@ -246,9 +246,9 @@ export function StudioAssistantWidget() {
             })}
 
             {isLoading && (
-              <div className="flex items-center gap-2 p-3 bg-white border border-[#E5DFD5] rounded-sm max-w-[70%] text-xs text-[#626A65]">
-                <Loader2 className="w-3.5 h-3.5 animate-spin text-[#173B32]" />
-                <span>Checking store details...</span>
+              <div className="flex items-center gap-2 p-3 bg-[#0a2a1d] border border-[#d4af37]/30 rounded-2xl max-w-[75%] text-xs text-[#a8b6af]">
+                <Loader2 className="w-3.5 h-3.5 animate-spin text-[#d4af37]" />
+                <span>Consulting heritage records...</span>
               </div>
             )}
 
@@ -257,13 +257,13 @@ export function StudioAssistantWidget() {
 
           {/* Quick Starter Prompts */}
           {messages.length <= 2 && (
-            <div className="p-2.5 bg-white border-t border-[#E5DFD5] overflow-x-auto whitespace-nowrap scrollbar-none flex gap-1.5">
+            <div className="p-2.5 bg-[#0a2a1d]/90 border-t border-[#d4af37]/20 overflow-x-auto whitespace-nowrap scrollbar-none flex gap-1.5">
               {STARTER_PROMPTS.map((prompt, idx) => (
                 <button
                   key={idx}
                   type="button"
                   onClick={() => handleSendMessage(prompt)}
-                  className="text-[11px] px-2.5 py-1 bg-[#FAF8F5] border border-[#E5DFD5] rounded-full text-[#182522] hover:border-[#B08D57] hover:bg-[#F7F4ED] transition-colors shrink-0 cursor-pointer"
+                  className="text-[11px] px-3 py-1 bg-[#04170f] border border-[#d4af37]/35 rounded-full text-[#f1d98a] hover:border-[#d4af37] hover:bg-[#d4af37]/15 transition-colors shrink-0 cursor-pointer font-mono"
                 >
                   {prompt}
                 </button>
@@ -277,20 +277,20 @@ export function StudioAssistantWidget() {
               e.preventDefault();
               handleSendMessage();
             }}
-            className="p-3 bg-white border-t border-[#E5DFD5] flex items-center gap-2"
+            className="p-3 bg-[#0a2a1d] border-t border-[#d4af37]/25 flex items-center gap-2"
           >
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Ask a question about gold, jewellery, or gemstones..."
-              className="flex-1 text-xs px-3 py-2 bg-[#FAF8F5] border border-[#D4CCC0] rounded-sm focus:outline-none focus:ring-1 focus:ring-[#173B32] text-[#182522]"
+              placeholder="Ask about 22K gold, HUID, or gemstones..."
+              className="flex-1 text-xs px-3.5 py-2.5 bg-[#04170f] border border-[#d4af37]/30 rounded-xl focus:outline-none focus:border-[#d4af37] text-white placeholder-[#a8b6af]/60 font-sans"
               disabled={isLoading}
             />
             <button
               type="submit"
               disabled={!input.trim() || isLoading}
-              className="p-2 bg-[#173B32] text-white rounded-sm hover:bg-[#122e27] disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+              className="p-2.5 bg-gold-gradient text-[#04170f] rounded-xl hover:brightness-110 disabled:opacity-40 disabled:cursor-not-allowed transition-all cursor-pointer font-bold shadow-md"
               title="Send question"
             >
               <Send className="w-3.5 h-3.5" />
@@ -298,12 +298,12 @@ export function StudioAssistantWidget() {
           </form>
 
           {/* Micro Disclaimer */}
-          <div className="px-3 py-1.5 bg-[#FAF8F5] border-t border-[#E5DFD5] text-[10px] text-[#626A65] flex items-center justify-between">
+          <div className="px-3.5 py-2 bg-[#04170f] border-t border-white/5 text-[10px] text-[#a8b6af] flex items-center justify-between font-mono">
             <span className="flex items-center gap-1">
-              <ShieldCheck className="w-3 h-3 text-[#173B32]" />
-              Store Information Assistant
+              <ShieldCheck className="w-3 h-3 text-[#d4af37]" />
+              Authentic Store Advisor
             </span>
-            <span>Always verify final rates in-store</span>
+            <span>Live Studio Rates Verified</span>
           </div>
         </div>
       )}

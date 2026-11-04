@@ -11,11 +11,11 @@ export const metadata = {
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAF8F5]">
+    <div className="min-h-screen flex flex-col bg-[#04170f] text-[#faf7f0] selection:bg-[#d4af37]/30 selection:text-[#f6e7b4]">
       <Header />
       <main className="flex-1 py-14 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto w-full space-y-8">
         <div className="flex items-start gap-4">
-          <div className="w-14 h-14 rounded-full bg-[#0F3D2E]/5 border border-[#D4AF37]/50 flex items-center justify-center p-2.5 shrink-0 shadow-2xs">
+          <div className="w-14 h-14 rounded-full bg-[#0a2a1d] border border-[#d4af37]/50 flex items-center justify-center p-2.5 shrink-0 shadow-xl">
             <Image
               src="/images/brand/element-astrology-circle-transparent.png"
               alt="Astrology Circle"
@@ -25,18 +25,18 @@ export default function PrivacyPolicyPage() {
             />
           </div>
           <div>
-            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#D4AF37] font-semibold block mb-1">
+            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#d4af37] font-semibold block mb-1">
               Legal &amp; Privacy &bull; Client Data Confidentiality
             </span>
-            <h1 className="font-serif text-3xl sm:text-4xl text-[#182522] font-normal">
+            <h1 className="font-serif text-3xl sm:text-5xl text-white font-normal">
               Privacy Policy
             </h1>
-            <p className="text-xs text-[#626A65] mt-1">Last meaningfully updated: October 2026</p>
+            <p className="text-xs text-[#a8b6af] mt-1 font-mono">Last meaningfully updated: October 2026</p>
           </div>
         </div>
 
-        <Card className="p-8 sm:p-10 bg-white border border-[#E2D7C5] rounded-xs shadow-xs space-y-6 text-xs sm:text-sm text-[#182522] leading-relaxed">
-          <div className="p-4 bg-[#FFF8E7] border border-[#FFE5A3] rounded-xs text-xs text-[#925700]">
+        <Card className="p-8 sm:p-10 bg-[#0a2a1d]/85 border border-[#d4af37]/35 rounded-2xl shadow-2xl space-y-6 text-xs sm:text-sm text-[#e2ece7] leading-relaxed backdrop-blur-md">
+          <div className="p-4 bg-[#04170f] border border-[#d4af37]/40 rounded-xl text-xs text-[#f1d98a] font-mono">
             <strong>Important Notice:</strong> This privacy policy reflects the initial operational model of Vaidik Ratnam (shop visits, quotation requests, and custom jewellery orders). Final legal policies must be reviewed by the owner&apos;s legal counsel.
           </div>
 

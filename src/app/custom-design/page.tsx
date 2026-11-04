@@ -274,15 +274,15 @@ export default function CustomDesignStudioPage() {
 
         {/* Draft Restored Pill */}
         {draftRestored && (
-          <div className="p-3 bg-[#EEF3EE] border border-[#C5D5C4] rounded-xs flex items-center justify-between text-xs text-[#173B32]">
+          <div className="p-3 bg-[#10b981]/20 border border-[#10b981]/40 rounded-xl flex items-center justify-between text-xs text-[#10b981] font-mono">
             <span className="flex items-center gap-1.5 font-medium">
-              <Check className="w-4 h-4 text-[#1B6442]" />
+              <Check className="w-4 h-4 text-[#10b981]" />
               Restored your in-progress custom brief draft from this session.
             </span>
             <button
               type="button"
               onClick={clearDraft}
-              className="text-[11px] underline text-[#8F9691] hover:text-[#A61C1C] flex items-center gap-1 cursor-pointer transition-colors"
+              className="text-[11px] underline text-[#f1d98a] hover:text-[#f87171] flex items-center gap-1 cursor-pointer transition-colors"
             >
               <RotateCcw className="w-3.5 h-3.5" />
               <span>Reset Brief</span>
@@ -292,9 +292,9 @@ export default function CustomDesignStudioPage() {
 
         {/* Progress Bar */}
         <div className="mb-8">
-          <div className="flex justify-between items-center text-xs text-[#626A65] mb-2 font-medium">
+          <div className="flex justify-between items-center text-xs text-[#a8b6af] mb-2 font-mono">
             <span>Step {currentStep} of {totalSteps}</span>
-            <span className="text-[#173B32]">
+            <span className="text-[#f1d98a] uppercase tracking-wider font-semibold">
               {currentStep === 1 && "Piece Selection"}
               {currentStep === 2 && "Inspiration & References"}
               {currentStep === 3 && "Design Brief Details"}
@@ -307,24 +307,24 @@ export default function CustomDesignStudioPage() {
               {currentStep === 10 && "Review & Submit"}
             </span>
           </div>
-          <div className="w-full bg-[#E5DFD5] h-1.5 rounded-full overflow-hidden">
+          <div className="w-full bg-[#04170f] border border-[#d4af37]/30 h-2 rounded-full overflow-hidden">
             <div
-              className="bg-[#173B32] h-full transition-all duration-300"
+              className="bg-gold-gradient h-full transition-all duration-300"
               style={{ width: `${(currentStep / totalSteps) * 100}%` }}
             />
           </div>
         </div>
 
         {/* Form Container */}
-        <Card className="p-6 sm:p-8 bg-white border border-[#E5DFD5] shadow-xs">
+        <Card className="p-6 sm:p-8 bg-[#0a2a1d]/85 border border-[#d4af37]/35 rounded-2xl shadow-2xl backdrop-blur-md text-white">
           {/* STEP 1: Piece Type */}
           {currentStep === 1 && (
             <div className="space-y-6">
               <div>
-                <h2 className="font-serif text-xl text-[#182522] mb-1">
+                <h2 className="font-serif text-2xl text-white mb-1">
                   1. What kind of piece would you like to create?
                 </h2>
-                <p className="text-xs text-[#626A65]">
+                <p className="text-xs text-[#a8b6af]">
                   Select the category that best matches your idea.
                 </p>
               </div>
@@ -337,10 +337,10 @@ export default function CustomDesignStudioPage() {
                       key={pt.value}
                       type="button"
                       onClick={() => updateField("pieceType", pt.value)}
-                      className={`text-left p-4 rounded-sm border transition-all cursor-pointer ${
+                      className={`text-left p-4 rounded-xl border transition-all cursor-pointer font-mono ${
                         isSelected
-                          ? "bg-[#173B32] text-white border-[#173B32]"
-                          : "bg-white text-[#182522] border-[#E5DFD5] hover:border-[#B08D57]"
+                          ? "bg-gold-gradient text-[#04170f] font-bold border-[#d4af37] shadow-lg"
+                          : "bg-[#04170f]/90 text-[#f1d98a] border-[#d4af37]/25 hover:border-[#d4af37]/60 hover:bg-[#0f3a28]"
                       }`}
                     >
                       <span className="text-sm font-medium block">{pt.label}</span>
@@ -355,18 +355,18 @@ export default function CustomDesignStudioPage() {
           {currentStep === 2 && (
             <div className="space-y-6">
               <div>
-                <h2 className="font-serif text-xl text-[#182522] mb-1">
+                <h2 className="font-serif text-2xl text-white mb-1">
                   2. Inspiration &amp; Visual References
                 </h2>
-                <p className="text-xs text-[#626A65]">
+                <p className="text-xs text-[#a8b6af]">
                   Share visual ideas, antique inspirations, or heirloom sketches you love.
                 </p>
               </div>
 
-              <div className="bg-[#EEF3EE] border border-[#C5D5C4] rounded-sm p-4 text-xs text-[#173B32] flex items-start gap-3">
-                <Shield className="w-5 h-5 mt-0.5 shrink-0" />
+              <div className="bg-[#04170f]/80 border border-[#d4af37]/30 rounded-xl p-4 text-xs text-[#e2ece7] flex items-start gap-3">
+                <Shield className="w-5 h-5 text-[#d4af37] mt-0.5 shrink-0" />
                 <div>
-                  <strong className="block mb-0.5 font-semibold">Strict Privacy Assurance</strong>
+                  <strong className="block mb-0.5 font-semibold text-[#f1d98a]">Strict Privacy Assurance</strong>
                   Your reference ideas and uploaded sketches are confidential. We never publish customer briefs or inspiration images to public galleries without explicit written permission.
                 </div>
               </div>
@@ -383,16 +383,16 @@ export default function CustomDesignStudioPage() {
 
               {/* Visual Photo Upload Box */}
               <div className="space-y-3">
-                <label className="block text-xs font-medium text-[#182522]">
+                <label className="block text-xs font-mono uppercase tracking-wider text-[#d4af37]">
                   Upload Reference Photos, Heirloom Pictures or Sketches (Optional):
                 </label>
                 
-                <div className="border-2 border-dashed border-[#D4CCC0] rounded-xs p-5 text-center bg-[#FAF8F5] hover:bg-[#F4EFE6] transition-colors">
-                  <Upload className="w-6 h-6 text-[#173B32] mx-auto mb-2" />
-                  <p className="text-xs text-[#182522] font-medium mb-1">
+                <div className="border-2 border-dashed border-[#d4af37]/40 rounded-xl p-5 text-center bg-[#04170f]/70 hover:bg-[#04170f] transition-colors">
+                  <Upload className="w-6 h-6 text-[#d4af37] mx-auto mb-2" />
+                  <p className="text-xs text-white font-medium mb-1">
                     Select images from your device (JPEG, PNG, WebP)
                   </p>
-                  <p className="text-[11px] text-[#626A65] mb-3">
+                  <p className="text-[11px] text-[#a8b6af] mb-3">
                     Up to 4 images &bull; Kept in strict private storage for our artisan team.
                   </p>
                   <label className="cursor-pointer inline-block">
@@ -403,7 +403,7 @@ export default function CustomDesignStudioPage() {
                       onChange={handleImageUpload}
                       className="hidden"
                     />
-                    <span className="px-4 py-2 bg-[#173B32] text-white text-xs font-semibold uppercase tracking-wider rounded-xs hover:bg-[#122e27] transition-colors inline-block">
+                    <span className="px-5 py-2.5 bg-gold-gradient text-[#04170f] text-xs font-mono font-bold uppercase tracking-wider rounded-full hover:brightness-105 transition-all inline-block shadow-md">
                       Browse Images
                     </span>
                   </label>
@@ -415,7 +415,7 @@ export default function CustomDesignStudioPage() {
                     {previewImages.map((img, idx) => (
                       <div
                         key={idx}
-                        className="relative aspect-square rounded-xs overflow-hidden border border-[#B08D57] bg-[#FAF8F5] shadow-xs group"
+                        className="relative aspect-square rounded-xl overflow-hidden border border-[#d4af37]/60 bg-[#04170f] shadow-lg group"
                       >
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
@@ -550,10 +550,10 @@ export default function CustomDesignStudioPage() {
                       key={b.value}
                       type="button"
                       onClick={() => updateField("budgetRange", b.value)}
-                      className={`text-left p-4 rounded-sm border transition-all cursor-pointer ${
+                      className={`text-left p-4 rounded-xl border transition-all cursor-pointer font-mono ${
                         isSelected
-                          ? "bg-[#173B32] text-white border-[#173B32]"
-                          : "bg-white text-[#182522] border-[#E5DFD5] hover:border-[#B08D57]"
+                          ? "bg-gold-gradient text-[#04170f] font-bold border-[#d4af37] shadow-lg"
+                          : "bg-[#04170f]/90 text-[#f1d98a] border-[#d4af37]/25 hover:border-[#d4af37]/60 hover:bg-[#0f3a28]"
                       }`}
                     >
                       <span className="text-sm font-medium block">{b.label}</span>
@@ -568,53 +568,53 @@ export default function CustomDesignStudioPage() {
           {currentStep === 6 && (
             <div className="space-y-6">
               <div>
-                <h2 className="font-serif text-xl text-[#182522] mb-1">
+                <h2 className="font-serif text-2xl text-white mb-1">
                   6. Astrological / Ratna Guidance Option
                 </h2>
-                <p className="text-xs text-[#626A65]">
+                <p className="text-xs text-[#a8b6af]">
                   Would you like our father to review your planetary alignment for suitable gemstone selection?
                 </p>
               </div>
 
-              <div className="bg-[#FFF8E7] border border-[#FFE5A3] p-4 rounded-sm text-xs text-[#925700] space-y-1">
-                <strong className="block font-semibold">Independent &amp; Optional Service:</strong>
+              <div className="bg-[#04170f]/80 border border-[#d4af37]/30 p-4 rounded-xl text-xs text-[#e2ece7] space-y-1">
+                <strong className="block font-semibold text-[#f1d98a]">Independent &amp; Optional Service:</strong>
                 <p>
                   You are never obligated to combine custom jewellery with astrology. Our father conducts traditional consultations as an independent advisory practice without sales pressure.
                 </p>
               </div>
 
               <div className="space-y-3">
-                <label className="flex items-start gap-3 p-4 border border-[#E5DFD5] rounded-sm cursor-pointer hover:bg-[#F7F4ED]">
+                <label className="flex items-start gap-3 p-4 border border-[#d4af37]/30 rounded-xl cursor-pointer bg-[#04170f]/80 hover:bg-[#0f3a28] transition-colors">
                   <input
                     type="radio"
                     name="needAstrology"
                     checked={!formData.needAstrologyConsultation}
                     onChange={() => updateField("needAstrologyConsultation", false)}
-                    className="mt-0.5 text-[#173B32] focus:ring-[#173B32]"
+                    className="mt-0.5 text-[#d4af37] focus:ring-[#d4af37]"
                   />
                   <div>
-                    <span className="text-sm font-medium text-[#182522] block">
+                    <span className="text-sm font-medium text-white block">
                       Jewellery Design Only (No Astrology Consultation)
                     </span>
-                    <span className="text-xs text-[#626A65]">
+                    <span className="text-xs text-[#a8b6af]">
                       Focus purely on artistic craftsmanship, aesthetics, and fine metalwork.
                     </span>
                   </div>
                 </label>
 
-                <label className="flex items-start gap-3 p-4 border border-[#E5DFD5] rounded-sm cursor-pointer hover:bg-[#F7F4ED]">
+                <label className="flex items-start gap-3 p-4 border border-[#d4af37]/30 rounded-xl cursor-pointer bg-[#04170f]/80 hover:bg-[#0f3a28] transition-colors">
                   <input
                     type="radio"
                     name="needAstrology"
                     checked={formData.needAstrologyConsultation}
                     onChange={() => updateField("needAstrologyConsultation", true)}
-                    className="mt-0.5 text-[#173B32] focus:ring-[#173B32]"
+                    className="mt-0.5 text-[#d4af37] focus:ring-[#d4af37]"
                   />
                   <div>
-                    <span className="text-sm font-medium text-[#182522] block">
+                    <span className="text-sm font-medium text-white block">
                       Include Astrological / Ratna Guidance
                     </span>
-                    <span className="text-xs text-[#626A65]">
+                    <span className="text-xs text-[#a8b6af]">
                       Request our father to evaluate auspicious metal, stone type, and setting timing.
                     </span>
                   </div>
@@ -627,18 +627,18 @@ export default function CustomDesignStudioPage() {
           {currentStep === 7 && (
             <div className="space-y-5">
               <div>
-                <h2 className="font-serif text-xl text-[#182522] mb-1">
+                <h2 className="font-serif text-2xl text-white mb-1">
                   7. Desired Timeline
                 </h2>
-                <p className="text-xs text-[#626A65]">
+                <p className="text-xs text-[#a8b6af]">
                   When would you ideally like your custom piece ready?
                 </p>
               </div>
 
-              <div className="bg-[#F7F4ED] border border-[#E5DFD5] rounded-sm p-4 text-xs text-[#626A65] flex items-start gap-3">
-                <Info className="w-5 h-5 text-[#173B32] mt-0.5 shrink-0" />
+              <div className="bg-[#04170f]/80 border border-[#d4af37]/30 rounded-xl p-4 text-xs text-[#e2ece7] flex items-start gap-3">
+                <Info className="w-5 h-5 text-[#d4af37] mt-0.5 shrink-0" />
                 <div>
-                  <strong className="text-[#182522] block mb-0.5">Artisan Handcraft Timelines:</strong>
+                  <strong className="text-[#f1d98a] block mb-0.5">Artisan Handcraft Timelines:</strong>
                   Bespoke fine jewellery typically takes <strong>2 to 4 weeks</strong> from final design approval to hallmarking. Stated dates are preferred targets and will be officially confirmed upon review.
                 </div>
               </div>
@@ -717,13 +717,13 @@ export default function CustomDesignStudioPage() {
                 <h2 className="font-serif text-xl text-[#182522] mb-1">
                   9. Privacy Notice &amp; Consent
                 </h2>
-                <p className="text-xs text-[#626A65]">
+                <p className="text-xs text-[#a8b6af]">
                   Please review our data protection practices before submitting.
                 </p>
               </div>
 
-              <div className="p-4 bg-[#F7F4ED] border border-[#E5DFD5] rounded-sm text-xs text-[#626A65] space-y-2">
-                <strong className="text-[#182522] block font-semibold">How We Handle Your Information:</strong>
+              <div className="p-4 bg-[#04170f]/80 border border-[#d4af37]/30 rounded-xl text-xs text-[#e2ece7] space-y-2">
+                <strong className="text-[#f1d98a] block font-semibold">How We Handle Your Information:</strong>
                 <p>
                   1. Your contact details and custom brief are used solely by Vaidik Ratnam studio staff to prepare your quote and answer questions.
                 </p>
@@ -741,10 +741,10 @@ export default function CustomDesignStudioPage() {
                     type="checkbox"
                     checked={formData.privacyAcknowledged}
                     onChange={(e) => updateField("privacyAcknowledged", e.target.checked)}
-                    className="mt-1 w-4 h-4 rounded-xs text-[#173B32] focus:ring-[#173B32] border-[#D4CCC0] cursor-pointer"
+                    className="mt-1 w-4 h-4 rounded-xs text-[#d4af37] focus:ring-[#d4af37] border-[#d4af37]/40 cursor-pointer"
                   />
-                  <span className="text-xs text-[#182522]">
-                    <strong className="text-[#A61C1C]">* Required: </strong>
+                  <span className="text-xs text-white">
+                    <strong className="text-[#f1d98a]">* Required: </strong>
                     I acknowledge that I have read and agree to the storage and use of my brief details for preparing my jewellery consultation.
                   </span>
                 </label>
@@ -754,9 +754,9 @@ export default function CustomDesignStudioPage() {
                     type="checkbox"
                     checked={formData.marketingOptIn}
                     onChange={(e) => updateField("marketingOptIn", e.target.checked)}
-                    className="mt-1 w-4 h-4 rounded-xs text-[#173B32] focus:ring-[#173B32] border-[#D4CCC0] cursor-pointer"
+                    className="mt-1 w-4 h-4 rounded-xs text-[#d4af37] focus:ring-[#d4af37] border-[#d4af37]/40 cursor-pointer"
                   />
-                  <span className="text-xs text-[#626A65]">
+                  <span className="text-xs text-[#a8b6af]">
                     (Optional) I would like to receive occasional studio exhibition updates and fine jewellery guides.
                   </span>
                 </label>
@@ -768,46 +768,46 @@ export default function CustomDesignStudioPage() {
           {currentStep === 10 && (
             <div className="space-y-6">
               <div>
-                <h2 className="font-serif text-xl text-[#182522] mb-1">
+                <h2 className="font-serif text-2xl text-white mb-1">
                   10. Review Your Design Brief
                 </h2>
-                <p className="text-xs text-[#626A65]">
+                <p className="text-xs text-[#a8b6af]">
                   Please verify your specifications before sending to our studio desk.
                 </p>
               </div>
 
               {submissionError && (
-                <div className="bg-[#FFF0F0] border border-[#FFD0D0] p-4 rounded-sm text-xs text-[#A61C1C] flex items-center gap-2">
-                  <AlertCircle className="w-4 h-4 shrink-0" />
+                <div className="caution-ruby-glass flex items-center gap-2.5">
+                  <AlertCircle className="w-4 h-4 shrink-0 text-[#f6e7b4]" />
                   <span>{submissionError}</span>
                 </div>
               )}
 
-              <div className="bg-[#F7F4ED] border border-[#E5DFD5] rounded-sm p-5 space-y-3 text-xs">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pb-3 border-b border-[#E5DFD5]">
+              <div className="bg-[#04170f]/90 border border-[#d4af37]/30 rounded-xl p-5 space-y-3 text-xs font-mono">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pb-3 border-b border-white/10">
                   <div>
-                    <span className="text-[#626A65] block">Piece Type:</span>
-                    <strong className="text-[#182522] capitalize">{formData.pieceType}</strong>
+                    <span className="text-[#a8b6af] block text-[10px] uppercase">Piece Type:</span>
+                    <strong className="text-white capitalize font-sans text-sm">{formData.pieceType}</strong>
                   </div>
                   <div>
-                    <span className="text-[#626A65] block">Budget Comfort:</span>
-                    <strong className="text-[#182522]">{formData.budgetRange.replace(/_/g, " ")}</strong>
+                    <span className="text-[#a8b6af] block text-[10px] uppercase">Budget Comfort:</span>
+                    <strong className="text-[#f1d98a]">{formData.budgetRange.replace(/_/g, " ")}</strong>
                   </div>
                 </div>
 
-                <div className="pb-3 border-b border-[#E5DFD5]">
-                  <span className="text-[#626A65] block mb-1">Design Vision:</span>
-                  <p className="text-[#182522] leading-relaxed">{formData.styleNotes}</p>
+                <div className="pb-3 border-b border-white/10">
+                  <span className="text-[#a8b6af] block mb-1 text-[10px] uppercase">Design Vision:</span>
+                  <p className="text-white font-sans leading-relaxed">{formData.styleNotes}</p>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pb-3 border-b border-[#E5DFD5]">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pb-3 border-b border-white/10">
                   <div>
-                    <span className="text-[#626A65] block">Precious Metal:</span>
-                    <strong className="text-[#182522]">{formData.preferredMetal}</strong>
+                    <span className="text-[#a8b6af] block text-[10px] uppercase">Precious Metal:</span>
+                    <strong className="text-white">{formData.preferredMetal}</strong>
                   </div>
                   <div>
-                    <span className="text-[#626A65] block">Astrology Service:</span>
-                    <strong className="text-[#182522]">
+                    <span className="text-[#a8b6af] block text-[10px] uppercase">Astrology Service:</span>
+                    <strong className="text-[#f1d98a]">
                       {formData.needAstrologyConsultation ? "Requested" : "Jewellery Only"}
                     </strong>
                   </div>
@@ -815,26 +815,26 @@ export default function CustomDesignStudioPage() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
-                    <span className="text-[#626A65] block">Applicant:</span>
-                    <strong className="text-[#182522]">{formData.customerName}</strong>
+                    <span className="text-[#a8b6af] block text-[10px] uppercase">Applicant:</span>
+                    <strong className="text-white">{formData.customerName}</strong>
                   </div>
                   <div>
-                    <span className="text-[#626A65] block">Contact Via:</span>
-                    <strong className="text-[#182522] capitalize">
+                    <span className="text-[#a8b6af] block text-[10px] uppercase">Contact Via:</span>
+                    <strong className="text-[#f1d98a] capitalize">
                       {formData.customerContactMethod} ({formData.customerContactValue})
                     </strong>
                   </div>
                 </div>
               </div>
 
-              <div className="p-3 bg-[#EEF3EE] border border-[#C5D5C4] rounded-xs text-[11px] text-[#173B32]">
-                <strong>Next Step:</strong> Upon submission, you will receive a unique tracking reference. Our family studio staff will review feasible net weights, gemstone sourcing, and reach out to discuss preliminary sketches and quote options.
+              <div className="p-3.5 bg-[#0a2a1d] border border-[#d4af37]/35 rounded-xl text-[11px] text-[#e2ece7] leading-relaxed">
+                <strong className="text-[#f1d98a]">Next Step:</strong> Upon submission, you will receive a unique tracking reference. Our family studio staff will review feasible net weights, gemstone sourcing, and reach out to discuss preliminary sketches and quote options.
               </div>
             </div>
           )}
 
           {/* Controls Footer */}
-          <div className="mt-8 pt-5 border-t border-[#E5DFD5] flex items-center justify-between">
+          <div className="mt-8 pt-5 border-t border-white/10 flex items-center justify-between">
             {currentStep > 1 ? (
               <Button
                 variant="outline"

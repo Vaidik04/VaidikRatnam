@@ -145,31 +145,31 @@ export default function GoldBudgetEstimatorPage() {
   )}). I would like to visit your shop or discuss making this custom jewellery.`;
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAF8F5]">
+    <div className="min-h-screen flex flex-col bg-[#04170f] text-[#faf7f0] selection:bg-[#d4af37]/30 selection:text-[#f6e7b4]">
       <Header />
 
       <main className="flex-1 py-14 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto w-full space-y-10">
         {/* Editorial Heading */}
         <div className="text-center max-w-3xl mx-auto space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#173B32]/10 border border-[#B08D57]/40 text-[#173B32] text-xs uppercase tracking-[0.22em] font-medium animate-float">
-            <Calculator className="w-3.5 h-3.5 text-[#B08D57]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0a2a1d] border border-[#d4af37]/40 text-[#f1d98a] text-xs uppercase tracking-[0.22em] font-mono font-medium shadow-md">
+            <Calculator className="w-3.5 h-3.5 text-[#d4af37]" />
             <span>Interactive Financial Tool</span>
           </div>
 
-          <h1 className="font-serif text-3xl sm:text-5xl text-[#182522] font-normal tracking-tight">
+          <h1 className="font-serif text-3xl sm:text-5xl text-white font-normal tracking-tight">
             Gold Jewellery Budget Estimator
           </h1>
 
-          <p className="text-xs sm:text-sm text-[#626A65] leading-relaxed max-w-2xl mx-auto font-light">
+          <p className="text-xs sm:text-sm text-[#a8b6af] leading-relaxed max-w-2xl mx-auto font-light">
             Understand exactly how transparent fine jewellery invoices are calculated in India. Enter current bullion rates, choose gold purities, and observe live itemized bill breakdowns with statutory 3% GST.
           </p>
         </div>
 
         {/* Legal Disclaimer Pill */}
-        <div className="bg-[#FFF8E7] border border-[#FFE5A3] rounded-xs p-4 flex items-start gap-3 text-xs text-[#925700] shadow-2xs">
-          <Info className="w-4 h-4 mt-0.5 shrink-0 text-[#B08D57]" />
+        <div className="bg-[#0a2a1d]/80 border border-[#d4af37]/30 rounded-2xl p-4 flex items-start gap-3 text-xs text-[#e2ece7] shadow-xl">
+          <Info className="w-4 h-4 mt-0.5 shrink-0 text-[#d4af37]" />
           <div>
-            <strong className="font-semibold block mb-0.5">Educational Valuation Disclaimer:</strong>
+            <strong className="font-semibold block mb-0.5 text-[#f1d98a]">Educational Valuation Disclaimer:</strong>
             This tool computes mathematical estimates using standard Indian goldsmithing formulas. Final shop quotations depend on exact assayed net gold weight on certified digital scales, daily gold movements, and custom craftsmanship complexity.
           </div>
         </div>
@@ -181,12 +181,12 @@ export default function GoldBudgetEstimatorPage() {
               ================================================================== */}
           <div className="lg:col-span-7 space-y-6">
             {/* 1. Bullion Rate Selector */}
-            <Card className="p-6 bg-white border border-[#E2D7C5] rounded-xs shadow-xs space-y-4">
-              <div className="flex items-center justify-between border-b border-[#F0ECE2] pb-3">
-                <span className="text-xs font-mono uppercase tracking-[0.18em] text-[#B08D57] font-semibold">
+            <Card className="p-6 bg-[#0a2a1d]/85 border border-[#d4af37]/35 rounded-2xl shadow-xl space-y-4 backdrop-blur-md text-white">
+              <div className="flex items-center justify-between border-b border-white/10 pb-3">
+                <span className="text-xs font-mono uppercase tracking-[0.18em] text-[#d4af37] font-semibold">
                   1. Current {isSilver ? "Silver" : "Bullion"} Benchmark
                 </span>
-                <span className="text-xs text-[#173B32] font-medium font-mono">
+                <span className="text-xs text-[#f1d98a] font-medium font-mono">
                   {isSilver
                     ? `₹${(ratePerKgSilver / 1000).toFixed(1)}/g (999 Pure Silver)`
                     : `₹${(ratePer10g24K / 10).toLocaleString("en-IN")}/g (24K Gold)`}
@@ -194,7 +194,7 @@ export default function GoldBudgetEstimatorPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-[#182522] mb-1.5">
+                <label className="block text-xs font-mono uppercase tracking-wider text-[#a8b6af] mb-1.5">
                   {isSilver
                     ? "Spot Pure Silver Rate (₹ per Kg):"
                     : "24K Reference Gold Rate (₹ per 10 Grams):"}
@@ -221,10 +221,10 @@ export default function GoldBudgetEstimatorPage() {
                         onClick={() =>
                           isSilver ? setRatePerKgSilver(preset) : setRatePer10g24K(preset)
                         }
-                        className={`text-[11px] px-2.5 py-2 rounded-xs border font-mono transition-colors cursor-pointer ${
+                        className={`text-[11px] px-2.5 py-2 rounded-xl border font-mono transition-colors cursor-pointer ${
                           (isSilver ? ratePerKgSilver : ratePer10g24K) === preset
-                            ? "bg-[#173B32] text-white border-[#173B32]"
-                            : "bg-[#FAF8F5] text-[#182522] border-[#E5DFD5] hover:bg-[#F0ECE2]"
+                            ? "bg-gold-gradient text-[#04170f] font-bold border-[#d4af37]"
+                            : "bg-[#04170f] text-[#f1d98a] border-[#d4af37]/30 hover:bg-[#d4af37]/15"
                         }`}
                       >
                         {isSilver ? `₹${(preset / 1000).toFixed(0)}/g` : `₹${(preset / 1000).toFixed(1)}k`}
@@ -236,8 +236,8 @@ export default function GoldBudgetEstimatorPage() {
             </Card>
 
             {/* 2. Purity Selection Cards */}
-            <Card className="p-6 bg-white border border-[#E2D7C5] rounded-xs shadow-xs space-y-4">
-              <span className="text-xs font-mono uppercase tracking-[0.18em] text-[#B08D57] font-semibold block border-b border-[#F0ECE2] pb-3">
+            <Card className="p-6 bg-[#0a2a1d]/85 border border-[#d4af37]/35 rounded-2xl shadow-xl space-y-4 backdrop-blur-md text-white">
+              <span className="text-xs font-mono uppercase tracking-[0.18em] text-[#d4af37] font-semibold block border-b border-white/10 pb-3">
                 2. Select Metal &amp; Karat Purity
               </span>
 
@@ -249,25 +249,25 @@ export default function GoldBudgetEstimatorPage() {
                       key={opt.key}
                       type="button"
                       onClick={() => setPurity(opt.key)}
-                      className={`p-4 rounded-xs text-left border transition-all cursor-pointer relative overflow-hidden ${
+                      className={`p-4 rounded-xl text-left border transition-all cursor-pointer relative overflow-hidden ${
                         isSelected
-                          ? "bg-[#173B32] text-white border-[#173B32] shadow-sm"
-                          : "bg-[#FAF8F5] text-[#182522] border-[#E5DFD5] hover:border-[#B08D57] hover:bg-white"
+                          ? "bg-[#14502f] text-white border-[#d4af37] shadow-lg ring-1 ring-[#d4af37]/50"
+                          : "bg-[#04170f]/90 text-[#f1d98a] border-[#d4af37]/25 hover:border-[#d4af37]/60 hover:bg-[#0f3a28]"
                       }`}
                     >
                       <div className="flex items-baseline justify-between mb-1">
-                        <strong className="font-serif text-base block">{opt.label}</strong>
+                        <strong className="font-serif text-lg text-white block">{opt.label}</strong>
                         <span
                           className={`text-[10px] font-mono ${
-                            isSelected ? "text-[#F3E5AB]" : "text-[#B08D57]"
+                            isSelected ? "text-[#f6e7b4]" : "text-[#d4af37]"
                           }`}
                         >
                           {opt.purityPercent}
                         </span>
                       </div>
                       <p
-                        className={`text-[11px] leading-snug ${
-                          isSelected ? "text-[#DDE5DC]" : "text-[#626A65]"
+                        className={`text-[11px] leading-snug font-sans ${
+                          isSelected ? "text-[#e2ece7]" : "text-[#a8b6af]"
                         }`}
                       >
                         {opt.description}
@@ -279,20 +279,20 @@ export default function GoldBudgetEstimatorPage() {
             </Card>
 
             {/* 3. Weight Slider & Making Charges */}
-            <Card className="p-6 bg-white border border-[#E2D7C5] rounded-xs shadow-xs space-y-5">
-              <span className="text-xs font-mono uppercase tracking-[0.18em] text-[#B08D57] font-semibold block border-b border-[#F0ECE2] pb-3">
+            <Card className="p-6 bg-[#0a2a1d]/85 border border-[#d4af37]/35 rounded-2xl shadow-xl space-y-5 backdrop-blur-md text-white">
+              <span className="text-xs font-mono uppercase tracking-[0.18em] text-[#d4af37] font-semibold block border-b border-white/10 pb-3">
                 3. Net {isSilver ? "Silver" : "Gold"} Weight &amp; Workmanship
               </span>
 
               {/* Weight Slider */}
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <label className="text-xs font-medium text-[#182522] flex items-center gap-1.5">
-                    <Scale className="w-4 h-4 text-[#B08D57]" />
+                  <label className="text-xs font-mono uppercase tracking-wider text-[#a8b6af] flex items-center gap-1.5">
+                    <Scale className="w-4 h-4 text-[#d4af37]" />
                     <span>Net Weight (Grams):</span>
                   </label>
-                  <span className="font-serif text-2xl font-bold text-[#173B32]">
-                    {weightGrams} <span className="text-xs font-sans font-normal text-[#626A65]">Grams</span>
+                  <span className="font-serif text-3xl font-bold text-[#f1d98a]">
+                    {weightGrams} <span className="text-xs font-mono font-normal text-[#a8b6af]">Grams</span>
                   </span>
                 </div>
 
@@ -303,7 +303,7 @@ export default function GoldBudgetEstimatorPage() {
                   step={0.5}
                   value={weightGrams}
                   onChange={(e) => setWeightGrams(Number(e.target.value))}
-                  className="w-full accent-[#173B32] cursor-pointer"
+                  className="w-full accent-[#d4af37] cursor-pointer"
                 />
 
                 {/* Quick Presets */}
@@ -316,10 +316,10 @@ export default function GoldBudgetEstimatorPage() {
                         setWeightGrams(preset.value);
                         setSelectedPieceType(preset.pieceType);
                       }}
-                      className={`text-[11px] px-2.5 py-1 rounded-xs border transition-colors cursor-pointer ${
+                      className={`text-[11px] px-3 py-1.5 rounded-lg border font-mono transition-colors cursor-pointer ${
                         weightGrams === preset.value
-                          ? "bg-[#173B32] text-white border-[#173B32]"
-                          : "bg-[#FAF8F5] text-[#182522] border-[#E5DFD5] hover:bg-[#F0ECE2]"
+                          ? "bg-gold-gradient text-[#04170f] font-bold border-[#d4af37]"
+                          : "bg-[#04170f] text-[#f1d98a] border-[#d4af37]/25 hover:bg-[#d4af37]/15"
                       }`}
                     >
                       {preset.label}
@@ -329,19 +329,19 @@ export default function GoldBudgetEstimatorPage() {
               </div>
 
               {/* Making Charges Control */}
-              <div className="pt-4 border-t border-[#F0ECE2] grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="pt-4 border-t border-white/10 grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-medium text-[#182522] mb-1.5">
+                  <label className="block text-xs font-mono uppercase tracking-wider text-[#a8b6af] mb-1.5">
                     Making / Karigari Charge Mode:
                   </label>
-                  <div className="flex rounded-xs border border-[#D4CCC0] overflow-hidden">
+                  <div className="flex rounded-xl border border-[#d4af37]/35 overflow-hidden">
                     <button
                       type="button"
                       onClick={() => setMakingType("percentage")}
-                      className={`flex-1 py-2 text-xs font-semibold uppercase tracking-wider cursor-pointer ${
+                      className={`flex-1 py-2 text-xs font-mono font-semibold uppercase tracking-wider cursor-pointer ${
                         makingType === "percentage"
-                          ? "bg-[#173B32] text-white"
-                          : "bg-[#FAF8F5] text-[#182522]"
+                          ? "bg-gold-gradient text-[#04170f]"
+                          : "bg-[#04170f] text-[#a8b6af]"
                       }`}
                     >
                       Percentage (%)
@@ -349,10 +349,10 @@ export default function GoldBudgetEstimatorPage() {
                     <button
                       type="button"
                       onClick={() => setMakingType("fixed")}
-                      className={`flex-1 py-2 text-xs font-semibold uppercase tracking-wider cursor-pointer ${
+                      className={`flex-1 py-2 text-xs font-mono font-semibold uppercase tracking-wider cursor-pointer ${
                         makingType === "fixed"
-                          ? "bg-[#173B32] text-white"
-                          : "bg-[#FAF8F5] text-[#182522]"
+                          ? "bg-gold-gradient text-[#04170f]"
+                          : "bg-[#04170f] text-[#a8b6af]"
                       }`}
                     >
                       ₹ / Gram
@@ -361,7 +361,7 @@ export default function GoldBudgetEstimatorPage() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-medium text-[#182522] mb-1.5">
+                  <label className="block text-xs font-mono uppercase tracking-wider text-[#a8b6af] mb-1.5">
                     {makingType === "percentage" ? "Making Charge (%)" : "Making Charge (₹ per Gram)"}:
                   </label>
                   <input
@@ -370,15 +370,15 @@ export default function GoldBudgetEstimatorPage() {
                     max={makingType === "percentage" ? 50 : 5000}
                     value={makingValue}
                     onChange={(e) => setMakingValue(Number(e.target.value))}
-                    className="w-full px-3 py-2 text-xs font-mono bg-[#FAF8F5] border border-[#D4CCC0] rounded-xs text-[#182522]"
+                    className="w-full px-3.5 py-2.5 text-xs font-mono bg-[#04170f] border border-[#d4af37]/35 rounded-xl text-white focus:outline-none focus:border-[#d4af37]"
                   />
-                  <span className="text-[10px] text-[#626A65] block mt-1">
+                  <span className="text-[10px] text-[#a8b6af] block mt-1 font-mono">
                     Standard bridal pieces typically range from 12% to 18%.
                   </span>
                 </div>
 
-                <div className="pt-2 border-t border-[#F0ECE2]">
-                  <label className="block text-xs font-medium text-[#182522] mb-1.5">
+                <div className="pt-2 border-t border-white/10 sm:col-span-2">
+                  <label className="block text-xs font-mono uppercase tracking-wider text-[#a8b6af] mb-1.5">
                     Studded Gemstone / Diamond Charges (₹, optional):
                   </label>
                   <input
@@ -387,10 +387,10 @@ export default function GoldBudgetEstimatorPage() {
                     step={500}
                     value={stoneCharges}
                     onChange={(e) => setStoneCharges(Math.max(0, Number(e.target.value)))}
-                    className="w-full px-3 py-2 text-xs font-mono bg-[#FAF8F5] border border-[#D4CCC0] rounded-xs text-[#182522]"
+                    className="w-full px-3.5 py-2.5 text-xs font-mono bg-[#04170f] border border-[#d4af37]/35 rounded-xl text-white focus:outline-none focus:border-[#d4af37]"
                     placeholder="0"
                   />
-                  <span className="text-[10px] text-[#626A65] block mt-1">
+                  <span className="text-[10px] text-[#a8b6af] block mt-1 font-mono">
                     Value of certified natural Ratna or diamonds (stone weight is always deducted from gold).
                   </span>
                 </div>
@@ -402,37 +402,37 @@ export default function GoldBudgetEstimatorPage() {
               RIGHT: ITEMISED HAUTE INVOICE RECEIPT (5 cols)
               ================================================================== */}
           <div className="lg:col-span-5 sticky top-28 space-y-4">
-            <Card className="p-8 bg-white border-2 border-[#173B32] rounded-xs shadow-xl space-y-6 relative overflow-hidden">
+            <Card className="p-8 bg-[#0a2a1d] border-2 border-[#d4af37]/60 rounded-3xl shadow-2xl space-y-6 relative overflow-hidden backdrop-blur-md text-white">
               {/* Receipt Header */}
-              <div className="border-b-2 border-dashed border-[#E2D7C5] pb-5 text-center space-y-1">
-                <span className="text-[9px] uppercase tracking-[0.28em] text-[#B08D57] font-semibold block">
+              <div className="border-b-2 border-dashed border-[#d4af37]/30 pb-5 text-center space-y-1">
+                <span className="text-[9px] uppercase tracking-[0.28em] text-[#d4af37] font-semibold font-mono block">
                   Studio Estimation Breakdown
                 </span>
-                <h3 className="font-serif text-2xl font-bold text-[#182522]">
+                <h3 className="font-serif text-3xl font-normal text-white">
                   VAIDIK RATNAM
                 </h3>
-                <span className="text-[11px] text-[#626A65] font-mono block">
+                <span className="text-[11px] text-[#f1d98a] font-mono block">
                   {isSilver ? "925 Sterling Silver" : `${purity} Gold`} &bull; {weightGrams}g Net Weight
                 </span>
               </div>
 
               {calculationError ? (
-                <div className="p-4 bg-[#FFF0F0] text-xs text-[#A61C1C] rounded-xs">
+                <div className="caution-ruby-glass rounded-xl p-4 text-xs">
                   {calculationError}
                 </div>
               ) : estimateResult ? (
-                <div className="space-y-4 text-xs">
+                <div className="space-y-4 text-xs font-mono">
                   {/* Applied Rates summary */}
-                  <div className="p-3 bg-[#FAF8F5] rounded-xs border border-[#E5DFD5] space-y-1">
-                    <div className="flex justify-between text-[#626A65]">
+                  <div className="p-3.5 bg-[#04170f] rounded-xl border border-[#d4af37]/30 space-y-1">
+                    <div className="flex justify-between text-[#a8b6af]">
                       <span>Effective {isSilver ? "925 Silver" : purity} Rate:</span>
-                      <strong className="text-[#182522] font-mono">
+                      <strong className="text-[#f1d98a] font-mono">
                         ₹{Math.round(estimateResult.effectiveRatePerGram).toLocaleString("en-IN")}/g
                       </strong>
                     </div>
-                    <div className="flex justify-between text-[#626A65]">
+                    <div className="flex justify-between text-[#a8b6af]">
                       <span>Assayed Net Metal:</span>
-                      <strong className="text-[#182522] font-mono">
+                      <strong className="text-white font-mono">
                         {weightGrams} Grams
                       </strong>
                     </div>
@@ -440,60 +440,60 @@ export default function GoldBudgetEstimatorPage() {
 
                   {/* Bill Items */}
                   <div className="space-y-2.5 pt-2">
-                    <div className="flex justify-between items-center text-[#626A65]">
+                    <div className="flex justify-between items-center text-[#a8b6af]">
                       <span>1. Net Bullion Value:</span>
-                      <span className="font-mono font-medium text-[#182522]">
+                      <span className="font-mono font-medium text-white">
                         ₹{Math.round(estimateResult.baseGoldCost).toLocaleString("en-IN")}
                       </span>
                     </div>
 
-                    <div className="flex justify-between items-center text-[#626A65]">
+                    <div className="flex justify-between items-center text-[#a8b6af]">
                       <span>
                         2. Handcrafting Charges ({makingType === "percentage" ? `${makingValue}%` : `₹${makingValue}/g`}):
                       </span>
-                      <span className="font-mono font-medium text-[#182522]">
+                      <span className="font-mono font-medium text-white">
                         ₹{Math.round(estimateResult.makingChargeAmount).toLocaleString("en-IN")}
                       </span>
                     </div>
 
                     {stoneCharges > 0 && (
-                      <div className="flex justify-between items-center text-[#626A65]">
+                      <div className="flex justify-between items-center text-[#a8b6af]">
                         <span>3. Studded Gemstones Cost:</span>
-                        <span className="font-mono font-medium text-[#182522]">
+                        <span className="font-mono font-medium text-white">
                           ₹{stoneCharges.toLocaleString("en-IN")}
                         </span>
                       </div>
                     )}
 
-                    <div className="flex justify-between items-center text-[#626A65] pt-2 border-t border-[#F0ECE2]">
+                    <div className="flex justify-between items-center text-[#a8b6af] pt-2 border-t border-white/10">
                       <span>Pre-Tax Subtotal:</span>
-                      <span className="font-mono font-medium text-[#182522]">
+                      <span className="font-mono font-medium text-[#f1d98a]">
                         ₹{Math.round(estimateResult.subtotalBeforeTax).toLocaleString("en-IN")}
                       </span>
                     </div>
 
-                    <div className="flex justify-between items-center text-[#173B32]">
+                    <div className="flex justify-between items-center text-[#10b981]">
                       <span className="flex items-center gap-1 font-medium">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#1B6442]" />
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#10b981]" />
                         Statutory 3% GST:
                       </span>
-                      <span className="font-mono font-semibold text-[#173B32]">
+                      <span className="font-mono font-semibold text-[#10b981]">
                         ₹{Math.round(estimateResult.taxAmount).toLocaleString("en-IN")}
                       </span>
                     </div>
                   </div>
 
                   {/* Grand Estimated Total */}
-                  <div className="pt-4 border-t-2 border-[#173B32] bg-[#FAF8F5] -mx-8 -mb-6 p-6 space-y-1">
+                  <div className="pt-4 border-t-2 border-[#d4af37]/40 bg-[#04170f] -mx-8 -mb-6 p-6 space-y-1">
                     <div className="flex justify-between items-baseline">
-                      <span className="text-xs uppercase tracking-widest text-[#626A65] font-semibold">
+                      <span className="text-xs uppercase tracking-widest text-[#a8b6af] font-semibold font-mono">
                         Estimated Bill:
                       </span>
-                      <span className="font-serif text-3xl font-bold text-[#182522]">
+                      <span className="font-serif text-3xl font-bold text-[#f6e7b4]">
                         ₹{Math.round(estimateResult.estimatedTotal).toLocaleString("en-IN")}
                       </span>
                     </div>
-                    <span className="text-[10px] text-[#82928A] block">
+                    <span className="text-[10px] text-[#a8b6af] block font-mono">
                       Inclusive of all {isSilver ? "silver" : "gold"}, making, and government taxes.
                     </span>
                   </div>
@@ -505,9 +505,9 @@ export default function GoldBudgetEstimatorPage() {
                 <Link href={customDesignUrl} className="block w-full">
                   <button
                     type="button"
-                    className="btn-gold-pure w-full py-3.5 text-xs uppercase tracking-widest font-semibold rounded-xs shadow-md flex items-center justify-center gap-1.5 cursor-pointer"
+                    className="bg-gold-gradient text-[#04170f] w-full py-3.5 text-xs uppercase tracking-widest font-mono font-bold rounded-xl shadow-lg flex items-center justify-center gap-1.5 cursor-pointer hover:brightness-105 transition-all"
                   >
-                    <Sparkles className="w-3.5 h-3.5 text-[#182522]" />
+                    <Sparkles className="w-3.5 h-3.5" />
                     <span>Order Custom Jewellery with this Weight &rarr;</span>
                   </button>
                 </Link>
@@ -520,9 +520,9 @@ export default function GoldBudgetEstimatorPage() {
                 >
                   <button
                     type="button"
-                    className="w-full py-2.5 bg-white border border-[#173B32] text-[#173B32] hover:bg-[#EEF3EE] text-xs font-semibold uppercase tracking-wider rounded-xs flex items-center justify-center gap-1.5 cursor-pointer transition-colors shadow-2xs"
+                    className="w-full py-3 bg-[#25D366]/20 border border-[#25D366]/40 text-[#25D366] hover:bg-[#25D366] hover:text-black text-xs font-mono font-bold uppercase tracking-wider rounded-xl flex items-center justify-center gap-1.5 cursor-pointer transition-all shadow-md"
                   >
-                    <MessageCircle className="w-3.5 h-3.5 text-[#1B6442]" />
+                    <MessageCircle className="w-3.5 h-3.5" />
                     <span>Discuss Estimate on WhatsApp</span>
                   </button>
                 </a>
@@ -530,12 +530,12 @@ export default function GoldBudgetEstimatorPage() {
             </Card>
 
             {/* Quick Assurance */}
-            <div className="p-4 bg-[#EEF3EE] border border-[#C5D5C4] rounded-xs text-xs text-[#173B32] space-y-1">
-              <span className="font-medium flex items-center gap-1.5">
-                <ShieldCheck className="w-4 h-4 text-[#1B6442]" />
+            <div className="p-4 bg-[#0a2a1d] border border-[#d4af37]/35 rounded-2xl text-xs text-[#faf7f0] space-y-1 shadow-lg">
+              <span className="font-medium flex items-center gap-1.5 text-[#f1d98a]">
+                <ShieldCheck className="w-4 h-4 text-[#10b981]" />
                 Shop Digital Scale Guarantee
               </span>
-              <p className="text-[11px] text-[#626A65]">
+              <p className="text-[11px] text-[#a8b6af] font-light leading-relaxed">
                 In our family shop, every piece is weighed in front of you on digital certified scales. You never pay gold rates on stones, lacquer, or thread.
               </p>
             </div>

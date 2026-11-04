@@ -129,34 +129,34 @@ export function KundaliVisual() {
   const house = HOUSES_DATA[selectedHouse] || HOUSES_DATA[1];
 
   return (
-    <div className="bg-white border border-[#E5DFD5] rounded-sm p-6 sm:p-8">
-      <div className="flex flex-col lg:flex-row items-center justify-between gap-6 border-b border-[#E5DFD5] pb-6 mb-6">
+    <div className="bg-[#0a2a1d]/85 border border-[#d4af37]/35 rounded-2xl p-6 sm:p-8 space-y-6 shadow-2xl backdrop-blur-md text-white">
+      <div className="flex flex-col lg:flex-row items-center justify-between gap-6 border-b border-[#d4af37]/20 pb-6 mb-2">
         <div>
-          <div className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-[#B08D57] mb-1">
+          <div className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-[#d4af37] mb-1">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Classical Chakra Shastra</span>
           </div>
-          <h2 className="font-serif text-2xl text-[#182522] font-normal">
+          <h2 className="font-serif text-2xl sm:text-3xl text-white font-normal">
             The North-Indian Janma Kundali &amp; Ratna Law
           </h2>
-          <p className="text-xs text-[#626A65] mt-1 max-w-xl">
-            In authentic Parashari Jyotish, gemstones act as cosmic antennas that <strong>amplify</strong> energy. We only wear stones for the <strong>Dharma Trikona</strong> (Houses 1, 5, 9) and strictly avoid <strong>Dusthana</strong> (Houses 6, 8, 12).
+          <p className="text-xs text-[#a8b6af] mt-1 max-w-xl font-light">
+            In authentic Parashari Jyotish, gemstones act as cosmic antennas that <strong className="text-[#f1d98a]">amplify</strong> energy. We only wear stones for the <strong className="text-[#10b981]">Dharma Trikona</strong> (Houses 1, 5, 9) and strictly avoid <strong className="text-[#f87171]">Dusthana</strong> (Houses 6, 8, 12).
           </p>
         </div>
 
         {/* Legend */}
-        <div className="flex flex-wrap items-center gap-3 text-[11px]">
-          <span className="flex items-center gap-1.5 bg-[#EEF3EE] px-2.5 py-1 rounded-xs text-[#173B32] font-medium border border-[#C5D5C4]">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#173B32]" />
-            Trikona (Gemstones Recommended)
+        <div className="flex flex-wrap items-center gap-2.5 text-[11px] font-mono">
+          <span className="flex items-center gap-1.5 bg-[#10b981]/20 px-3 py-1 rounded-full text-[#10b981] font-medium border border-[#10b981]/40">
+            <span className="w-2 h-2 rounded-full bg-[#10b981]" />
+            Trikona (Benefic)
           </span>
-          <span className="flex items-center gap-1.5 bg-[#FFF0F0] px-2.5 py-1 rounded-xs text-[#A61C1C] font-medium border border-[#FFD0D0]">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#A61C1C]" />
-            Dusthana (Never Wear)
+          <span className="flex items-center gap-1.5 bg-[#8e1b2e]/30 px-3 py-1 rounded-full text-[#fca5a5] font-medium border border-[#8e1b2e]/60">
+            <span className="w-2 h-2 rounded-full bg-[#f87171]" />
+            Dusthana (Avoid)
           </span>
-          <span className="flex items-center gap-1.5 bg-[#FFF8E7] px-2.5 py-1 rounded-xs text-[#925700] font-medium border border-[#FFE5A3]">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#B08D57]" />
-            Kendra / Maraka (Deep Analysis)
+          <span className="flex items-center gap-1.5 bg-[#d4af37]/20 px-3 py-1 rounded-full text-[#f1d98a] font-medium border border-[#d4af37]/40">
+            <span className="w-2 h-2 rounded-full bg-[#d4af37]" />
+            Kendra / Maraka
           </span>
         </div>
       </div>
@@ -167,7 +167,7 @@ export function KundaliVisual() {
           <div className="relative w-full max-w-[380px] aspect-square">
             <svg
               viewBox="0 0 400 400"
-              className="w-full h-full drop-shadow-sm select-none"
+              className="w-full h-full drop-shadow-2xl select-none"
             >
               {/* Outer Square */}
               <rect
@@ -175,35 +175,36 @@ export function KundaliVisual() {
                 y="10"
                 width="380"
                 height="380"
-                fill="#FAF8F5"
-                stroke="#182522"
-                strokeWidth="2.5"
+                fill="#04170f"
+                stroke="#d4af37"
+                strokeWidth="2"
               />
 
               {/* Major Diagonals */}
-              <line x1="10" y1="10" x2="390" y2="390" stroke="#182522" strokeWidth="2" />
-              <line x1="390" y1="10" x2="10" y2="390" stroke="#182522" strokeWidth="2" />
+              <line x1="10" y1="10" x2="390" y2="390" stroke="#d4af37" strokeWidth="1.5" strokeOpacity="0.6" />
+              <line x1="390" y1="10" x2="10" y2="390" stroke="#d4af37" strokeWidth="1.5" strokeOpacity="0.6" />
 
-              {/* Inner Diamond (Kendra Corners: 200,10 / 390,200 / 200,390 / 10,200) */}
+              {/* Inner Diamond */}
               <polygon
                 points="200,10 390,200 200,390 10,200"
                 fill="none"
-                stroke="#182522"
-                strokeWidth="2"
+                stroke="#d4af37"
+                strokeWidth="1.5"
+                strokeOpacity="0.6"
               />
 
               {/* House 1: Top Center Diamond (Lagna) */}
               <polygon
                 points="200,10 295,105 200,200 105,105"
                 className={`cursor-pointer transition-all ${
-                  selectedHouse === 1 ? "fill-[#173B32]/30 stroke-[#173B32] stroke-[3]" : "fill-[#EEF3EE]/60 hover:fill-[#EEF3EE]"
+                  selectedHouse === 1 ? "fill-[#10b981]/40 stroke-[#f1d98a] stroke-[2.5]" : "fill-[#10b981]/20 hover:fill-[#10b981]/30 stroke-[#d4af37]/40"
                 }`}
                 onClick={() => setSelectedHouse(1)}
               />
-              <text x="200" y="105" textAnchor="middle" className="font-serif text-sm font-bold fill-[#173B32]">
+              <text x="200" y="105" textAnchor="middle" className="font-serif text-sm font-bold fill-[#f6e7b4]">
                 1 (Lagna)
               </text>
-              <text x="200" y="125" textAnchor="middle" className="text-[10px] font-mono fill-[#173B32]">
+              <text x="200" y="125" textAnchor="middle" className="text-[10px] font-mono fill-[#10b981]">
                 Trikona / Kendra
               </text>
 
@@ -211,11 +212,11 @@ export function KundaliVisual() {
               <polygon
                 points="10,10 200,10 105,105"
                 className={`cursor-pointer transition-all ${
-                  selectedHouse === 2 ? "fill-[#B08D57]/30 stroke-[#B08D57] stroke-[3]" : "fill-white/80 hover:fill-[#F7F4ED]"
+                  selectedHouse === 2 ? "fill-[#d4af37]/40 stroke-[#f1d98a] stroke-[2.5]" : "fill-[#0a2a1d] hover:fill-[#0f3a28] stroke-[#d4af37]/40"
                 }`}
                 onClick={() => setSelectedHouse(2)}
               />
-              <text x="105" y="45" textAnchor="middle" className="font-serif text-xs font-semibold fill-[#182522]">
+              <text x="105" y="45" textAnchor="middle" className="font-serif text-xs font-semibold fill-[#a8b6af]">
                 2nd House
               </text>
 
@@ -223,11 +224,11 @@ export function KundaliVisual() {
               <polygon
                 points="10,10 105,105 10,200"
                 className={`cursor-pointer transition-all ${
-                  selectedHouse === 3 ? "fill-[#626A65]/30 stroke-[#626A65] stroke-[3]" : "fill-white/80 hover:fill-[#F7F4ED]"
+                  selectedHouse === 3 ? "fill-[#d4af37]/40 stroke-[#f1d98a] stroke-[2.5]" : "fill-[#0a2a1d] hover:fill-[#0f3a28] stroke-[#d4af37]/40"
                 }`}
                 onClick={() => setSelectedHouse(3)}
               />
-              <text x="45" y="105" textAnchor="middle" className="font-serif text-xs font-semibold fill-[#182522]">
+              <text x="45" y="105" textAnchor="middle" className="font-serif text-xs font-semibold fill-[#a8b6af]">
                 3rd
               </text>
 
@@ -235,11 +236,11 @@ export function KundaliVisual() {
               <polygon
                 points="10,200 105,105 200,200 105,295"
                 className={`cursor-pointer transition-all ${
-                  selectedHouse === 4 ? "fill-[#173B32]/30 stroke-[#173B32] stroke-[3]" : "fill-[#EEF3EE]/40 hover:fill-[#EEF3EE]"
+                  selectedHouse === 4 ? "fill-[#d4af37]/40 stroke-[#f1d98a] stroke-[2.5]" : "fill-[#0a2a1d] hover:fill-[#0f3a28] stroke-[#d4af37]/40"
                 }`}
                 onClick={() => setSelectedHouse(4)}
               />
-              <text x="105" y="205" textAnchor="middle" className="font-serif text-sm font-bold fill-[#182522]">
+              <text x="105" y="205" textAnchor="middle" className="font-serif text-sm font-bold fill-[#f1d98a]">
                 4th (Kendra)
               </text>
 
@@ -247,11 +248,11 @@ export function KundaliVisual() {
               <polygon
                 points="10,200 105,295 10,390"
                 className={`cursor-pointer transition-all ${
-                  selectedHouse === 5 ? "fill-[#173B32]/30 stroke-[#173B32] stroke-[3]" : "fill-[#EEF3EE]/70 hover:fill-[#EEF3EE]"
+                  selectedHouse === 5 ? "fill-[#10b981]/40 stroke-[#f1d98a] stroke-[2.5]" : "fill-[#10b981]/20 hover:fill-[#10b981]/30 stroke-[#d4af37]/40"
                 }`}
                 onClick={() => setSelectedHouse(5)}
               />
-              <text x="45" y="295" textAnchor="middle" className="font-serif text-xs font-bold fill-[#173B32]">
+              <text x="45" y="295" textAnchor="middle" className="font-serif text-xs font-bold fill-[#10b981]">
                 5th (Trikona)
               </text>
 
@@ -259,11 +260,11 @@ export function KundaliVisual() {
               <polygon
                 points="10,390 105,295 200,390"
                 className={`cursor-pointer transition-all ${
-                  selectedHouse === 6 ? "fill-[#A61C1C]/30 stroke-[#A61C1C] stroke-[3]" : "fill-[#FFF0F0]/70 hover:fill-[#FFF0F0]"
+                  selectedHouse === 6 ? "fill-[#8e1b2e]/50 stroke-[#f87171] stroke-[2.5]" : "fill-[#8e1b2e]/25 hover:fill-[#8e1b2e]/35 stroke-[#d4af37]/40"
                 }`}
                 onClick={() => setSelectedHouse(6)}
               />
-              <text x="105" y="355" textAnchor="middle" className="font-serif text-xs font-bold fill-[#A61C1C]">
+              <text x="105" y="355" textAnchor="middle" className="font-serif text-xs font-bold fill-[#fca5a5]">
                 6th (Dusthana)
               </text>
 
@@ -271,23 +272,23 @@ export function KundaliVisual() {
               <polygon
                 points="200,200 105,295 200,390 295,295"
                 className={`cursor-pointer transition-all ${
-                  selectedHouse === 7 ? "fill-[#B08D57]/30 stroke-[#B08D57] stroke-[3]" : "fill-[#FFF8E7]/50 hover:fill-[#FFF8E7]"
+                  selectedHouse === 7 ? "fill-[#d4af37]/40 stroke-[#f1d98a] stroke-[2.5]" : "fill-[#0a2a1d] hover:fill-[#0f3a28] stroke-[#d4af37]/40"
                 }`}
                 onClick={() => setSelectedHouse(7)}
               />
-              <text x="200" y="295" textAnchor="middle" className="font-serif text-sm font-bold fill-[#182522]">
-                7th (Kendra/Maraka)
+              <text x="200" y="295" textAnchor="middle" className="font-serif text-sm font-bold fill-[#f1d98a]">
+                7th (Kendra)
               </text>
 
               {/* House 8: Bottom Right Lower Triangle (Dusthana) */}
               <polygon
                 points="200,390 295,295 390,390"
                 className={`cursor-pointer transition-all ${
-                  selectedHouse === 8 ? "fill-[#A61C1C]/30 stroke-[#A61C1C] stroke-[3]" : "fill-[#FFF0F0]/70 hover:fill-[#FFF0F0]"
+                  selectedHouse === 8 ? "fill-[#8e1b2e]/50 stroke-[#f87171] stroke-[2.5]" : "fill-[#8e1b2e]/25 hover:fill-[#8e1b2e]/35 stroke-[#d4af37]/40"
                 }`}
                 onClick={() => setSelectedHouse(8)}
               />
-              <text x="295" y="355" textAnchor="middle" className="font-serif text-xs font-bold fill-[#A61C1C]">
+              <text x="295" y="355" textAnchor="middle" className="font-serif text-xs font-bold fill-[#fca5a5]">
                 8th (Dusthana)
               </text>
 
@@ -295,11 +296,11 @@ export function KundaliVisual() {
               <polygon
                 points="295,295 390,200 390,390"
                 className={`cursor-pointer transition-all ${
-                  selectedHouse === 9 ? "fill-[#173B32]/30 stroke-[#173B32] stroke-[3]" : "fill-[#EEF3EE]/70 hover:fill-[#EEF3EE]"
+                  selectedHouse === 9 ? "fill-[#10b981]/40 stroke-[#f1d98a] stroke-[2.5]" : "fill-[#10b981]/20 hover:fill-[#10b981]/30 stroke-[#d4af37]/40"
                 }`}
                 onClick={() => setSelectedHouse(9)}
               />
-              <text x="355" y="295" textAnchor="middle" className="font-serif text-xs font-bold fill-[#173B32]">
+              <text x="355" y="295" textAnchor="middle" className="font-serif text-xs font-bold fill-[#10b981]">
                 9th (Trikona)
               </text>
 
@@ -307,11 +308,11 @@ export function KundaliVisual() {
               <polygon
                 points="200,200 295,105 390,200 295,295"
                 className={`cursor-pointer transition-all ${
-                  selectedHouse === 10 ? "fill-[#173B32]/30 stroke-[#173B32] stroke-[3]" : "fill-[#EEF3EE]/40 hover:fill-[#EEF3EE]"
+                  selectedHouse === 10 ? "fill-[#d4af37]/40 stroke-[#f1d98a] stroke-[2.5]" : "fill-[#0a2a1d] hover:fill-[#0f3a28] stroke-[#d4af37]/40"
                 }`}
                 onClick={() => setSelectedHouse(10)}
               />
-              <text x="295" y="205" textAnchor="middle" className="font-serif text-sm font-bold fill-[#182522]">
+              <text x="295" y="205" textAnchor="middle" className="font-serif text-sm font-bold fill-[#f1d98a]">
                 10th (Kendra)
               </text>
 
@@ -319,11 +320,11 @@ export function KundaliVisual() {
               <polygon
                 points="295,105 390,10 390,200"
                 className={`cursor-pointer transition-all ${
-                  selectedHouse === 11 ? "fill-[#626A65]/30 stroke-[#626A65] stroke-[3]" : "fill-white/80 hover:fill-[#F7F4ED]"
+                  selectedHouse === 11 ? "fill-[#d4af37]/40 stroke-[#f1d98a] stroke-[2.5]" : "fill-[#0a2a1d] hover:fill-[#0f3a28] stroke-[#d4af37]/40"
                 }`}
                 onClick={() => setSelectedHouse(11)}
               />
-              <text x="355" y="105" textAnchor="middle" className="font-serif text-xs font-semibold fill-[#182522]">
+              <text x="355" y="105" textAnchor="middle" className="font-serif text-xs font-semibold fill-[#a8b6af]">
                 11th
               </text>
 
@@ -331,11 +332,11 @@ export function KundaliVisual() {
               <polygon
                 points="200,10 390,10 295,105"
                 className={`cursor-pointer transition-all ${
-                  selectedHouse === 12 ? "fill-[#A61C1C]/30 stroke-[#A61C1C] stroke-[3]" : "fill-[#FFF0F0]/70 hover:fill-[#FFF0F0]"
+                  selectedHouse === 12 ? "fill-[#8e1b2e]/50 stroke-[#f87171] stroke-[2.5]" : "fill-[#8e1b2e]/25 hover:fill-[#8e1b2e]/35 stroke-[#d4af37]/40"
                 }`}
                 onClick={() => setSelectedHouse(12)}
               />
-              <text x="295" y="45" textAnchor="middle" className="font-serif text-xs font-bold fill-[#A61C1C]">
+              <text x="295" y="45" textAnchor="middle" className="font-serif text-xs font-bold fill-[#fca5a5]">
                 12th (Dusthana)
               </text>
             </svg>
@@ -343,23 +344,23 @@ export function KundaliVisual() {
         </div>
 
         {/* Selected House Details Panel */}
-        <div className="lg:col-span-6 bg-[#FAF8F5] border border-[#E5DFD5] rounded-sm p-6 space-y-4">
-          <div className="flex items-center justify-between border-b border-[#E5DFD5] pb-3">
+        <div className="lg:col-span-6 bg-[#04170f]/90 border border-[#d4af37]/35 rounded-2xl p-6 sm:p-7 space-y-4 shadow-xl">
+          <div className="flex items-center justify-between border-b border-white/10 pb-3">
             <div>
-              <span className="text-[11px] font-mono text-[#B08D57] uppercase tracking-wider block">
+              <span className="text-[11px] font-mono text-[#d4af37] uppercase tracking-wider block">
                 {house.sanskritName}
               </span>
-              <h3 className="font-serif text-xl font-medium text-[#182522]">
+              <h3 className="font-serif text-xl sm:text-2xl font-normal text-white">
                 {house.name}
               </h3>
             </div>
             <span
-              className={`text-[10px] uppercase tracking-wider font-semibold px-2.5 py-1 rounded-xs ${
+              className={`text-[10px] uppercase font-mono tracking-wider font-semibold px-3 py-1 rounded-full border ${
                 house.category.includes("Trikona")
-                  ? "bg-[#EEF3EE] text-[#173B32] border border-[#C5D5C4]"
+                  ? "bg-[#10b981]/20 text-[#10b981] border-[#10b981]/40"
                   : house.category.includes("Dusthana")
-                  ? "bg-[#FFF0F0] text-[#A61C1C] border border-[#FFD0D0]"
-                  : "bg-[#FFF8E7] text-[#925700] border border-[#FFE5A3]"
+                  ? "bg-[#8e1b2e]/30 text-[#fca5a5] border-[#8e1b2e]/60"
+                  : "bg-[#d4af37]/20 text-[#f1d98a] border-[#d4af37]/40"
               }`}
             >
               {house.category}
@@ -367,43 +368,43 @@ export function KundaliVisual() {
           </div>
 
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-[#182522] mb-1">
+            <h4 className="text-xs font-mono uppercase tracking-wider text-[#d4af37] mb-1">
               Core Vedic Significations:
             </h4>
-            <p className="text-xs text-[#626A65] leading-relaxed">
+            <p className="text-xs text-[#a8b6af] leading-relaxed">
               {house.significance}
             </p>
           </div>
 
-          <div className="p-3.5 bg-white rounded-xs border border-[#E5DFD5] space-y-1.5">
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-[#173B32] flex items-center gap-1.5">
+          <div className="p-4 bg-[#0a2a1d] rounded-xl border border-[#d4af37]/30 space-y-1.5 shadow-inner">
+            <h4 className="text-xs font-mono uppercase tracking-wider text-[#f1d98a] flex items-center gap-1.5">
               {house.category.includes("Dusthana") ? (
-                <AlertCircle className="w-4 h-4 text-[#A61C1C]" />
+                <AlertCircle className="w-4 h-4 text-[#f87171]" />
               ) : (
-                <ShieldCheck className="w-4 h-4 text-[#173B32]" />
+                <ShieldCheck className="w-4 h-4 text-[#10b981]" />
               )}
               <span>Ratna Shastra Prescription Rule:</span>
             </h4>
-            <p className="text-xs text-[#182522] leading-relaxed">
+            <p className="text-xs text-[#faf7f0] leading-relaxed">
               {house.gemstoneRule}
             </p>
           </div>
 
           {/* Quick House Selector Buttons */}
-          <div className="pt-2 border-t border-[#E5DFD5]">
-            <span className="text-[11px] text-[#626A65] block mb-2">
-              Click any section on the diagram or select a house below:
+          <div className="pt-3 border-t border-white/10">
+            <span className="text-[11px] font-mono text-[#a8b6af] block mb-2">
+              Select any house number to inspect classical gemstone rules:
             </span>
-            <div className="grid grid-cols-6 gap-1.5">
+            <div className="grid grid-cols-6 gap-2">
               {Array.from({ length: 12 }, (_, i) => i + 1).map((num) => (
                 <button
                   key={num}
                   type="button"
                   onClick={() => setSelectedHouse(num)}
-                  className={`text-xs py-1.5 rounded-xs font-mono font-medium transition-colors cursor-pointer ${
+                  className={`text-xs py-2 rounded-lg font-mono font-semibold transition-all cursor-pointer ${
                     selectedHouse === num
-                      ? "bg-[#173B32] text-white"
-                      : "bg-white text-[#182522] border border-[#E5DFD5] hover:bg-[#F7F4ED]"
+                      ? "bg-gold-gradient text-[#04170f] shadow-md"
+                      : "bg-[#04170f] text-[#f1d98a] border border-[#d4af37]/30 hover:bg-[#d4af37]/20"
                   }`}
                 >
                   H{num}

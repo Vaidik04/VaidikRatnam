@@ -11,12 +11,12 @@ export function Card({
   ...props
 }: CardProps) {
   const variantStyles = {
-    surface: "bg-white border border-[#E8DFC8]",
-    cream: "bg-[#F9F5EB] border border-[#E8DFC8]",
-    ivory: "bg-[#F9F5EB] border border-[#E8DFC8]",
-    bordered: "bg-transparent border border-[#D4AF37]/50",
-    emerald: "bg-[#0F3D2E] text-white border border-[#D4AF37]/40",
-    maroon: "bg-[#6B1F23] text-white border border-[#D4AF37]/40",
+    surface: "bg-[#0a2a1d]/85 text-[#faf7f0] border border-[#d4af37]/30 shadow-xl backdrop-blur-md",
+    cream: "bg-[#04170f]/90 text-[#faf7f0] border border-[#d4af37]/25 shadow-lg",
+    ivory: "bg-[#04170f]/90 text-[#faf7f0] border border-[#d4af37]/25 shadow-lg",
+    bordered: "bg-transparent border border-[#d4af37]/50 text-[#faf7f0]",
+    emerald: "bg-[#0a2a1d] text-white border border-[#d4af37]/40 shadow-2xl",
+    maroon: "bg-[#8e1b2e]/30 text-white border border-[#d4af37]/40 shadow-2xl",
   };
 
   return (

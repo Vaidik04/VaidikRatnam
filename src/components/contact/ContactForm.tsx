@@ -47,16 +47,16 @@ export function ContactForm() {
   if (submittedRef) {
     return (
       <div className="text-center py-8 space-y-4">
-        <div className="mx-auto w-12 h-12 rounded-full bg-[#EEF3EE] flex items-center justify-center text-[#173B32]">
+        <div className="mx-auto w-12 h-12 rounded-full bg-[#10b981]/20 border border-[#10b981]/40 flex items-center justify-center text-[#10b981]">
           <CheckCircle2 className="w-6 h-6" />
         </div>
-        <h3 className="font-serif text-xl font-medium text-[#182522]">
+        <h3 className="font-serif text-2xl font-normal text-white">
           Inquiry Successfully Sent
         </h3>
-        <p className="text-xs text-[#626A65] max-w-sm mx-auto leading-relaxed">
+        <p className="text-xs text-[#a8b6af] max-w-sm mx-auto leading-relaxed">
           Thank you, {customerName}. Our family shop has received your message and will reach out via {customerContactMethod}.
         </p>
-        <div className="p-3 bg-[#F7F4ED] border border-[#E5DFD5] rounded-xs font-mono text-sm font-bold text-[#173B32] inline-block">
+        <div className="p-3 bg-[#04170f] border border-[#d4af37]/40 rounded-xl font-mono text-sm font-bold text-[#f1d98a] inline-block shadow-md">
           Reference: {submittedRef}
         </div>
         <div className="pt-2">
@@ -71,8 +71,8 @@ export function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       {errorMsg && (
-        <div className="p-3 bg-[#FFF0F0] border border-[#FFD0D0] text-xs text-[#A61C1C] flex items-center gap-2 rounded-xs">
-          <AlertCircle className="w-4 h-4 shrink-0" />
+        <div className="caution-ruby-glass flex items-center gap-2.5">
+          <AlertCircle className="w-4 h-4 shrink-0 text-[#f6e7b4]" />
           <span>{errorMsg}</span>
         </div>
       )}

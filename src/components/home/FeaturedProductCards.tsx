@@ -45,23 +45,23 @@ export function FeaturedProductCards({ items, whatsappPhone }: FeaturedProductCa
         {items.map((item) => (
           <div
             key={item.title}
-            className="group bg-white border border-[#E8DFC8] rounded-xs flex flex-col overflow-hidden luxury-card-hover relative shadow-xs"
+            className="group bg-[#0a2a1d]/85 border border-[#d4af37]/30 rounded-2xl flex flex-col overflow-hidden hover:border-[#d4af37] transition-all duration-500 relative shadow-xl hover:shadow-[#d4af37]/10"
           >
             {/* Image Container */}
-            <div className="relative aspect-square bg-[#FAF8F5] block overflow-hidden">
+            <div className="relative aspect-square bg-[#04170f] block overflow-hidden">
               <Link href={item.href}>
                 <Image
                   src={item.image}
                   alt={item.title}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                  className="object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
                 />
               </Link>
 
               {/* Tag */}
               <div className="absolute top-3 left-3 z-10 pointer-events-none">
-                <span className="text-[10px] font-mono uppercase tracking-wider font-semibold bg-[#0F3D2E]/95 text-[#F3E5AB] px-2.5 py-1 rounded-xs border border-[#D4AF37]/40 shadow-xs">
+                <span className="text-[10px] font-mono uppercase tracking-wider font-semibold bg-[#04170f]/90 text-[#f1d98a] px-2.5 py-1 rounded-full border border-[#d4af37]/40 shadow-sm backdrop-blur-sm">
                   {item.tag}
                 </span>
               </div>
@@ -70,56 +70,56 @@ export function FeaturedProductCards({ items, whatsappPhone }: FeaturedProductCa
               <button
                 type="button"
                 onClick={() => handleOpen3D(item.product3DType, item.title)}
-                className="absolute top-3 right-3 z-10 bg-black/60 hover:bg-[#0F3D2E] text-[#F3E5AB] border border-[#D4AF37]/60 px-2 py-1 rounded-full text-[10px] font-mono flex items-center gap-1 backdrop-blur-md transition-all shadow-md cursor-pointer hover:scale-105"
+                className="absolute top-3 right-3 z-10 bg-[#04170f]/80 hover:bg-[#d4af37] text-[#d4af37] hover:text-[#04170f] border border-[#d4af37]/50 px-2.5 py-1 rounded-full text-[10px] font-mono flex items-center gap-1.5 backdrop-blur-md transition-all shadow-md cursor-pointer hover:scale-105"
                 title="Inspect in 3D"
               >
-                <Rotate3D className="w-3 h-3 text-[#D4AF37]" />
+                <Rotate3D className="w-3.5 h-3.5" />
                 <span>3D</span>
               </button>
 
               {/* BIS HUID Badge */}
-              <div className="absolute bottom-3 left-3 z-10 opacity-90 pointer-events-none">
-                <span className="text-[9px] font-sans uppercase tracking-widest bg-white/95 text-[#0F3D2E] px-2 py-0.5 rounded-xs font-semibold flex items-center gap-1 shadow-xs border border-[#E8DFC8]">
-                  <ShieldCheck className="w-3 h-3 text-[#1B6442]" />
+              <div className="absolute bottom-3 left-3 z-10 opacity-95 pointer-events-none">
+                <span className="text-[9px] font-mono uppercase tracking-widest bg-[#04170f]/95 text-[#f6e7b4] px-2.5 py-0.5 rounded-full font-semibold flex items-center gap-1 shadow-xs border border-[#d4af37]/40">
+                  <ShieldCheck className="w-3 h-3 text-[#d4af37]" />
                   BIS HUID
                 </span>
               </div>
             </div>
 
             {/* Details */}
-            <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between space-y-3 bg-white">
+            <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between space-y-3 bg-[#0a2a1d]/90 text-[#faf7f0]">
               <div>
-                <span className="text-[10px] font-mono text-[#B59328] uppercase tracking-wider block mb-1">
+                <span className="text-[10px] font-mono text-[#d4af37] uppercase tracking-wider block mb-1">
                   {item.category}
                 </span>
                 <Link href={item.href}>
-                  <h3 className="font-serif text-base font-normal text-[#0F3D2E] leading-snug group-hover:text-[#B59328] transition-colors">
+                  <h3 className="font-serif text-base font-normal text-white leading-snug group-hover:text-[#f1d98a] transition-colors">
                     {item.title}
                   </h3>
                 </Link>
-                <p className="text-[11px] text-[#4B3F36] mt-1 font-light">
+                <p className="text-[11px] text-[#a8b6af] mt-1 font-mono">
                   {item.purity} &bull; {item.huid}
                 </p>
               </div>
 
-              <div className="pt-3 border-t border-[#E8DFC8] flex items-center justify-between">
+              <div className="pt-3 border-t border-[#d4af37]/20 flex items-center justify-between">
                 <div>
-                  <span className="text-[9px] uppercase tracking-wider text-[#A8B6AF] block">
+                  <span className="text-[9px] uppercase tracking-wider text-[#a8b6af] block font-mono">
                     Pricing Formula
                   </span>
-                  <span className="text-xs font-mono font-semibold text-[#0F3D2E]">
+                  <span className="text-xs font-mono font-semibold text-[#f1d98a]">
                     Weight &times; Daily Rate + Craft
                   </span>
                 </div>
 
-                <div className="flex items-center gap-1.5">
+                <div className="flex items-center gap-2">
                   <button
                     type="button"
                     onClick={() => handleOpen3D(item.product3DType, item.title)}
-                    className="p-2 rounded-xs bg-[#D4AF37]/15 hover:bg-[#D4AF37] text-[#0F3D2E] hover:text-black transition-colors cursor-pointer"
+                    className="p-2 rounded-lg bg-[#04170f] hover:bg-[#d4af37] text-[#d4af37] hover:text-[#04170f] border border-[#d4af37]/40 transition-colors cursor-pointer"
                     title="View in 3D"
                   >
-                    <Rotate3D className="w-4 h-4 text-[#B59328]" />
+                    <Rotate3D className="w-4 h-4" />
                   </button>
 
                   <a
@@ -128,7 +128,7 @@ export function FeaturedProductCards({ items, whatsappPhone }: FeaturedProductCa
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 rounded-xs bg-[#0F3D2E]/10 hover:bg-[#0F3D2E] text-[#0F3D2E] hover:text-[#F3E5AB] transition-colors"
+                    className="p-2 rounded-lg bg-[#25D366]/20 hover:bg-[#25D366] text-[#25D366] hover:text-black border border-[#25D366]/40 transition-colors"
                     title="Enquire on WhatsApp"
                   >
                     <MessageCircle className="w-4 h-4" />
