@@ -9,7 +9,9 @@ import {
   MapPin,
   Clock,
   MessageCircle,
+  Rotate3D,
 } from "lucide-react";
+import { LiteModeToggle } from "@/components/3d/components/LiteModeToggle";
 
 export function Footer() {
   const whatsappPhone = process.env.NEXT_PUBLIC_WHATSAPP_PHONE || "919876543210";
@@ -314,6 +316,13 @@ export function Footer() {
             <span>&bull;</span>
             <Link href="/cancellation" className="hover:text-white transition-colors">
               Shop Visit Policy
+            </Link>
+            <span>&bull;</span>
+            <LiteModeToggle />
+            <span>&bull;</span>
+            <Link href="/dev/3d" className="hover:text-[#D4AF37] transition-colors flex items-center gap-1 font-mono text-[10px]">
+              <Rotate3D className="w-3 h-3 text-[#D4AF37]" />
+              3D Studio
             </Link>
             <span>&bull;</span>
             <Link href="/admin/login" className="hover:text-[#D4AF37] transition-colors flex items-center gap-1 font-mono">

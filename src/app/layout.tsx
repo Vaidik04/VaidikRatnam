@@ -10,6 +10,7 @@ import "./globals.css";
 import { Preloader } from "@/components/ui/Preloader";
 import { CustomCursor } from "@/components/ui/CustomCursor";
 import { StudioAssistantWidget } from "@/components/ai/StudioAssistantWidget";
+import { CapabilityProvider } from "@/components/3d/context/CapabilityContext";
 
 const playfair = Playfair_Display({
   variable: "--font-display",
@@ -114,10 +115,12 @@ export default function RootLayout({
       className={`${playfair.variable} ${cormorant.variable} ${inter.variable} ${devanagari.variable} ${spaceMono.variable}`}
     >
       <body className="antialiased bg-[#F9F5EB] text-[#4B3F36] selection:bg-[#D4AF37]/20 selection:text-[#0F3D2E]">
-        <Preloader />
-        <CustomCursor />
-        {children}
-        <StudioAssistantWidget />
+        <CapabilityProvider>
+          <Preloader />
+          <CustomCursor />
+          {children}
+          <StudioAssistantWidget />
+        </CapabilityProvider>
       </body>
     </html>
   );

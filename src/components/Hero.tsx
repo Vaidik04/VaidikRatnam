@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import {
   ShieldCheck,
   Sparkles,
@@ -10,7 +11,17 @@ import {
   Scale,
   Gem,
   Calculator,
+  Rotate3D,
 } from "lucide-react";
+
+const ViewPortal = dynamic(
+  () => import("@/components/3d/canvas/ViewPortal").then((m) => m.ViewPortal),
+  { ssr: false }
+);
+const Hero3DScene = dynamic(
+  () => import("@/components/3d/components/Hero3DScene").then((m) => m.Hero3DScene),
+  { ssr: false }
+);
 
 interface HeroProps {
   rates?: {
@@ -161,28 +172,32 @@ export function Hero({ rates }: HeroProps = {}) {
 
             {/* Main Luxury Frame */}
             <div className="relative w-full max-w-md rounded-t-full rounded-b-lg border-2 border-[#D4AF37]/50 p-2.5 bg-[#0F3D2E]/90 shadow-2xl backdrop-blur-md">
-              <div className="relative aspect-4/5 w-full rounded-t-full rounded-b-md overflow-hidden bg-black/40">
-                <Image
-                  src="/images/hero-jewellery.jpg"
-                  alt="Vaidik Ratnam Handcrafted 22K Temple Jewellery"
-                  fill
-                  priority
-                  className="object-cover object-center transform hover:scale-105 transition-transform duration-700"
-                  sizes="(max-width: 768px) 100vw, 500px"
-                />
+              <div className="relative aspect-4/5 w-full rounded-t-full rounded-b-md overflow-hidden bg-[#04120d]">
+                {/* 3D Real-Time Centerpiece Scene */}
+                <ViewPortal
+                  cameraPosition={[0, 0, 5]}
+                  fov={45}
+                  fallback={
+                    <Image
+                      src="/images/hero-jewellery.jpg"
+                      alt="Vaidik Ratnam Handcrafted 22K Temple Jewellery"
+                      fill
+                      priority
+                      className="object-cover object-center"
+                      sizes="(max-width: 768px) 100vw, 500px"
+                    />
+                  }
+                >
+                  <Hero3DScene />
+                </ViewPortal>
 
-                {/* Subtle vignette on photo */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#08241B]/80 via-transparent to-transparent pointer-events-none" />
+                {/* Subtle vignette */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#08241B]/90 via-transparent to-transparent pointer-events-none z-10" />
 
-                {/* Floating Crest Inside Photo */}
-                <div className="absolute top-6 left-1/2 -translate-x-1/2 w-16 h-16 p-1 rounded-full bg-[#08241B]/90 border border-[#D4AF37]/80 shadow-xl backdrop-blur-md flex items-center justify-center overflow-hidden">
-                  <Image
-                    src="/images/brand/app-icon-emerald-256.png"
-                    alt="VR Monogram"
-                    width={56}
-                    height={56}
-                    className="w-full h-full object-cover rounded-full"
-                  />
+                {/* 3D Interactive Badge Pill */}
+                <div className="absolute top-4 right-4 z-20 bg-black/50 border border-[#D4AF37]/40 px-2.5 py-1 rounded-full backdrop-blur-md flex items-center gap-1.5 text-[10px] text-[#f3e5ab]">
+                  <Rotate3D className="w-3 h-3 text-[#D4AF37]" />
+                  <span className="font-mono">Real-Time 3D</span>
                 </div>
               </div>
 

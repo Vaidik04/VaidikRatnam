@@ -200,23 +200,31 @@ async function ensureDb() {
 }
 
 /**
- * Strips non-plain LibSQL Row properties (numeric indexes, length, null prototypes)
+ * Strips non-plain LibSQL Row properties (numeric indexes, length, class prototypes)
  * so objects can be serialized across Next.js Server-to-Client component boundaries.
  */
 export function toPlainRow<T>(row: unknown): T {
   if (!row || typeof row !== "object") return row as T;
-  const obj: Record<string, unknown> = {};
-  for (const k of Object.keys(row)) {
-    if (!/^\d+$/.test(k) && k !== "length") {
-      obj[k] = (row as Record<string, unknown>)[k];
+  try {
+    return JSON.parse(JSON.stringify(row)) as T;
+  } catch {
+    const obj: Record<string, unknown> = {};
+    for (const k of Object.keys(row)) {
+      if (!/^\d+$/.test(k) && k !== "length") {
+        obj[k] = (row as Record<string, unknown>)[k];
+      }
     }
+    return obj as T;
   }
-  return obj as T;
 }
 
 export function toPlainRows<T>(rows: unknown[]): T[] {
   if (!Array.isArray(rows)) return [];
-  return rows.map((r) => toPlainRow<T>(r));
+  try {
+    return JSON.parse(JSON.stringify(rows)) as T[];
+  } catch {
+    return rows.map((r) => toPlainRow<T>(r));
+  }
 }
 
 // -----------------------------------------------------------------------------

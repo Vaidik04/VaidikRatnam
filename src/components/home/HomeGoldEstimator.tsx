@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import {
   Calculator,
   Scale,
@@ -10,6 +11,15 @@ import {
   Lock,
 } from "lucide-react";
 import { RateLockModal } from "@/components/tools/RateLockModal";
+
+const ViewPortal = dynamic(
+  () => import("@/components/3d/canvas/ViewPortal").then((m) => m.ViewPortal),
+  { ssr: false }
+);
+const GoldCalculator3D = dynamic(
+  () => import("@/components/3d/components/GoldCalculator3D").then((m) => m.GoldCalculator3D),
+  { ssr: false }
+);
 
 interface HomeGoldEstimatorProps {
   initialRates?: {
@@ -162,10 +172,27 @@ export function HomeGoldEstimator({ initialRates }: HomeGoldEstimatorProps) {
 
         {/* Right: Transparent Cost Breakdown Receipt Card (5 cols) */}
         <div className="lg:col-span-5 bg-white border-2 border-[#D4AF37]/50 rounded-xs p-6 shadow-md relative">
-          <div className="absolute top-0 right-0 transform translate-x-2 -translate-y-2">
+          <div className="absolute top-0 right-0 transform translate-x-2 -translate-y-2 z-10">
             <span className="bg-[#0F3D2E] text-[#F3E5AB] text-[9px] font-mono uppercase tracking-widest px-2.5 py-1 rounded-xs border border-[#D4AF37] shadow-xs">
               Live Breakdown
             </span>
+          </div>
+
+          {/* Interactive 3D Stack of Gold Bars & Coins */}
+          <div className="mb-4 h-36 w-full rounded-xs overflow-hidden bg-gradient-to-b from-[#FAF8F5] to-[#F3EDE0] border border-[#E8DFC8] relative shadow-inner">
+            <ViewPortal
+              className="w-full h-full"
+              fallback={
+                <div className="w-full h-full flex items-center justify-center text-xs text-[#B59328] font-mono">
+                  {weight}g &bull; {purity} Hallmarked Bullion
+                </div>
+              }
+            >
+              <GoldCalculator3D
+                weightGrams={weight}
+                purity={purity.toLowerCase() as "24k" | "22k" | "18k" | "14k"}
+              />
+            </ViewPortal>
           </div>
 
           <div className="border-b border-[#E8DFC8] pb-4 mb-4">

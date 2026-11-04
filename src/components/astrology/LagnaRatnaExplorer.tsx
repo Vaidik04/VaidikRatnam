@@ -2,9 +2,19 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { LAGNA_PROFILES, LagnaProfile } from "@/lib/astrology/data";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
+
+const ViewPortal = dynamic(
+  () => import("@/components/3d/canvas/ViewPortal").then((m) => m.ViewPortal),
+  { ssr: false }
+);
+const JyotishZodiac3D = dynamic(
+  () => import("@/components/3d/components/JyotishZodiac3D").then((m) => m.JyotishZodiac3D),
+  { ssr: false }
+);
 import {
   Compass,
   ShieldCheck,
@@ -17,6 +27,7 @@ import {
 
 export function LagnaRatnaExplorer() {
   const [selectedSlug, setSelectedSlug] = useState<string>("mesha");
+  const selectedSignIndex = LAGNA_PROFILES.findIndex((p) => p.slug === selectedSlug);
   const profile: LagnaProfile =
     LAGNA_PROFILES.find((p) => p.slug === selectedSlug) || LAGNA_PROFILES[0];
 
@@ -72,32 +83,53 @@ export function LagnaRatnaExplorer() {
       </div>
 
       {/* Sign Summary Banner */}
-      <div className="bg-white border border-[#E5DFD5] rounded-xs p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-        <div>
-          <span className="text-[11px] font-mono text-[#B08D57] uppercase tracking-wider block">
-            Ascendant Sign Profile
-          </span>
-          <h3 className="font-serif text-2xl font-medium text-[#182522]">
-            {profile.sanskritName} — {profile.englishName}
-          </h3>
-          <p className="text-xs text-[#626A65] mt-1 max-w-xl">
-            {profile.description}
-          </p>
+      <div className="bg-white border border-[#E5DFD5] rounded-xs p-5 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+        <div className="md:col-span-8 space-y-4">
+          <div>
+            <span className="text-[11px] font-mono text-[#B08D57] uppercase tracking-wider block">
+              Ascendant Sign Profile
+            </span>
+            <h3 className="font-serif text-2xl font-medium text-[#182522]">
+              {profile.sanskritName} — {profile.englishName}
+            </h3>
+            <p className="text-xs text-[#626A65] mt-1 max-w-xl">
+              {profile.description}
+            </p>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-2 text-xs">
+            <div className="bg-[#F7F4ED] px-3 py-1.5 rounded-xs border border-[#E5DFD5]">
+              <span className="text-[#626A65] block text-[10px] uppercase font-mono">Ruling Lord:</span>
+              <strong className="text-[#182522]">{profile.rulingPlanet}</strong>
+            </div>
+            <div className="bg-[#F7F4ED] px-3 py-1.5 rounded-xs border border-[#E5DFD5]">
+              <span className="text-[#626A65] block text-[10px] uppercase font-mono">Tattva (Element):</span>
+              <strong className="text-[#182522]">{profile.element}</strong>
+            </div>
+            <div className="bg-[#F7F4ED] px-3 py-1.5 rounded-xs border border-[#E5DFD5]">
+              <span className="text-[#626A65] block text-[10px] uppercase font-mono">Nature:</span>
+              <strong className="text-[#182522]">{profile.nature}</strong>
+            </div>
+          </div>
         </div>
 
-        <div className="flex flex-wrap items-center gap-2 text-xs">
-          <div className="bg-[#F7F4ED] px-3 py-1.5 rounded-xs border border-[#E5DFD5]">
-            <span className="text-[#626A65] block text-[10px] uppercase font-mono">Ruling Lord:</span>
-            <strong className="text-[#182522]">{profile.rulingPlanet}</strong>
+        {/* 3D Celestial Armillary Sphere */}
+        <div className="md:col-span-4 h-48 sm:h-52 w-full rounded-xs overflow-hidden bg-radial from-[#173B32]/10 via-[#FAF8F5] to-[#F7F4ED] border border-[#E5DFD5] relative flex flex-col items-center justify-center shadow-xs">
+          <div className="absolute top-2 left-2 z-10">
+            <span className="text-[9px] font-mono uppercase tracking-widest text-[#B08D57] bg-white/90 px-2 py-0.5 rounded-xs border border-[#E5DFD5] shadow-xs">
+              3D Zodiac Sphere
+            </span>
           </div>
-          <div className="bg-[#F7F4ED] px-3 py-1.5 rounded-xs border border-[#E5DFD5]">
-            <span className="text-[#626A65] block text-[10px] uppercase font-mono">Tattva (Element):</span>
-            <strong className="text-[#182522]">{profile.element}</strong>
-          </div>
-          <div className="bg-[#F7F4ED] px-3 py-1.5 rounded-xs border border-[#E5DFD5]">
-            <span className="text-[#626A65] block text-[10px] uppercase font-mono">Nature:</span>
-            <strong className="text-[#182522]">{profile.nature}</strong>
-          </div>
+          <ViewPortal
+            className="w-full h-full"
+            fallback={
+              <div className="text-center text-xs text-[#B08D57] font-mono">
+                {profile.sanskritName} Rashi Sphere
+              </div>
+            }
+          >
+            <JyotishZodiac3D selectedSignIndex={selectedSignIndex >= 0 ? selectedSignIndex : 0} />
+          </ViewPortal>
         </div>
       </div>
 

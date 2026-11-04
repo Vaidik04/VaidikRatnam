@@ -2,6 +2,16 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import dynamic from "next/dynamic";
+
+const ViewPortal = dynamic(
+  () => import("@/components/3d/canvas/ViewPortal").then((m) => m.ViewPortal),
+  { ssr: false }
+);
+const Preloader3D = dynamic(
+  () => import("@/components/3d/components/Preloader3D").then((m) => m.Preloader3D),
+  { ssr: false }
+);
 
 export function Preloader({ onComplete }: { onComplete?: () => void }) {
   const [loading, setLoading] = useState(true);
@@ -42,16 +52,23 @@ export function Preloader({ onComplete }: { onComplete?: () => void }) {
           <div className="absolute inset-0 rounded-full border border-[#D4AF37]/40 animate-ping-slow scale-110 pointer-events-none" />
           <div className="absolute inset-0 rounded-full border border-[#D4AF37]/60 shadow-[0_0_30px_rgba(212,175,55,0.3)] pointer-events-none" />
 
-          {/* Authentic Vaidik Ratnam High-Resolution Crest */}
+          {/* Authentic Vaidik Ratnam 3D Monogram & High-Res Crest Fallback */}
           <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden shadow-2xl p-1 bg-[#0F3D2E] border border-[#D4AF37]">
-            <Image
-              src="/images/brand/app-icon-emerald-512.png"
-              alt="Vaidik Ratnam Crest"
-              width={256}
-              height={256}
-              priority
-              className="w-full h-full object-cover rounded-full"
-            />
+            <ViewPortal
+              cameraPosition={[0, 0, 4]}
+              fallback={
+                <Image
+                  src="/images/brand/app-icon-emerald-512.png"
+                  alt="Vaidik Ratnam Crest"
+                  width={256}
+                  height={256}
+                  priority
+                  className="w-full h-full object-cover rounded-full"
+                />
+              }
+            >
+              <Preloader3D />
+            </ViewPortal>
           </div>
         </div>
 
