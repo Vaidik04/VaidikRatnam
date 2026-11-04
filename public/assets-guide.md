@@ -72,3 +72,4 @@ npx @gltf-transform/cli optimize input.glb public/models/output.glb \
   - Respectful of animal welfare and human dignity.
   - Zero requirement of costly gemstones as the default remedy.
   - Safe 43-day continuous observance timelines.
+
