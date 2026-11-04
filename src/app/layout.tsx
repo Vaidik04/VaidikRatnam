@@ -11,6 +11,7 @@ import { Preloader } from "@/components/ui/Preloader";
 import { CustomCursor } from "@/components/ui/CustomCursor";
 import { StudioAssistantWidget } from "@/components/ai/StudioAssistantWidget";
 import { CapabilityProvider } from "@/components/3d/context/CapabilityContext";
+import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
 
 const playfair = Playfair_Display({
   variable: "--font-display",
@@ -114,12 +115,14 @@ export default function RootLayout({
       lang="en"
       className={`${playfair.variable} ${cormorant.variable} ${inter.variable} ${devanagari.variable} ${spaceMono.variable}`}
     >
-      <body className="antialiased bg-[#F9F5EB] text-[#4B3F36] selection:bg-[#D4AF37]/20 selection:text-[#0F3D2E]">
+      <body className="antialiased bg-[#FAF7F0] text-[#0B0B0B] selection:bg-[#D4AF37]/25 selection:text-[#04170F]">
         <CapabilityProvider>
-          <Preloader />
-          <CustomCursor />
-          {children}
-          <StudioAssistantWidget />
+          <SmoothScrollProvider>
+            <Preloader />
+            <CustomCursor />
+            {children}
+            <StudioAssistantWidget />
+          </SmoothScrollProvider>
         </CapabilityProvider>
       </body>
     </html>

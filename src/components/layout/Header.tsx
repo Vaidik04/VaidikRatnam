@@ -1,8 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
   Menu,
@@ -11,16 +10,18 @@ import {
   MessageCircle,
   ShieldCheck,
   Scale,
+  TrendingUp,
 } from "lucide-react";
+import { AnimatedLogo } from "@/components/brand/AnimatedLogo";
 
 const NAV_LINKS = [
-  { href: "/jewellery", label: "Jewellery" },
-  { href: "/gemstones", label: "Gemstones" },
-  { href: "/custom-design", label: "Custom Karigari" },
-  { href: "/astrology", label: "Jyotish Guidance" },
-  { href: "/tools/gold-budget-estimator", label: "Gold Calculator" },
-  { href: "/about", label: "Our Shop" },
-  { href: "/contact", label: "Visit Us" },
+  { href: "/jewellery", label: "Jewellery", desc: "22K & 18K Hallmarked Gold Artistry" },
+  { href: "/gemstones", label: "Gemstones", desc: "Untreated Vedic Ratna with Lab Certs" },
+  { href: "/custom-design", label: "Custom Karigari", desc: "Handcrafted by Master Karigars" },
+  { href: "/astrology", label: "Jyotish Guidance", desc: "Honest, Non-Fear Based Parashari & Lal Kitab" },
+  { href: "/tools/gold-budget-estimator", label: "Gold Calculator", desc: "Live Transparent Studio Breakdown" },
+  { href: "/about", label: "Our Heritage", desc: "Three Generations of Craftsmanship" },
+  { href: "/contact", label: "Visit Shop", desc: "Weigh Gold In Front of You on Digital Scales" },
 ];
 
 interface HeaderProps {
@@ -33,76 +34,117 @@ interface HeaderProps {
 
 export function Header({ rates }: HeaderProps = {}) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const lastScrollY = useRef(0);
   const pathname = usePathname();
-  const whatsappPhone = process.env.NEXT_PUBLIC_WHATSAPP_PHONE || "919876543210";
 
+  const whatsappPhone = process.env.NEXT_PUBLIC_WHATSAPP_PHONE || "919876543210";
   const gold24k = rates?.gold24k || 8150;
   const gold22k = rates?.gold22k || 7470;
   const silver = rates?.silver || 98;
 
+  // Scroll listener for sticky show/hide & frosted glass transformation
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      // Scrolled past 50px activates frosted glass
+      setIsScrolled(currentScrollY > 50);
+
+      // Scroll direction: hide on scroll down, show on scroll up
+      if (currentScrollY > 120 && currentScrollY > lastScrollY.current + 8) {
+        setIsVisible(false);
+      } else if (currentScrollY < lastScrollY.current - 8 || currentScrollY <= 80) {
+        setIsVisible(true);
+      }
+
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-40 w-full shadow-xs">
-      {/* 1. Shop Top Marquee: Live Rates, Purity Promise & Brand Tagline */}
-      <div className="bg-[#08241B] text-[#F3E5AB] text-[11px] py-1.5 px-4 overflow-hidden border-b border-[#D4AF37]/30 tracking-wider font-sans select-none">
+    <header
+      className={`fixed top-0 left-0 right-0 z-40 w-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+        isVisible ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
+      {/* 1. Live Bullion Rate & Authenticity Marquee */}
+      <div className="bg-[#04170F] text-[#F1D98A] text-[10px] sm:text-[11px] py-1.5 px-4 overflow-hidden border-b border-[#D4AF37]/25 tracking-widest font-mono select-none">
         <div className="marquee-track flex items-center gap-8 whitespace-nowrap">
           {[1, 2].map((loop) => (
             <div key={loop} className="flex items-center gap-8 shrink-0">
-              <span className="flex items-center gap-1.5 font-mono">
+              <span className="flex items-center gap-2">
                 <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#1B6442] opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#48BB78]"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#48BB78] opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#38A169]"></span>
                 </span>
-                <strong className="text-white uppercase tracking-wider font-sans font-semibold">Today&apos;s Rates:</strong>
-                <span>24K ₹{gold24k.toLocaleString("en-IN")}/g</span>
+                <strong className="text-white uppercase font-sans tracking-wider font-semibold">
+                  LIVE BENCHMARK:
+                </strong>
+                <span>
+                  24K Gold ₹{gold24k.toLocaleString("en-IN")}/g <TrendingUp className="inline w-3 h-3 text-[#48BB78] ml-0.5" />
+                </span>
                 <span className="text-[#D4AF37]">&bull;</span>
                 <span>22K (916) ₹{gold22k.toLocaleString("en-IN")}/g</span>
                 <span className="text-[#D4AF37]">&bull;</span>
                 <span>925 Silver ₹{silver.toLocaleString("en-IN")}/g</span>
               </span>
+
               <span className="text-[#D4AF37]">&bull;</span>
-              <span className="flex items-center gap-1.5 text-[#FDF9EE]">
+              <span className="flex items-center gap-1.5 text-[#FAF7F0] font-sans">
                 <ShieldCheck className="w-3.5 h-3.5 text-[#D4AF37]" />
-                100% BIS Hallmarked Gold with 6-Digit HUID Code
+                100% BIS Hallmarked 22K/18K Gold with 6-Digit HUID
               </span>
+
               <span className="text-[#D4AF37]">&bull;</span>
-              <span className="flex items-center gap-1.5 text-[#FDF9EE]">
+              <span className="flex items-center gap-1.5 text-[#FAF7F0] font-sans">
                 <Scale className="w-3.5 h-3.5 text-[#D4AF37]" />
-                Weigh Gold In Front of You on Certified Digital Scales
+                Weighed In Front of You on Certified Digital Scales
               </span>
+
               <span className="text-[#D4AF37]">&bull;</span>
-              <span className="text-[#F3E5AB] font-serif italic">
+              <span className="text-[#F6E7B4] font-serif italic">
                 Timeless Jewellery &bull; Guided by Wisdom
               </span>
+
               <span className="text-[#D4AF37]">&bull;</span>
-              <span className="flex items-center gap-1.5">
+              <span className="flex items-center gap-1.5 text-[#FAF7F0] font-sans">
                 <Sparkles className="w-3 h-3 text-[#D4AF37]" />
-                Natural Certified Gemstones &bull; Honest Jyotish Guidance
+                Untreated Certified Gemstones &bull; Honest Jyotish Advice
               </span>
             </div>
           ))}
         </div>
       </div>
 
-      {/* 2. Glassmorphic Luxury Navigation Bar */}
-      <div className="luxury-glass border-b border-[#E8DFC8]/90 transition-all duration-300 bg-[#F9F5EB]/95 backdrop-blur-md">
+      {/* 2. Glassmorphic Navigation Bar */}
+      <div
+        className={`w-full transition-all duration-500 border-b ${
+          isScrolled
+            ? "bg-[#04170F]/90 backdrop-blur-md border-[#D4AF37]/30 shadow-md py-3"
+            : "bg-[#0A2A1D]/80 backdrop-blur-sm border-[#D4AF37]/20 py-4 sm:py-5"
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20 sm:h-22">
-            {/* Official Brand Logo */}
-            <Link href="/" className="flex items-center group py-1 shrink-0 mr-4 lg:mr-8">
-              <div className="relative h-14 sm:h-16 lg:h-18 w-auto flex items-center">
-                <Image
-                  src="/images/brand/logo-horizontal-header-cream.png"
-                  alt="Vaidik Ratnam — Jewellery • Gemstones • Astrology"
-                  width={909}
-                  height={319}
-                  priority
-                  className="h-13 sm:h-15 lg:h-17 w-auto object-contain mix-blend-multiply group-hover:scale-[1.02] transition-transform duration-300 drop-shadow-xs"
-                />
-              </div>
+          <div className="flex items-center justify-between">
+            {/* Animated Transparent SVG Logo Lockup */}
+            <Link
+              href="/"
+              className="group flex items-center shrink-0 cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-[#D4AF37]"
+            >
+              <AnimatedLogo
+                variant="gold-on-dark"
+                size={isScrolled ? "sm" : "md"}
+                showLockup
+              />
             </Link>
 
             {/* Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center space-x-4 xl:space-x-6">
+            <nav className="hidden lg:flex items-center space-x-5 xl:space-x-7">
               {NAV_LINKS.map((link) => {
                 const isActive =
                   pathname === link.href ||
@@ -111,15 +153,15 @@ export function Header({ rates }: HeaderProps = {}) {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={`text-[11px] xl:text-[12px] uppercase tracking-[0.14em] font-medium transition-all py-1 relative group whitespace-nowrap ${
+                    className={`text-[11px] xl:text-[12px] uppercase tracking-[0.18em] font-medium transition-all py-1.5 relative group whitespace-nowrap ${
                       isActive
-                        ? "text-[#0F3D2E] font-semibold"
-                        : "text-[#4B3F36] hover:text-[#B59328]"
+                        ? "text-[#F6E7B4] font-semibold"
+                        : "text-[#FAF7F0]/80 hover:text-[#D4AF37]"
                     }`}
                   >
                     {link.label}
                     <span
-                      className={`absolute bottom-0 left-0 h-[1.5px] bg-[#D4AF37] transition-all duration-300 ${
+                      className={`absolute bottom-0 left-0 h-[1.5px] bg-gradient-to-r from-[#F1D98A] to-[#D4AF37] transition-all duration-300 ${
                         isActive ? "w-full" : "w-0 group-hover:w-full"
                       }`}
                     />
@@ -130,44 +172,50 @@ export function Header({ rates }: HeaderProps = {}) {
 
             {/* Action Group */}
             <div className="hidden sm:flex items-center gap-3 shrink-0">
-              {/* WhatsApp Shop Direct Concierge */}
+              {/* WhatsApp Shop Pill Button */}
               <a
                 href={`https://wa.me/${whatsappPhone}?text=${encodeURIComponent(
                   "Namaste Vaidik Ratnam, I am reaching out from your website to enquire about your jewellery and gemstone collections."
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden xl:inline-flex items-center gap-1.5 px-3 py-2 text-xs font-medium text-[#0F3D2E] hover:text-[#B59328] transition-colors whitespace-nowrap"
-                title="Chat with our shop on WhatsApp"
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-[#D4AF37]/35 text-[#F6E7B4] hover:bg-[#D4AF37]/15 hover:border-[#D4AF37] transition-all duration-300 group"
+                title="Direct Concierge on WhatsApp"
               >
-                <MessageCircle className="w-3.5 h-3.5 text-[#1B6442]" />
-                <span className="text-[11px] uppercase tracking-wider font-semibold">Shop WhatsApp</span>
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#48BB78] opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#38A169]"></span>
+                </span>
+                <MessageCircle className="w-3.5 h-3.5 text-[#48BB78] group-hover:scale-110 transition-transform" />
+                <span className="text-[10px] uppercase font-mono tracking-wider font-semibold">
+                  Shop WhatsApp
+                </span>
               </a>
 
-              {/* Custom Design CTA Button */}
+              {/* Custom Karigari CTA */}
               <Link href="/custom-design" className="shrink-0">
                 <button
                   type="button"
-                  className="btn-gold-shimmer text-white px-4 py-2.5 rounded-xs text-[11px] uppercase tracking-[0.16em] font-semibold flex items-center gap-1.5 shadow-sm cursor-pointer whitespace-nowrap"
+                  className="bg-gold-gradient text-[#04170F] px-4 py-2 rounded-xs text-[11px] uppercase tracking-[0.16em] font-semibold flex items-center gap-1.5 shadow-sm hover:brightness-105 active:scale-[0.98] transition-all cursor-pointer whitespace-nowrap gold-shimmer-sweep"
                 >
-                  <Sparkles className="w-3 h-3 text-[#F3E5AB]" />
+                  <Sparkles className="w-3 h-3 text-[#04170F]" />
                   <span>Custom Karigari</span>
                 </button>
               </Link>
             </div>
 
-            {/* Mobile menu hamburger */}
+            {/* Mobile Hamburger Button */}
             <div className="flex lg:hidden">
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 text-[#4B3F36] hover:text-[#0F3D2E] focus:outline-none cursor-pointer"
-                aria-label="Toggle menu"
+                className="p-2 text-[#FAF7F0] hover:text-[#D4AF37] focus:outline-none cursor-pointer"
+                aria-label="Toggle navigation menu"
               >
                 {mobileMenuOpen ? (
-                  <X className="w-6 h-6 text-[#0F3D2E]" />
+                  <X className="w-6 h-6 text-[#D4AF37]" />
                 ) : (
-                  <Menu className="w-6 h-6 text-[#0F3D2E]" />
+                  <Menu className="w-6 h-6 text-[#F6E7B4]" />
                 )}
               </button>
             </div>
@@ -175,44 +223,39 @@ export function Header({ rates }: HeaderProps = {}) {
         </div>
       </div>
 
-      {/* 3. Mobile Menu Drawer */}
+      {/* 3. Full-Screen Emerald Overlay Menu for Mobile & Tablet */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-b border-[#E8DFC8] bg-[#F9F5EB] px-5 pt-4 pb-8 space-y-4 shadow-xl animate-in slide-in-from-top-2 duration-200">
-          {/* Mobile Drawer Brand Identification */}
-          <div className="flex items-center gap-2.5 pb-3 border-b border-[#E8DFC8]">
-            <div className="w-9 h-9 rounded-full bg-[#0F3D2E] border border-[#D4AF37]/60 flex items-center justify-center p-1 shrink-0 overflow-hidden shadow-xs">
-              <Image
-                src="/images/brand/app-icon-emerald-256.png"
-                alt="VR Crest"
-                width={36}
-                height={36}
-                className="w-full h-full object-cover rounded-full"
-              />
-            </div>
-            <div>
-              <span className="font-serif text-sm tracking-wider font-semibold text-[#0F3D2E] block leading-tight">
-                VAIDIK RATNAM
-              </span>
-              <span className="text-[9px] uppercase tracking-widest text-[#B59328] font-mono block">
-                Jewellery &bull; Gemstones &bull; Astrology
-              </span>
+        <div className="fixed inset-0 top-[88px] z-50 bg-[#04170F]/98 backdrop-blur-xl border-t border-[#D4AF37]/30 px-6 py-8 overflow-y-auto flex flex-col justify-between">
+          <div className="space-y-4">
+            <span className="text-[10px] font-mono uppercase tracking-[0.24em] text-[#D4AF37]/70 block border-b border-[#D4AF37]/20 pb-2">
+              Explore Vaidik Ratnam Collections
+            </span>
+
+            <div className="space-y-3 pt-2">
+              {NAV_LINKS.map((link, idx) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="group flex items-baseline justify-between py-2 border-b border-white/5 hover:border-[#D4AF37]/40 transition-colors"
+                >
+                  <div>
+                    <span className="font-serif text-2xl text-[#FAF7F0] group-hover:text-[#D4AF37] transition-colors block">
+                      {link.label}
+                    </span>
+                    <span className="text-[11px] text-[#F1D98A]/60 font-sans block mt-0.5">
+                      {link.desc}
+                    </span>
+                  </div>
+                  <span className="text-xs font-mono text-[#D4AF37]/50 group-hover:text-[#D4AF37] group-hover:translate-x-1 transition-all">
+                    0{idx + 1} &rarr;
+                  </span>
+                </Link>
+              ))}
             </div>
           </div>
 
-          <div className="space-y-1">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="block text-xs uppercase tracking-[0.18em] py-2.5 px-3 text-[#4B3F36] hover:bg-[#F3E5AB]/30 rounded-xs font-medium transition-colors"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
-
-          <div className="pt-3 border-t border-[#E8DFC8] space-y-2">
+          <div className="pt-6 border-t border-[#D4AF37]/25 space-y-3">
             <Link
               href="/custom-design"
               onClick={() => setMobileMenuOpen(false)}
@@ -220,9 +263,9 @@ export function Header({ rates }: HeaderProps = {}) {
             >
               <button
                 type="button"
-                className="btn-gold-pure w-full py-2.5 text-xs uppercase tracking-widest font-semibold rounded-xs"
+                className="w-full bg-gold-gradient text-[#04170F] py-3 text-xs uppercase tracking-widest font-semibold rounded-xs shadow-sm"
               >
-                Order Custom Karigari
+                Order Custom Karigari &bull; Bespoke Jewellery
               </button>
             </Link>
 
@@ -232,9 +275,9 @@ export function Header({ rates }: HeaderProps = {}) {
               )}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 py-2 text-xs text-[#0F3D2E] font-semibold uppercase tracking-wider"
+              className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xs border border-[#D4AF37]/40 text-[#F6E7B4] text-xs font-mono uppercase tracking-wider hover:bg-white/5 transition-colors"
             >
-              <MessageCircle className="w-4 h-4 text-[#1B6442]" />
+              <MessageCircle className="w-4 h-4 text-[#48BB78]" />
               <span>Connect on WhatsApp</span>
             </a>
           </div>

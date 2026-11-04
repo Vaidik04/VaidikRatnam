@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -10,19 +12,27 @@ import {
   Clock,
   MessageCircle,
   Rotate3D,
+  ArrowUp,
 } from "lucide-react";
 import { LiteModeToggle } from "@/components/3d/components/LiteModeToggle";
+import { AnimatedLogo } from "@/components/brand/AnimatedLogo";
 
 export function Footer() {
   const whatsappPhone = process.env.NEXT_PUBLIC_WHATSAPP_PHONE || "919876543210";
 
+  const scrollToTop = () => {
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
-    <footer className="bg-[#08241B] text-[#DDE5DC] border-t-2 border-[#D4AF37] mt-auto font-sans relative overflow-hidden">
+    <footer className="bg-[#04170F] text-[#FAF7F0] border-t-2 border-[#D4AF37]/50 mt-auto font-sans relative overflow-hidden">
       {/* Subtle Ambient Radial Gold Glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-radial from-[#D4AF37]/12 to-transparent pointer-events-none -z-0" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-radial from-[#D4AF37]/10 to-transparent pointer-events-none -z-0" />
 
       {/* 0. Brand Elements Row: Lotus, Sun/Nakshatra, Gemstone, Astrology Circle */}
-      <div className="border-b border-[#18523F] py-8 bg-[#051A13]/60 relative z-10">
+      <div className="border-b border-[#14502F]/40 py-8 bg-[#04170F]/80 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {/* Element 1: Lotus */}
@@ -36,7 +46,7 @@ export function Footer() {
                   className="w-10 h-10 object-contain drop-shadow"
                 />
               </div>
-              <strong className="text-xs font-serif text-[#F3E5AB] tracking-wider uppercase block">
+              <strong className="text-xs font-serif text-[#F1D98A] tracking-wider uppercase block">
                 Lotus
               </strong>
               <span className="text-[10px] text-[#A8B6AF] font-light">Spirituality &bull; Pure Craft</span>
@@ -53,7 +63,7 @@ export function Footer() {
                   className="w-10 h-10 object-contain drop-shadow"
                 />
               </div>
-              <strong className="text-xs font-serif text-[#F3E5AB] tracking-wider uppercase block">
+              <strong className="text-xs font-serif text-[#F1D98A] tracking-wider uppercase block">
                 Sun &bull; Nakshatra
               </strong>
               <span className="text-[10px] text-[#A8B6AF] font-light">Wisdom &bull; Vedic Guidance</span>
@@ -70,7 +80,7 @@ export function Footer() {
                   className="w-10 h-10 object-contain drop-shadow"
                 />
               </div>
-              <strong className="text-xs font-serif text-[#F3E5AB] tracking-wider uppercase block">
+              <strong className="text-xs font-serif text-[#F1D98A] tracking-wider uppercase block">
                 Ratna &bull; Gemstone
               </strong>
               <span className="text-[10px] text-[#A8B6AF] font-light">Certified Truth &bull; Natural Rarity</span>
@@ -87,7 +97,7 @@ export function Footer() {
                   className="w-10 h-10 object-contain drop-shadow"
                 />
               </div>
-              <strong className="text-xs font-serif text-[#F3E5AB] tracking-wider uppercase block">
+              <strong className="text-xs font-serif text-[#F1D98A] tracking-wider uppercase block">
                 Astrology Circle
               </strong>
               <span className="text-[10px] text-[#A8B6AF] font-light">Cosmic Harmony &bull; Janma Kundali</span>
@@ -97,103 +107,99 @@ export function Footer() {
       </div>
 
       {/* 1. Core Trust Pillars */}
-      <div className="border-b border-[#18523F] py-12 relative z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
-          <div className="flex flex-col items-center md:items-start p-4 rounded-xs bg-white/5 border border-white/5 backdrop-blur-xs">
-            <div className="w-12 h-12 rounded-full bg-[#0F3D2E] border border-[#D4AF37] flex items-center justify-center text-[#F3E5AB] mb-4 shadow-sm">
-              <ShieldCheck className="w-6 h-6 text-[#48BB78]" />
+      <div className="border-b border-[#14502F]/40 py-12 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-full bg-[#14502F]/30 border border-[#D4AF37]/50 flex items-center justify-center shrink-0">
+                <ShieldCheck className="w-5 h-5 text-[#D4AF37]" />
+              </div>
+              <div>
+                <h4 className="font-serif text-base text-[#F1D98A] font-semibold">
+                  100% BIS Hallmarked Gold
+                </h4>
+                <p className="text-xs text-[#A8B6AF] mt-1 leading-relaxed">
+                  Every 22K and 18K piece carries the Government of India 6-digit alphanumeric HUID laser stamp.
+                </p>
+              </div>
             </div>
-            <h4 className="font-serif text-white text-lg font-medium mb-1.5">
-              100% BIS Hallmarked Purity
-            </h4>
-            <p className="text-xs text-[#A8B6AF] leading-relaxed">
-              Every gold creation is certified with the official Bureau of Indian Standards hallmark and a verifiable 6-digit laser HUID code.
-            </p>
-          </div>
 
-          <div className="flex flex-col items-center md:items-start p-4 rounded-xs bg-white/5 border border-white/5 backdrop-blur-xs">
-            <div className="w-12 h-12 rounded-full bg-[#0F3D2E] border border-[#D4AF37] flex items-center justify-center text-[#F3E5AB] mb-4 shadow-sm">
-              <Compass className="w-6 h-6 text-[#D4AF37]" />
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-full bg-[#14502F]/30 border border-[#D4AF37]/50 flex items-center justify-center shrink-0">
+                <Compass className="w-5 h-5 text-[#D4AF37]" />
+              </div>
+              <div>
+                <h4 className="font-serif text-base text-[#F1D98A] font-semibold">
+                  Natural Certified Gemstones
+                </h4>
+                <p className="text-xs text-[#A8B6AF] mt-1 leading-relaxed">
+                  Strictly untreated, unheated gemstones with authentic third-party gemological certificates.
+                </p>
+              </div>
             </div>
-            <h4 className="font-serif text-white text-lg font-medium mb-1.5">
-              Classical Parashari Jyotish
-            </h4>
-            <p className="text-xs text-[#A8B6AF] leading-relaxed">
-              Strictly ethical trinal gemstone analysis by our family elder. We reject fear tactics, manufactured threats, and false cure claims.
-            </p>
-          </div>
 
-          <div className="flex flex-col items-center md:items-start p-4 rounded-xs bg-white/5 border border-white/5 backdrop-blur-xs">
-            <div className="w-12 h-12 rounded-full bg-[#0F3D2E] border border-[#D4AF37] flex items-center justify-center text-[#F3E5AB] mb-4 shadow-sm">
-              <HeartHandshake className="w-6 h-6 text-[#F3E5AB]" />
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-full bg-[#14502F]/30 border border-[#D4AF37]/50 flex items-center justify-center shrink-0">
+                <HeartHandshake className="w-5 h-5 text-[#D4AF37]" />
+              </div>
+              <div>
+                <h4 className="font-serif text-base text-[#F1D98A] font-semibold">
+                  Three Generations of Trust
+                </h4>
+                <p className="text-xs text-[#A8B6AF] mt-1 leading-relaxed">
+                  Traditional family jewellery shop. Honest rates, transparent weights, and no fear-based Jyotish.
+                </p>
+              </div>
             </div>
-            <h4 className="font-serif text-white text-lg font-medium mb-1.5">
-              Visit Our Shop &amp; Counter
-            </h4>
-            <p className="text-xs text-[#A8B6AF] leading-relaxed">
-              Inspect pieces personally on certified digital scales in our shop. Safe in-person collection ensures complete trust and peace of mind.
-            </p>
           </div>
         </div>
       </div>
 
-      {/* 2. Main Footer Navigation */}
+      {/* 2. Main Footer Link Columns */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 relative z-10">
-        {/* Brand & Crest Column (2 cols) */}
+        {/* Brand Lockup & WhatsApp Alert Column */}
         <div className="lg:col-span-2 space-y-4">
-          <div className="flex items-center gap-3">
-            <div className="relative w-12 h-12 rounded-full overflow-hidden border border-[#D4AF37]/60 shadow-lg flex items-center justify-center shrink-0 bg-[#0F3D2E] p-0.5">
-              <Image
-                src="/images/brand/app-icon-emerald-256.png"
-                alt="VR Monogram Crest"
-                width={64}
-                height={64}
-                className="w-full h-full object-cover rounded-full"
-              />
-            </div>
-            <div>
-              <span className="font-serif text-2xl tracking-[0.08em] text-white font-medium block">
-                VAIDIK RATNAM
-              </span>
-              <span className="text-[10px] uppercase tracking-[0.25em] text-[#D4AF37] block font-sans -mt-0.5">
-                Jewellery &bull; Gemstones &bull; Astrology
-              </span>
-            </div>
-          </div>
+          <AnimatedLogo variant="gold-on-dark" size="md" showLockup />
 
-          <p className="text-xs text-[#F3E5AB] italic font-serif tracking-wider">
-            &ldquo;Timeless Jewellery &bull; Guided by Wisdom&rdquo;
+          <p className="text-xs text-[#A8B6AF] leading-relaxed max-w-sm pt-2">
+            Traditional Indian Gold Jewellery, Bespoke Karigari &amp; Genuine Astrological Ratna. Crafted with Vedic integrity and weighed in front of you on certified digital scales.
           </p>
 
-          <p className="text-xs text-[#A8B6AF] leading-relaxed max-w-sm">
-            A trusted family-owned jewellery and gemstone shop in India. Combining 100% BIS hallmarked 22K gold, custom handmade designs by skilled karigars, certified natural gemstones, and honest astrology advice from our family elders.
-          </p>
-
-          <div className="p-3.5 bg-black/25 border border-[#D4AF37]/30 rounded-xs text-[11px] text-[#DDE5DC] space-y-1">
-            <strong className="text-[#F3E5AB] flex items-center gap-1.5">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#48BB78]" />
-              In-Person Shop Collection
-            </strong>
-            <p className="text-[#A8B6AF]">
-              To guarantee 100% safety and purity, we sell directly in our shop. Every piece is weighed and tested in front of you. Zero courier risk.
-            </p>
+          {/* Daily Gold Rate Alert via WhatsApp */}
+          <div className="pt-2">
+            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#F1D98A] block mb-2">
+              Daily Gold Rate Updates
+            </span>
+            <div className="flex items-center gap-2 max-w-sm">
+              <a
+                href={`https://wa.me/${whatsappPhone}?text=${encodeURIComponent(
+                  "Namaste Vaidik Ratnam, please subscribe me to your daily certified 22K/24K gold rate broadcast."
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xs bg-[#14502F]/40 hover:bg-[#14502F] border border-[#D4AF37]/40 text-[#F1D98A] text-xs font-mono uppercase tracking-wider transition-colors shadow-xs"
+              >
+                <MessageCircle className="w-4 h-4 text-[#48BB78]" />
+                <span>Join Daily Rate Alerts</span>
+              </a>
+            </div>
           </div>
         </div>
 
-        {/* Column 1: Shop Collections */}
+        {/* Column 1: Jewellery Collections */}
         <div>
-          <h4 className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#F3E5AB] font-semibold mb-4">
-            Shop Collections
+          <h4 className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#F1D98A] font-semibold mb-4">
+            Gold Jewellery
           </h4>
           <ul className="space-y-2.5 text-xs text-[#A8B6AF]">
             <li>
               <Link href="/jewellery" className="hover:text-white transition-colors">
-                All Gold Jewellery
+                All Jewellery
               </Link>
             </li>
             <li>
               <Link href="/jewellery?category=necklaces" className="hover:text-white transition-colors">
-                Necklaces &amp; Bridal Sets
+                Necklaces &amp; Chokers
               </Link>
             </li>
             <li>
@@ -221,13 +227,13 @@ export function Footer() {
 
         {/* Column 2: Astrology & Tools */}
         <div>
-          <h4 className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#F3E5AB] font-semibold mb-4">
+          <h4 className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#F1D98A] font-semibold mb-4">
             Astrology &amp; Calculators
           </h4>
           <ul className="space-y-2.5 text-xs text-[#A8B6AF]">
             <li>
               <Link href="/astrology" className="hover:text-white transition-colors">
-                Family Astrology Advice
+                Vedic Astrology Guidance
               </Link>
             </li>
             <li>
@@ -265,7 +271,7 @@ export function Footer() {
 
         {/* Column 3: Shop & Contact */}
         <div>
-          <h4 className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#F3E5AB] font-semibold mb-4">
+          <h4 className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#F1D98A] font-semibold mb-4">
             Our Shop
           </h4>
           <div className="space-y-3 text-xs text-[#A8B6AF]">
@@ -284,7 +290,7 @@ export function Footer() {
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-3.5 py-2 bg-[#0F3D2E] hover:bg-[#1B6442] text-white rounded-xs border border-[#D4AF37]/50 transition-colors"
+                className="inline-flex items-center gap-2 px-3.5 py-2 bg-[#0A2A1D] hover:bg-[#14502F] text-white rounded-xs border border-[#D4AF37]/50 transition-colors"
               >
                 <MessageCircle className="w-3.5 h-3.5 text-[#48BB78]" />
                 <span className="text-[11px] uppercase tracking-wider font-semibold">Shop WhatsApp</span>
@@ -294,8 +300,22 @@ export function Footer() {
         </div>
       </div>
 
-      {/* 3. Bottom Legal & Consumer Compliance Bar */}
-      <div className="border-t border-[#18523F] py-6 bg-black/40">
+      {/* Center Hairline Gold Divider with Diamond Ornament */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
+        <div className="gold-divider-diamond text-[#D4AF37]">
+          <span className="text-xs">&diams;</span>
+        </div>
+      </div>
+
+      {/* 3. Huge Reflective Gold Architectural Wordmark */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center select-none overflow-hidden">
+        <span className="font-serif text-5xl sm:text-7xl lg:text-9xl tracking-[0.2em] uppercase font-light text-gold-gradient opacity-20 block hover:opacity-40 transition-opacity duration-700">
+          VAIDIKRATNAM
+        </span>
+      </div>
+
+      {/* 4. Bottom Legal & Consumer Compliance Bar */}
+      <div className="border-t border-[#14502F]/40 py-6 bg-black/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#82928A]">
           <p>
             &copy; 2026 Vaidik Ratnam &bull; Traditional Gold Jewellery &amp; Gemstone Shop. All rights reserved.
@@ -329,6 +349,16 @@ export function Footer() {
               <Lock className="w-3 h-3" />
               Staff Login
             </Link>
+            <span>&bull;</span>
+            <button
+              type="button"
+              onClick={scrollToTop}
+              className="inline-flex items-center gap-1 text-[#F1D98A] hover:text-white transition-colors cursor-pointer"
+              aria-label="Back to top"
+            >
+              <ArrowUp className="w-3.5 h-3.5" />
+              <span>Top</span>
+            </button>
           </div>
         </div>
       </div>

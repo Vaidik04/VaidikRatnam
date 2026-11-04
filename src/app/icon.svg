@@ -1,0 +1,15 @@
+<svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100" height="100" rx="20" fill="#04170F"/>
+  <defs>
+    <linearGradient id="vr-gold-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#F6E7B4"/>
+      <stop offset="50%" stopColor="#D4AF37"/>
+      <stop offset="100%" stopColor="#A8821F"/>
+    </linearGradient>
+  </defs>
+  <circle cx="50" cy="50" r="44" stroke="url(#vr-gold-grad)" stroke-width="2" stroke-dasharray="3 2" opacity="0.8"/>
+  <path d="M50 8 L54 13 L50 18 L46 13 Z" fill="#F6E7B4" stroke="#A8821F" stroke-width="1"/>
+  <path d="M24 28 C26 28 29 29 31 33 L45 68 C46 71 47 73 49 75 C51 73 52 71 53 68 L60 50 C58 48 55 45 52 45" stroke="url(#vr-gold-grad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M48 30 L48 72 M48 31 C56 31 66 31 66 43 C66 53 56 54 48 54 M58 54 L72 73 C75 76 77 76 80 76" stroke="url(#vr-gold-grad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="50" cy="52" r="2.5" fill="#F6E7B4"/>
+</svg>

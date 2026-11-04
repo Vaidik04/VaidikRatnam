@@ -37,7 +37,7 @@ export function Hero({ rates }: HeroProps = {}) {
   const silver = rates?.silver || 98;
 
   return (
-    <section className="relative overflow-hidden bg-[#08241B] text-[#F9F5EB] pt-10 pb-16 lg:py-20 border-b border-[#D4AF37]/30">
+    <section className="relative overflow-hidden bg-[#04170F] text-[#FAF7F0] pt-28 sm:pt-32 lg:pt-36 pb-16 lg:pb-24 border-b border-[#D4AF37]/30">
       {/* Background Ambience: Subtle Radial Glows & Filigree */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-radial from-[#D4AF37]/10 via-[#18523F]/20 to-transparent pointer-events-none -z-0" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-radial from-[#18523F]/30 to-transparent pointer-events-none -z-0" />
