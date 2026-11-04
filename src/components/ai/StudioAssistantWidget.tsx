@@ -10,6 +10,7 @@ import {
   ExternalLink,
   ShieldCheck,
   Minimize2,
+  Sparkles,
 } from "lucide-react";
 
 let messageCounter = 0;
@@ -128,28 +129,32 @@ export function StudioAssistantWidget() {
   };
 
   return (
-    <div className="fixed bottom-5 right-5 z-50 print:hidden font-sans">
-      {/* Floating Toggle Button */}
+    <div className="fixed bottom-6 left-6 z-40 print:hidden font-sans">
+      {/* Floating Gold-Glass AI Advisor Orb */}
       {!isOpen && (
         <button
           type="button"
           onClick={() => setIsOpen(true)}
-          className="group flex items-center gap-2.5 px-4 py-3 bg-[#0F3D2E] text-white rounded-full shadow-lg hover:bg-[#08241B] hover:shadow-xl transition-all cursor-pointer border border-[#D4AF37]/60 active:scale-[0.98]"
-          aria-label="Open Shop AI Advisor"
+          className="group relative flex items-center gap-3 px-4 py-2.5 bg-[#04170F]/90 backdrop-blur-md text-[#FAF7F0] rounded-full shadow-[0_0_20px_rgba(212,175,55,0.25)] hover:border-[#D4AF37] transition-all cursor-pointer border border-[#D4AF37]/50 active:scale-[0.97]"
+          aria-label="Open Vaidik Ratnam Heritage AI Advisor"
         >
-          <div className="w-6 h-6 rounded-full bg-[#08241B] border border-[#D4AF37]/60 flex items-center justify-center p-0.5 shrink-0 shadow-xs overflow-hidden">
-            <Image
-              src="/images/brand/app-icon-emerald-256.png"
-              alt="VR"
-              width={24}
-              height={24}
-              className="w-full h-full object-cover rounded-full"
-            />
+          {/* Rotating Celestial Mini Orb */}
+          <div className="relative w-8 h-8 rounded-full bg-[#0A2A1D] border border-[#D4AF37] flex items-center justify-center shrink-0 overflow-hidden shadow-xs">
+            <span className="absolute -inset-1 rounded-full border border-[#D4AF37]/40 animate-spin-slow pointer-events-none" />
+            <Sparkles className="w-4 h-4 text-[#F1D98A] group-hover:scale-110 transition-transform" />
           </div>
-          <span className="text-xs font-semibold uppercase tracking-wider font-serif pr-1">
-            Shop Assistant
-          </span>
-          <span className="relative flex h-2 w-2">
+
+          <div className="flex flex-col text-left">
+            <span className="text-[11px] font-serif uppercase tracking-wider text-[#F1D98A] font-medium leading-tight">
+              Heritage AI Advisor
+            </span>
+            <span className="text-[9px] text-[#A8B6AF] font-mono">
+              Purity &bull; Ratna &bull; Jyotish
+            </span>
+          </div>
+
+          {/* Active Ping Dot */}
+          <span className="relative flex h-2 w-2 ml-1">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4AF37] opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-[#D4AF37]"></span>
           </span>

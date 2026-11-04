@@ -12,6 +12,8 @@ import { CustomCursor } from "@/components/ui/CustomCursor";
 import { StudioAssistantWidget } from "@/components/ai/StudioAssistantWidget";
 import { CapabilityProvider } from "@/components/3d/context/CapabilityContext";
 import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
+import { PageTransition } from "@/components/ui/PageTransition";
+import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsApp";
 
 const playfair = Playfair_Display({
   variable: "--font-display",
@@ -120,7 +122,9 @@ export default function RootLayout({
           <SmoothScrollProvider>
             <Preloader />
             <CustomCursor />
+            <PageTransition />
             {children}
+            <FloatingWhatsApp />
             <StudioAssistantWidget />
           </SmoothScrollProvider>
         </CapabilityProvider>

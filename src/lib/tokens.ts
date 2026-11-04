@@ -64,3 +64,4 @@ export const TYPOGRAPHY = {
   devanagari: 'var(--font-devanagari), "Noto Serif Devanagari", serif',
   mono: 'var(--font-mono), "Space Mono", monospace',
 } as const;
+

@@ -11,6 +11,7 @@ import {
   Lock,
 } from "lucide-react";
 import { RateLockModal } from "@/components/tools/RateLockModal";
+import { RollingNumber } from "@/components/ui/RollingNumber";
 
 const ViewPortal = dynamic(
   () => import("@/components/3d/canvas/ViewPortal").then((m) => m.ViewPortal),
@@ -239,7 +240,7 @@ export function HomeGoldEstimator({ initialRates }: HomeGoldEstimatorProps) {
               </div>
               <div className="text-right">
                 <span className="font-mono text-2xl font-bold text-[#0F3D2E] block leading-tight">
-                  ₹{totalEstimate.toLocaleString("en-IN")}
+                  <RollingNumber value={totalEstimate} prefix="₹" />
                 </span>
               </div>
             </div>

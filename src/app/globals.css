@@ -160,6 +160,25 @@ body {
   animation: vrStrokeDraw 2.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
+@keyframes curtainWipe {
+  0% {
+    transform: translateY(-100%);
+  }
+  40% {
+    transform: translateY(0%);
+  }
+  60% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.animate-curtain-wipe {
+  animation: curtainWipe 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
 .film-grain {
   background-image: radial-gradient(rgba(212, 175, 55, 0.035) 1px, transparent 0);
   background-size: 20px 20px;

@@ -13,6 +13,8 @@ import {
   Calculator,
   Rotate3D,
 } from "lucide-react";
+import { MagneticButton } from "@/components/ui/MagneticButton";
+import { RollingNumber } from "@/components/ui/RollingNumber";
 
 const ViewPortal = dynamic(
   () => import("@/components/3d/canvas/ViewPortal").then((m) => m.ViewPortal),
@@ -111,38 +113,47 @@ export function Hero({ rates }: HeroProps = {}) {
               <div className="grid grid-cols-3 gap-2 text-center">
                 <div className="p-2 rounded-xs bg-black/20">
                   <span className="block text-[10px] text-[#A8B6AF] uppercase tracking-wider font-mono">24K Bullion</span>
-                  <span className="font-mono text-sm sm:text-base font-bold text-[#F3E5AB]">₹{gold24k.toLocaleString("en-IN")}<span className="text-[10px] text-[#D4AF37]">/g</span></span>
+                  <span className="font-mono text-sm sm:text-base font-bold text-[#F3E5AB]">
+                    <RollingNumber value={gold24k} prefix="₹" />
+                    <span className="text-[10px] text-[#D4AF37]">/g</span>
+                  </span>
                 </div>
                 <div className="p-2 rounded-xs bg-black/20 border border-[#D4AF37]/30">
                   <span className="block text-[10px] text-[#D4AF37] uppercase tracking-wider font-mono font-semibold">22K 916 BIS</span>
-                  <span className="font-mono text-sm sm:text-base font-bold text-white">₹{gold22k.toLocaleString("en-IN")}<span className="text-[10px] text-[#D4AF37]">/g</span></span>
+                  <span className="font-mono text-sm sm:text-base font-bold text-white">
+                    <RollingNumber value={gold22k} prefix="₹" />
+                    <span className="text-[10px] text-[#D4AF37]">/g</span>
+                  </span>
                 </div>
                 <div className="p-2 rounded-xs bg-black/20">
                   <span className="block text-[10px] text-[#A8B6AF] uppercase tracking-wider font-mono">925 Silver</span>
-                  <span className="font-mono text-sm sm:text-base font-bold text-[#DDE5DC]">₹{silver.toLocaleString("en-IN")}<span className="text-[10px] text-[#D4AF37]">/g</span></span>
+                  <span className="font-mono text-sm sm:text-base font-bold text-[#DDE5DC]">
+                    <RollingNumber value={silver} prefix="₹" />
+                    <span className="text-[10px] text-[#D4AF37]">/g</span>
+                  </span>
                 </div>
               </div>
             </div>
 
-            {/* Action Buttons */}
+            {/* Action Buttons with Magnetic Pull & Sparkle Burst */}
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
-              <Link href="/jewellery" className="w-full sm:w-auto">
-                <button
-                  type="button"
-                  className="btn-gold-pure w-full sm:w-auto px-8 py-3.5 rounded-xs text-xs uppercase tracking-[0.2em] font-bold flex items-center justify-center gap-2 cursor-pointer shadow-lg hover:shadow-xl transition-all"
+              <Link href="/jewellery" className="w-full sm:w-auto" data-cursor="View">
+                <MagneticButton
+                  variant="gold"
+                  className="w-full sm:w-auto px-8 py-3.5 text-xs tracking-[0.2em]"
                 >
                   <span>Explore Jewellery</span>
                   <ArrowRight className="w-4 h-4" />
-                </button>
+                </MagneticButton>
               </Link>
-              <Link href="/custom-design" className="w-full sm:w-auto">
-                <button
-                  type="button"
-                  className="w-full sm:w-auto px-7 py-3.5 rounded-xs text-xs uppercase tracking-[0.2em] font-semibold border border-[#D4AF37] text-[#F3E5AB] hover:bg-[#D4AF37]/15 transition-all flex items-center justify-center gap-2 cursor-pointer"
+              <Link href="/custom-design" className="w-full sm:w-auto" data-cursor="Craft">
+                <MagneticButton
+                  variant="outline"
+                  className="w-full sm:w-auto px-7 py-3.5 text-xs tracking-[0.2em]"
                 >
                   <Sparkles className="w-4 h-4 text-[#D4AF37]" />
                   <span>Custom Karigari Studio</span>
-                </button>
+                </MagneticButton>
               </Link>
             </div>
 
