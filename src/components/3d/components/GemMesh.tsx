@@ -57,7 +57,7 @@ export function GemMesh({
       meshRef.current.rotation.y += delta * rotationSpeed;
     }
     if (interactive) {
-      // Gentle cursor parallax response
+      // Smooth cursor parallax response
       const targetX = (state.pointer.x * Math.PI) / 6;
       const targetY = (-state.pointer.y * Math.PI) / 8;
       meshRef.current.rotation.x = THREE.MathUtils.lerp(
@@ -72,6 +72,10 @@ export function GemMesh({
       );
     }
   });
+
+  // Authentic luminous gem colors
+  const gemColor = type === "emerald" ? "#10b981" : gemProps.color;
+  const gemEmissive = type === "emerald" ? "#044e34" : "#000000";
 
   return (
     <mesh
@@ -88,26 +92,29 @@ export function GemMesh({
           backside
           samples={4}
           resolution={512}
-          transmission={gemProps.transmission}
-          roughness={"roughness" in gemProps ? (gemProps.roughness as number) : 0.05}
-          thickness={"thickness" in gemProps ? (gemProps.thickness as number) : 1.2}
+          transmission={0.98}
+          roughness={0.02}
+          thickness={1.4}
           ior={gemProps.ior}
-          chromaticAberration={"chromaticAberration" in gemProps ? (gemProps.chromaticAberration as number) : 0.04}
-          anisotropy={"anisotropy" in gemProps ? (gemProps.anisotropy as number) : 0.1}
-          distortion={"distortion" in gemProps ? (gemProps.distortion as number) : 0.1}
-          distortionScale={0.3}
-          temporalDistortion={0.1}
-          color={gemProps.color}
+          chromaticAberration={0.06}
+          anisotropy={0.2}
+          distortion={0.08}
+          distortionScale={0.2}
+          temporalDistortion={0.05}
+          color={gemColor}
         />
       ) : (
         <meshPhysicalMaterial
-          color={gemProps.color}
-          metalness={"metalness" in gemProps ? (gemProps.metalness as number) : 0.1}
-          roughness={"roughness" in gemProps ? (gemProps.roughness as number) : 0.1}
-          clearcoat={"clearcoat" in gemProps ? (gemProps.clearcoat as number) : 0.8}
-          clearcoatRoughness={0.1}
-          reflectivity={1}
-          transmission={"transmission" in gemProps ? 0.7 : 0}
+          color={gemColor}
+          emissive={gemEmissive}
+          emissiveIntensity={0.25}
+          metalness={0.05}
+          roughness={0.04}
+          clearcoat={1.0}
+          clearcoatRoughness={0.04}
+          reflectivity={1.0}
+          transmission={0.85}
+          ior={gemProps.ior}
         />
       )}
     </mesh>

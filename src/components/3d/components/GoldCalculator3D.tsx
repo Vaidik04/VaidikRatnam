@@ -6,6 +6,7 @@ import { useFrame } from "@react-three/fiber";
 import { Float, ContactShadows } from "@react-three/drei";
 import { createGoldBarGeometry, createGoldCoinGeometry } from "../geometries/GemGeometries";
 import { createPolishedGoldMaterial } from "../materials/materials";
+import { StudioEnvironment } from "./StudioEnvironment";
 
 interface GoldCalculator3DProps {
   weightGrams?: number;
@@ -46,6 +47,7 @@ export function GoldCalculator3D({
 
   return (
     <group>
+      <StudioEnvironment />
       <ambientLight intensity={0.6} />
       <directionalLight position={[3, 5, 4]} intensity={1.8} color="#fff6e0" castShadow />
       <directionalLight position={[-3, -2, -2]} intensity={0.6} color="#8ecae6" />

@@ -10,6 +10,7 @@ import {
 } from "@react-three/drei";
 import { createAntiqueGoldMaterial, createVelvetMaterial } from "../materials/materials";
 import { GemMesh } from "./GemMesh";
+import { StudioEnvironment } from "./StudioEnvironment";
 import { Sparkles, ShieldCheck, Scale, Gem, X } from "lucide-react";
 
 export type Product3DType = "kada" | "emerald-pendant" | "sapphire-ring" | "nakshi-choker";
@@ -114,8 +115,11 @@ export function ProductViewer3D({
 
   return (
     <group>
+      {/* Zero-Asset Studio Lighting Environment */}
+      <StudioEnvironment />
+
       {/* Studio Lighting */}
-      <ambientLight intensity={0.6} />
+      <ambientLight intensity={0.8} />
       <directionalLight position={[4, 5, 5]} intensity={1.8} color="#fff6e0" castShadow />
       <directionalLight position={[-4, 2, -3]} intensity={0.8} color="#8ecae6" />
       <pointLight position={[0, 2, 3]} intensity={1.5} color="#ffd700" distance={8} />

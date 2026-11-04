@@ -14,8 +14,13 @@ import {
   Rotate3D,
   ArrowUp,
 } from "lucide-react";
-import { LiteModeToggle } from "@/components/3d/components/LiteModeToggle";
+import dynamic from "next/dynamic";
 import { AnimatedLogo } from "@/components/brand/AnimatedLogo";
+
+const LiteModeToggle = dynamic(
+  () => import("@/components/3d/components/LiteModeToggle").then((m) => m.LiteModeToggle),
+  { ssr: false }
+);
 
 export function Footer() {
   const whatsappPhone = process.env.NEXT_PUBLIC_WHATSAPP_PHONE || "919876543210";

@@ -130,33 +130,30 @@ export function StudioAssistantWidget() {
 
   return (
     <div className="fixed bottom-6 left-6 z-40 print:hidden font-sans">
-      {/* Floating Gold-Glass AI Advisor Orb */}
+      {/* Refined Luxury Celestial Orb (Collision-Free) */}
       {!isOpen && (
         <button
           type="button"
           onClick={() => setIsOpen(true)}
-          className="group relative flex items-center gap-3 px-4 py-2.5 bg-[#04170F]/90 backdrop-blur-md text-[#FAF7F0] rounded-full shadow-[0_0_20px_rgba(212,175,55,0.25)] hover:border-[#D4AF37] transition-all cursor-pointer border border-[#D4AF37]/50 active:scale-[0.97]"
+          className="group relative w-12 h-12 rounded-full bg-[#04170f]/95 border-2 border-[#d4af37] shadow-[0_0_24px_rgba(212,175,55,0.35)] flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-300 cursor-pointer backdrop-blur-md"
+          title="Vaidik Ratnam AI Advisor"
           aria-label="Open Vaidik Ratnam Heritage AI Advisor"
         >
-          {/* Rotating Celestial Mini Orb */}
-          <div className="relative w-8 h-8 rounded-full bg-[#0A2A1D] border border-[#D4AF37] flex items-center justify-center shrink-0 overflow-hidden shadow-xs">
-            <span className="absolute -inset-1 rounded-full border border-[#D4AF37]/40 animate-spin-slow pointer-events-none" />
-            <Sparkles className="w-4 h-4 text-[#F1D98A] group-hover:scale-110 transition-transform" />
-          </div>
+          {/* Ambient Pulsing Ring */}
+          <span className="absolute -inset-1 rounded-full border border-[#d4af37]/40 animate-ping-slow pointer-events-none" />
 
-          <div className="flex flex-col text-left">
-            <span className="text-[11px] font-serif uppercase tracking-wider text-[#F1D98A] font-medium leading-tight">
-              Heritage AI Advisor
-            </span>
-            <span className="text-[9px] text-[#A8B6AF] font-mono">
-              Purity &bull; Ratna &bull; Jyotish
-            </span>
-          </div>
+          {/* Sparkle Icon */}
+          <Sparkles className="w-5 h-5 text-[#f1d98a] group-hover:rotate-12 transition-transform duration-300" />
 
-          {/* Active Ping Dot */}
-          <span className="relative flex h-2 w-2 ml-1">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4AF37] opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#D4AF37]"></span>
+          {/* Online Indicator Badge */}
+          <span className="absolute -top-0.5 -right-0.5 flex h-3 w-3">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#d4af37] opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-3 w-3 bg-[#d4af37] border-2 border-[#04170f]"></span>
+          </span>
+
+          {/* Elegant Micro Hover Label */}
+          <span className="absolute left-14 px-3 py-1 bg-[#04170f]/95 border border-[#d4af37]/40 text-[#f1d98a] text-[10px] font-mono uppercase tracking-wider rounded-full shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
+            AI Advisor
           </span>
         </button>
       )}

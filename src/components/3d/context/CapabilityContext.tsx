@@ -102,7 +102,7 @@ export function CapabilityProvider({ children }: { children: React.ReactNode }) 
       is3DSupported: is3DSupported && !liteMode,
       liteMode,
       setLiteMode,
-      canUseTransmission: effectiveTier === "HIGH",
+      canUseTransmission: effectiveTier !== "LOW",
       canUsePostFX: effectiveTier === "HIGH",
       dpr: effectiveTier === "HIGH" ? 2 : effectiveTier === "MEDIUM" ? 1.5 : 1,
       particlesCount: effectiveTier === "HIGH" ? 2000 : effectiveTier === "MEDIUM" ? 800 : 200,

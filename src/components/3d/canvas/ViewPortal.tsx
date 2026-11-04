@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { use3DCapability } from "../context/CapabilityContext";
 
@@ -85,7 +85,7 @@ export function ViewPortal({
             }}
             frameloop="always"
           >
-            {children}
+            <Suspense fallback={null}>{children}</Suspense>
           </Canvas>
         </div>
       )}

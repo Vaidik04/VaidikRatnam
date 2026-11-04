@@ -85,7 +85,7 @@ export function HorizontalShowcase({
               <Sparkles className="w-3.5 h-3.5" />
               <span>Signature Vault</span>
             </div>
-            <h2 className="font-serif text-3xl sm:text-5xl text-white font-normal tracking-tight">
+            <h2 className="font-serif text-3xl sm:text-5xl text-white font-normal tracking-tight leading-[1.18] max-w-2xl">
               {title}
             </h2>
             <p className="mt-3 text-sm sm:text-base text-[#a8b6af] max-w-xl">

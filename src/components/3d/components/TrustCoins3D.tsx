@@ -5,6 +5,7 @@ import * as THREE from "three";
 import { useFrame } from "@react-three/fiber";
 import { createGoldCoinGeometry } from "../geometries/GemGeometries";
 import { createPolishedGoldMaterial } from "../materials/materials";
+import { StudioEnvironment } from "./StudioEnvironment";
 
 interface TrustCoins3DProps {
   activeIndex?: number;
@@ -27,6 +28,7 @@ export function TrustCoins3D({ activeIndex = 0 }: TrustCoins3DProps) {
 
   return (
     <group ref={coinsRef}>
+      <StudioEnvironment />
       <ambientLight intensity={0.7} />
       <directionalLight position={[2, 3, 4]} intensity={1.5} color="#fff6e0" />
       <pointLight position={[0, 0, 2]} intensity={1.2} color="#ffd700" />

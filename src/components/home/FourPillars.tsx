@@ -110,7 +110,7 @@ export function FourPillars() {
         </div>
 
         {/* Expanding Accordion Desktop & Stacked Mobile */}
-        <div className="flex flex-col lg:flex-row gap-4 h-auto lg:h-[480px]">
+        <div className="flex flex-col lg:flex-row gap-4 min-h-[520px]">
           {PILLARS.map((p) => {
             const isActive = activePillar === p.id;
             return (
@@ -119,24 +119,26 @@ export function FourPillars() {
                 onClick={() => setActivePillar(p.id)}
                 className={`relative rounded-2xl overflow-hidden border transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] cursor-pointer flex flex-col justify-between ${
                   isActive
-                    ? "lg:flex-[3] bg-[#0a2a1d] border-[#d4af37] shadow-2xl shadow-[#d4af37]/15 p-8"
-                    : "lg:flex-[1] bg-[#04170f]/80 border-[#d4af37]/25 hover:border-[#d4af37]/50 p-6"
+                    ? "lg:flex-[3] bg-[#0a2a1d] border-[#d4af37] shadow-2xl shadow-[#d4af37]/20 p-6 sm:p-8"
+                    : "lg:flex-[1] bg-[#04170f]/90 border-[#d4af37]/25 hover:border-[#d4af37]/60 p-5 sm:p-6"
                 }`}
               >
-                {/* Top Number & Devanagari */}
-                <div className="flex items-center justify-between z-10">
-                  <span className="font-serif text-3xl sm:text-4xl font-bold text-[#d4af37]/60 group-hover:text-[#d4af37]">
+                {/* Top Number & Devanagari — Generous headroom to guarantee zero ascender clipping */}
+                <div className="flex items-center justify-between z-10 pt-3 pb-1">
+                  <span className="font-serif text-2xl sm:text-3xl font-bold text-[#d4af37] leading-normal select-none">
                     {p.num}
                   </span>
-                  <span className="font-serif text-xs text-[#a8b6af] tracking-wider">
-                    {p.devanagari}
-                  </span>
+                  {isActive && (
+                    <span className="font-serif text-xs text-[#a8b6af] tracking-wider">
+                      {p.devanagari}
+                    </span>
+                  )}
                 </div>
 
                 {/* Inactive Vertical Title (Desktop Only) */}
                 {!isActive && (
-                  <div className="hidden lg:flex flex-1 items-center justify-center my-6">
-                    <span className="font-serif text-xl text-white/90 tracking-wide rotate-[-90deg] whitespace-nowrap">
+                  <div className="hidden lg:flex flex-1 items-center justify-center my-8">
+                    <span className="font-serif text-lg tracking-widest text-[#f1d98a] rotate-[-90deg] whitespace-nowrap select-none">
                       {p.title}
                     </span>
                   </div>
@@ -144,9 +146,9 @@ export function FourPillars() {
 
                 {/* Active Expanded Content & 3D Object */}
                 {isActive && (
-                  <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center my-auto z-10">
+                  <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center my-auto z-10 py-4">
                     <div className="md:col-span-7 space-y-4">
-                      <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#d4af37]">
+                      <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#d4af37] block">
                         {p.subtitle}
                       </span>
                       <h3 className="font-serif text-2xl sm:text-3xl text-white font-normal">
@@ -167,7 +169,7 @@ export function FourPillars() {
                     </div>
 
                     {/* Waking 3D Object Viewport */}
-                    <div className="md:col-span-5 h-48 md:h-64 relative">
+                    <div className="md:col-span-5 h-52 md:h-64 relative">
                       <ViewPortal
                         className="w-full h-full"
                         cameraPosition={[0, 0, 3.2]}
@@ -183,10 +185,20 @@ export function FourPillars() {
                   </div>
                 )}
 
-                {/* Bottom Hairline */}
-                <div className="pt-4 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-[#a8b6af] z-10">
-                  <span>Pillar {p.num} of 04</span>
-                  <span className="text-[#d4af37]">{isActive ? "Inspecting" : "Tap to Expand"}</span>
+                {/* Bottom Hairline Metadata — Collision-Free Layout */}
+                <div className="pt-3 border-t border-white/10 z-10">
+                  {isActive ? (
+                    <div className="flex items-center justify-between text-[11px] font-mono text-[#a8b6af]">
+                      <span>Pillar {p.num} of 04</span>
+                      <span className="text-[#d4af37] font-semibold">Active Pillar</span>
+                    </div>
+                  ) : (
+                    <div className="text-center">
+                      <span className="text-[10px] font-mono uppercase tracking-wider text-[#d4af37] group-hover:text-white transition-colors block">
+                        Tap to Open
+                      </span>
+                    </div>
+                  )}
                 </div>
               </div>
             );

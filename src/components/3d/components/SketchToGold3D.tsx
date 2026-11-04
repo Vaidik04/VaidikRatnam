@@ -6,6 +6,7 @@ import { useFrame } from "@react-three/fiber";
 import { Float, Sparkles } from "@react-three/drei";
 import { createAntiqueGoldMaterial } from "../materials/materials";
 import { GemMesh } from "./GemMesh";
+import { StudioEnvironment } from "./StudioEnvironment";
 
 interface SketchToGold3DProps {
   step?: number; // 0: Sketch Wireframe, 1: Wax Model, 2: Molten Gold, 3: Solid Gold, 4: Set with Gems
@@ -75,6 +76,7 @@ export function SketchToGold3D({ step = 0 }: SketchToGold3DProps) {
 
   return (
     <group>
+      <StudioEnvironment />
       <ambientLight intensity={0.6} />
       <directionalLight position={[3, 4, 4]} intensity={1.5} color="#fff6e0" />
       <directionalLight position={[-3, -2, -2]} intensity={0.6} color="#8ecae6" />

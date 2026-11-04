@@ -79,8 +79,8 @@ export function Hero({ rates }: HeroProps = {}) {
 
             {/* Main Editorial Headline */}
             <div className="space-y-2">
-              <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal tracking-tight leading-[1.12]">
-                Where Traditional Indian Artistry Meets{" "}
+              <h1 className="font-serif text-3xl sm:text-5xl lg:text-[54px] xl:text-[60px] font-normal tracking-tight leading-[1.14]">
+                Where Traditional Indian Artistry Meets
                 <span className="text-gold-gradient font-serif italic block mt-1">
                   Pure Goldsmithing
                 </span>
@@ -96,40 +96,40 @@ export function Hero({ rates }: HeroProps = {}) {
             </p>
 
             {/* Live Studio Bullion Rate Ticker Card */}
-            <div className="p-4 rounded-xs bg-[#0F3D2E]/60 border border-[#D4AF37]/30 backdrop-blur-md max-w-xl mx-auto lg:mx-0">
-              <div className="flex items-center justify-between pb-2 mb-2 border-b border-white/10 text-[11px]">
-                <span className="flex items-center gap-1.5 font-semibold text-[#F3E5AB] uppercase tracking-wider">
-                  <span className="w-2 h-2 rounded-full bg-[#48BB78] animate-pulse" />
-                  Today&apos;s Live Bullion Benchmark
+            <div className="p-4 sm:p-5 rounded-2xl bg-[#0a2a1d]/85 border border-[#d4af37]/40 shadow-2xl backdrop-blur-md max-w-xl mx-auto lg:mx-0">
+              <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/10 text-xs font-mono">
+                <span className="flex items-center gap-2 text-[#f1d98a] font-semibold tracking-wider uppercase text-[11px]">
+                  <span className="w-2 h-2 rounded-full bg-[#25D366] animate-ping" />
+                  Live Bullion Benchmark
                 </span>
                 <Link
                   href="/tools/gold-budget-estimator"
-                  className="text-[10px] text-[#D4AF37] hover:underline flex items-center gap-1"
+                  className="text-[#d4af37] hover:text-[#f6e7b4] text-[11px] flex items-center gap-1 transition-colors"
                 >
-                  <Calculator className="w-3 h-3" />
-                  Open Gold Estimator
+                  <Calculator className="w-3.5 h-3.5" />
+                  <span>Open Estimator &rarr;</span>
                 </Link>
               </div>
-              <div className="grid grid-cols-3 gap-2 text-center">
-                <div className="p-2 rounded-xs bg-black/20">
-                  <span className="block text-[10px] text-[#A8B6AF] uppercase tracking-wider font-mono">24K Bullion</span>
-                  <span className="font-mono text-sm sm:text-base font-bold text-[#F3E5AB]">
+              <div className="grid grid-cols-3 gap-3 text-center">
+                <div className="p-3 rounded-xl bg-[#04170f]/80 border border-white/10">
+                  <span className="block text-[10px] text-[#a8b6af] uppercase tracking-wider font-mono">24K Bullion</span>
+                  <span className="font-mono text-sm sm:text-base font-bold text-[#f1d98a]">
                     <RollingNumber value={gold24k} prefix="₹" />
-                    <span className="text-[10px] text-[#D4AF37]">/g</span>
+                    <span className="text-[10px] text-[#d4af37]">/g</span>
                   </span>
                 </div>
-                <div className="p-2 rounded-xs bg-black/20 border border-[#D4AF37]/30">
-                  <span className="block text-[10px] text-[#D4AF37] uppercase tracking-wider font-mono font-semibold">22K 916 BIS</span>
+                <div className="p-3 rounded-xl bg-[#04170f]/90 border border-[#d4af37]/50 shadow-inner">
+                  <span className="block text-[10px] text-[#d4af37] uppercase tracking-wider font-mono font-semibold">22K 916 BIS</span>
                   <span className="font-mono text-sm sm:text-base font-bold text-white">
                     <RollingNumber value={gold22k} prefix="₹" />
-                    <span className="text-[10px] text-[#D4AF37]">/g</span>
+                    <span className="text-[10px] text-[#d4af37]">/g</span>
                   </span>
                 </div>
-                <div className="p-2 rounded-xs bg-black/20">
-                  <span className="block text-[10px] text-[#A8B6AF] uppercase tracking-wider font-mono">925 Silver</span>
-                  <span className="font-mono text-sm sm:text-base font-bold text-[#DDE5DC]">
+                <div className="p-3 rounded-xl bg-[#04170f]/80 border border-white/10">
+                  <span className="block text-[10px] text-[#a8b6af] uppercase tracking-wider font-mono">925 Silver</span>
+                  <span className="font-mono text-sm sm:text-base font-bold text-[#e2ece7]">
                     <RollingNumber value={silver} prefix="₹" />
-                    <span className="text-[10px] text-[#D4AF37]">/g</span>
+                    <span className="text-[10px] text-[#d4af37]">/g</span>
                   </span>
                 </div>
               </div>
@@ -140,7 +140,7 @@ export function Hero({ rates }: HeroProps = {}) {
               <Link href="/jewellery" className="w-full sm:w-auto" data-cursor="View">
                 <MagneticButton
                   variant="gold"
-                  className="w-full sm:w-auto px-8 py-3.5 text-xs tracking-[0.2em]"
+                  className="w-full sm:w-auto px-8 py-3.5 text-xs tracking-[0.2em] font-mono uppercase font-bold"
                 >
                   <span>Explore Jewellery</span>
                   <ArrowRight className="w-4 h-4" />
@@ -149,7 +149,7 @@ export function Hero({ rates }: HeroProps = {}) {
               <Link href="/custom-design" className="w-full sm:w-auto" data-cursor="Craft">
                 <MagneticButton
                   variant="outline"
-                  className="w-full sm:w-auto px-7 py-3.5 text-xs tracking-[0.2em]"
+                  className="w-full sm:w-auto px-7 py-3.5 text-xs tracking-[0.2em] font-mono uppercase"
                 >
                   <Sparkles className="w-4 h-4 text-[#D4AF37]" />
                   <span>Custom Karigari Studio</span>
@@ -158,7 +158,7 @@ export function Hero({ rates }: HeroProps = {}) {
             </div>
 
             {/* Trust Chips Row */}
-            <div className="pt-4 border-t border-white/10 flex flex-wrap items-center justify-center lg:justify-start gap-5 text-xs text-[#A8B6AF]">
+            <div className="pt-4 border-t border-white/10 flex flex-wrap items-center justify-center lg:justify-start gap-5 text-xs font-mono text-[#A8B6AF]">
               <div className="flex items-center gap-1.5">
                 <ShieldCheck className="w-4 h-4 text-[#D4AF37]" />
                 <span>100% BIS Hallmarked (6-Digit HUID)</span>
@@ -175,54 +175,50 @@ export function Hero({ rates }: HeroProps = {}) {
 
           </div>
 
-          {/* Right Column (Asymmetric Visual Editorial Staging - 5 cols) */}
+          {/* Right Column (High-Jewellery Cinematic 3D Stage - 5 cols) */}
           <div className="lg:col-span-5 relative flex items-center justify-center">
             
-            {/* Ambient Back Glow */}
+            {/* Ambient Deep Radial Backlight */}
             <div className="absolute inset-0 bg-[#D4AF37]/15 rounded-full blur-3xl transform -rotate-6 scale-90" />
 
-            {/* Main Luxury Frame */}
-            <div className="relative w-full max-w-md rounded-t-full rounded-b-lg border-2 border-[#D4AF37]/50 p-2.5 bg-[#0F3D2E]/90 shadow-2xl backdrop-blur-md">
-              <div className="relative aspect-4/5 w-full rounded-t-full rounded-b-md overflow-hidden bg-[#04120d]">
-                {/* 3D Real-Time Centerpiece Scene */}
-                <ViewPortal
-                  cameraPosition={[0, 0, 5]}
-                  fov={45}
-                  fallback={
-                    <Image
-                      src="/images/hero-jewellery.jpg"
-                      alt="Vaidik Ratnam Handcrafted 22K Temple Jewellery"
-                      fill
-                      priority
-                      className="object-cover object-center"
-                      sizes="(max-width: 768px) 100vw, 500px"
-                    />
-                  }
-                >
-                  <Hero3DScene />
-                </ViewPortal>
+            {/* Cinematic Centerpiece Stage */}
+            <div className="relative w-full max-w-lg aspect-[4/5] rounded-3xl overflow-hidden border border-[#D4AF37]/40 bg-radial from-[#0a2a1d] via-[#04170f] to-[#020b07] shadow-2xl">
+              {/* 3D Real-Time Centerpiece Scene */}
+              <ViewPortal
+                cameraPosition={[0, 0, 5]}
+                fov={45}
+                className="w-full h-full"
+                fallback={
+                  <Image
+                    src="/images/hero-jewellery.jpg"
+                    alt="Vaidik Ratnam Handcrafted 22K Temple Jewellery"
+                    fill
+                    priority
+                    className="object-cover object-center"
+                    sizes="(max-width: 768px) 100vw, 500px"
+                  />
+                }
+              >
+                <Hero3DScene />
+              </ViewPortal>
 
-                {/* Subtle vignette */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#08241B]/90 via-transparent to-transparent pointer-events-none z-10" />
-
-                {/* 3D Interactive Badge Pill */}
-                <div className="absolute top-4 right-4 z-20 bg-black/50 border border-[#D4AF37]/40 px-2.5 py-1 rounded-full backdrop-blur-md flex items-center gap-1.5 text-[10px] text-[#f3e5ab]">
-                  <Rotate3D className="w-3 h-3 text-[#D4AF37]" />
-                  <span className="font-mono">Real-Time 3D</span>
-                </div>
+              {/* 3D Interactive Badge Pill */}
+              <div className="absolute top-4 right-4 z-20 bg-black/60 border border-[#D4AF37]/50 px-3 py-1.5 rounded-full backdrop-blur-md flex items-center gap-1.5 text-[10px] text-[#f3e5ab] font-mono">
+                <Rotate3D className="w-3.5 h-3.5 text-[#D4AF37]" />
+                <span>Interactive 3D Jewel</span>
               </div>
 
-              {/* Floating Trust Card (Bottom Overlay) */}
-              <div className="absolute -bottom-6 left-4 right-4 p-3.5 rounded-xs bg-[#0F3D2E] border border-[#D4AF37] shadow-2xl flex items-center gap-3 backdrop-blur-md">
-                <div className="w-10 h-10 rounded-full bg-[#D4AF37]/15 border border-[#D4AF37]/40 flex items-center justify-center shrink-0">
-                  <ShieldCheck className="w-5 h-5 text-[#D4AF37]" />
+              {/* Bottom Hallmarking Trust Strip */}
+              <div className="absolute bottom-4 left-4 right-4 p-3 rounded-xl bg-[#04170f]/90 border border-[#d4af37]/40 shadow-xl flex items-center gap-3 backdrop-blur-md z-20">
+                <div className="w-9 h-9 rounded-full bg-[#d4af37]/15 border border-[#d4af37]/40 flex items-center justify-center shrink-0">
+                  <ShieldCheck className="w-4 h-4 text-[#d4af37]" />
                 </div>
-                <div className="flex-1">
-                  <strong className="text-xs font-serif text-[#F3E5AB] tracking-wide block">
-                    Govt. BIS Hallmarked
+                <div className="flex-1 text-left">
+                  <strong className="text-[11px] font-serif text-[#f1d98a] tracking-wide block">
+                    Govt. 6-Digit Laser HUID
                   </strong>
-                  <span className="text-[10px] text-[#DDE5DC] block">
-                    Verify the 6-digit HUID code with the BIS Care App
+                  <span className="text-[10px] text-[#a8b6af] block font-mono">
+                    Instant verification on official BIS Care App
                   </span>
                 </div>
               </div>

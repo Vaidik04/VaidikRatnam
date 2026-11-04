@@ -135,7 +135,7 @@ export function Header({ rates }: HeaderProps = {}) {
             {/* Animated Transparent SVG Logo Lockup */}
             <Link
               href="/"
-              className="group flex items-center shrink-0 cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-[#D4AF37]"
+              className="group flex items-center shrink-0 cursor-pointer outline-none focus:outline-none"
             >
               <AnimatedLogo
                 variant="gold-on-dark"
@@ -145,7 +145,7 @@ export function Header({ rates }: HeaderProps = {}) {
             </Link>
 
             {/* Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center space-x-5 xl:space-x-7">
+            <nav className="hidden lg:flex items-center space-x-4 xl:space-x-6">
               {NAV_LINKS.map((link) => {
                 const isActive =
                   pathname === link.href ||
@@ -154,9 +154,9 @@ export function Header({ rates }: HeaderProps = {}) {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={`text-[11px] xl:text-[12px] uppercase tracking-[0.18em] font-medium transition-all py-1.5 relative group whitespace-nowrap ${
+                    className={`text-[10px] xl:text-[11px] uppercase tracking-[0.2em] font-mono py-1.5 relative group whitespace-nowrap transition-colors ${
                       isActive
-                        ? "text-[#F6E7B4] font-semibold"
+                        ? "text-[#F6E7B4] font-bold"
                         : "text-[#FAF7F0]/80 hover:text-[#D4AF37]"
                     }`}
                   >

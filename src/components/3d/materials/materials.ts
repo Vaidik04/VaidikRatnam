@@ -95,17 +95,19 @@ export const GEM_PROPERTIES = {
 } as const;
 
 /**
- * Creates an Antique 22K Gold Material with micro-roughness and clearcoat.
+ * Creates an Antique 22K Gold Material with micro-roughness, clearcoat, and warm diffuse body.
  */
 export function createAntiqueGoldMaterial(): THREE.MeshPhysicalMaterial {
   return new THREE.MeshPhysicalMaterial({
-    color: new THREE.Color(GOLD_COLORS.antique),
-    metalness: 1.0,
-    roughness: 0.22,
-    clearcoat: 0.3,
-    clearcoatRoughness: 0.2,
-    reflectivity: 1.0,
-    envMapIntensity: 1.4,
+    color: new THREE.Color("#f1d98a"),
+    emissive: new THREE.Color("#4a3b10"),
+    emissiveIntensity: 0.25,
+    metalness: 0.8,
+    roughness: 0.2,
+    clearcoat: 0.6,
+    clearcoatRoughness: 0.15,
+    reflectivity: 0.95,
+    envMapIntensity: 1.5,
   });
 }
 
@@ -116,20 +118,22 @@ export function createPolishedGoldMaterial(
   purity: "24k" | "22k" | "18k" | "14k" = "22k"
 ): THREE.MeshPhysicalMaterial {
   const colorMap = {
-    "24k": GOLD_COLORS.purity24k,
-    "22k": GOLD_COLORS.purity22k,
-    "18k": GOLD_COLORS.purity18k,
-    "14k": GOLD_COLORS.purity14k,
+    "24k": "#ffd859",
+    "22k": "#ffd154",
+    "18k": "#dfba6a",
+    "14k": "#e09384",
   };
 
   return new THREE.MeshPhysicalMaterial({
     color: new THREE.Color(colorMap[purity]),
-    metalness: 1.0,
+    emissive: new THREE.Color("#59430c"),
+    emissiveIntensity: 0.2,
+    metalness: 0.85,
     roughness: 0.08,
-    clearcoat: 0.5,
-    clearcoatRoughness: 0.1,
+    clearcoat: 0.8,
+    clearcoatRoughness: 0.05,
     reflectivity: 1.0,
-    envMapIntensity: 1.8,
+    envMapIntensity: 2.0,
   });
 }
 
